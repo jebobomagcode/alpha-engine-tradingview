@@ -54,11 +54,11 @@
 |---|---|---|---|---|
 | M00 | Instrument, bar timestamps, source quality and causal availability | none | Foundational research spec in [01](01-causal-market-structure.md), sections A–B | verify example clocks/HTF |
 | M01 | Market structure, swing selection, BOS/CHoCH, regime | M00 | Foundational research spec in [01](01-causal-market-structure.md), sections C–H | alternative pivots and synthetic cases |
-| M02 | S/R, range, OB, FVG, Fibonacci zones | M00,M01 | OPEN; only previous lesson research | source-to-zone grammar |
-| M03 | EMA, RSI and momentum/confluence | M00,M01 | OPEN; source disagreements inventoried | algebra and alternative RSI bounce |
-| M04 | Candle reaction, rejection, engulfing, confirmation | M00,M02 | OPEN; source confirms close for Lesson08 | exact OHLC geometry |
-| M05 | HTF/LTF and setup eligibility, WAIT, directional conflicts | M00–M04 | concept flow only; not formalized | state transition table |
-| M06 | SL/TP, sizing, margin and strategy-evaluation contract | M00,M02,M05 | OPEN; examples audited | cost-/tick-aware quantities |
+| M02 | S/R, range, OB, FVG, Fibonacci zones | M00,M01 | Candidate zone research [03](03-zones-sr-ob-fvg-fibonacci.md); selection OPEN | geometry and mitigation validation |
+| M03 | EMA, RSI and momentum/confluence | M00,M01 | Partial research [02](02-topdown-entry-state-and-risk.md); selection OPEN | RSI contexts and ablation |
+| M04 | Candle reaction, rejection, engulfing, confirmation | M00,M02 | Candidate schema [02](02-topdown-entry-state-and-risk.md); thresholds OPEN | exact OHLC geometry |
+| M05 | HTF/LTF and setup eligibility, WAIT, directional conflicts | M00–M04 | Proposed states [02](02-topdown-entry-state-and-risk.md); incomplete | full conflict transitions |
+| M06 | SL/TP, sizing, margin and strategy-evaluation contract | M00,M02,M05 | Gross risk math [02](02-topdown-entry-state-and-risk.md); real execution OPEN | cost-/tick-aware quantities |
 | M07 | Validation/ablation, venue/regime and evidence reporting | M00–M06 | research protocol only | predeclare holdouts and benchmarks |
 
 **Phase 2 is NOT complete.** Completion requires individual rule IDs with formal constraints, alternative definitions, counterexamples, source traceability, decision records and a coherent cross-module interface. The first increment does not close M02–M07.

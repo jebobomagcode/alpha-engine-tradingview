@@ -3,7 +3,7 @@
 ## Goal
 The project is not merely a Coach-method clone. It aims to produce a substantially improved TradingView analytical system **if improvements withstand scrutiny**. More indicators and more complex logic are not automatically better.
 
-## Rule record schema (future work)
+## Rule record schema (in use for Phase 2 conceptual research)
 Record for each candidate rule:
 - Stable rule ID, title, target lesson, PDF page/figure/quoted minimal source anchor.
 - Provenance: COACH_EXPLICIT, INTERPRETATION, INDEPENDENT_EXTENSION, EXPERIMENTAL, VALIDATED, OPEN_UNRESOLVED.
@@ -34,8 +34,8 @@ Record for each candidate rule:
 - **Financial evidence:** baseline comparisons, multiple symbols/timeframes/regimes, predeclared out-of-sample or walk-forward sets, sensitivity, instability, multiple-testing/overfit checks, drawdown and trade counts. Historical simulation does not guarantee live results.
 - **User acceptance:** readability, relevant visible zones/labels, meaningful WAIT/NO TRADE diagnostics, no misleading certainty, explainable decision path.
 
-## Known uncertainties before study
-No final definitions yet for swing/pivot confirmation, HH/HL/LH/LL, BOS/CHoCH timing, S/R zone clustering, OB/FVG boundaries, Fibonacci anchor selection, confirmation/strong candles, liquidity sweep, confluence weights, intra-bar signals, risk/position sizing, or cross-timeframe disagreements. These are **research questions**, not completed findings.
+## Still-unresolved methodological decisions
+No final definitions yet for swing/pivot confirmation, HH/HL/LH/LL, BOS/CHoCH timing, S/R zone clustering, OB/FVG boundaries, Fibonacci anchor selection, confirmation/strong candles, liquidity sweep, confluence weights, intra-bar signals, risk/position sizing, or cross-timeframe disagreements. These are **research questions**, not completed findings. Phase 2 now has initial [traceability](methodology/00-source-to-rule-traceability.md), [market-structure](methodology/01-causal-market-structure.md), [entry/risk](methodology/02-topdown-entry-state-and-risk.md), [zone](methodology/03-zones-sr-ob-fvg-fibonacci.md) and [reconciliation](METHODOLOGY_RECONCILIATION.md) documents. They contain proposed mathematics and manual expected cases, not runnable detectors or market validation.
 
 ## Engineering notes
 Pine Script is a target environment; official language/version constraints should be checked at implementation time. Avoid coupling chart visuals to strategy order simulation. Shared formal specs are more important than speculative premature code sharing. No trades or live execution authorized.

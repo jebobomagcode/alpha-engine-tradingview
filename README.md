@@ -2,7 +2,7 @@
 
 **Independent, source-grounded, research-enhanced TradingView project.**
 
-**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **All 21 numbered lessons (PDF pages 1–28) completed and source-audited**. All three Q&A activities (pages 29–32) and all 21 numbered lessons are source-audited. All **35 pages** of the original Coach PDF are now studied in source order: **21 numbered lessons, 3 Q&A activities, and 2 final notes**. Final note “BSP charting” actually plots **PSE:BPI Bank of the Philippine Islands** stock; BSP is the central bank. Read [source coverage audit](docs/SOURCE_STUDY_COMPLETION_AUDIT.md). Next is conceptual methodology formalization, not Pine coding. **No formal Pine methodology implementation, backtests or deployments have started.**
+**Status (2026-11-09, Asia/Manila):** Full original Coach PDF PCSS study COMPLETE (35 pages / 26 units). **Phase 2 formal methodology research IN PROGRESS.** New: [26-unit source traceability](docs/methodology/00-source-to-rule-traceability.md), [20 cross-lesson reconciliations](docs/METHODOLOGY_RECONCILIATION.md), [causal BOS/CHoCH foundation](docs/methodology/01-causal-market-structure.md), [entry/RSI/EMA/risk research](docs/methodology/02-topdown-entry-state-and-risk.md), [zone-generation alternatives](docs/methodology/03-zones-sr-ob-fvg-fibonacci.md). No Pine code, market backtests or deployments.
 
 ## Start here — especially after losing a ChatGPT conversation
 
