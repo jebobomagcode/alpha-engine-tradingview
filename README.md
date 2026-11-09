@@ -22,6 +22,10 @@ Study the **one and only Coach Fredy source**, the user-supplied 35-page file na
 
 **Project independence is mandatory:** do not read from, modify, merge, migrate, deploy, or otherwise operate on any earlier related projects as a shortcut. Treat this repository as a fresh start.
 
+## Authorized market focus
+
+**Crypto markets exclusively for the eventual TradingView implementation**, including **XAUUSDT**, **XAUTUSDT**, and **PAXGUSDT**. The gold-reference derivative and tokenized-gold pairs are distinct product types and require separate feed/product verification. Original PCSS lessons remain complete, including Coach's Forex and Philippine stock discussions, but those are *not* separate implementation target markets. See [market scope](docs/MARKET_SCOPE.md) (owner decision D-013).
+
 ## Architectural direction
 
 - **Indicator first; strategy-ready design.** This is the current accepted, revisitable direction, not permission to begin coding.
@@ -35,6 +39,7 @@ Study the **one and only Coach Fredy source**, the user-supplied 35-page file na
 | Document | Purpose |
 | --- | --- |
 | [Project charter](docs/PROJECT_CHARTER.md) | Goal, boundaries, principles, success criteria |
+| [Authorized market scope](docs/MARKET_SCOPE.md) | Crypto focus, XAUUSDT/XAUTUSDT/PAXGUSDT differences and unresolved feed choices |
 | [Source manifest](docs/SOURCE_MANIFEST.md) | Exact document identities, source hierarchy, public-repo precautions |
 | [PCSS protocol](docs/PCSS_PROTOCOL.md) | Teaching, inventory, audit, checkpoint, and interpretation procedure |
 | [Decisions](docs/DECISIONS.md) | Dated owner decisions and reconsideration triggers |

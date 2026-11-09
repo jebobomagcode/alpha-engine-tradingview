@@ -3,6 +3,7 @@
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
 **Phase:** 1 — meticulous source-ordered PCSS study (Lesson 01 finished, Lesson 02 next)
+**Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. No such work is needed to study Lesson 02.
 
@@ -14,6 +15,8 @@
 - The user chose a new project fully independent of previous engines and repositories.
 - The PDF is the only Coach-origin input; independent research, Ponder-style reasoning and substantial improvements are specifically required.
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
+- **New owner direction D-013:** implementation targets crypto, including XAUUSDT, XAUTUSDT, PAXGUSDT; instrument product and exchange feed must be distinguished. Forex and PSE equity teaching remains in PCSS for fidelity, but neither is an independent implementation target. See `docs/MARKET_SCOPE.md`.
+- No exact exchange-qualified TradingView chart symbols, spot-vs-derivatives selection for XAUTUSDT/PAXGUSDT, or backtest datasets have been approved/verified.
 - Formal PCSS **Lesson 01** was taught and source-audited, with independent critical corrections and an artifact in `docs/lessons/01-trading-101.md`. **1 numbered lesson completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
@@ -29,6 +32,7 @@ Keep the methodology study and decision log synchronized after each verified inc
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
+- Exact crypto venues, chart symbol prefixes, trading products, session specifications, and initial test universe (including product variants for XAUTUSDT/PAXGUSDT).
 - Which enhanced methods survive empirical scrutiny.
 - Strategy delivery date and whether it is optional or essential.
 - Actual source-file availability in any later chat.

@@ -10,7 +10,7 @@
 | 5. TradingView strategy | Separate strategy using the same well-specified rule concepts for orders and backtests | Technical execution and cost assumptions validated; out-of-sample tests |
 | 6. Evaluation and iteration | Compare baseline and enhancements over market regimes and test cases | Evidence-bounded findings and clearly stated limitations |
 
-The order is **conceptual**; detailed design questions may be explored while studying, but formal study and implementation need explicit user authorization. The user already authorized Phase 0 documentation.
+The order is **conceptual**; detailed design questions may be explored while studying. The user has now authorized the PCSS study phase, but **not Pine coding or deployment**. The project-specific implementation focus is **crypto including XAUUSDT, XAUTUSDT and PAXGUSDT** (see [MARKET_SCOPE.md](MARKET_SCOPE.md)); source study still covers Coach's Forex and Philippine stock sections without expanding the implementation scope.
 
 ## Recommended incremental delivery
 - Each lesson: PCSS teaching + source inventory + interpretive uncertainties + checkpoint commit.
@@ -24,5 +24,5 @@ The order is **conceptual**; detailed design questions may be explored while stu
 - Which interpretations of ambiguous patterns best preserve Coach intent and remain causal?
 - Which enhancements provide measurable incremental value without overfitting?
 - Should a shared Pine library be used? Only if practical constraints support it.
-- Which assets, markets, sessions, bar granularities and risk models are suitable?
+- Which exact crypto venues, market-product variants, sessions, bar granularities and risk models are suitable? Gold derivative XAUUSDT and tokenized gold XAUTUSDT/PAXGUSDT must be evaluated separately.
 - When does it become worthwhile to build the strategy adapter?

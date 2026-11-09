@@ -12,6 +12,7 @@ Applies to any ChatGPT, coding agent, or collaborator working in this repository
 - Repository allowed for writes: **jebobomagcode/alpha-engine-tradingview ONLY**.
 - This is a completely fresh and independent project. Do **not** modify, integrate, port, pull code or decisions from, or deploy unrelated/legacy projects. Similar names are not a license to cross boundaries.
 - The **sole Coach Fredy-origin authority** is the user-supplied 35-page coach trading lessons.pdf. Never claim to have later Coach sources or private guidance.
+- **Owner market scope (D-013): crypto only for future TradingView implementation, including XAUUSDT, XAUTUSDT, PAXGUSDT.** These are not interchangeable feeds/products. Read `docs/MARKET_SCOPE.md` before suggesting a symbol, data model or test. Cover all Coach lessons in original order, including Forex and PH stocks, without making these separate implementation targets.
 - The user's complete PCSS document defines the teaching standard; docs/PCSS_PROTOCOL.md is the resumable operational summary.
 - External books, market research, Pine docs, reasoning, and experimentation are allowed as *independent* additions, explicitly labeled. Do not silently promote supplements to Coach claims.
 - Respect current scope: **documentation may be maintained; formal PCSS lessons and Pine implementation remain not started until the user directs us to begin.** This status may be changed only by an explicit later user direction, and then must be recorded.

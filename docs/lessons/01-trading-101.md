@@ -130,6 +130,10 @@ The user's indicator-first, strategy-ready direction remains in force. We should
 
 These are tracked as **OPEN_UNRESOLVED**; they do not prevent completion of the *study of page 1*, and no feature is approved merely by appearing in this note.
 
+## Owner's later project-scope decision (D-013, 2026-11-09)
+
+**USER DIRECTIVE, NOT COACH EXPLICIT:** After Lesson 01 was taught, the owner selected the **crypto trading ecosystem** as the only future TradingView implementation focus, explicitly including **XAUUSDT, XAUTUSDT and PAXGUSDT**. The earlier question of whether Forex/PSE equities would be implementation markets is therefore resolved: they are **not** separate runtime targets. Study of their original Coach PDF material remains required under PCSS. XAUUSDT can be a USDT-settled gold-price derivative, whereas XAUT and PAXG are separate gold-backed crypto tokens. These require distinct venue-qualified symbol verification. Detailed scope and sources: [MARKET_SCOPE.md](../MARKET_SCOPE.md). This dated addendum **does not rewrite Coach's page 1 content** or change Lesson 01's completed study status.
+
 ## Complete coverage verdict and checkpoint
 
 - Rendered PDF page 1 inspected; text extraction crosschecked.
