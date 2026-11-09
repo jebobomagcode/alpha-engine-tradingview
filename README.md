@@ -2,7 +2,7 @@
 
 **Independent, source-grounded, research-enhanced TradingView project.**
 
-**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **Lessons 01–09 (PDF pages 1–11) completed and source-audited**. Lesson 10 is next. **No formal Pine methodology implementation, backtests or deployments have started.**
+**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **Lessons 01–10 (PDF pages 1–13) completed and source-audited**. Lesson 11 is next. **No formal Pine methodology implementation, backtests or deployments have started.**
 
 ## Start here — especially after losing a ChatGPT conversation
 
@@ -12,7 +12,7 @@
 4. Read [docs/SOURCE_MANIFEST.md](docs/SOURCE_MANIFEST.md) and [docs/PCSS_PROTOCOL.md](docs/PCSS_PROTOCOL.md).
 5. Check [docs/LESSON_COVERAGE.md](docs/LESSON_COVERAGE.md) before beginning or continuing any lesson.
 6. Read [AGENTS.md](AGENTS.md) for operating instructions for a coding or AI assistant.
-7. Read completed [Lesson 01](docs/lessons/01-trading-101.md), [Lesson 02](docs/lessons/02-basic-candlestick-patterns.md), [Lesson 03](docs/lessons/03-trading-risk-reward.md), and corresponding [candlestick](docs/research/02-candlestick-rule-candidates.md) / [risk-reward](docs/research/03-risk-reward-spec-candidates.md) research and [Lesson 04](docs/lessons/04-time-frame.md) plus its [MTF research](docs/research/04-multi-timeframe-causality.md) and [Lesson 05](docs/lessons/05-leverage-margin.md) with its [margin/solvency research](docs/research/05-margin-leverage-solvency-candidates.md) and [Lesson 06](docs/lessons/06-engulfing-pattern.md) with its [engulfing formalization research](docs/research/06-engulfing-formalization.md) and [Lesson 07](docs/lessons/07-market-structure-confluence.md) with its [market-structure research](docs/research/07-market-structure-confluence-candidates.md) and [Lesson 08](docs/lessons/08-trading-entry-workflow.md) with its [entry state-machine research](docs/research/08-entry-state-machine-candidates.md) and [Lesson 09](docs/lessons/09-support-resistance.md) with its [zone and role-flip research](docs/research/09-zone-role-reversal-candidates.md) before resuming at Lesson 10.
+7. Read completed [Lesson 01](docs/lessons/01-trading-101.md), [Lesson 02](docs/lessons/02-basic-candlestick-patterns.md), [Lesson 03](docs/lessons/03-trading-risk-reward.md), and corresponding [candlestick](docs/research/02-candlestick-rule-candidates.md) / [risk-reward](docs/research/03-risk-reward-spec-candidates.md) research and [Lesson 04](docs/lessons/04-time-frame.md) plus its [MTF research](docs/research/04-multi-timeframe-causality.md) and [Lesson 05](docs/lessons/05-leverage-margin.md) with its [margin/solvency research](docs/research/05-margin-leverage-solvency-candidates.md) and [Lesson 06](docs/lessons/06-engulfing-pattern.md) with its [engulfing formalization research](docs/research/06-engulfing-formalization.md) and [Lesson 07](docs/lessons/07-market-structure-confluence.md) with its [market-structure research](docs/research/07-market-structure-confluence-candidates.md) and [Lesson 08](docs/lessons/08-trading-entry-workflow.md) with its [entry state-machine research](docs/research/08-entry-state-machine-candidates.md) and [Lesson 09](docs/lessons/09-support-resistance.md) with its [zone and role-flip research](docs/research/09-zone-role-reversal-candidates.md) and [Lesson 10](docs/lessons/10-marking-support-resistance.md) plus [range-entry research](docs/research/10-range-entries-and-confirmation-break.md) before resuming at Lesson 11.
 
 ## Mission
 
