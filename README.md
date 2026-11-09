@@ -2,7 +2,7 @@
 
 **Independent, source-grounded, research-enhanced TradingView project.**
 
-**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **Lesson 01 (Trading 101, PDF page 1) completed and source-audited**. Lesson 02 is next. **No formal Pine methodology implementation, backtests or deployments have started.**
+**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **Lessons 01–02 (PDF pages 1–3) completed and source-audited**. Lesson 03 is next. **No formal Pine methodology implementation, backtests or deployments have started.**
 
 ## Start here — especially after losing a ChatGPT conversation
 
@@ -12,7 +12,7 @@
 4. Read [docs/SOURCE_MANIFEST.md](docs/SOURCE_MANIFEST.md) and [docs/PCSS_PROTOCOL.md](docs/PCSS_PROTOCOL.md).
 5. Check [docs/LESSON_COVERAGE.md](docs/LESSON_COVERAGE.md) before beginning or continuing any lesson.
 6. Read [AGENTS.md](AGENTS.md) for operating instructions for a coding or AI assistant.
-7. Read the latest [PCSS Lesson 01 study](docs/lessons/01-trading-101.md) before teaching the next lesson.
+7. Read completed [Lesson 01](docs/lessons/01-trading-101.md), [Lesson 02](docs/lessons/02-basic-candlestick-patterns.md), and [Lesson 02 rule research](docs/research/02-candlestick-rule-candidates.md) before resuming at Lesson 03.
 
 ## Mission
 

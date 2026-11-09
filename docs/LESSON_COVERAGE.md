@@ -1,13 +1,13 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
-**As of 2026-11-09:** Lesson 01 has been formally taught and source-audited; **1 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study record: [Lesson 01](lessons/01-trading-101.md).
+**As of 2026-11-09:** Lessons 01 and 02 have been formally taught and source-audited; **2 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md).
 
 Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE / BLOCKED. Do not mark COMPLETE from a superficial preview, inferred summary, or repository creation.
 
 | No. | Source title (brief label) | PDF pages | Status |
 | --- | --- | --- | --- |
 | 01 | Trading 101 (markets, pros/cons, discipline) | 1 | COMPLETE — [audit + lesson](lessons/01-trading-101.md) |
-| 02 | Basic candlestick patterns (hammer, shooting star, doji) | 2–3 | NOT_STARTED |
+| 02 | Basic candlestick patterns (hammer, shooting star, doji) | 2–3 | COMPLETE — [audit + lesson](lessons/02-basic-candlestick-patterns.md) and [research questions](research/02-candlestick-rule-candidates.md) |
 | 03 | Trading Risk Reward (RR examples and compounding) | 4–5 | NOT_STARTED |
 | 04 | Time Frame (HTF/LTF) | 6 | NOT_STARTED |
 | 05 | Leverage and Margin | 7 | NOT_STARTED |
@@ -44,4 +44,4 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 - Implementation implications, if any; do not imply code exists.
 - Exact last completed item, next item, commit hash and readback verification.
 
-**Next:** Lesson 02, PDF pages 2–3, *Basic Candlestick Pattern*. Begin only on user's next instruction; do not auto-advance.
+**Next:** Lesson 03, PDF pages 4–5, *Trading Risk Reward*. Begin only on user's next instruction; do not auto-advance.
