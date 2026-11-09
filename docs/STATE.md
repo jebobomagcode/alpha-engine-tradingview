@@ -1,8 +1,8 @@
 # Current project state — canonical checkpoint
 
-**Checkpoint date:** 2026-11-09 (Asia/Manila)
+**Checkpoint date:** 2026-11-10 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — formal source-to-methodology research IN PROGRESS; original study 35/35 pages COMPLETE.
+**Phase:** 2 — source-to-methodology research IN PROGRESS; targeted source and causal pre-implementation audit completed on 2026-11-10 (findings partially resolved, formal detector selection OPEN); original 35/35-page study COMPLETE.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
@@ -26,6 +26,14 @@
 - **Lesson 09 complete:** original PDF p. 11 Support & Resistance, single annotated chart with red resistance/green support bands and repeated tests; floor/ceiling descriptions, BUY/SELL location mnemonic, support/resistance role reversal and confirmation requirement. Source `docs/lessons/09-support-resistance.md`; independent research `docs/research/09-zone-role-reversal-candidates.md`. Break, zone-touch and flip-retention definitions explicitly unresolved.
 - **Lesson 10 complete:** original PDF pp. 12–13 FOREX.com Gold Spot/USD 1H and 5m screenshots, support 4670–4680, resistance 4730–4750, sideways bias, 5m ~4710 in middle = not ideal. Conditional SELL 4730–4750 + reversal + break confirmation + stop 4755 + target support; BUY 4670–4680 + reversal + break confirmation + stop 4665 + target resistance. No reversal = no trade. Study `docs/lessons/10-marking-support-resistance.md`; research `docs/research/10-range-entries-and-confirmation-break.md`. Entry prices unknown; RR calculations in study are explicitly illustrative.
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
+
+## Latest targeted Ponder + Jarvis methodology audit — 2026-11-10
+
+- **AUDIT RECORD:** [docs/audits/2026-11-10-phase2-preimplementation-audit.md](audits/2026-11-10-phase2-preimplementation-audit.md). Direct PDF source text check on selected relevant pages 6,8–16,19–25,31–35 plus actual page14/15 OB and BOS figures and page25 CHoCH; not a brand-new full reread of every source page. Original Coach PDF SHA-256 remains 481ca1adf146212316846823070db7ba78c788eae89b08db10f0694b61fe5730.
+- **CORRECTIONS ADDED:** page14 OB figure explicitly has “1→3 GAP”, green bullish OB candle 1, red bearish OB candle 1. Our independent FVG strict three-candle formula remains a candidate, not an explicit Coach formula; last-opposite-color OB is not universally supported. Page10 Lesson08 closed confirmation-candle entry differs from page13 conditional range “entry sa break ng confirmation”; their entry timing is not silently unified.
+- **CRITICAL STRUCTURE SPEC GAP:** M01 BOS/CHoCH source-pivot crossing needs a reference arming policy to avoid retroactive signals when the swing becomes confirmed after its level was breached. Simultaneous high/low pivots on one outside candle also need an ambiguity policy. Two counterexamples added, not automated tests.
+- **VERIFIED LIMITED MATH:** EMA same-close one-bar slope/sign identity under 0<alpha<1, Q&A3 nominal RR 996/499, Lesson14 Fib two band coordinates recomputed. Verification is mathematical/source-targeted only, not market performance or TradingView runtime validation.
+- **Current gating:** no Pine scripts, no historical crypto strategy backtest, no trading signals deployed, no code builds/alerts/orders, no previous repositories touched. Continue Phase2 definitions of reference arming/pivot ties, zone and confirmation event ordering before selecting an implementation.
 
 ## Latest completed item and next step
 - **Phase2 current latest, 2026-11-09:** [26-unit traceability](methodology/00-source-to-rule-traceability.md), [20 material unresolved cross-lesson cases](METHODOLOGY_RECONCILIATION.md), [M00/M01 bar/pivot/BOS/CHoCH](methodology/01-causal-market-structure.md), [M02–M06 entry/EMA/RSI/risk](methodology/02-topdown-entry-state-and-risk.md), [M02 S/R, OB, FVG and Fibonacci zone alternatives](methodology/03-zones-sr-ob-fvg-fibonacci.md). All source-supported claims carry original PDF anchors; all numeric detector thresholds not in PDF remain independent candidates.
