@@ -2,9 +2,9 @@
 
 The owner explicitly authorized publishing the original Coach PDF in this **public** repository on 2026-11-09.
 
-## Upload status: PENDING (not uploaded by this documentation commit)
+## Upload status: UPLOADED AND VERIFIED — 2026-11-09
 
-The original binary was verified in the initiating chat, but the available GitHub connector cannot accept local PDF bytes directly. The attached PDF must still be transferred to this GitHub directory.
+The owner uploaded the exact original binary to the repository in commit [02816ae53b6f2bea7a0b8427c12ff8324a24be98](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/02816ae53b6f2bea7a0b8427c12ff8324a24be98). GitHub's commit tree records the same 2,267,976-byte file and Git blob SHA-1 as the locally checked original.
 
 **Exact target filename:** \`coach trading lessons.pdf\`
 
@@ -16,15 +16,12 @@ The original binary was verified in the initiating chat, but the available GitHu
 
 **Expected Git blob SHA-1:** \`c99de01b9178e16e240f83f5c4594fa5683a1ba2\` (computed from original bytes via \`git hash-object\`).
 
-## Minimal manual upload route if a binary-capable agent is unavailable
+## Permanent source location and integrity verification
 
-1. Open https://github.com/jebobomagcode/alpha-engine-tradingview/upload/main/sources .
-2. Select or drag/drop the original \`coach trading lessons.pdf\` file into GitHub. Keep its filename unchanged.
-3. Commit it on the **main** branch. Do not replace it with a text extraction, a reconstructed PDF, or a compressed/optimized copy.
-4. Confirm the new file appears at https://github.com/jebobomagcode/alpha-engine-tradingview/blob/main/sources/coach%20trading%20lessons.pdf .
-5. Obtain GitHub's tree entry's \`sha\` for the uploaded PDF, check it matches the expected Git blob SHA-1 above. If the download is accessible, compute SHA-256 too.
-6. Update this file and \`docs/STATE.md\` only after remote verification to say **UPLOADED VERIFIED**, recording the commit SHA.
+**[View the original PDF](https://github.com/jebobomagcode/alpha-engine-tradingview/blob/main/sources/coach%20trading%20lessons.pdf)**
+
+To validate a future checkout, run `git hash-object "sources/coach trading lessons.pdf"` and compare to the Git blob SHA above. A fresh assistant can inspect the repository's Git tree, confirm the blob SHA, and read original PDF pages and figures. If the file changes, stop and examine the change before claiming source fidelity.
 
 This specific publication was authorized by the owner. The personal PCSS Markdown **was not** authorized for public upload and remains private.
 
-This document is a faithful status record, **not** evidence the PDF was uploaded.
+Verification record: the owner's actual upload commit and its remote Git tree were inspected and matched against the original. No formal PCSS lesson work or Pine development was performed during this upload task.
