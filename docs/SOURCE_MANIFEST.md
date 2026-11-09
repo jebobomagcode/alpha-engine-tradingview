@@ -6,7 +6,10 @@ Updated 2026-11-09 (Asia/Manila). Recorded using actual user-provided files avai
 - **Exact filename:** coach trading lessons.pdf
 - **Length:** 35 pages.
 - **SHA-256 of original file bytes:** 481ca1adf146212316846823070db7ba78c788eae89b08db10f0694b61fe5730
-- **Status:** available and identified in originating chat; **NOT included in this public GitHub repository**.
+- **Status:** original local bytes verified in the initiating chat; **public upload authorized by owner on 2026-11-09, but not yet completed** due to lack of binary transfer support through the connected GitHub tool.
+- **Expected repository location:** `sources/coach trading lessons.pdf` (not present as of this decision record).
+- **Expected Git blob SHA-1 of exact original bytes:** `c99de01b9178e16e240f83f5c4594fa5683a1ba2` (computed locally with `git hash-object`).
+- **Exact file size:** 2,267,976 bytes. The future upload must match the expected blob SHA-1 and, when downloaded, the SHA-256 above.
 - **Authority:** the ONLY Coach Fredy-origin source. A source passage, screenshot, example, or ambiguity must be identified by PDF page/section; authorial intent must never be invented.
 
 ## Primary learning protocol
@@ -25,6 +28,6 @@ Updated 2026-11-09 (Asia/Manila). Recorded using actual user-provided files avai
 If sources conflict, do not silently reconcile: state who said what, why it matters and what remains unresolved.
 
 ## Reproducibility and public repository warning
-This repository is **public** (checked 2026-11-09). We are preserving the source file identities and operational summaries rather than publishing the entire Coach PDF or private personal PCSS text. We have not established permission to redistribute the Coach PDF. If a new ChatGPT session cannot reach the originals, the user must attach them again. Do not reconstruct precise omitted figures or passages from memory; no amount of GitHub summary substitutes for the primary material.
+This repository is **public** (checked 2026-11-09). The owner explicitly authorized publishing the Coach PDF on 2026-11-09; however **actual binary publication remains unverified and pending**. Upload instructions and expected file identity are in `sources/README.md`. The complete personal PCSS text remains unpublished. A future ChatGPT session should first check the GitHub path for the PDF and verify its exact Git blob SHA-1 (and SHA-256 after obtaining the bytes); if missing or mismatched, request the original attachment. Never reconstruct original diagrams or exact source wording from memory.
 
 If later provided a revised PDF or PCSS, retain both version identities and record material differences; do not silently overwrite the original version history.

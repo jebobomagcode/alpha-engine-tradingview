@@ -45,6 +45,6 @@ Study the **one and only Coach Fredy source**, the user-supplied 35-page file na
 
 ## Source distribution caution
 
-This is a **public repository**. The original Coach PDF and full personal PCSS file are intentionally **not committed** here; no right to republish the Coach material has been established. Their filenames and SHA-256 digests are recorded in the source manifest. Re-attach originals if a future ChatGPT session does not have access to them.
+This is a **public repository**. On 2026-11-09, the owner explicitly authorized the public upload of the original Coach PDF. **The binary file is not yet uploaded**: the initiating chat verified its bytes, but the available GitHub connector cannot transfer local binary attachments directly. The exact expected path is `sources/coach trading lessons.pdf`; the upload and byte-identity verification are tracked in [sources/README.md](sources/README.md). The personal PCSS file remains uncommitted; attach it in future chats as needed. Do not claim the Coach PDF is hosted until its Git blob matches the manifest.
 
 **No trading advice or guaranteed return:** this is an analytical research and software engineering effort. Backtests, when eventually produced, are simulations with substantial limitations.

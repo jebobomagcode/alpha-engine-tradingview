@@ -15,7 +15,7 @@ Applies to any ChatGPT, coding agent, or collaborator working in this repository
 - The user's complete PCSS document defines the teaching standard; docs/PCSS_PROTOCOL.md is the resumable operational summary.
 - External books, market research, Pine docs, reasoning, and experimentation are allowed as *independent* additions, explicitly labeled. Do not silently promote supplements to Coach claims.
 - Respect current scope: **documentation may be maintained; formal PCSS lessons and Pine implementation remain not started until the user directs us to begin.** This status may be changed only by an explicit later user direction, and then must be recorded.
-- This is a PUBLIC repository. Do not publish full third-party source documents, private conversations, sensitive data, credentials, access tokens, or user-specific account information.
+- This is a PUBLIC repository. The owner explicitly authorized public upload of the **original Coach PDF** on 2026-11-09; its upload remains pending until the real binary exists at `sources/coach trading lessons.pdf` and its Git blob matches the documented SHA. This narrowly scoped authorization does **not** extend to the personal PCSS source, private conversations, sensitive data, credentials, access tokens, or other third-party documents.
 
 ## Provenance labels
 For every rule/design finding use at least one clear label:
