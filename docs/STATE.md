@@ -2,7 +2,7 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 1 — meticulous source-ordered PCSS study (All 21 lessons, all 3 Q&As and Note N-01 p33 complete; BSP charting pp34–35 next)
+**Phase:** Source PCSS study COMPLETE (35/35 PDF pages, 26/26 units). Next proposed phase: traceable methodology specification research, no Pine coding.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 17 study; no Pine implementation has occurred.
@@ -28,15 +28,14 @@
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
 ## Latest completed item and next step
-- Latest completed N-01 *Important Note on Location and Time*, PDF **p33**, text-only, **21 source-ordered items**. Study docs/lessons/note-01-location-time-and-economic-calendar.md, independent research docs/research/note-01-crypto-sessions-dst-and-event-risk.md.
-- Coach source scope explicitly **FOREX majors and gold**, not crypto: Tue–Thu preferred, Monday sometimes slow after weekend, Friday caution profit-taking/reversals; London15–00 PHT, NY20–05 PHT, overlap20–00 PHT; high-impact CPI/NFP/FOMC/rates; check Forex Factory/Investing.com calendar before charting for next day's news.
-- **Independent DST correction:** Coach's times approximate summer hours. On 2026-11-09 winter conventional London session16–01 and NY21–06 PHT, overlap21–01. UK/US clock change dates differ. Future Pine research must use Europe/London, America/New_York and Asia/Manila IANA timezones.
-- **Independent crypto caution:** 24/7 crypto products can still have concentrated activity; external research suggests US-hours and FOMC event effects, but NO proven after-cost edge for BTCUSDT, XAUUSDT, XAUTUSDT, PAXGUSDT. No mandatory forex session/weekday filter or news blackout authorized. Initial research preference informational session/event context, not a coded rule.
-- **Progress:** 21 numbered lessons, Q&A1–3, N-01 p33 COMPLETE. **Next N-02 BSP/Philippine stocks charting pp34–35 NOT STUDIED.** Original 35-page PDF not fully completed.
-- **Scope:** 0 Pine scripts, 0 market backtests, 0 deployments/orders; older projects untouched.
+- **Source COMPLETE:** Final N-02 “Lesson on BSP charting”, original Coach PDF pp34–35, has [PCSS source study](lessons/note-02-bpi-bsp-stock-charting.md) and [independent research](research/note-02-bpi-mtf-reversal-and-crypto-transfer.md). Page34 contains five figures: mobile EMA settings + four actual **BANK OF THE PHILIPPINE ISLANDS PSE:BPI** charts (two Weekly, Daily, 4H). BSP central bank is NOT the plotted stock. Page35 is text-only.
+- **Source:** Weekly/Daily/4H for Philippine stocks; final EMA lengths 20/50/200 and RSI14 (main EMA Length9 shown in initial settings demonstration). BPI chart screenshot ~PHP87.75; Weekly RSI29.04, Daily31.97, 4H34.63. Weekly breaks around110–112 and98–100, supports85–86/80–82/75, resistances92–94/98–100/110, FVG/OB98–103 and108–112, FVG92–97. Daily no confirmed CHoCH until a possible break around92; 4H only a possible temporary bullish move above89.5–90. Actual pivots/gap patterns, institutional orders and realized trades are unverified.
+- **Full original PDF study complete:** 21 numbered lessons pp1–28, Q&A1–3 pp29–32, N-01 p33 and N-02 pp34–35 = 26 source units/35 pages. The [completion audit](SOURCE_STUDY_COMPLETION_AUDIT.md) checked study-file presence and source-page mapping exactly once. Prior pp1–33 source studies rely on earlier checkpoints; pp34–35 were directly inspected at this checkpoint.
+- **Next conceptual research:** source-to-methodology definitions and competing hypotheses for eligible pivots/BOS/CHoCH, zones/FVG/OB, RSI/EMA, HTF/LTF timing, WAIT/INSUFFICIENT states, risk, crypto instrument/venue/feed and falsifying tests. Indicator-first is the working direction, not approved code.
+- **Hard boundaries:** Crypto implementation only incl distinct venue-qualified XAUUSDT, XAUTUSDT, PAXGUSDT; Coach original PDF sole source. Zero Pine scripts, compiled TradingView chart tests, crypto strategy backtests, deployments or trades. No previous project accessed/changed.
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at BSP/Philippine charting (PDF pp34–35); don't restart completed Lessons 01–21, Q&A1–3 or N-01.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and read SOURCE_STUDY_COMPLETION_AUDIT.md, then continue source-to-methodology design research. Don't restart Lessons01–21, Q&A1–3 or N-01/N-02; no coding without explicit authorization.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.

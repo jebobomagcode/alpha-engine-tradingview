@@ -10,7 +10,7 @@
 | 5. TradingView strategy | Separate strategy using the same well-specified rule concepts for orders and backtests | Technical execution and cost assumptions validated; out-of-sample tests |
 | 6. Evaluation and iteration | Compare baseline and enhancements over market regimes and test cases | Evidence-bounded findings and clearly stated limitations |
 
-The order is **conceptual**; detailed design questions may be explored while studying. The user has now authorized the PCSS study phase, but **not Pine coding or deployment**. The project-specific implementation focus is **crypto including XAUUSDT, XAUTUSDT and PAXGUSDT** (see [MARKET_SCOPE.md](MARKET_SCOPE.md)); source study still covers Coach's Forex and Philippine stock sections without expanding the implementation scope.
+The order is **conceptual**; detailed design questions may be explored while studying. **Phase 1 PCSS source study is COMPLETE across all 35 pages/26 units, documented in [source completion audit](SOURCE_STUDY_COMPLETION_AUDIT.md).** Next proposed phase is formal methodology specification and cross-lesson rule comparisons. **Pine code, market backtests, deployment and trades are not authorized merely by the study request.** The project-specific implementation focus is **crypto including XAUUSDT, XAUTUSDT and PAXGUSDT** (see [MARKET_SCOPE.md](MARKET_SCOPE.md)); source study still covers Coach's Forex and Philippine stock sections without expanding the implementation scope.
 
 ## Recommended incremental delivery
 - Each lesson: PCSS teaching + source inventory + interpretive uncertainties + checkpoint commit.
