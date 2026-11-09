@@ -1,6 +1,6 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
-**As of 2026-11-09:** Lessons 01–12 have been formally taught and source-audited; **12 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md), [Lesson 07](lessons/07-market-structure-confluence.md), [Lesson 08](lessons/08-trading-entry-workflow.md), [Lesson 09](lessons/09-support-resistance.md), [Lesson 10](lessons/10-marking-support-resistance.md), [Lesson 11](lessons/11-order-block-bos-choch.md), [Lesson 12](lessons/12-bos-break-of-structure.md).
+**As of 2026-11-09:** Lessons 01–13 have been formally taught and source-audited; **13 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md), [Lesson 07](lessons/07-market-structure-confluence.md), [Lesson 08](lessons/08-trading-entry-workflow.md), [Lesson 09](lessons/09-support-resistance.md), [Lesson 10](lessons/10-marking-support-resistance.md), [Lesson 11](lessons/11-order-block-bos-choch.md), [Lesson 12](lessons/12-bos-break-of-structure.md), [Lesson 13](lessons/13-manage-your-risk-sol.md).
 
 Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE / BLOCKED. Do not mark COMPLETE from a superficial preview, inferred summary, or repository creation.
 
@@ -18,7 +18,7 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 | 10 | Marking Support & Resistance on a Time Frame | 12–13 | COMPLETE — [source-audited PCSS](lessons/10-marking-support-resistance.md) and [range-entry research](research/10-range-entries-and-confirmation-break.md) |
 | 11 | Order Block; note on BOS vs CHoCH | 14 | COMPLETE — [source PCSS](lessons/11-order-block-bos-choch.md) and [candidate design research](research/11-order-block-bos-choch-candidates.md) |
 | 12 | BOS (Break of Structure) | 15–16 | COMPLETE — [PCSS source audit](lessons/12-bos-break-of-structure.md) and [event causality research](research/12-bos-event-causality.md) |
-| 13 | Manage Your Risk (SOL chart worked example) | 17–18 | NOT_STARTED |
+| 13 | Manage Your Risk (SOL chart worked example) | 17–18 | COMPLETE — [source-audited PCSS](lessons/13-manage-your-risk-sol.md) and [MTF/risk research](research/13-countertrend-risk-mtf.md) |
 | 14 | Fibonacci retracement | 19 | NOT_STARTED |
 | 15 | Reliability on Charting | 20 | NOT_STARTED |
 | 16 | Long and Short Setup | 21 | NOT_STARTED |
@@ -44,4 +44,4 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 - Implementation implications, if any; do not imply code exists.
 - Exact last completed item, next item, commit hash and readback verification.
 
-**Next:** Lesson 13, PDF pages 17–18, *Manage Your Risk*. Begin only on user's next instruction; do not auto-advance.
+**Next:** Lesson 14, PDF page 19, *Fibonacci retracement*. Begin only on user's next instruction; do not auto-advance.

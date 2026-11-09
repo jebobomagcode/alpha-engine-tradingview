@@ -2,10 +2,10 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–12 completed, Lesson 13 next)
+**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–13 completed, Lesson 14 next)
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
-**Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 12 study; no Pine implementation has occurred.
+**Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 13 study; no Pine implementation has occurred.
 
 ## Confirmed starting state
 - The repository was initialized with only a minimal README.
@@ -17,7 +17,7 @@
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
 - **New owner direction D-013:** implementation targets crypto, including XAUUSDT, XAUTUSDT, PAXGUSDT; instrument product and exchange feed must be distinguished. Forex and PSE equity teaching remains in PCSS for fidelity, but neither is an independent implementation target. See `docs/MARKET_SCOPE.md`.
 - No exact exchange-qualified TradingView chart symbols, spot-vs-derivatives selection for XAUTUSDT/PAXGUSDT, or backtest datasets have been approved/verified.
-- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **12 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
+- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **13 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
 - **Lesson 04 complete:** original PDF p. 6 HTF/LTF workflow, exact HTF (1H/4H) and LTF (5m/15m) options, 5m example, trend/zone plus pullback/bounce/confirmation/entry/SL/TP all source-audited. Independent temporal-causality research: `docs/lessons/04-time-frame.md`, `docs/research/04-multi-timeframe-causality.md`. No source diagrams/exercises on this page.
 - **Lesson 05 complete:** original PDF p. 7 leverage and margin examples, 17 source-inventory items, crypto-vs-Forex comparison, risk and margin distinctions audited. Both $100-based numerical examples verified; fixed margin vs fixed notional risk distinction emphasized. Independent liquidation/solvency research: `docs/lessons/05-leverage-margin.md`, `docs/research/05-margin-leverage-solvency-candidates.md`. No software or exchange-specific liquidation calculation implemented.
 - **Lesson 06 complete:** original PDF p. 8 both engulfing descriptions and three illustration panels, with explicit body-vs-shadow/strong-vs-weak ambiguity, synthetic OHLC cases and independent Pine temporal-validity considerations. Source and research documents in `docs/lessons/06-engulfing-pattern.md`, `docs/research/06-engulfing-formalization.md`.
@@ -28,15 +28,16 @@
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
 ## Latest completed item and next step
-- **Last completed:** Lesson 12, *BOS (Break of Structure)*, original Coach PDF pp15–16, five embedded figure blocks and entire text audited. Full PCSS: `docs/lessons/12-bos-break-of-structure.md`; independent research: `docs/research/12-bos-event-causality.md`.
-- **Coach source:** trend first; UP HH/HL breaking previous HH indicates bullish continuation; DOWN LH/LL breaking previous LL indicates bearish continuation. No threshold/wick/close/pivot model specified.
-- **Special original image details:** source page15 repeats Lesson 11 OB figure and contains distinct mixed BOS/CHOCH chart with demand-zone and bullish recovery; do not make OB mandatory for BOS or mislabel CHOCH as ordinary bearish continuation.
-- **Open design:** confirmed swing/known-at time, which high/low counts, wick-vs-close, equality buffer, already-broken level re-use, CHoCH distinction, 1H/4H conflicts and signal utility. No rules finalized.
-- **Next original lesson:** Lesson 13, *Manage Your Risk*, PDF pages 17–18, including a detailed SOL setup; not studied.
-- **Pacing/authorization:** Wait for owner's Next. Continue PCSS study/research and GitHub only; no Pine code, backtest, deployment or trades.
+- **Last completed:** Lesson 13, *Manage Your Risk*, source PDF pp. 17–18; original SOLUSDT perpetual screenshots on 15m, 1H, 4H audited, all Coach analysis and scenarios preserved. Source PCSS: docs/lessons/13-manage-your-risk-sol.md. Independent research: docs/research/13-countertrend-risk-mtf.md.
+- **HTF/MTF/LTF:** 4H bullish HH/HL, no bearish BOS; 1H bullish weakening/possible CHoCH; 15m lower highs, falling RSI, possible CHoCH. Coach depicts short scalp as **against HTF**, alternative long after pullback as **with HTF**.
+- **Coach SHORT:** E=86.4–86.7; S=87.2; TP=85.8,85.3,84.8; mathematical gross RR ranges 0.75–1.8R, 1.375–2.8R, 2.0–3.8R by respective TP. No exact fill, quantities or achieved result. TP3 84.8 below stated 4H support 85.2–85.5.
+- **Coach LONG:** wait demand 85.2–85.6, then 15m bullish CHoCH + strong green displacement, entry after confirmation, SL **below** 84.9, TP 86.5 and 87+. Exact long RR is indeterminate without exact entry/stop/TP2.
+- **Outstanding:** no final RSI threshold, CHoCH/FVG/OB algorithms, order fills, TP exit weights, venue mechanics or actual predictive probabilities. “Safer” is Coach qualitative, not empirically proven.
+- **Next source:** Lesson 14, *Fibonacci Retracement*, original PDF p.19; not yet studied. Stop until owner asks Next/Proceed.
+- **Scope:** study, research documentation and GitHub only; no Pine coding, backtesting, deployment or live trading authorized.
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 13; don't restart completed Lessons 01–12.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 14; don't restart completed Lessons 01–13.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
