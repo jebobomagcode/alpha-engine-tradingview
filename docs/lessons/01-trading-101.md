@@ -2,9 +2,9 @@
 
 **Status:** COMPLETE (source coverage and user-facing study), 2026-11-09 Asia/Manila  
 **Coach source:** [coach trading lessons.pdf, page 1](../../sources/coach%20trading%20lessons.pdf)  
-**Coach PDF SHA-256:** \`481ca1adf146212316846823070db7ba78c788eae89b08db10f0694b61fe5730\`  
-**Coach PDF Git blob SHA-1:** \`c99de01b9178e16e240f83f5c4594fa5683a1ba2\`  
-**PCSS file SHA-256:** \`99d4370e53e00e54c3d0f0c796e29a5fc9e5b7b437a01137e4b08086e37dec56\`  
+**Coach PDF SHA-256:** `481ca1adf146212316846823070db7ba78c788eae89b08db10f0694b61fe5730`  
+**Coach PDF Git blob SHA-1:** `c99de01b9178e16e240f83f5c4594fa5683a1ba2`  
+**PCSS file SHA-256:** `99d4370e53e00e54c3d0f0c796e29a5fc9e5b7b437a01137e4b08086e37dec56`  
 **Coverage:** page 1 only. Do not imply Lesson 02 was taught.  
 **No Pine implementation, backtest, live order, or chart validation performed.**
 
@@ -116,7 +116,7 @@ References support their particular scope (e.g., U.S. FX regulatory claims are n
 
 **PROPOSED, NOT IMPLEMENTED:**
 
-\`market -> symbol/instrument -> trading product -> venue/data source -> hours/liquidity/cost regime -> market-context analysis -> condition/wait/no-trade output\`
+`market -> symbol/instrument -> trading product -> venue/data source -> hours/liquidity/cost regime -> market-context analysis -> condition/wait/no-trade output`
 
 The user's indicator-first, strategy-ready direction remains in force. We should not pick a preferred symbol, platform, market, chart interval, session heuristic or risk threshold solely from Lesson 01. Later lessons provide setup methodology, to be studied in their own original order.
 
