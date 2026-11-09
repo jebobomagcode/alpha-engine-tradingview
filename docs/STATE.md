@@ -2,10 +2,10 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–02 completed, Lesson 03 next)
+**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–03 completed, Lesson 04 next)
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
-**Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 02 study; no Pine implementation has occurred.
+**Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 03 study; no Pine implementation has occurred.
 
 ## Confirmed starting state
 - The repository was initialized with only a minimal README.
@@ -17,19 +17,19 @@
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
 - **New owner direction D-013:** implementation targets crypto, including XAUUSDT, XAUTUSDT, PAXGUSDT; instrument product and exchange feed must be distinguished. Forex and PSE equity teaching remains in PCSS for fidelity, but neither is an independent implementation target. See `docs/MARKET_SCOPE.md`.
 - No exact exchange-qualified TradingView chart symbols, spot-vs-derivatives selection for XAUTUSDT/PAXGUSDT, or backtest datasets have been approved/verified.
-- Formal PCSS **Lessons 01 and 02** were taught and source-audited, with records in `docs/lessons/01-trading-101.md` and `docs/lessons/02-basic-candlestick-patterns.md`. Lesson 02 images and supplementary inverted-hammer comparison were individually accounted for; candidate formalization is in `docs/research/02-candlestick-rule-candidates.md`. **2 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
+- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **3 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
 ## Latest completed item and next step
-- **Last item completed:** Lesson 02, *Basic Candlestick Pattern*, PDF pages 2–3, including all three taught patterns, six illustrated panels, the side-by-side Shooting Star vs Inverted Hammer figure, and Coach's comparison/confirmation mnemonic. Record: `docs/lessons/02-basic-candlestick-patterns.md`.
-- **Next:** Lesson 03, *Trading Risk Reward*, PDF pages 4–5. Source-led risk/reward scenarios, exact calculation verification, win-rate break-even and compounding caveats. Do **not** pre-teach that material or skip source numerical cases.
-- **Unresolved rule design:** numerical wick/body/doji thresholds, trend and zone recognition, real-time confirmation and cross-asset constraints. All remain proposals in `docs/research/02-candlestick-rule-candidates.md`.
+- **Last item completed:** Lesson 03, *Trading Risk Reward*, PDF pages 4–5, including 1:2 scenarios, 20-trade example, cycle compounding, 1:1 comparison, closing summary and full arithmetic verification. Record: `docs/lessons/03-trading-risk-reward.md`.
+- **Next:** Lesson 04, *Time Frame*, PDF page 6. Begin at original page text and any figures, then rigorous HTF/LTF interpretation, crypto market scope and separate research candidates.
+- **Unresolved rule design:** see `docs/research/02-candlestick-rule-candidates.md` and `docs/research/03-risk-reward-spec-candidates.md`; no numeric risk sizing/fee/slippage policy approved.
 - **Pacing:** Stop at this checkpoint; the user triggers the next lesson with "Next" or "Proceed".
 - **Authorized:** continue source-led study and Ponder-style critical enhancements when instructed to advance; GitHub checkpoint after each meaningful lesson.
 - **Not authorized:** Pine implementation, backtesting or deployment without later direction.
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 03; don't restart completed Lessons 01–02.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 04; don't restart completed Lessons 01–03.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
