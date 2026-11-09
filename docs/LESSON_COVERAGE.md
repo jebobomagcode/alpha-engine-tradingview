@@ -1,6 +1,6 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
-**As of 2026-11-09:** Lessons 01–06 have been formally taught and source-audited; **6 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md).
+**As of 2026-11-09:** Lessons 01–07 have been formally taught and source-audited; **7 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md), [Lesson 07](lessons/07-market-structure-confluence.md).
 
 Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE / BLOCKED. Do not mark COMPLETE from a superficial preview, inferred summary, or repository creation.
 
@@ -12,7 +12,7 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 | 04 | Time Frame (HTF/LTF) | 6 | COMPLETE — [PCSS source audit](lessons/04-time-frame.md) and [MTF research](research/04-multi-timeframe-causality.md) |
 | 05 | Leverage and Margin | 7 | COMPLETE — [PCSS source audit](lessons/05-leverage-margin.md) and [solvency research](research/05-margin-leverage-solvency-candidates.md) |
 | 06 | Engulfing Pattern | 8 | COMPLETE — [source-audited PCSS](lessons/06-engulfing-pattern.md) and [formalization candidates](research/06-engulfing-formalization.md) |
-| 07 | Market Structure and Confluence | 9 | NOT_STARTED |
+| 07 | Market Structure and Confluence | 9 | COMPLETE — [PCSS source audit](lessons/07-market-structure-confluence.md) and [formalization candidates](research/07-market-structure-confluence-candidates.md) |
 | 08 | Trading (HTF zone, LTF confirmation, entry/SL/TP) | 10 | NOT_STARTED |
 | 09 | Support & Resistance | 11 | NOT_STARTED |
 | 10 | Marking Support & Resistance on a Time Frame | 12–13 | NOT_STARTED |
@@ -44,4 +44,4 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 - Implementation implications, if any; do not imply code exists.
 - Exact last completed item, next item, commit hash and readback verification.
 
-**Next:** Lesson 07, PDF page 9, *Market Structure and Confluence*. Begin only on user's next instruction; do not auto-advance.
+**Next:** Lesson 08, PDF page 10, *Trading*. Begin only on user's next instruction; do not auto-advance.
