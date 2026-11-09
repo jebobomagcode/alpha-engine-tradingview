@@ -22,7 +22,7 @@ Owner directions captured from the initiating conversation, dated **2026-11-09 (
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
-The owner authorized PCSS study; **All 21 numbered lessons (PDF pp1–28) are complete**. Q&A activities no.1–2 (PDF pp29–31) are now complete; **next owner-directed study is Q&A no.3 (PDF p32)**, then Important Note p33 and BSP notes pp34–35. Q&A2 original p31 has no chart (corrected prior ledger label). Full source still not complete. Mathematical risk formula candidates and source corrections are documented but are NOT approved Pine logic; code, deployment and live execution remain separate future decisions.
+The owner authorized PCSS study; **All 21 numbered lessons (PDF pp1–28) are complete**. Q&A activities no.1–3 (PDF pp29–32) are now COMPLETE, in addition to 21 numbered lessons. **Next owner-directed study is Important Note on Location and Time (PDF p33)**, then BSP notes pp34–35. Those original notes are not yet studied. No Pine or empirical backtest, no legacy work. Mathematical risk formula candidates and source corrections are documented but are NOT approved Pine logic; code, deployment and live execution remain separate future decisions.
 
 ## Change control
 Append a dated, evidence-bound record for every material new decision. Do not delete a superseded decision; mark it superseded with a link/ID and reason.
