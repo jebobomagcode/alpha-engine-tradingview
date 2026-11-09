@@ -79,6 +79,12 @@ Since both coefficients are strictly positive, the sign of the **one-bar EMA slo
 
 Initial *research* preference: TREND_CONTINUATION as basic causal baseline with qualitative comparisons to all four others; not a production strategy or decision to discard any example.
 
+### F1. Important SOURCE distinction — range breakout trigger vs Lesson08 close (2026-11-10)
+
+Original **PDF p10 Lesson08** explicitly says entry **after confirmation candle closes** for its trend/zone/LTF workflow. Original **PDF p13 Lesson10 sideways-range example** instead says **“entry sa break ng confirmation”** in both SELL and BUY setups. The latter leaves open whether the proposed entry is a later stop-trigger break of a completed confirmation candle, an intrabar threshold breach, or a closing break. It is **not accurate** to treat “after candle close” and “on break of confirmation” as automatically the same event or to impose the Lesson08 close rule universally across every Coach setup. Preserve a context-specific research branch with exact event timing and order semantics still OPEN.
+
+The distinction is material for historical simulation: a breakout stop order may be placed only after its prerequisite confirmation is known; OHLC cannot establish the within-bar sequence of a touch, confirmation and order fill. Until this policy is chosen and tested, report a conditional candidate, **not** a verified filled entry.
+
 ## G. M06 gross-risk and execution distinction
 
 For a **LONG proposal** \(S<E<T\), per-unit price risk \(d=E-S\), gross reward \(g=T-E\), and gross RR \(g/d\). For a **SHORT proposal** \(T<E<S\), \(d=S-E\), \(g=E-T\), with \(d>0\). Require specified entry, stop and target before a unique gross RR; reject inverted or zero distances. A tick size and actual contract quantity are additionally necessary for a physically feasible order. No order mechanics are designed at this stage.

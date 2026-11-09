@@ -54,9 +54,15 @@ The source does not choose RF1/2/3. A break alone should not fabricate an observ
 
 **Prevent lookahead:** a strong move known only when a future displacement bar closes can certify an OB no earlier than that displacement close. Drawing a rectangle at the OB candle origin is for audit, not a tradable early signal. **Never label the origin candle as known OB before displacement exists.** No institutional identity is verified.
 
+### D1. Original page-14 image qualification (2026-11-10 audit correction)
+
+**Direct source-image observation:** Original Coach PDF page 14 explicitly has two Order Block illustration panels with candles numbered 1, 2 and 3. Both show a label **“1→3 GAP”** and a shaded OB area. In the bullish panel, candle 1 labelled “OB Candle” is **green** near a Swing Low, and in the bearish panel candle 1 is **red** near a Swing High. The image is also repeated on page 15. The earlier blanket impression that there was *no illustrated three-candle gap* is incomplete; the page-14 image supplies qualitative 1-to-3 gap evidence, though it does not give an unambiguous formal wick/body formula, numerical displacement threshold, whether a gap is required for every OB, or when a zone is no longer valid.
+
+**Consequence:** Z-OB1 last-opposite-candle is an INDEPENDENT market convention and does **not** reproduce both original illustrations as a universal candle-color rule. Z-OB0 source annotation and Z-OB2 any-color predecessor are important source-compatible alternatives. Z-FVG1 below is an *independent precise mathematical interpretation of the illustrated 1→3 concept*, not a fully explicit Coach formula. Keep the FVG and OB evidence separate; one graphic is not independent order-flow validation. See [source study Lesson 11](../lessons/11-order-block-bos-choch.md) and [pre-implementation audit](../audits/2026-11-10-phase2-preimplementation-audit.md).
+
 ## E. Fair Value Gaps: source uses term but not geometry
 
-**COACH_EXPLICIT:** FVG is a potential gap/imbalance zone visited on pullback (p18/21/24/27/35), no unique three-candle rule or gap fill definition in supplied PDF.
+**COACH_EXPLICIT:** FVG is named as a gap/imbalance location revisited on pullback (p18/21/24/27/35). The **p14/p15 source diagrams visibly label a “1→3 GAP” between numbered candle illustrations**, so a three-candle gap concept has source-figure support. However, the PDF still supplies no unique strict wick-versus-body inequalities, minimum size, required displacement, whether such a gap defines every FVG/OB, or a gap fill/expiry rule. Exact Z-FVG1 inequalities remain INDEPENDENT formalization.
 
 **Z-FVG0 manual/screenshot annotation:** preserve Coach's claimed zone and PDF page, but mark formulation UNVERIFIED.
 

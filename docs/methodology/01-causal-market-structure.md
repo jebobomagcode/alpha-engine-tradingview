@@ -75,6 +75,18 @@ Upon first event, **consume its reference** to avoid emitting a new BOS/CHoCH ev
 
 **Important:** A CHoCH indicates a **potential structural shift**, NOT instant confirmed new UP/DOWN regime. Proposed separate follow-up reversal-confirmation policy (e.g. subsequent eligible opposite-direction BOS and pivot structure) remains OPEN; do not relabel the CHoCH as reversal completed.
 
+### E1. PRE-IMPLEMENTATION AUDIT ADDENDUM — reference arming, same-bar pivot ambiguity (2026-11-10)
+
+**Critical OPEN research defect, independent:** The first-crossing inequalities above assume an eligible swing reference was already armed before the decision bar. They do not, by themselves, define what happens when the pivot becomes confirmed only after price has already crossed that level. No historical event may be backdated. A late-confirmed pivot cannot retroactively satisfy a BOS/CHoCH break that occurred while its reference was unavailable.
+
+A proposed **reference arming contract**, still research rather than selected code: track reference ID, pivot origin, pivot known_at, regime known_at, first eligible decision bar and whether the reference was already exceeded when armed. Compare at least two policies: A (fresh first crossing only after arming; already-exceeded references remain ineligible until explicit separately defined rearm), B (allow a fresh re-cross after a return below/above the level but never relabel the pre-arming move). Prevent counting the same pivot with a different event label simply because a context classification changed retrospectively. Under either policy, cross-referenced prior close must be from an eligible comparison and cannot manufacture a new event when price was already above/below the threshold at the first available instant.
+
+**Counterexample AUD-C01:** a high level 106 is only confirmed after a later candle has closed at 107. The next candle closes 108. No new upward crossing of 106 occurred after the reference became eligible; do NOT emit a bullish BOS on the earlier 107 candle, nor automatically at 108 simply because the pivot was just learned.
+
+**Counterexample AUD-C02:** a wide outside candle can be simultaneously a strict high-pivot and low-pivot candidate for some neighboring price sequences. Without a stated tie/priority policy there is no unique alternating pivot order and therefore no unique protected HH/HL/LH/LL reference. Report STRUCTURE_AMBIGUOUS rather than inventing order of intrabar high and low from OHLC.
+
+**Status:** these are blocking *specification* questions before a selected detector; no Pine code or historical bar replay performed. See [audit 2026-11-10](../audits/2026-11-10-phase2-preimplementation-audit.md).
+
 ## F. Invariants and risk of hindsight
 
 1. A swing with right confirmation lag \(r\) is **NOT actionable at its origin bar**; origin label and confirmation time must both be preserved.
