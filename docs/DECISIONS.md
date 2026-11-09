@@ -15,12 +15,13 @@ Owner directions captured from the initiating conversation, dated **2026-11-09 (
 | D-009 | **Superseded by D-010 for Coach PDF only.** Original precaution against public publishing of full source materials. | The personal PCSS remains outside the repo; the Coach PDF may be published under the owner's new explicit direction. | Historical record only. |
 | D-010 | **Owner explicitly authorizes public GitHub upload of the original Coach PDF (2026-11-09).** | Target `sources/coach trading lessons.pdf`; local original bytes verified. User completed upload directly on GitHub in commit `02816ae53b6f2bea7a0b8427c12ff8324a24be98`; remote tree confirms the exact expected Git blob SHA-1 and file size. | Only explicit owner direction. |
 | D-011 | **Upload verification accepted (2026-11-09).** | GitHub tree contains the original 35-page binary, blob `c99de01b9178e16e240f83f5c4594fa5683a1ba2`, size 2,267,976 bytes. Recovery documentation updated; full personal PCSS remains separate. | If a subsequent Git revision alters the original binary. |
+| D-012 | **Owner authorized commencement of formal PCSS study (2026-11-09).** | "Great. lets start!" with Ponder and Jarvis. Lesson 01 completed and documented, next Lesson 02. Authorization covers sequential research/teaching and GitHub study records; it does not automatically authorize coding or deployment. | Explicit later owner direction. |
 
 ## Why indicator-first is a working default
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
-The owner may explicitly authorize **begin PCSS Lesson 01**. Until then, conceptual planning and GitHub recovery work may continue as requested, but the formal lesson itself remains unstarted.
+The owner authorized PCSS study; **Lesson 01 is complete**. Next owner-directed lesson is Lesson 02 (PDF pages 2–3). Detailed quantitative rules, code, deployment and live execution remain separate future decisions.
 
 ## Change control
 Append a dated, evidence-bound record for every material new decision. Do not delete a superseded decision; mark it superseded with a link/ID and reason.

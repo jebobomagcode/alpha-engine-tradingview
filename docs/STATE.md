@@ -2,9 +2,9 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 0 — project governance, source manifest, roadmap and new-chat recovery
-**Scope authorized:** document the agreed project instructions in this repository.
-**Scope NOT YET authorized:** formally teach Lesson 01; implement an indicator or strategy; deploy; connect brokerage automation.
+**Phase:** 1 — meticulous source-ordered PCSS study (Lesson 01 finished, Lesson 02 next)
+**Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
+**Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. No such work is needed to study Lesson 02.
 
 ## Confirmed starting state
 - The repository was initialized with only a minimal README.
@@ -14,16 +14,18 @@
 - The user chose a new project fully independent of previous engines and repositories.
 - The PDF is the only Coach-origin input; independent research, Ponder-style reasoning and substantial improvements are specifically required.
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
-- This governance checkpoint documents decisions; **0 lessons studied**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
+- Formal PCSS **Lesson 01** was taught and source-audited, with independent critical corrections and an artifact in `docs/lessons/01-trading-101.md`. **1 numbered lesson completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
+- The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
-## Highest-priority next work *after user instruction to begin*
-1. Read and verify the **already uploaded** original PDF at `sources/coach trading lessons.pdf` (Git blob SHA-1 in source manifest); separately ensure the complete personal PCSS is available and matches SOURCE_MANIFEST.md.
-2. Study page 1, Lesson 01 using docs/PCSS_PROTOCOL.md and original PCSS text.
-3. Inventory every statement/figure/example, distinguish Coach from interpretation, research gaps.
-4. Update the lesson ledger and this checkpoint; commit and verify on GitHub.
+## Latest completed item and next step
+- **Last item completed:** Lesson 01, PDF page 1, including market comparisons (Crypto, Forex, PH stocks), Coach's recap, and closing discipline/risk-control note. Detailed evidence and questions are in `docs/lessons/01-trading-101.md`.
+- **Next:** Lesson 02, *Basic Candlestick Pattern*, PDF pages 2–3. Start with actual page illustrations; teach hammer, shooting star, doji and their locations/meaning, then qualifying examples and chart implications. Do **not** skip the accompanying diagrams.
+- **Pacing:** Stop at this checkpoint; the user triggers the next lesson with "Next" or "Proceed".
+- **Authorized:** continue source-led study and Ponder-style critical enhancements when instructed to advance; GitHub checkpoint after each meaningful lesson.
+- **Not authorized:** Pine implementation, backtesting or deployment without later direction.
 
-## Documentation-only work in current authorized scope
-Ensure README.md, AGENTS.md, and docs/ charter/decisions/source/study/research/coverage/roadmap/recovery are present on the remote branch. The GitHub commit is the authoritative proof of this checkpoint; obtain current HEAD rather than treating a textual hash as self-updating.
+## GitHub continuity rule
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 02; don't restart Lesson 01.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
@@ -33,4 +35,4 @@ Ensure README.md, AGENTS.md, and docs/ charter/decisions/source/study/research/c
 - Actual Pine compilation and TradingView account constraints (not yet assessed for this new project).
 
 ## Explicit guardrails
-No reliance on or modification of older projects; no unsupported success claims; no sudden move from planning into study or code without a later owner direction. Resume using docs/RECOVERY.md.
+No reliance on or modification of older projects; no unsupported success claims; study is authorized, but **coding remains on hold pending later owner direction**. Resume using docs/RECOVERY.md.

@@ -1,12 +1,12 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
-**As of 2026-11-09:** 0 original lessons formally taught and audited in this new project. The following is a *source-map inventory*, not evidence of lesson completion. Page references are the supplied 35-page PDF's displayed page numbers. Image-embedded content still requires inspection at teaching time.
+**As of 2026-11-09:** Lesson 01 has been formally taught and source-audited; **1 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study record: [Lesson 01](lessons/01-trading-101.md).
 
 Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE / BLOCKED. Do not mark COMPLETE from a superficial preview, inferred summary, or repository creation.
 
 | No. | Source title (brief label) | PDF pages | Status |
 | --- | --- | --- | --- |
-| 01 | Trading 101 (markets, pros/cons, discipline) | 1 | NOT_STARTED |
+| 01 | Trading 101 (markets, pros/cons, discipline) | 1 | COMPLETE — [audit + lesson](lessons/01-trading-101.md) |
 | 02 | Basic candlestick patterns (hammer, shooting star, doji) | 2–3 | NOT_STARTED |
 | 03 | Trading Risk Reward (RR examples and compounding) | 4–5 | NOT_STARTED |
 | 04 | Time Frame (HTF/LTF) | 6 | NOT_STARTED |
@@ -44,4 +44,4 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 - Implementation implications, if any; do not imply code exists.
 - Exact last completed item, next item, commit hash and readback verification.
 
-**Next:** Lesson 01, page 1, only when user explicitly authorizes commencing formal PCSS study.
+**Next:** Lesson 02, PDF pages 2–3, *Basic Candlestick Pattern*. Begin only on user's next instruction; do not auto-advance.

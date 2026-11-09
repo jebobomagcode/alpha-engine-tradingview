@@ -2,7 +2,7 @@
 
 **Independent, source-grounded, research-enhanced TradingView project.**
 
-**Status (2026-11-09, Asia/Manila):** Governance and recovery documentation established. **The PCSS lesson walkthrough, rule formalization, Pine Script implementation, backtests, and deployments have not started.** No indicator or strategy has yet been implemented.
+**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **Lesson 01 (Trading 101, PDF page 1) completed and source-audited**. Lesson 02 is next. **No formal Pine methodology implementation, backtests or deployments have started.**
 
 ## Start here — especially after losing a ChatGPT conversation
 
@@ -12,6 +12,7 @@
 4. Read [docs/SOURCE_MANIFEST.md](docs/SOURCE_MANIFEST.md) and [docs/PCSS_PROTOCOL.md](docs/PCSS_PROTOCOL.md).
 5. Check [docs/LESSON_COVERAGE.md](docs/LESSON_COVERAGE.md) before beginning or continuing any lesson.
 6. Read [AGENTS.md](AGENTS.md) for operating instructions for a coding or AI assistant.
+7. Read the latest [PCSS Lesson 01 study](docs/lessons/01-trading-101.md) before teaching the next lesson.
 
 ## Mission
 
