@@ -1,6 +1,6 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
-**As of 2026-11-09:** Lessons 01–10 have been formally taught and source-audited; **10 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md), [Lesson 07](lessons/07-market-structure-confluence.md), [Lesson 08](lessons/08-trading-entry-workflow.md), [Lesson 09](lessons/09-support-resistance.md), [Lesson 10](lessons/10-marking-support-resistance.md).
+**As of 2026-11-09:** Lessons 01–11 have been formally taught and source-audited; **11 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md), [Lesson 07](lessons/07-market-structure-confluence.md), [Lesson 08](lessons/08-trading-entry-workflow.md), [Lesson 09](lessons/09-support-resistance.md), [Lesson 10](lessons/10-marking-support-resistance.md), [Lesson 11](lessons/11-order-block-bos-choch.md).
 
 Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE / BLOCKED. Do not mark COMPLETE from a superficial preview, inferred summary, or repository creation.
 
@@ -16,7 +16,7 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 | 08 | Trading (HTF zone, LTF confirmation, entry/SL/TP) | 10 | COMPLETE — [full source-audited PCSS](lessons/08-trading-entry-workflow.md) and [state-machine research](research/08-entry-state-machine-candidates.md) |
 | 09 | Support & Resistance | 11 | COMPLETE — [source-audited PCSS](lessons/09-support-resistance.md) and [zone/role-flip research](research/09-zone-role-reversal-candidates.md) |
 | 10 | Marking Support & Resistance on a Time Frame | 12–13 | COMPLETE — [source-audited PCSS](lessons/10-marking-support-resistance.md) and [range-entry research](research/10-range-entries-and-confirmation-break.md) |
-| 11 | Order Block; note on BOS vs CHoCH | 14 | NOT_STARTED |
+| 11 | Order Block; note on BOS vs CHoCH | 14 | COMPLETE — [source PCSS](lessons/11-order-block-bos-choch.md) and [candidate design research](research/11-order-block-bos-choch-candidates.md) |
 | 12 | BOS (Break of Structure) | 15–16 | NOT_STARTED |
 | 13 | Manage Your Risk (SOL chart worked example) | 17–18 | NOT_STARTED |
 | 14 | Fibonacci retracement | 19 | NOT_STARTED |
@@ -44,4 +44,4 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 - Implementation implications, if any; do not imply code exists.
 - Exact last completed item, next item, commit hash and readback verification.
 
-**Next:** Lesson 11, PDF page 14, *Order Block; BOS vs CHoCH*. Begin only on user's next instruction; do not auto-advance.
+**Next:** Lesson 12, PDF pages 15–16, *BOS (Break of Structure)*. Begin only on user's next instruction; do not auto-advance.
