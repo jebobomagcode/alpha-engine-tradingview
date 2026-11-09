@@ -2,10 +2,10 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–15 completed, Lesson 16 next)
+**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–16 completed, Lesson 17 next)
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
-**Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 15 study; no Pine implementation has occurred.
+**Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 16 study; no Pine implementation has occurred.
 
 ## Confirmed starting state
 - The repository was initialized with only a minimal README.
@@ -17,7 +17,7 @@
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
 - **New owner direction D-013:** implementation targets crypto, including XAUUSDT, XAUTUSDT, PAXGUSDT; instrument product and exchange feed must be distinguished. Forex and PSE equity teaching remains in PCSS for fidelity, but neither is an independent implementation target. See `docs/MARKET_SCOPE.md`.
 - No exact exchange-qualified TradingView chart symbols, spot-vs-derivatives selection for XAUTUSDT/PAXGUSDT, or backtest datasets have been approved/verified.
-- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **15 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
+- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **16 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
 - **Lesson 04 complete:** original PDF p. 6 HTF/LTF workflow, exact HTF (1H/4H) and LTF (5m/15m) options, 5m example, trend/zone plus pullback/bounce/confirmation/entry/SL/TP all source-audited. Independent temporal-causality research: `docs/lessons/04-time-frame.md`, `docs/research/04-multi-timeframe-causality.md`. No source diagrams/exercises on this page.
 - **Lesson 05 complete:** original PDF p. 7 leverage and margin examples, 17 source-inventory items, crypto-vs-Forex comparison, risk and margin distinctions audited. Both $100-based numerical examples verified; fixed margin vs fixed notional risk distinction emphasized. Independent liquidation/solvency research: `docs/lessons/05-leverage-margin.md`, `docs/research/05-margin-leverage-solvency-candidates.md`. No software or exchange-specific liquidation calculation implemented.
 - **Lesson 06 complete:** original PDF p. 8 both engulfing descriptions and three illustration panels, with explicit body-vs-shadow/strong-vs-weak ambiguity, synthetic OHLC cases and independent Pine temporal-validity considerations. Source and research documents in `docs/lessons/06-engulfing-pattern.md`, `docs/research/06-engulfing-formalization.md`.
@@ -28,15 +28,16 @@
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
 ## Latest completed item and next step
-- **Last completed:** Lesson 15, *Reliability on Charting*, source PDF page 20, text-only. Exact five original bullet components and entire RSI midpoint/standalone warning audited. Study `docs/lessons/15-reliability-on-charting.md`; research `docs/research/15-indicator-reliability-confluence-ablation.md`.
-- **Coach source:** “mas reliable long term”: structure/S&R, EMA trend, RSI momentum, FVG/OB/liquidity and confirmation candles. RSI above 50 usually bullish momentum, below 50 bearish momentum; RSI alone inadequate, structure/S&R important. Source does NOT state a rank, mandatory five-factor boolean gate, numeric confidence score, EMA periods or statistically measured reliability.
-- **Independent nuance:** EMA and RSI are price-derived and may be correlated with OHLC structure and FVG/OB; five agreement signals are not five independent statistical votes. Propose clear separate diagnostics and compare against structure+zone+confirmation baseline only after methodological/source completion and user approval.
-- **Future parameters:** EMA length, trend slope/crossover, RSI period and threshold equality, FVG/OB/liquidity definitions, confirmation applicability and confluence weighting all open. Next source Lesson 16 contains explicit example HTF/LTF combinations; do not preclaim them as Lesson 15 source.
-- **Next source:** Lesson 16, *Long and Short set-up*, original PDF p. 21, NOT YET STUDIED. Await owner instruction.
-- **Scope:** source PCSS and independent research documentation/GitHub sync only; no Pine, backtesting, deployments, orders or changes to previous projects.
+- **Last completed:** Lesson 16, Long and Short Set-up, original Coach PDF p21. Page visually and natively inspected: two written 3-HTF + 3-LTF continuation examples. Source PCSS: docs/lessons/16-long-short-setup.md; research: docs/research/16-long-short-continuation-state-candidates.md.
+- **LONG (Coach):** HTF bullish structure, price above EMA, RSI above 50; LTF price retraces to EMA/FVG, RSI bounces above 50, bullish rejection candle. “Continuation longorbuy”.
+- **SHORT (Coach):** HTF bearish structure, price below EMA, RSI below 50; LTF price retraces to EMA resistance, RSI rejects below 50, bearish confirmation candle. “Continuation short”.
+- **Source boundaries:** No EMA/RSI periods, HTF/LTF durations, precise EMA/FVG logical OR/AND, RSI bounce/reject geometry, candle thresholds, stop/TP/entry or trade performance. Short example does not explicitly list FVG; LONG does. These are examples, not a fully specified universal six-Boolean strategy.
+- **Reconciliation:** Lesson 13 countertrend scalp and Lesson 10 range setup remain separate source cases; p21 continuation examples do not erase them. Research candidates test alternate midpoint events and causal timestamps with source limitations explicit.
+- **Next:** Lesson 17, RSI (Relative Strength Index), original PDF p22. Not yet studied. Stop until owner requests Next.
+- **Scope:** PCSS source study, independent research and GitHub sync only; no Pine, chart acceptance, backtests, deployments, trading or other repository changes.
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 16; don't restart completed Lessons 01–15.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 17; don't restart completed Lessons 01–16.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
