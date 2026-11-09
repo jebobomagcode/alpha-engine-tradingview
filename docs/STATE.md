@@ -2,7 +2,7 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 1 — meticulous source-ordered PCSS study (All 21 numbered lessons completed; Q&A activity no.1 next)
+**Phase:** 1 — meticulous source-ordered PCSS study (All 21 numbered lessons and Q&A activity no.1 completed; Q&A no.2 next)
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 17 study; no Pine implementation has occurred.
@@ -17,7 +17,7 @@
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
 - **New owner direction D-013:** implementation targets crypto, including XAUUSDT, XAUTUSDT, PAXGUSDT; instrument product and exchange feed must be distinguished. Forex and PSE equity teaching remains in PCSS for fidelity, but neither is an independent implementation target. See `docs/MARKET_SCOPE.md`.
 - No exact exchange-qualified TradingView chart symbols, spot-vs-derivatives selection for XAUTUSDT/PAXGUSDT, or backtest datasets have been approved/verified.
-- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **21 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**. Remaining Q&A and final notes not yet studied.
+- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **21 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**. Q&A no.1 completed; Q&A no.2, Q&A no.3 and final notes not yet studied.
 - **Lesson 04 complete:** original PDF p. 6 HTF/LTF workflow, exact HTF (1H/4H) and LTF (5m/15m) options, 5m example, trend/zone plus pullback/bounce/confirmation/entry/SL/TP all source-audited. Independent temporal-causality research: `docs/lessons/04-time-frame.md`, `docs/research/04-multi-timeframe-causality.md`. No source diagrams/exercises on this page.
 - **Lesson 05 complete:** original PDF p. 7 leverage and margin examples, 17 source-inventory items, crypto-vs-Forex comparison, risk and margin distinctions audited. Both $100-based numerical examples verified; fixed margin vs fixed notional risk distinction emphasized. Independent liquidation/solvency research: `docs/lessons/05-leverage-margin.md`, `docs/research/05-margin-leverage-solvency-candidates.md`. No software or exchange-specific liquidation calculation implemented.
 - **Lesson 06 complete:** original PDF p. 8 both engulfing descriptions and three illustration panels, with explicit body-vs-shadow/strong-vs-weak ambiguity, synthetic OHLC cases and independent Pine temporal-validity considerations. Source and research documents in `docs/lessons/06-engulfing-pattern.md`, `docs/research/06-engulfing-formalization.md`.
@@ -28,16 +28,15 @@
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
 ## Latest completed item and next step
-- **Last completed:** Lesson 21, Coach PDF pp26–28, 40-item source-order audit with both actual **TON/TetherUS 4H** screenshots visually examined. PCSS: docs/lessons/21-tonusdt-topdown-setup.md; research: docs/research/21-tonusdt-topdown-case-provenance-and-risk.md.
-- **4H source:** strong bullish HH/HL, above EMA20/50/100/200, RSI around97 extremely overbought, so chasing risky; both PDF screenshots 4H price ~2.731/2.736, RSI14 ~97.45. Right screenshot is Auto Fib, not a reproducible custom Fib proof.
-- **1H written claims:** bullish BOS >2.48/>2.60 toward2.73+, no bearish CHoCH, RSI~79, EMA20 2.40–2.45 and EMA50 2.14. No 1H chart provided; cannot independently verify.
-- **15m source ambiguity:** literal “Yung sa fart sir” appears immediately before “15m”. Asset provenance is unresolved. Coach writes FVG 2.58–2.62,2.48–2.52,2.38–2.44; OB 2.45–2.50, plus support and resistance. No 15m screenshot/OHLC. Do not equate with independently verified TON or FART instrument.
-- **Conditional plan:** WAIT for pullback, bullish engulfing or strong rejection wick, entry 2.58–2.62, stop strictly below2.52, targets2.75–3.00 with trailing stop. Actual fill, stop price, trail, RR and outcome unknown. Upper-zone stop can occur before deeper supports, so separate trade invalidation from market reversal.
-- **All 21 numbered lessons completed, NOT whole PDF. Next Q&A activity no.1 pp29–30**, then Q&A2 p31, Q&A3 p32, location/time p33, BSP charting pp34–35. Continue only upon user direction.
-- **No Pine/market backtesting/deployment/trades; older projects untouched.**
+- **Last completed:** Q&A activity no.1, Coach original PDF pp29–30, complete 22-unit source/order audit including two original BTCUSD screenshots, four Coach questions, student responses and Coach's conditional assessment. PCSS file: docs/lessons/qa-01-btc-htf-bias-and-confirmation.md; research: docs/research/qa-01-btc-mtf-continuation-retest-and-bearish-evidence.md.
+- **Actual source charts:** Bitcoin / U.S. Dollar (BTCUSD), **4H** on left, **15m** on right; NOT BTCUSDT. 4H price~82,446 and EMA20/50/100/200 ~80,596/79,175/77,804/75,783; 4H RSI14~69.91, **below strict overbought 70**, although very near it. 15m price~82,427, EMAs ~82,103/81,758/81,447/80,899; 15m RSI14~63.10; current LTF pullback visible but RSI>50.
+- **Coach Qs:** HTF bullish or bearish? above/below EMA? RSI>50 or <50? trending/ranging? Student says bullish trending above EMA, RSI near overbought, BOS, respects EMA, continuation, WAIT for retest and good confirmation candle. “red line ema2” apparent typo vs chart EMA20/50/100/200; source wording preserved and qualified.
+- **Coach approval:** “tama sir” and says continuation more likely than reversal given bullish structure and EMA respect **unless strong bearish confirmation**. No defined numeric probability, exact BOS pivot, bearish confirmation threshold, entry zone, risk or actual trade outcome. 4H and 15m findings remain distinct.
+- **Next on user direction:** Q&A activity no.2, original PDF p31 on FARTCOIN scalp and pullback. Then Q&A3 p32, Important Note p33 and BSP charting pp34–35. Full 35-page PDF still not complete.
+- **Scope:** only source-first PCSS and independent research documentation in this GitHub repository. No Pine, market backtests, trades, deployments or changes to older projects.
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Q&A activity no.1 (PDF pp29–30); don't restart completed Lessons 01–21.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Q&A activity no.2 (PDF p31); don't restart completed Lessons 01–21 or Q&A no.1.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
