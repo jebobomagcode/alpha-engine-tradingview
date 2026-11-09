@@ -2,7 +2,7 @@
 
 **Independent, source-grounded, research-enhanced TradingView project.**
 
-**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **Lessons 01–03 (PDF pages 1–5) completed and source-audited**. Lesson 04 is next. **No formal Pine methodology implementation, backtests or deployments have started.**
+**Status (2026-11-09, Asia/Manila):** PCSS study authorized and **Lessons 01–04 (PDF pages 1–6) completed and source-audited**. Lesson 05 is next. **No formal Pine methodology implementation, backtests or deployments have started.**
 
 ## Start here — especially after losing a ChatGPT conversation
 
@@ -12,7 +12,7 @@
 4. Read [docs/SOURCE_MANIFEST.md](docs/SOURCE_MANIFEST.md) and [docs/PCSS_PROTOCOL.md](docs/PCSS_PROTOCOL.md).
 5. Check [docs/LESSON_COVERAGE.md](docs/LESSON_COVERAGE.md) before beginning or continuing any lesson.
 6. Read [AGENTS.md](AGENTS.md) for operating instructions for a coding or AI assistant.
-7. Read completed [Lesson 01](docs/lessons/01-trading-101.md), [Lesson 02](docs/lessons/02-basic-candlestick-patterns.md), [Lesson 03](docs/lessons/03-trading-risk-reward.md), and corresponding [candlestick](docs/research/02-candlestick-rule-candidates.md) / [risk-reward](docs/research/03-risk-reward-spec-candidates.md) research before resuming at Lesson 04.
+7. Read completed [Lesson 01](docs/lessons/01-trading-101.md), [Lesson 02](docs/lessons/02-basic-candlestick-patterns.md), [Lesson 03](docs/lessons/03-trading-risk-reward.md), and corresponding [candlestick](docs/research/02-candlestick-rule-candidates.md) / [risk-reward](docs/research/03-risk-reward-spec-candidates.md) research and [Lesson 04](docs/lessons/04-time-frame.md) plus its [MTF research](docs/research/04-multi-timeframe-causality.md) before resuming at Lesson 05.
 
 ## Mission
 

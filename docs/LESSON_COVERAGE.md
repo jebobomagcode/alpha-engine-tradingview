@@ -1,6 +1,6 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
-**As of 2026-11-09:** Lessons 01–03 have been formally taught and source-audited; **3 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md).
+**As of 2026-11-09:** Lessons 01–04 have been formally taught and source-audited; **4 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md).
 
 Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE / BLOCKED. Do not mark COMPLETE from a superficial preview, inferred summary, or repository creation.
 
@@ -9,7 +9,7 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 | 01 | Trading 101 (markets, pros/cons, discipline) | 1 | COMPLETE — [audit + lesson](lessons/01-trading-101.md) |
 | 02 | Basic candlestick patterns (hammer, shooting star, doji) | 2–3 | COMPLETE — [audit + lesson](lessons/02-basic-candlestick-patterns.md) and [research questions](research/02-candlestick-rule-candidates.md) |
 | 03 | Trading Risk Reward (RR examples and compounding) | 4–5 | COMPLETE — [source-audited study](lessons/03-trading-risk-reward.md) and [research candidates](research/03-risk-reward-spec-candidates.md) |
-| 04 | Time Frame (HTF/LTF) | 6 | NOT_STARTED |
+| 04 | Time Frame (HTF/LTF) | 6 | COMPLETE — [PCSS source audit](lessons/04-time-frame.md) and [MTF research](research/04-multi-timeframe-causality.md) |
 | 05 | Leverage and Margin | 7 | NOT_STARTED |
 | 06 | Engulfing Pattern | 8 | NOT_STARTED |
 | 07 | Market Structure and Confluence | 9 | NOT_STARTED |
@@ -44,4 +44,4 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 - Implementation implications, if any; do not imply code exists.
 - Exact last completed item, next item, commit hash and readback verification.
 
-**Next:** Lesson 04, PDF page 6, *Time Frame*. Begin only on user's next instruction; do not auto-advance.
+**Next:** Lesson 05, PDF page 7, *Leverage and Margin*. Begin only on user's next instruction; do not auto-advance.
