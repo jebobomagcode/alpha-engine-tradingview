@@ -2,7 +2,7 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–20 completed, Lesson 21 next)
+**Phase:** 1 — meticulous source-ordered PCSS study (All 21 numbered lessons completed; Q&A activity no.1 next)
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 17 study; no Pine implementation has occurred.
@@ -17,7 +17,7 @@
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
 - **New owner direction D-013:** implementation targets crypto, including XAUUSDT, XAUTUSDT, PAXGUSDT; instrument product and exchange feed must be distinguished. Forex and PSE equity teaching remains in PCSS for fidelity, but neither is an independent implementation target. See `docs/MARKET_SCOPE.md`.
 - No exact exchange-qualified TradingView chart symbols, spot-vs-derivatives selection for XAUTUSDT/PAXGUSDT, or backtest datasets have been approved/verified.
-- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **20 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
+- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **21 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**. Remaining Q&A and final notes not yet studied.
 - **Lesson 04 complete:** original PDF p. 6 HTF/LTF workflow, exact HTF (1H/4H) and LTF (5m/15m) options, 5m example, trend/zone plus pullback/bounce/confirmation/entry/SL/TP all source-audited. Independent temporal-causality research: `docs/lessons/04-time-frame.md`, `docs/research/04-multi-timeframe-causality.md`. No source diagrams/exercises on this page.
 - **Lesson 05 complete:** original PDF p. 7 leverage and margin examples, 17 source-inventory items, crypto-vs-Forex comparison, risk and margin distinctions audited. Both $100-based numerical examples verified; fixed margin vs fixed notional risk distinction emphasized. Independent liquidation/solvency research: `docs/lessons/05-leverage-margin.md`, `docs/research/05-margin-leverage-solvency-candidates.md`. No software or exchange-specific liquidation calculation implemented.
 - **Lesson 06 complete:** original PDF p. 8 both engulfing descriptions and three illustration panels, with explicit body-vs-shadow/strong-vs-weak ambiguity, synthetic OHLC cases and independent Pine temporal-validity considerations. Source and research documents in `docs/lessons/06-engulfing-pattern.md`, `docs/research/06-engulfing-formalization.md`.
@@ -28,15 +28,16 @@
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
 ## Latest completed item and next step
-- **Last completed:** Lesson 20 CHoCH (Change of Character), original Coach PDF p25, containing four interpreted figure panels in three embedded graphic regions plus short Taglish prose. Full visual/source audit: docs/lessons/20-choch-change-of-character.md; independent causal-break research: docs/research/20-choch-confirmed-pivots-and-break-semantics.md.
-- **COACH:** CHoCH means *possible* trend reversal or shift, not proved reversal. In established downtrend, breaking previous Lower High (LH) implies potential bullish CHoCH; in uptrend breaking previous Higher Low (HL) implies potential bearish CHoCH. Source F1 shows green bullish BOS, red bearish CHoCH, red bearish BOS then green bullish CHoCH. F2 shows LH/LL, bearish BOS, demand zone, CHOCH horizontal breakout and later advance; bottom F3 bearish and F4 bullish labeled zigzags. No original prices, historical trade fills, precise SL/TP or probability.
-- **Material unknowns:** precise eligible “previous” swing, protected/internal/external hierarchy, wick vs close and tick buffer, pivot confirmation latency, follow-through/BOS necessity, timeframe precedence, event/candidate known-at timestamps and actual financial edge. Do not backplot an unconfirmed pivot as an available live signal.
-- **Cross-lesson:** Earlier Lessons 07, 11, 12 establish structure and BOS/CHoCH distinction; p25 CHoCH is local to the timeframe and does not necessarily reverse a 4H trend. Source example chart resembles illustration earlier in Lesson12; repeated figure is not independent statistical evidence.
-- **Next:** Lesson 21 — 4H/1H chart setup with BOS, CHoCH, RSI, EMA, FVG, OB; original PDF **pp26–28** according to coverage ledger, includes TON/USDT original charts. NOT YET STUDIED. Begin only on next owner instruction.
-- **Scope:** PCSS source study, independent research and GitHub synchronization only. No Pine code, chart runtime, backtests, deployments, orders or other repository changes.
+- **Last completed:** Lesson 21, Coach PDF pp26–28, 40-item source-order audit with both actual **TON/TetherUS 4H** screenshots visually examined. PCSS: docs/lessons/21-tonusdt-topdown-setup.md; research: docs/research/21-tonusdt-topdown-case-provenance-and-risk.md.
+- **4H source:** strong bullish HH/HL, above EMA20/50/100/200, RSI around97 extremely overbought, so chasing risky; both PDF screenshots 4H price ~2.731/2.736, RSI14 ~97.45. Right screenshot is Auto Fib, not a reproducible custom Fib proof.
+- **1H written claims:** bullish BOS >2.48/>2.60 toward2.73+, no bearish CHoCH, RSI~79, EMA20 2.40–2.45 and EMA50 2.14. No 1H chart provided; cannot independently verify.
+- **15m source ambiguity:** literal “Yung sa fart sir” appears immediately before “15m”. Asset provenance is unresolved. Coach writes FVG 2.58–2.62,2.48–2.52,2.38–2.44; OB 2.45–2.50, plus support and resistance. No 15m screenshot/OHLC. Do not equate with independently verified TON or FART instrument.
+- **Conditional plan:** WAIT for pullback, bullish engulfing or strong rejection wick, entry 2.58–2.62, stop strictly below2.52, targets2.75–3.00 with trailing stop. Actual fill, stop price, trail, RR and outcome unknown. Upper-zone stop can occur before deeper supports, so separate trade invalidation from market reversal.
+- **All 21 numbered lessons completed, NOT whole PDF. Next Q&A activity no.1 pp29–30**, then Q&A2 p31, Q&A3 p32, location/time p33, BSP charting pp34–35. Continue only upon user direction.
+- **No Pine/market backtesting/deployment/trades; older projects untouched.**
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 21; don't restart completed Lessons 01–20.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Q&A activity no.1 (PDF pp29–30); don't restart completed Lessons 01–21.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
