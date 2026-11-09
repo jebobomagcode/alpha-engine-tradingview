@@ -1,6 +1,6 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
-**As of 2026-11-09:** Lessons 01–18 have been formally taught and source-audited; **18 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md), [Lesson 07](lessons/07-market-structure-confluence.md), [Lesson 08](lessons/08-trading-entry-workflow.md), [Lesson 09](lessons/09-support-resistance.md), [Lesson 10](lessons/10-marking-support-resistance.md), [Lesson 11](lessons/11-order-block-bos-choch.md), [Lesson 12](lessons/12-bos-break-of-structure.md), [Lesson 13](lessons/13-manage-your-risk-sol.md), [Lesson 14](lessons/14-fibonacci-retracement.md), [Lesson 15](lessons/15-reliability-on-charting.md), [Lesson 16](lessons/16-long-short-setup.md), [Lesson 17](lessons/17-rsi-relative-strength-index.md), [Lesson 18](lessons/18-ema-exponential-moving-average.md).
+**As of 2026-11-09:** Lessons 01–19 have been formally taught and source-audited; **19 of 21 numbered lessons complete**. The remaining lesson, Q&A and notes rows are a source-map inventory, not evidence of their completion. Page references are the supplied PDF's page numbers. Study records: [Lesson 01](lessons/01-trading-101.md), [Lesson 02](lessons/02-basic-candlestick-patterns.md), [Lesson 03](lessons/03-trading-risk-reward.md), [Lesson 04](lessons/04-time-frame.md), [Lesson 05](lessons/05-leverage-margin.md), [Lesson 06](lessons/06-engulfing-pattern.md), [Lesson 07](lessons/07-market-structure-confluence.md), [Lesson 08](lessons/08-trading-entry-workflow.md), [Lesson 09](lessons/09-support-resistance.md), [Lesson 10](lessons/10-marking-support-resistance.md), [Lesson 11](lessons/11-order-block-bos-choch.md), [Lesson 12](lessons/12-bos-break-of-structure.md), [Lesson 13](lessons/13-manage-your-risk-sol.md), [Lesson 14](lessons/14-fibonacci-retracement.md), [Lesson 15](lessons/15-reliability-on-charting.md), [Lesson 16](lessons/16-long-short-setup.md), [Lesson 17](lessons/17-rsi-relative-strength-index.md), [Lesson 18](lessons/18-ema-exponential-moving-average.md), [Lesson 19](lessons/19-rsi-ema-topdown-analysis.md).
 
 Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE / BLOCKED. Do not mark COMPLETE from a superficial preview, inferred summary, or repository creation.
 
@@ -24,7 +24,7 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 | 16 | Long and Short Setup | 21 | COMPLETE — [source PCSS](lessons/16-long-short-setup.md) and [independent research](research/16-long-short-continuation-state-candidates.md) |
 | 17 | RSI | 22 | COMPLETE — [source PCSS](lessons/17-rsi-relative-strength-index.md) and [research](research/17-rsi-state-momentum-candidates.md) |
 | 18 | EMA | 23 | COMPLETE — [source PCSS](lessons/18-ema-exponential-moving-average.md) and [slope/range research](research/18-ema-slope-redundancy-range-candidates.md) |
-| 19 | RSI + EMA Application Using Top Down Analysis | 24 | NOT_STARTED |
+| 19 | RSI + EMA Application Using Top Down Analysis | 24 | COMPLETE — [source study](lessons/19-rsi-ema-topdown-analysis.md) and [causal confluence research](research/19-topdown-timecausal-confluence-research.md) |
 | 20 | CHoCH | 25 | NOT_STARTED |
 | 21 | 4H/1H chart setup with BOS, CHoCH, RSI, EMA, FVG, OB | 26–28 | NOT_STARTED |
 | QA-01 | Q&A activity no. 1 (BTC charts, coach response) | 29–30 | NOT_STARTED |
@@ -44,4 +44,4 @@ Status vocabulary: NOT_STARTED / IN_PROGRESS / STUDIED_PENDING_AUDIT / COMPLETE 
 - Implementation implications, if any; do not imply code exists.
 - Exact last completed item, next item, commit hash and readback verification.
 
-**Next:** Lesson 19 — RSI + EMA Application Using Top Down Analysis, original PDF page 24. Begin only on owner's next instruction.
+**Next:** Lesson 20 — CHoCH (Change of Character), original PDF page 25 with multiple illustrations. Begin only on owner's next instruction.

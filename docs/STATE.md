@@ -2,7 +2,7 @@
 
 **Checkpoint date:** 2026-11-09 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–18 completed, Lesson 19 next)
+**Phase:** 1 — meticulous source-ordered PCSS study (Lessons 01–19 completed, Lesson 20 next)
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** code or deploy an indicator/strategy, connect brokerage automation, or place trades. The current checkpoint is Lesson 17 study; no Pine implementation has occurred.
@@ -17,7 +17,7 @@
 - Working architecture: indicator first, future strategy possible, shared methodology with provenance.
 - **New owner direction D-013:** implementation targets crypto, including XAUUSDT, XAUTUSDT, PAXGUSDT; instrument product and exchange feed must be distinguished. Forex and PSE equity teaching remains in PCSS for fidelity, but neither is an independent implementation target. See `docs/MARKET_SCOPE.md`.
 - No exact exchange-qualified TradingView chart symbols, spot-vs-derivatives selection for XAUTUSDT/PAXGUSDT, or backtest datasets have been approved/verified.
-- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **18 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
+- Formal PCSS **Lessons 01–03** have been taught and source-audited. Lesson 03 (pp. 4–5) includes every Coach scenario, verified arithmetic, exact zero-cost win-rate break-even correction, compounding-model distinction and 1:1 comparison; records: `docs/lessons/03-trading-risk-reward.md` and `docs/research/03-risk-reward-spec-candidates.md`. Lessons 01–02 were already completed and preserved. **19 numbered lessons completed**, **0 Pine scripts written**, **0 backtests**, **0 deployments**.
 - **Lesson 04 complete:** original PDF p. 6 HTF/LTF workflow, exact HTF (1H/4H) and LTF (5m/15m) options, 5m example, trend/zone plus pullback/bounce/confirmation/entry/SL/TP all source-audited. Independent temporal-causality research: `docs/lessons/04-time-frame.md`, `docs/research/04-multi-timeframe-causality.md`. No source diagrams/exercises on this page.
 - **Lesson 05 complete:** original PDF p. 7 leverage and margin examples, 17 source-inventory items, crypto-vs-Forex comparison, risk and margin distinctions audited. Both $100-based numerical examples verified; fixed margin vs fixed notional risk distinction emphasized. Independent liquidation/solvency research: `docs/lessons/05-leverage-margin.md`, `docs/research/05-margin-leverage-solvency-candidates.md`. No software or exchange-specific liquidation calculation implemented.
 - **Lesson 06 complete:** original PDF p. 8 both engulfing descriptions and three illustration panels, with explicit body-vs-shadow/strong-vs-weak ambiguity, synthetic OHLC cases and independent Pine temporal-validity considerations. Source and research documents in `docs/lessons/06-engulfing-pattern.md`, `docs/research/06-engulfing-formalization.md`.
@@ -28,15 +28,18 @@
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
 
 ## Latest completed item and next step
-- **Last completed:** Lesson 18 — EMA (Exponential Moving Average), Coach original PDF **page 23**, a single text-only page. All 23 original source units and original page rendering audited. PCSS: `docs/lessons/18-ema-exponential-moving-average.md`. Independent Ponder research: `docs/research/18-ema-slope-redundancy-range-candidates.md`.
-- **COACH_EXPLICIT:** EMA used for trend direction, dynamic support/resistance, momentum continuation, market bias. Common **EMA20** short-term, **EMA50** medium trend, **EMA200** macro bias. Price above/below EMA = bullish/bearish environment. EMA can act as dynamic support/resistance on trend pullbacks; upward/downward slopes imply Coach's bullish/bearish momentum, flat EMA weak/ranging. Sideways markets create frequent fake signals/crossings; EMA works best in trends per Coach's qualitative judgment.
-- **INDEPENDENT PROOF:** Under same close-based EMA n>1 with one-bar slope, sign(Close−currentEMA) equals sign(currentEMA−previousEMA). Hence “price above EMA” and “EMA one-bar sloping up” are mathematically identical classifications, NOT independent votes. This does not cover multibar slope, different input sources/timeframes or chart pixel angles.
-- **Open:** EMA input series/initialization, timeframe and period matching, slope lookback and threshold, dynamic retest wick-vs-close/tolerance, sideways definition, EMA20/50/200 combination, signal eligibility and empirical value. No crossover/EMA100/EMA9 rule attributed to Coach on p23.
-- **Next:** Lesson 19 — *RSI + EMA Application Using Top Down Analysis*, original PDF **page 24**, NOT YET STUDIED. Wait for owner's Next/Proceed.
-- **Scope:** source-first PCSS, independent research and GitHub records only; no Pine coding, backtest, deployment, trades or earlier-project modifications.
+- **Completed:** Lesson 19, RSI + EMA Application Using Top Down Analysis, PDF p24; 38 original source items in order, text-only page visually and natively inspected. Source PCSS docs/lessons/19-rsi-ema-topdown-analysis.md; independent research docs/research/19-topdown-timecausal-confluence-research.md.
+- **Coach Step1:** HTF 4H/Daily/1H examine structure, EMA direction, RSI. Bullish example: price above EMA50, EMA rising, RSI above50; no formal multi-HTF hierarchy.
+- **Step2:** Wait, don't chase impulse: retracement, EMA retest, FVG revisit, key S/R. No OR/AND/tolerance/expiry grammar.
+- **Step3:** Switch LTF 15m/5m: rejection, BOS/CHoCH, RSI holding momentum, EMA S/R respected. No exact mechanical semantics.
+- **Source repeated:** LONG and SHORT blocks repeat Lesson16 almost verbatim, not new empirical tests. LONG EMA/FVG and bullish rejection; SHORT EMA resistance and bearish confirmation. EMA50 explicitly named in Step1 bullish example but generic EMA in paired templates; no universal EMA50 rule implied.
+- **Independent key result:** For same-bar, same-close EMA50, Close>EMA50 is equivalent to EMA50 rising over ONE bar. Avoid double-counting; multi-bar slope is not necessarily equivalent. Causal timing/HTF confirmation and independent evidence are future test gates.
+- **Open:** RSI holding/bounce/reject, BOS/CHoCH grammar, location/EMA contact geometry, HTF/LTF precedence, actual risk/entry/stop/TP, backtest edge. All unresolved.
+- **Next:** Lesson 20, CHoCH (Change of Character), original PDF p25 with multiple illustrations, NOT YET STUDIED. Await owner instruction.
+- **Scope:** PCSS study and independent research/GitHub only, no Pine code/backtests/deployments/trades or legacy-project changes.
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 19; don't restart completed Lessons 01–18.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and resume at Lesson 20; don't restart completed Lessons 01–19.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
