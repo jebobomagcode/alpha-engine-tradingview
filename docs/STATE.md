@@ -2,12 +2,20 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — frozen-prefix evidence adjudication and timing assessment complete for the authorized conceptual mission. Production policy and runtime validation remain open. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 2 — M06 conceptual risk and execution-uncertainty research complete for owner review. Production policies and runtime validation remain open. Original 35/35-page, 26-unit Coach study complete.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
 
-## Current checkpoint — frozen-prefix timing assessment, 2026-11-12
+## Current checkpoint — M06 risk and execution uncertainty, 2026-11-12
+
+- [Owner scope D-019](DECISIONS.md) authorized M06 conceptual research. [Specification and seven open decisions](methodology/09-m06-risk-and-execution-uncertainty.md) trace the Coach risk examples and define an as-of M05 handoff, nominal versus account-currency risk, and product/cost/uncertain-path comparisons.
+- [Binance metadata](research/phase2-m06-binance-public-metadata.md) was verified at [27f03a6](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/27f03a66085bf5beaaef34dbb5e10a9ead5166aa). Five Spot and USDⓈ-M product records and an invalid Spot XAUUSDT lookup were documented, with scoped funding and underlying-session settings. Account-specific rates, bracket and realized execution remain unverified.
+- [25 manually checked M06 cases](research/phase2-m06-paper-cases.md) cover units, geometry, rounding, cost, activation, partial exits, gaps, and expiry. Recommend nominal geometry as the source-facing baseline and a filter- and cost-aware conditional envelope as comparator. Execution-path scenarios remain conditional.
+- R2-B carries forward as a provisional descriptive baseline, with R2-A as principal timing comparator and Strict as diagnostic. The frozen timing evidence and counts retain their original conceptual scope.
+- **Next decision:** owner review. Proposed next bounded phase is an M07 validation protocol for one independently qualified Binance product and the p10 1H→5m descriptive profile, with predeclared clocks, units, and pass/fail cases.
+
+## Prior checkpoint — frozen-prefix timing assessment, 2026-11-12
 
 - [Owner scope D-018](DECISIONS.md) authorized the bounded comparison, following the reconciled checkpoint [d16b65e](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/d16b65e96e82f849386e2685c99b2308bd5b9458). [Evidence and rubric v1](research/phase2-frozen-prefix-evidence-v1.md) were frozen in verified commit [5c3eeb1](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/5c3eeb13b4f4b9cd4a0539b50cc8059f1ece52b5) before recording outcomes.
 - [Timing assessment and full status ledger](research/phase2-frozen-prefix-timing-assessment.md): 3 qualitative source packets, 12 constructed episodes, 108 numerical prefixes, 324 manual policy verdicts. Same/Later/Strict issued at least one eligible reaction in 9/5/2 episodes. Results are a single-model conceptual pass, with no independent blind reviewer or timed historical source prefix.

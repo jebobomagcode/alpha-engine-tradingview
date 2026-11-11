@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — frozen-prefix assessment, 12 November 2026
+## Current recovery point — M06 conceptual research, 12 November 2026
+
+Verify the GitHub HEAD and read [STATE](STATE.md), the [M06 risk specification](methodology/09-m06-risk-and-execution-uncertainty.md), [Binance evidence](research/phase2-m06-binance-public-metadata.md), and [paper cases](research/phase2-m06-paper-cases.md). D-019 ends at owner review. The next proposed bounded phase is an M07 validation protocol for one qualified product and the Lesson 08 1H→5m descriptive profile. Preserve the 26 completed units, the causal reconciliation and the frozen timing evidence.
+
+## Prior recovery point — frozen-prefix assessment, 12 November 2026
 
 Verify current GitHub HEAD and read [STATE](STATE.md), the [frozen evidence and rubric](research/phase2-frozen-prefix-evidence-v1.md), and the [assessment](research/phase2-frozen-prefix-timing-assessment.md). D-018 ends at owner review. The study recommends R2-B provisionally for descriptive diagnosis, with Later by bar order as comparator. A bounded M06 risk interface is the proposed next conceptual mission. The completed source study and older research checkpoints below remain usable as evidence.
 

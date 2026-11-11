@@ -87,6 +87,8 @@ The distinction is material for historical simulation: a breakout stop order may
 
 ## G. M06 gross-risk and execution distinction
 
+The [M06 conceptual specification](09-m06-risk-and-execution-uncertainty.md) extends this early gross-risk sketch with source traceability, account units, as-of eligibility, product constraints and execution uncertainty. The earlier examples below remain contextual.
+
 For a **LONG proposal** \(S<E<T\), per-unit price risk \(d=E-S\), gross reward \(g=T-E\), and gross RR \(g/d\). For a **SHORT proposal** \(T<E<S\), \(d=S-E\), \(g=E-T\), with \(d>0\). Require specified entry, stop and target before a unique gross RR; reject inverted or zero distances. A tick size and actual contract quantity are additionally necessary for a physically feasible order. No order mechanics are designed at this stage.
 
 **Account risk** for simple linear fully filled quantity Q before costs is Qd in the quote currency; movement-to-stop as a percent of entry is d/E, **not percent of account equity**. A predeclared maximum account loss budget B gives nominal bound Q≤B/d in the same quote units, ignoring costs and gap/slippage/liquidation; actual tradable quantity must be constrained more carefully. Leverage changes margin/notional, not the underlying quoted per-unit stop distance.

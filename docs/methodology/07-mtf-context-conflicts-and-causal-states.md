@@ -176,7 +176,7 @@ Assume fictitious consistent feed/bar closure except explicitly changed; “elig
 
 1. Cross-module \`known_at\` and invariants need a formal **validation protocol** and later executable synthetic fixtures (no permission to code has been inferred).
 2. M03 RSI/EMA precise contexts and overlap-ablation design remain partially specified.
-3. M06 cost, tick and execution-specific risk modeling, plus M07 outcomes, must be defined before any strategy backtest is meaningful.
+3. The [M06 conceptual risk contract](09-m06-risk-and-execution-uncertainty.md) covers cost, tick and execution uncertainty. M07 validation and actual behavior remain open.
 4. Source-human interpretation and algorithmic candidates should be compared **blindly and causally**, with explicit unclear/ambiguous labels and negative results retained.
 5. Pine input mapping, chart-swap/reload acceptance, MTF consistency and alert conditions are future implementation, **not accomplished here**.
 
