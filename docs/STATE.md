@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — cross-module causal reconciliation complete for the authorized conceptual mission. Phase 2 policy selection and validation remain OPEN. Original 35/35-page, 26-unit Coach study COMPLETE.
+**Phase:** 2 — frozen-prefix evidence adjudication and timing assessment complete for the authorized conceptual mission. Production policy and runtime validation remain open. Original 35/35-page, 26-unit Coach study complete.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
 
-## Current checkpoint — cross-module causal reconciliation, 2026-11-12
+## Current checkpoint — frozen-prefix timing assessment, 2026-11-12
+
+- [Owner scope D-018](DECISIONS.md) authorized the bounded comparison, following the reconciled checkpoint [d16b65e](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/d16b65e96e82f849386e2685c99b2308bd5b9458). [Evidence and rubric v1](research/phase2-frozen-prefix-evidence-v1.md) were frozen in verified commit [5c3eeb1](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/5c3eeb13b4f4b9cd4a0539b50cc8059f1ece52b5) before recording outcomes.
+- [Timing assessment and full status ledger](research/phase2-frozen-prefix-timing-assessment.md): 3 qualitative source packets, 12 constructed episodes, 108 numerical prefixes, 324 manual policy verdicts. Same/Later/Strict issued at least one eligible reaction in 9/5/2 episodes. Results are a single-model conceptual pass, with no independent blind reviewer or timed historical source prefix.
+- **Provisional recommendation for owner review:** R2-B for descriptive geometric overlap and closed reaction. Compare against simpler R2-A by bar order. Strict depends on usable receipt ordering and demonstrable incremental value. Keep arming outside the initial p10 profile. Capture evidence clocks, actual touch, reset, corrections and expiry in future descriptive validation.
+- **Next decision:** review the timing recommendation and risk handoff. M06 can begin as a conditional conceptual risk interface after owner direction. Production thresholds and implementation remain open.
+
+## Prior checkpoint — cross-module causal reconciliation, 2026-11-12
 
 - [Owner scope D-017](DECISIONS.md) authorizes conceptual reconciliation of E1–E10 only. Start point [independent assessment bad2c01](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/bad2c01fe961f0f05de6e05555b914baf4062c5d).
 - [Verified errata 9ad7a0d](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/9ad7a0dda3ad5e2148cffd737674377e7df6473c) corrects TIME-14 and TIME-18, origin versus decision timing, at-arming versus historical breach wording, directional wick geometry, and all three p32 long breakout predicates.

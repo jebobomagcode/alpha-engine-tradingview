@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — 12 November 2026
+## Current recovery point — frozen-prefix assessment, 12 November 2026
+
+Verify current GitHub HEAD and read [STATE](STATE.md), the [frozen evidence and rubric](research/phase2-frozen-prefix-evidence-v1.md), and the [assessment](research/phase2-frozen-prefix-timing-assessment.md). D-018 ends at owner review. The study recommends R2-B provisionally for descriptive diagnosis, with Later by bar order as comparator. A bounded M06 risk interface is the proposed next conceptual mission. The completed source study and older research checkpoints below remain usable as evidence.
+
+## Prior recovery point — cross-module reconciliation, 12 November 2026
 
 Verify current GitHub HEAD and read [STATE](STATE.md), [reconciled specification](methodology/08-cross-module-causal-reconciliation.md), and [paper cases](research/phase2-causal-reconciliation-paper-cases.md). The source study remains complete. D-017 concludes at owner review of E1–E10. Earlier sections below are historical checkpoints. The proposed follow-up is to independently adjudicate the same frozen 1H/5m evidence prefixes under the three R2 policies, subject to owner direction. M06 and implementation remain separate missions.
 
