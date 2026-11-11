@@ -1,11 +1,18 @@
 # Current project state — canonical checkpoint
 
-**Checkpoint date:** 2026-11-11 (Asia/Manila)
+**Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — research IN PROGRESS; R1–R3 and newly M05/R4 multi-timeframe state/conditional-conflict research documented, with M07 validation protocol draft. Rule selection, implementation and trading validation remain OPEN. Original 35/35-page Coach study COMPLETE.
+**Phase:** 2 — cross-module causal reconciliation complete for the authorized conceptual mission. Phase 2 policy selection and validation remain OPEN. Original 35/35-page, 26-unit Coach study COMPLETE.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
+
+## Current checkpoint — cross-module causal reconciliation, 2026-11-12
+
+- [Owner scope D-017](DECISIONS.md) authorizes conceptual reconciliation of E1–E10 only. Start point [independent assessment bad2c01](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/bad2c01fe961f0f05de6e05555b914baf4062c5d).
+- [Verified errata 9ad7a0d](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/9ad7a0dda3ad5e2148cffd737674377e7df6473c) corrects TIME-14 and TIME-18, origin versus decision timing, at-arming versus historical breach wording, directional wick geometry, and all three p32 long breakout predicates.
+- [Reconciled conceptual specification](methodology/08-cross-module-causal-reconciliation.md) and [23 manually adjudicated RC cases](research/phase2-causal-reconciliation-paper-cases.md). Includes the stable setup and contact lifecycle, 1H→5m continuation comparison and open decisions D-C01–D-C08. The earlier 140-row design inventory is preserved with corrected TIME row IDs. No executable fixture or real-market validation is recorded.
+- **Next decision:** owner review of the reconciliation. Proposed next conceptual work is independent adjudication of frozen 1H/5m evidence prefixes, comparing first eligibility, missed cases and clock assumptions. M06 and implementation await separate direction.
 
 ## M05-R4 supplemental evidence-gate consistency audit — 2026-11-11
 - [Focused M05 source and logic audit](audits/2026-11-11-m05-evidence-gate-consistency-audit.md) compares Coach PDF pp6,10,18,27–28,32,35 against the proposed status contract. It corrects constructed case MTF-04: missing bearish rejection in a 15m range does not by itself justify WAIT_CONFIRMATION without an already eligible zone and completed contact. States must distinguish missing zone, waiting for touch, provisional touch and waiting for completed reaction.
@@ -60,7 +67,7 @@
 - **VERIFIED LIMITED MATH:** EMA same-close one-bar slope/sign identity under 0<alpha<1, Q&A3 nominal RR 996/499, Lesson14 Fib two band coordinates recomputed. Verification is mathematical/source-targeted only, not market performance or TradingView runtime validation.
 - **Current gating:** no Pine scripts, no historical crypto strategy backtest, no trading signals deployed, no code builds/alerts/orders, no previous repositories touched. Continue Phase2 definitions of reference arming/pivot ties, zone and confirmation event ordering before selecting an implementation.
 
-## Latest completed item and next step
+## Earlier Phase 2 foundations and historical next steps
 - **Phase2 current latest, 2026-11-09:** [26-unit traceability](methodology/00-source-to-rule-traceability.md), [20 material unresolved cross-lesson cases](METHODOLOGY_RECONCILIATION.md), [M00/M01 bar/pivot/BOS/CHoCH](methodology/01-causal-market-structure.md), [M02–M06 entry/EMA/RSI/risk](methodology/02-topdown-entry-state-and-risk.md), [M02 S/R, OB, FVG and Fibonacci zone alternatives](methodology/03-zones-sr-ob-fvg-fibonacci.md). All source-supported claims carry original PDF anchors; all numeric detector thresholds not in PDF remain independent candidates.
 - **Key research findings:** A confirmed structural pivot becomes knowable only after its actual right-side confirmation data; a historical origin marker is not an earlier signal. BOS continuation vs CHoCH possible shift require eligible prior trend/swing references. Coach's p10 zone-not-reached NO TRADE and entry only after closed confirming candle apply to that defined setup. Range, countertrend scalp and breakout/reversal are separate source contexts. Fib entry bands0.5–0.618 and0.618–0.705 are separate; RSI above50 vs bounce40–50 are contextual. Same-close EMA position and one-bar EMA slope are algebraically redundant binary signs.
 - **Tests:** research documents contain 16 causal-structure, 20 entry/risk and 20 zone designed fixtures (56 total), NOT executed as code or historical market tests; separate simple mathematical examples and arithmetic were checked. No performance/win-rate claims.

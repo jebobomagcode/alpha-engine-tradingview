@@ -36,7 +36,7 @@
 | Dimension | Baseline candidate | Challenger | Evidence to adjudicate |
 |---|---|---|---|
 | Structural reference | R1-A frozen/armed, prebreach suppress | R1-B reset/re-cross; R1-C manual | event freshness, late detection, source-relevant cases |
-| Contact-to-reaction | R2-A separate closed reaction bar | R2-B same closed contact/reaction | event sequencing, missed source patterns |
+| Contact-to-reaction | R2-A later bar with touch known by its open | R2-A later bar by bar order and R2-B same closed contact/reaction | first eligibility, observed sequence, delayed receipt and missed source patterns |
 | Candle geometry | EN-BODY engulf + follow-through variants | EN-RANGE, wick/body ratio, strong body | label disagreements by location and timing |
 | MTF information timing | MTF-T0 context frozen at LTF open | MTF-T1 context known by decision close | no HTF future leakage, timestamp fidelity, detection delay |
 | Conflict architecture | M05-A separate state vector and profile branches | M05-B weighted vote, M05-C unanimity, M05-D manual | expressive fidelity, false auto-veto, readability |
@@ -90,8 +90,10 @@ No numerical win rate, lift, p-value, confidence interval, trade count, reward-t
 - Verify visible panel reasons and no misleading order/fill/guarantee claim, chart switching across BTC/ETH and gold-related variants, resource limits, and Basic-plan account capabilities when actually tested.
 - Preserve account-plan restrictions as a later measured fact, not infer that alerts currently work or do not work in this NEW project.
 
+The [cross-module paper set](phase2-causal-reconciliation-paper-cases.md) adds 23 manually adjudicated rows, separately tracked from the 140-row design inventory above.
+
 ## H. Stop/advance decision
 
-**This document is an accepted research *protocol draft*, not an approved production rule set.** Phase 2 can continue to M03 RSI/EMA semantics and M06 risk/market microstructure; before implementation approval, each chosen candidate needs precise parameter domains, source interpretation, timing semantics, disconfirming synthetic cases, and a feasible actual verification method. The subsequent implementation/test phase remains separately authorized by the owner, not implied by this study.
+**This document is an accepted research *protocol draft*, not an approved production rule set.** See [STATE](../STATE.md) for the 12 November owner-review checkpoint and the proposed next conceptual comparison; before implementation approval, each chosen candidate needs precise parameter domains, source interpretation, timing semantics, disconfirming synthetic cases, and a feasible actual verification method. The subsequent implementation/test phase remains separately authorized by the owner, not implied by this study.
 
 **Source hierarchy preserved:** original PDF -> PCSS interpretation -> independent formal candidates -> future valid evidence. No code, no automated tests, no backtest or deployment.

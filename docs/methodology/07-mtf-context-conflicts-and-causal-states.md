@@ -85,7 +85,7 @@ Every scenario is identified and evaluated **separately**. Candidate outcomes ca
 4. **PULLBACK_SCALP:** p31 Coach's *proposed* 30m OB + 5m lower TF reaction, not a reproduction of the student's already-existing LONG; RSI 40–50 bounce is context-specific.
 5. **REVERSAL_WATCH/BREAKOUT:** a new lower-TF CHoCH may open possible-change monitoring. A higher-TF reversal must be qualified from its *own* confirmed structure. Source p32 gives BOS on 15m or 1H, or a 1H close above the stated 79,850–80k area, as conditional breakout evidence. An engulfing shape alone does not establish a higher-timeframe reversal.
 
-**Incompatibility:** when two active scenario candidates point in opposite directions, report \`CONDITIONAL_CONFLICT\` with both reasons. Do NOT silently choose a “winner”, report simultaneous executable BUY and SELL, or hide the contextual difference behind a confidence percentage. If styles are not selected, report scenario observations and leave action eligibility \`UNSELECTED_STYLE\`.
+**Concurrent eligibility:** when two scenarios are eligible in opposite directions at the same declared decision gate and cutoff, report \`CONDITIONAL_CONFLICT\` with both reasons. Do NOT silently choose a “winner”, report simultaneous executable BUY and SELL, or hide the contextual difference behind a confidence percentage. If styles are not selected, report scenario observations and leave action eligibility \`UNSELECTED_STYLE\`.
 
 ## F. Proposed status vocabulary, provenance and deterministic explanation
 
@@ -116,7 +116,7 @@ Keep **two orthogonal layers**:
 
 ## G. Decision lifecycle and stale-signal safety
 
-A setup episode is keyed by \`instrument_key + profile + anchor_htf_ref + zone_id + contact_episode_id + reaction_id\`, each with causal times. On a new qualified HTF event, freeze old scenario provenance; mark its eligibility \`REASSESS\` or \`INVALIDATED\` per explicit policy before declaring fresh setup. Never rewrite a prior alert as if the later HTF event already existed.
+The [12 November lifecycle reconciliation](08-cross-module-causal-reconciliation.md#4-stable-setup-and-contact-lifecycle) assigns a stable setup ID before contact or reaction and attaches those observations separately. This supersedes the original composite identity that included reaction ID. A material HTF change may move the current attempt to REASSESS or INVALIDATED under its declared policy. Earlier decisions keep their original cutoff and evidence.
 
 **Potential staleness cases to test:** zone created after touch; HTF 4H bar newly available at same 5m close; intrabar candle wick later retracts; old pivot reclassified by R1; source feed gaps; RSI measurement still forming; conflict between two scenario candidates; stale candidate remains “green” after fresh confirmed HTF reversal; distinct venues/quote units; 15m CHoCH in ongoing 4H downtrend; strategy target without stop.
 
@@ -172,12 +172,14 @@ Assume fictitious consistent feed/bar closure except explicitly changed; “elig
 
 **Research recommendation:** carry M05-A as the *working conceptual architecture* and M05-D as reference benchmark, use B and C only as explicit sensitivity comparisons. Do not select production parameters or claim model A has better trading expectancy without later data and user-authorized tests.
 
-## J. Next incomplete methodological gates
+## J. Earlier methodological dependencies
 
 1. Cross-module \`known_at\` and invariants need a formal **validation protocol** and later executable synthetic fixtures (no permission to code has been inferred).
 2. M03 RSI/EMA precise contexts and overlap-ablation design remain partially specified.
 3. M06 cost, tick and execution-specific risk modeling, plus M07 outcomes, must be defined before any strategy backtest is meaningful.
 4. Source-human interpretation and algorithmic candidates should be compared **blindly and causally**, with explicit unclear/ambiguous labels and negative results retained.
 5. Pine input mapping, chart-swap/reload acceptance, MTF consistency and alert conditions are future implementation, **not accomplished here**.
+
+**Latest conceptual follow-up:** [cross-module reconciliation](08-cross-module-causal-reconciliation.md) and [paper cases](../research/phase2-causal-reconciliation-paper-cases.md). See [STATE](../STATE.md) for the owner-review checkpoint.
 
 **Status:** written M05 research increment complete for the current scope; Phase 2 overall remains OPEN, all 35 Coach PDF pages remain source-studied, no Pine source or actual market backtest deployed.

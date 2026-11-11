@@ -49,6 +49,8 @@ Reference identity contains instrument key, TF, pivot ID/level, swing degree, st
 
 **12 November clarification (E3):** A valid high 106 is confirmed at 10:00. Completed closes of 107 and 105 are known by arming at 10:10. A later eligible close of 108 qualifies as a new crossing under the literal latest-close policy and is suppressed by the history comparator if its window includes the 107 close. The 107 close remains pre-arm under both. Keep at-arming state and pre-arm history as distinct fields.
 
+The [cross-module specification](08-cross-module-causal-reconciliation.md#3-structural-arming-alternatives) defines the comparison clocks, complete-history check, frozen provenance and case conditions. Earlier fixture expectations keep their stated assumptions.
+
 ## 5. Pivot geometry: outside bar, equality and alternating order
 
 - **Strict fractal ties:** equal adjacent highs prevent a strict high pivot, and equal lows prevent a strict low pivot. Tolerance/tick rounding is a separate hypothesis.
