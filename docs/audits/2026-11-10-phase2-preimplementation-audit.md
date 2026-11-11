@@ -43,3 +43,7 @@ This is a **targeted critical audit, not a fresh complete line-by-line re-audit 
 4. Verify artifact readback and source unchanged; only then resume next Phase2 formalization. No historical market data tests were performed in this audit.
 
 **Scope notes:** This is a self-audit with primary-source PDF and symbolic/decimal checks, **not** independent human review, statistical edge certification or runtime Pine acceptance.
+
+
+## 2026-11-11 correction / supersession notice
+The original **AUD-C01** example in the linked M01 addendum (high pivot 106 confirmed despite a required right-hand bar closing 107) is **not possible under strict P1 high-fractal pivot rules**; that pivot must be rejected. The actual unresolved risk is **a confirmed pivot whose structural context/reference becomes eligible after the level was crossed**, or an imported/manual known-at reference. See [R1 reference arming](../methodology/04-reference-arming-and-pivot-order.md) and [2026-11-11 audit](2026-11-11-causal-timing-reconciliation.md). This preserves the historical audit's findings while correcting the defective constructed counterexample.

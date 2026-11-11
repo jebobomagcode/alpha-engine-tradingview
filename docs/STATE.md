@@ -1,8 +1,8 @@
 # Current project state — canonical checkpoint
 
-**Checkpoint date:** 2026-11-10 (Asia/Manila)
+**Checkpoint date:** 2026-11-11 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — source-to-methodology research IN PROGRESS; targeted source and causal pre-implementation audit completed on 2026-11-10 (findings partially resolved, formal detector selection OPEN); original 35/35-page study COMPLETE.
+**Phase:** 2 — research IN PROGRESS; 2026-11-11 R1 structural-arming and R2 zone/reaction timing alternatives documented, strict-fractal AUD-C01 example corrected; detector selection and coding remain OPEN. Original 35/35-page study COMPLETE.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
@@ -26,6 +26,13 @@
 - **Lesson 09 complete:** original PDF p. 11 Support & Resistance, single annotated chart with red resistance/green support bands and repeated tests; floor/ceiling descriptions, BUY/SELL location mnemonic, support/resistance role reversal and confirmation requirement. Source `docs/lessons/09-support-resistance.md`; independent research `docs/research/09-zone-role-reversal-candidates.md`. Break, zone-touch and flip-retention definitions explicitly unresolved.
 - **Lesson 10 complete:** original PDF pp. 12–13 FOREX.com Gold Spot/USD 1H and 5m screenshots, support 4670–4680, resistance 4730–4750, sideways bias, 5m ~4710 in middle = not ideal. Conditional SELL 4730–4750 + reversal + break confirmation + stop 4755 + target support; BUY 4670–4680 + reversal + break confirmation + stop 4665 + target resistance. No reversal = no trade. Study `docs/lessons/10-marking-support-resistance.md`; research `docs/research/10-range-entries-and-confirmation-break.md`. Entry prices unknown; RR calculations in study are explicitly illustrative.
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
+
+## LATEST — 2026-11-11 M01/M02/M04 causal rules checkpoint
+- **Two new research specifications:** [R1 structural references](methodology/04-reference-arming-and-pivot-order.md) and [R2 zone/reaction event timing](methodology/05-zone-contact-reaction-timing.md). [Corrections and technical tradeoffs audit](audits/2026-11-11-causal-timing-reconciliation.md).
+- **Important corrected flaw:** a strict local high106 with any required right bar closing107 is mathematically INVALID, not a late-confirmed high. The valid risk is a confirmed pivot whose structural regime/reference becomes eligible only after a crossing. Earlier AUD-C01 fixture superseded by ARM-01/ARM-02.
+- **Provisional research baseline (not user-approved Pine settings):** R1-A freeze confirmed known pivots and regime before reference arming; no retroactive break or repeated consumption; quarantine simultaneous high/low outside bars. R1-B reset/re-cross comparator. For zone contact, R2-A requires separately completed reaction after completed touch; R2-B allows same *closed* candle touch+reaction without intrabar fill. Coach Lesson10 “entry sa break ng confirmation” remains separate range hypothesis RB1/RB2 from Lesson08 “after confirmation candle closes”.
+- **Inventory:** 16 new ARM +18 new TIME =34 additional constructed cases; previously 56 => **90 paper scenarios total, NONE run as code or real crypto backtests**. No Pine, TradingView acceptance, alerts, trading, deployments or changes to other projects.
+- **NEXT:** M04 exact candle alternatives and then M05 cross-timeframe state coherence/causal test protocol. Market scope and sole-Coach-PDF source unchanged.
 
 ## Latest targeted Ponder + Jarvis methodology audit — 2026-11-10
 

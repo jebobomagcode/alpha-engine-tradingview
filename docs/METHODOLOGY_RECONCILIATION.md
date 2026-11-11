@@ -39,3 +39,9 @@
 **P0** identity/timing and structure/pivots (M00–M01) → **P1** zones and candle signals (M02/M04) → **P2** RSI/EMA and multi-timeframe candidate states (M03/M05) → **P3** risk and optional enhancements (M06/M07). This is an engineering dependency order, not replacement of the PCSS source order. The full original PDF has already been studied in that order.
 
 **Important:** Reconciliation register OPEN does not mean earlier 26 source studies are incomplete. It means the original Coach prose lacks one uniquely reproducible automated interpretation.
+
+
+## 2026-11-11 foundational timing disposition (research only)
+- **R04/R20:** [R1 causal reference arming](methodology/04-reference-arming-and-pivot-order.md) adds strict P1 rejection versus late regime-arming distinction, prebreach guards, consumption and dual high/low outside-bar ambiguity. Corrects previous logically impossible strict-fractal AUD-C01 test; research baseline R1-A vs R1-B remains OPEN for empirical selection.
+- **R02/R03/R14:** [R2 zone/reaction timing](methodology/05-zone-contact-reaction-timing.md) distinguishes sequential later-bar reaction R2-A from same-completed-bar R2-B, invalidation precedence, geometric overlap versus fill, and Lesson10 range break RB1/RB2 distinct from Lesson08 closed candle. No production rules adopted.
+- [Audit record](audits/2026-11-11-causal-timing-reconciliation.md). All prior Coach-source observations and 26 source-study records stay intact; added technical alternatives are explicitly independent.

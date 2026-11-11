@@ -5,6 +5,8 @@
 **Status (2026-11-09, Asia/Manila):** Full original Coach PDF PCSS study COMPLETE (35 pages / 26 units). **Phase 2 formal methodology research IN PROGRESS.** New: [26-unit source traceability](docs/methodology/00-source-to-rule-traceability.md), [20 cross-lesson reconciliations](docs/METHODOLOGY_RECONCILIATION.md), [causal BOS/CHoCH foundation](docs/methodology/01-causal-market-structure.md), [entry/RSI/EMA/risk research](docs/methodology/02-topdown-entry-state-and-risk.md), [zone-generation alternatives](docs/methodology/03-zones-sr-ob-fvg-fibonacci.md). No Pine code, market backtests or deployments.
 
 
+**Latest Phase 2 research (2026-11-11):** [R1 causal structural reference arming and pivot ambiguity](docs/methodology/04-reference-arming-and-pivot-order.md), [R2 zone contact and candle timing](docs/methodology/05-zone-contact-reaction-timing.md), [Ponder correction audit](docs/audits/2026-11-11-causal-timing-reconciliation.md). 34 additional designed cases; 90 paper fixtures total, none executed. **Corrected:** strict fractal high cannot be confirmed if a required right-hand bar has a higher close. Next M04 candle geometry and M05 cross-TF events; still no Pine code or market backtests.
+
 **Latest targeted pre-implementation check (2026-11-10):** [Ponder/Jarvis audit and prioritized corrections](docs/audits/2026-11-10-phase2-preimplementation-audit.md). Important refinements: illustrated source p14 OB candle and 1→3 gap, reference arming when BOS/CHoCH pivots are late-confirmed, and Lesson08 closed-candle entry vs Lesson10 break-of-confirmation entry. **No code or market backtests performed.**
 
 ## Start here — especially after losing a ChatGPT conversation

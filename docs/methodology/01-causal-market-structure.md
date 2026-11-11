@@ -136,3 +136,7 @@ These are **expected results under explicit assumptions**, NOT tests executed by
 - Interaction with M02 location, M04 candle reaction, M05 multi-timeframe state and M06 risk. This document **does not** make a trade signal.
 
 **Research milestone 01 COMPLETE as a written, source-anchored candidate spec. M00/M01 algorithm selection and actual implementation remain OPEN.** Next module research should move to M02 support/resistance/OB/FVG and M04 confirmation-candle grammar while keeping M01 alternative choices visible.
+
+
+## 2026-11-11 cross-check and corrected example
+The 2026-11-10 addendum's AUD-C01 is **invalid for the strict fractal hypothesis M01-P1**: a proposed high pivot106 cannot be confirmed if any required right-hand candle closes107, since its high must be at least107 and violates the local-pivot maximum condition. The true later-information issue is an already **valid confirmed pivot** whose structural *role/regime/reference arming* is not established until **after** a subsequent crossing. Use the separate [R1 source-to-rule research](04-reference-arming-and-pivot-order.md) and [2026-11-11 correction audit](../audits/2026-11-11-causal-timing-reconciliation.md); do not reuse AUD-C01 as a valid strict-fractal fixture. Original Coach PDF unchanged.

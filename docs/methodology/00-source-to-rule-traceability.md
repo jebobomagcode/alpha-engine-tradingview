@@ -73,3 +73,9 @@ M00/M01 will produce:
 5. No source claim that “more confluence” implies a win rate.
 
 See [cross-lesson reconciliation](../METHODOLOGY_RECONCILIATION.md) for unresolved choices and priorities and [M00/M01 research specification](01-causal-market-structure.md).
+
+
+## 2026-11-11 extension — foundational causal constraints
+- **M01:** [R1 reference arming, prebreach and ambiguous outside bars](04-reference-arming-and-pivot-order.md). Preferred **research baseline**, not selected implementation: no retrospective event, independent pivot and regime known-at, exact-once frozen reference, abort/quarantine unorderable pivots.
+- **M02/M04/M05:** [R2 causal zone contact and confirmation timing](05-zone-contact-reaction-timing.md). Compare source-relevant R2-A subsequent candle versus R2-B same completed bar; preserve Lesson08 and Lesson10 distinct timing contracts. Geometric OHLC overlap is not an actual fill.
+- **Audit:** [November11 target reconciliation](../audits/2026-11-11-causal-timing-reconciliation.md). M03–M07 detector parameters, acceptance and performance remain OPEN.
