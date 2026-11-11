@@ -57,9 +57,9 @@
 | M02 | S/R, range, OB, FVG, Fibonacci zones | M00,M01 | Candidate zone research [03](03-zones-sr-ob-fvg-fibonacci.md); selection OPEN | geometry and mitigation validation |
 | M03 | EMA, RSI and momentum/confluence | M00,M01 | Partial research [02](02-topdown-entry-state-and-risk.md); selection OPEN | RSI contexts and ablation |
 | M04 | Candle reaction, rejection, engulfing, confirmation | M00,M02 | Candidate schema [02](02-topdown-entry-state-and-risk.md); thresholds OPEN | exact OHLC geometry |
-| M05 | HTF/LTF and setup eligibility, WAIT, directional conflicts | M00–M04 | Proposed states [02](02-topdown-entry-state-and-risk.md); incomplete | full conflict transitions |
+| M05 | HTF/LTF and setup eligibility, WAIT, directional conflicts | M00–M04 | [R4 M05 state model](07-mtf-context-conflicts-and-causal-states.md) with 30 cases; candidate selection and full runtime behavior OPEN | cross-TF timing/finality & human source-case comparisons |
 | M06 | SL/TP, sizing, margin and strategy-evaluation contract | M00,M02,M05 | Gross risk math [02](02-topdown-entry-state-and-risk.md); real execution OPEN | cost-/tick-aware quantities |
-| M07 | Validation/ablation, venue/regime and evidence reporting | M00–M06 | research protocol only | predeclare holdouts and benchmarks |
+| M07 | Validation/ablation, venue/regime and evidence reporting | M00–M06 | [M07-P1 planned validation protocol](../research/phase2-mtf-validation-and-falsification-protocol.md), NONE executed | authorize then implement test runner and realistic market studies |
 
 **Phase 2 is NOT complete.** Completion requires individual rule IDs with formal constraints, alternative definitions, counterexamples, source traceability, decision records and a coherent cross-module interface. The first increment does not close M02–M07.
 
@@ -81,3 +81,5 @@ See [cross-lesson reconciliation](../METHODOLOGY_RECONCILIATION.md) for unresolv
 - **Audit:** [November11 target reconciliation](../audits/2026-11-11-causal-timing-reconciliation.md). M03–M07 detector parameters, acceptance and performance remain OPEN.
 
 - **M04 source-to-pattern extension:** [R3 candle grammar](06-candle-pattern-and-confirmation-grammar.md) distinguishes the original engulf/rejection+follow-through/strong-candle alternatives from measurable body/wick candidate formulas, with 20 paper cases and no selected numerical thresholds. R1+R2+R3 supply 54 new constructed examples; overall research inventory 110 paper cases, zero executed tests. M05 full cross-TF state remains OPEN.
+
+- **M05 latest (2026-11-11):** [R4 multi-timeframe separate context/conditional branch specification](07-mtf-context-conflicts-and-causal-states.md) adds 30 paper cases and a decision-time HTF availability comparator; a later 4H bar cannot retroactively govern an earlier 5m setup. [M07-P1 proposed falsification protocol](../research/phase2-mtf-validation-and-falsification-protocol.md) distinguishes Coach source fidelity from formal logic, execution and market backtests. **Total documented paper cases=140; 0 executed tests**, no selected Pine rules or realized trades.
