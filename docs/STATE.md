@@ -2,7 +2,7 @@
 
 **Checkpoint date:** 2026-11-11 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — research IN PROGRESS; 2026-11-11 R1 structural-arming and R2 zone/reaction timing alternatives documented, strict-fractal AUD-C01 example corrected; detector selection and coding remain OPEN. Original 35/35-page study COMPLETE.
+**Phase:** 2 — research IN PROGRESS; 2026-11-11 R1 reference arming, R2 zone/reaction timing, and R3 candle-geometry alternative specifications documented; detector and threshold selection remain OPEN. Original 35/35-page study COMPLETE.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
@@ -26,6 +26,12 @@
 - **Lesson 09 complete:** original PDF p. 11 Support & Resistance, single annotated chart with red resistance/green support bands and repeated tests; floor/ceiling descriptions, BUY/SELL location mnemonic, support/resistance role reversal and confirmation requirement. Source `docs/lessons/09-support-resistance.md`; independent research `docs/research/09-zone-role-reversal-candidates.md`. Break, zone-touch and flip-retention definitions explicitly unresolved.
 - **Lesson 10 complete:** original PDF pp. 12–13 FOREX.com Gold Spot/USD 1H and 5m screenshots, support 4670–4680, resistance 4730–4750, sideways bias, 5m ~4710 in middle = not ideal. Conditional SELL 4730–4750 + reversal + break confirmation + stop 4755 + target support; BUY 4670–4680 + reversal + break confirmation + stop 4665 + target resistance. No reversal = no trade. Study `docs/lessons/10-marking-support-resistance.md`; research `docs/research/10-range-entries-and-confirmation-break.md`. Entry prices unknown; RR calculations in study are explicitly illustrative.
 - The full original Coach PDF page 1 was inspected visually and in extracted text. PCSS source file SHA-256 matched its manifest. No original page-1 chart figure, proof, or problem was present.
+
+## LATEST — 2026-11-11 M04 candle pattern formalization research
+- **New:** [R3 source-scoped candle geometry and confirmation](methodology/06-candle-pattern-and-confirmation-grammar.md) after R1/R2. Source p2–3 hammer/shooting star/doji, p8 engulfing, p10 engulf OR rejection+follow-through OR strong body, p13 range-break trigger. Independent mathematical proposals EN-BODY vs EN-RANGE, wick/body and wick/range alternatives, FT-1 vs FT-2, standalone strong body; no numeric thresholds or Coach-exact algorithm claimed.
+- **Key distinction:** a single large candle may satisfy more than one proposed candle description; do NOT double count as independent confluence. Engulfing and “rejection wick plus follow-through” are alternative trigger branches, and completed bar availability is required before any confirmed event.
+- **Paper case inventory:** previous 90 plus 20 CAN cases = **110 documented thought-fixture rows, 0 automated tests, 0 market-data tests**. Future candidate test runner requires a separate implementation authorization.
+- **Next authorized research:** M05 cross-timeframe state and conflict-resolution semantics, source-to-proposed-model evaluation criteria, and consistent manual acceptance checks. Do not start Pine or trade/deploy. Previous original study and other repositories untouched.
 
 ## LATEST — 2026-11-11 M01/M02/M04 causal rules checkpoint
 - **Two new research specifications:** [R1 structural references](methodology/04-reference-arming-and-pivot-order.md) and [R2 zone/reaction event timing](methodology/05-zone-contact-reaction-timing.md). [Corrections and technical tradeoffs audit](audits/2026-11-11-causal-timing-reconciliation.md).
