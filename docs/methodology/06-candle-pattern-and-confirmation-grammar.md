@@ -26,7 +26,7 @@ W_t=\min(O_t,C_t)-L_t.
 
 \(R_t=B_t+U_t+W_t\). The candle is green when \(C_t>O_t\), red when \(C_t<O_t\), and doji-color neutral when equal. Only final+available candles are considered in a **confirmed** classification; never infer last tick order from OHLC.
 
-**No divide-by-zero:** for \(R_t=0\), ratios \(B_t/R_t,U_t/R_t,W_t/R_t\) are undefined. Return \`ZERO_RANGE_OR_BAD_DATA\` for ratio-dependent patterns (a perfectly flat OHLC bar is not automatically a source-certified doji). For \(B_t=0\), a wick/body quotient is undefined even when the range is positive; use a separate wick/range comparator or an explicitly declared tick-adjusted denominator. Invalid OHLC, negative/nonfinite price or absent finality must not produce a confirmed pattern.
+**No divide-by-zero:** for \(R_t=0\), ratios \(B_t/R_t,U_t/R_t,W_t/R_t\) are undefined. Return ZERO_RANGE for ratio-dependent geometry on valid flat OHLC. A flat bar supplies valid price data and does not by itself supply the source’s two-wick doji geometry. Report malformed or missing required inputs separately. For \(B_t=0\), a wick/body quotient is undefined even when the range is positive; use a separate wick/range comparator or an explicitly declared tick-adjusted denominator. Invalid OHLC, negative/nonfinite price or absent finality must not produce a confirmed pattern.
 
 **Units:** integer tick-price representation or a consistent quoted price grid is essential before comparing boundary equality; rounding/tolerance rules are external to Coach's PDF and remain OPEN.
 
@@ -48,7 +48,9 @@ W_t=\min(O_t,C_t)-L_t.
 
 **DOJI-A:** \(B_t/R_t\le d\) with positive upper and lower wicks; Coach uses it as indecision, **NOT a standalone BUY/SELL**. At exact \(B_t=0\), doji can be a candidate when range>0; zero-range requires separate policy. Threshold \(d\) OPEN.
 
-**RJ-A (independent):** directional rejection wick with \(\max(U_t,W_t)/R_t\) or asymmetric \(W_t/B_t\) criteria, chosen only after declaring whether body=0 is allowed; location and close direction separate. Wick rejection does **not** establish institutional buy/sell volume.
+**RJ-A (independent):** test the lower wick for a bullish lower-price rejection and the upper wick for a bearish higher-price rejection. For positive range, the respective candidate fractions are \(W_t/R_t\) and \(U_t/R_t\). A wick/body comparator uses the same direction-specific numerator and requires positive body or an explicit alternative denominator. The maximum of the two wick fractions is a direction-neutral shape measurement. Location and any close-direction predicate remain separate. A wick does not identify institutional volume.
+
+**12 November correction (E6):** For a final green candle \((O,H,L,C)=(101,110,100,102)\) at a support interval ending at 100.5, \(R=10\), \(W=1\), and \(U=8\). A hypothetical 0.5 threshold applied to the maximum passes on the upper wick, while the lower-wick fraction is 0.1. The mirrored resistance example \((109,110,100,108)\) has \(U=1\) and \(W=8\). Both expose the same defect. The threshold is illustrative and the earlier proposal remains in [Git history](https://github.com/jebobomagcode/alpha-engine-tradingview/blob/bad2c01fe961f0f05de6e05555b914baf4062c5d/docs/methodology/06-candle-pattern-and-confirmation-grammar.md).
 
 **Follow-through variants for a prior rejection at \(t\):**
 - **FT-1:** next available closed candle \(t+1\) closes above (bullish) or below (bearish) the rejection candle's real-body edge.
@@ -70,7 +72,7 @@ For **Lesson10 range**: reversal candle alone is not automatically “break of c
 
 **Alternative confirmation labels are not independent probability votes:** one candle may simultaneously be bullish body-engulfing and strong-body; do not score it as two independent observations of price movement. Separate source narrative, geometric pattern and trade readiness.
 
-**Time contract:** pattern \`known_at\` is the maximum availability timestamp of its required bars. If following candle or HTF regime is unconfirmed, status is PROVISIONAL or INSUFFICIENT. A historical chart may draw a marker at candle origin, but event/alert time must be at confirmation availability.
+**Time contract:** pattern \`known_at\` is the maximum availability timestamp of its required bars. If following candle or HTF regime is unconfirmed, status is PROVISIONAL or INSUFFICIENT. A historical chart may anchor a marker at candle origin after confirmation. Eligibility begins no earlier than availability of all required evidence, and a decision or display first shown later retains its actual publication time.
 
 ## F. Planned discriminating cases — manual expectations, not executed code
 

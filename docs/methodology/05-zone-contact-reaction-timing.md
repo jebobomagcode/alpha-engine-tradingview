@@ -54,7 +54,7 @@ Zone must be active when contact evidence arises. If the source says “last tou
 - **RB1**: after a *completed* reversal candle is known, a later bar **wicks** beyond that candle's direction-specific reference extreme; a possible breakout trigger, NOT assumed filled order.
 - **RB2**: after that candle, a later bar **closes** beyond its extreme; later/less noisy, still not an executed order.
 - **RB3**: source-annotation/manual interpretation with specified confirmation candle and break point known-at.
-Keep the trigger reference (e.g., bullish signal high or bearish signal low), the signal known-at time and subsequent break distinct. No backdating: even if the signal candle's extreme would have been crossed intrabar **before it closed**, it cannot have triggered a post-close reference.
+Keep the trigger reference (e.g., bullish signal high or bearish signal low), the signal known-at time and subsequent break distinct. A signal candle cannot exceed its own final extreme. If a subsequent bar starts before the signal reference is available, a crossing observed before arming cannot qualify for a post-arming wick trigger. If only that subsequent bar’s final range is available, it does not establish whether the crossing occurred before or after arming.
 
 A range long at support and a trend short against resistance on a different timeframe are not one global BUY/SELL truth: each scenario and opposing context must be reported with rationale and invalidation.
 
@@ -91,11 +91,13 @@ All times/levels fictitious; equal boundaries, invalidation and risk follow expl
 | TIME-11 | New 1H zone becomes final during already-open 5m bar | Eligible only for later bar starting after zone known under baseline | same |
 | TIME-12 | Valid contact, 5m bullish engulf, stop unknown | RISK_INCOMPLETE, not placed trade | same |
 | TIME-13 | Source range reversal candle closes at10:05, high105; next candle wicks106 closes104 | RB1 break observed after signal, RB2 no close break | same range branch |
-| TIME-14 | Source range reversal signal itself wicks above its final high before it closes | Cannot trigger later “break of confirmation” before reference exists | same |
+| TIME-14 | Constructed RB1 case. Signal bar [10:00, 10:05) has final high 105, first available at 10:05:03. A separately timestamped observation at 10:05:01 in the subsequent bar reaches 106. No later eligible breach is supplied. | The observed excursion predates arming and cannot trigger RB1. With only the later bar’s final high 106 and no ordered evidence, classify the post-arming wick sequence as unknown. | Same range-branch boundary. |
 | TIME-15 | 4H trend source still forming, 5m zone+signal final | CONTEXT_INSUFFICIENT for that HTF requirement | same |
 | TIME-16 | Two equivalent overlapping S/R+FVG annotations generated from same bars | Two names not automatically two independent signals | same |
 | TIME-17 | 5m bar gaps from above zone to below; high/low ranges straddle zone | Geometric overlap may be recorded, exact zone-price trade/fill UNKNOWN | same |
-| TIME-18 | Green candle body ratio strong but R=0 or invalid OHLC | Reject invalid pattern arithmetic, DATA_INSUFFICIENT | same |
+| TIME-18 | An active setup already has a valid contact. A required reaction bar is either final and flat at O=H=L=C=100, or final and malformed at (O,H,L,C)=(100,100,99,101). Assume no other reaction qualifies. | Flat: ZERO_RANGE for ratio-dependent geometry, WAIT_CONFIRMATION under this candidate. Malformed: DATA_INSUFFICIENT for the affected required reaction input. | Same input distinction. |
+
+**12 November correction (E1, E5):** TIME-14 previously compared a candle’s intrabar price to its own final maximum. TIME-18 combined a strong green body with zero range and treated valid flat data as malformed. A valid bar has every constituent price at or below its final high, and zero range forces all four OHLC values equal. The corrected rows keep their IDs. [Original rows at the reviewed revision](https://github.com/jebobomagcode/alpha-engine-tradingview/blob/bad2c01fe961f0f05de6e05555b914baf4062c5d/docs/methodology/05-zone-contact-reaction-timing.md).
 
 **Review disposition:** 18 manually specified expected cases are design assertions, not executed TradingView tests, market statistics, or verified profitability.
 

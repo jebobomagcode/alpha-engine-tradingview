@@ -47,7 +47,7 @@
 ## D. Invariants to be converted into executable assertions only when separately authorized
 
 1. **As-of snapshot:** every supporting HTF/LTF bar, swing, zone and reaction has available_at <= decision_at.
-2. **No backdating:** prior-event labels must never be newly created with event time earlier than their own source known_at.
+2. **No backdating:** any actionable classification first issued at decision time must use evidence available by that decision and satisfy the applicable arming and freeze rules. A pivot, candle or zone may have an earlier historical origin coordinate. Test the origin coordinate, first eligible boundary, first publication and archived as-of output separately. A newly annotated older origin cannot change an already published historical decision. This wording supersedes the earlier ambiguous use of “event time” (12 November, E2).
 3. **No mutable past:** processing a new 4H bar may revise current interpretation, not the prior recorded snapshot from a 5m bar.
 4. **Stable symbol:** event must share an exchange-qualified product/feed identity; XAUUSDT perpetual != XAUTUSDT spot != PAXGUSDT.
 5. **Wait means wait:** in Lesson08 template absent eligible contact => no entry candidate; absent closed LTF reaction => WAIT.

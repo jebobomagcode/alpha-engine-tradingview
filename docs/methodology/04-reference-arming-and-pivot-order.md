@@ -36,7 +36,7 @@ Reference identity contains instrument key, TF, pivot ID/level, swing degree, st
 
 **R1-A — CONSERVATIVE RESEARCH BASELINE (preferred for causal safety, not selected production):**
 1. Require a final/available bar and a valid, unambiguous, *previously known* eligible pivot + regime before arming.
-2. At arming, record whether the **most recently eligible completed close** is already beyond the chosen high/low trigger threshold. If yes, mark \`PRE_BREACHED\`. The move that caused it is NOT a fresh BOS/CHoCH, and this reference cannot trigger under this policy. Wait for a **new structurally eligible reference ID**.
+2. At arming, check the **most recently eligible completed close**. A close already beyond the threshold blocks this reference under R1-A. In the older cases, PRE_BREACHED denotes this at-arming observation. A historical crossing that already reverted is a separate fact. Wait for a new structurally eligible reference ID when the at-arming check blocks.
 3. If on the correct side, allow only a **new, first completed-bar strict crossing** beyond a frozen threshold with valid prior-close evidence; emit once and atomically consume the reference.
 4. A later oscillation across the same consumed reference is NOT a second event. A newly confirmed, independently eligible pivot can create a fresh reference.
 5. CHoCH causes \`POSSIBLE_SHIFT\` status, **not** immediate opposite regime acceptance.
@@ -45,7 +45,9 @@ Reference identity contains instrument key, TF, pivot ID/level, swing degree, st
 
 **R1-C — MANUAL STRUCTURAL ANCHOR (source-faithful comparator):** Analyst supplies exact eligible swing, role, and **actual known-at timestamp**. The same no-backdating rule applies. Supports source discretionary practice, but not fully automated and not a license to infer undocumented historical availability from a screenshot.
 
-**Decision for ongoing research:** Carry R1-A as **conservative audit baseline**, R1-B as sensitivity comparator, R1-C as human-reference benchmark. None is an accepted Coach rule or selected production behavior. Revisit if R1-A suppresses many legitimate source-congruent examples or cannot practically obtain stable pivots without excessive delay.
+**Decision for ongoing research:** R1-A remains the latest-close comparator, R1-B the reset comparator, and R1-C the manual anchor comparator. A separate **pre-arm history comparator** can block a reference after any observed beyond-threshold close in a declared history window. The policies differ in coverage and information requirements. Production selection remains open.
+
+**12 November clarification (E3):** A valid high 106 is confirmed at 10:00. Completed closes of 107 and 105 are known by arming at 10:10. A later eligible close of 108 qualifies as a new crossing under the literal latest-close policy and is suppressed by the history comparator if its window includes the 107 close. The 107 close remains pre-arm under both. Keep at-arming state and pre-arm history as distinct fields.
 
 ## 5. Pivot geometry: outside bar, equality and alternating order
 
@@ -57,9 +59,9 @@ Reference identity contains instrument key, TF, pivot ID/level, swing degree, st
 
 ## 6. Temporal event protocol and key invariants
 
-For the **independent closing-break** hypothesis, let high reference \(h\) have threshold \(h+\varepsilon\), low reference \(l\) have threshold \(l-\varepsilon\), where tick buffer \(\varepsilon\) and its source are separately declared. At an eligible bar \(t\), compare the *previous eligible known close* to the frozen reference threshold, then require a **fresh** final close across it. Record the event's actual availability time, not the high/low origin timestamp.
+For the **independent closing-break** hypothesis, let high reference \(h\) have threshold \(h+\varepsilon\), low reference \(l\) have threshold \(l-\varepsilon\), where tick buffer \(\varepsilon\) and its source are separately declared. At an eligible bar \(t\), compare the *previous eligible known close* to the frozen reference threshold, then require a **fresh** final close across it. Record the crossing bar interval, the first availability of all classification evidence, and the decision/publication time separately from the reference origin.
 
-- First-crossing semantics apply only after arming; a prebreach must be identified at arming.
+- Qualifying crossings occur only after arming. Declare which at-arming or pre-arm history evidence each comparator requires before evaluating its first eligible break.
 - Do not use an unconfirmed/unknown regime to classify a past BOS/CHoCH.
 - An event at time \(t\) cannot depend on a higher-timeframe final bar available at \(t+\Delta\).
 - If pivot identity disappears under the candidate's right-hand confirmation window, classify \`PIVOT_REJECTED\`, not \`PIVOT_CONFIRMED_LATE\`.
