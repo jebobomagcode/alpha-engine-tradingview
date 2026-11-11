@@ -1,7 +1,7 @@
 # Phase 2 M07–P1 — Evaluation, Falsification and Acceptance Design for M05 Context States
 
 **2026-11-11 Asia/Manila | Research/validation PROTOCOL ONLY. No runner, no replay, no Pine, no trading, no performance sample.**
-**Inputs:** [R1 structural arming](04-reference-arming-and-pivot-order.md), [R2 zone-to-reaction](05-zone-contact-reaction-timing.md), [R3 candle grammar](06-candle-pattern-and-confirmation-grammar.md), [R4 multi-timeframe state](07-mtf-context-conflicts-and-causal-states.md), [reconciliation register](../METHODOLOGY_RECONCILIATION.md), original [Coach PDF](../../sources/coach%20trading%20lessons.pdf) SHA-256 481ca1adf146212316846823070db7ba78c788eae89b08db10f0694b61fe5730.
+**Inputs:** [R1 structural arming](../methodology/04-reference-arming-and-pivot-order.md), [R2 zone-to-reaction](../methodology/05-zone-contact-reaction-timing.md), [R3 candle grammar](../methodology/06-candle-pattern-and-confirmation-grammar.md), [R4 multi-timeframe state](../methodology/07-mtf-context-conflicts-and-causal-states.md), [reconciliation register](../METHODOLOGY_RECONCILIATION.md), original [Coach PDF](../../sources/coach%20trading%20lessons.pdf) SHA-256 481ca1adf146212316846823070db7ba78c788eae89b08db10f0694b61fe5730.
 
 ## A. A single result must not masquerade as four kinds of verification
 
@@ -13,7 +13,7 @@
 | E3 REAL MARKET RESEARCH | later fixed-venue, fixed-pair, historical as-of backtest with fees/funding, baseline/ablation, holdout | broker execution identity, future returns, guaranteed edge | NOT AUTHORIZED OR EXECUTED |
 | E4 TRADINGVIEW ACCEPTANCE | later actual Pine compilation, chart reload/realtime behavior, visible labels, alert behavior as permitted by account | external broker orders/returns | NOT AUTHORIZED OR EXECUTED |
 
-**Current case inventory:** [M01 base](01-causal-market-structure.md) 16, [entry/risk](02-topdown-entry-state-and-risk.md) 20, [M02 zones](03-zones-sr-ob-fvg-fibonacci.md) 20, [R1](04-reference-arming-and-pivot-order.md) 16, [R2](05-zone-contact-reaction-timing.md) 18, [R3](06-candle-pattern-and-confirmation-grammar.md) 20, [R4](07-mtf-context-conflicts-and-causal-states.md) 30 = **140 paper-designed rows, 0 executed test cases**. Some rows intentionally overlap; 140 is an inventory count, **not** 140 independent findings.
+**Current case inventory:** [M01 base](../methodology/01-causal-market-structure.md) 16, [entry/risk](../methodology/02-topdown-entry-state-and-risk.md) 20, [M02 zones](../methodology/03-zones-sr-ob-fvg-fibonacci.md) 20, [R1](../methodology/04-reference-arming-and-pivot-order.md) 16, [R2](../methodology/05-zone-contact-reaction-timing.md) 18, [R3](../methodology/06-candle-pattern-and-confirmation-grammar.md) 20, [R4](../methodology/07-mtf-context-conflicts-and-causal-states.md) 30 = **140 paper-designed rows, 0 executed test cases**. Some rows intentionally overlap; 140 is an inventory count, **not** 140 independent findings.
 
 ## B. Source-anchored qualitative acceptance cases: not candles from a live venue
 
