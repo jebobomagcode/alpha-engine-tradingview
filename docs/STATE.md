@@ -7,6 +7,11 @@
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
 
+## M05-R4 supplemental evidence-gate consistency audit — 2026-11-11
+- [Focused M05 source and logic audit](audits/2026-11-11-m05-evidence-gate-consistency-audit.md) compares Coach PDF pp6,10,18,27–28,32,35 against the proposed status contract. It corrects constructed case MTF-04: missing bearish rejection in a 15m range does not by itself justify WAIT_CONFIRMATION without an already eligible zone and completed contact. States must distinguish missing zone, waiting for touch, provisional touch and waiting for completed reaction.
+- The 30 MTF cases and 140 total paper-designed research rows are unchanged; this was a document/logic consistency check, NOT a newly executed fixture, Pine acceptance or market backtest. Current methodological recommendation remains independent and provisional. Continue formal research, not coding.
+
+
 ## Confirmed starting state
 - The repository was initialized with only a minimal README.
 - GitHub visibility was verified **public**. Owner specifically authorized public upload of the Coach PDF; no authorization to publish the full personal PCSS.

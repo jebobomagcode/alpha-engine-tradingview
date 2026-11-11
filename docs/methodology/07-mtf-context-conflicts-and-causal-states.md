@@ -131,7 +131,7 @@ Assume fictitious consistent feed/bar closure except explicitly changed; “elig
 | MTF-01 | 4H UP, 15m DOWN pullback, no demand contact | 4H UP retained; continuation WAIT_ZONE, not BUY or HTF reversal |
 | MTF-02 | 4H UP, 1H weakening, 15m bearish confirmation at resistance | descriptive countertrend SOL-like scalp branch; \`AGAINST_HTF\`, HTF UP unchanged |
 | MTF-03 | 4H UP, demand contact, later 15m bullish reaction, coherent stop/target | potential continuation CANDIDATE_FOR_REVIEW under declared assumptions, not filled LONG |
-| MTF-04 | 4H DOWN, 15m RANGE and no rejection | WAIT_CONFIRMATION or range-condition pending, not automatic SHORT |
+| MTF-04 | 4H DOWN, 15m RANGE and no rejection; contact and zone eligibility unspecified | Gate cannot be uniquely inferred: ZONE_INSUFFICIENT if no eligible zone, WAIT_ZONE if known zone has no completed touch, CONTACT_PENDING for an unconfirmed touch, WAIT_CONFIRMATION only after confirmed contact with no completed reaction. Not an automatic SHORT. |
 | MTF-05 | 4H DOWN, 15m bullish CHoCH only | 15m POSSIBLE_SHIFT; 4H DOWN remains until its own evidence changes |
 | MTF-06 | 4H DOWN, 15m short rejection confirmed at known resistance | conditional SHORT case; enforce zone/timing/risk, no automatic execution |
 | MTF-07 | 4H DOWN, 15m local bullish engulf only, no breakout evidence | neither 4H UP nor automatic breakout LONG |
