@@ -2,9 +2,9 @@
 
 **Scope:** Binance Spot PAXGUSDT, standard 5m candles, one versioned bullish continuation setup. This indicator describes evidence and waiting states. It defines no trading operation, strategy, alerts or production rule.
 
-- [Exact Pine v6 source](../../pine/lesson08-diagnostic.pine) SHA-256 `9c0eb91b74054f236213ad58607fbb29ceb81cffc9277072f6d7668a478b60e6`
+- [Exact v0.1.0 Pine v6 source](https://github.com/jebobomagcode/alpha-engine-tradingview/blob/387c425b24ee5bb9b56a3a1c464cd4d313d7cb74/pine/lesson08-diagnostic.pine) SHA-256 `9c0eb91b74054f236213ad58607fbb29ceb81cffc9277072f6d7668a478b60e6`
 - [M07 acceptance protocol](../research/phase2-mtf-validation-and-falsification-protocol.md#i-bounded-m07-profile) · [Frozen Binance evidence](../research/phase2-m07-frozen-market-evidence.md) · [M06 risk specification](../methodology/09-m06-risk-and-execution-uncertainty.md)
-- [Pine decision-core and evidence checks](../../tests/test_lesson08_diagnostic.py)
+- [Original decision-core and evidence checks](https://github.com/jebobomagcode/alpha-engine-tradingview/blob/387c425b24ee5bb9b56a3a1c464cd4d313d7cb74/tests/test_lesson08_diagnostic.py)
 
 ## Source and interpretation
 
@@ -110,3 +110,68 @@ A separate public Binance Spot 5m lookup begun at 06:25:44.488 UTC returned the 
 
 
 **Next verification.** Use a visible immutable build identifier when editing the draft, then repeat the saved-instance and live-hour-boundary checks when supported. Keep the same single-setup scope until the user authorizes a wider feature set.
+
+## Phase 3.1 — v0.1.1 build identity and lifecycle, 12 November 2026
+
+The v0.1.0 record above is retained as evidence for that version. Phase 3.1 began from verified main `168eabc645d3c94e1f0ec35a49966fbb3f28de18`. The tested release is [v0.1.1](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/43b9a855cc5d8018b765375ee356046dec2c5ffb), build **`L08-0.1.1-7fbb3eb381b6`**, source blob `80cd5291507fcbb8c919ed02c0f56fb921299b98`.
+
+### Source, editor, chart and saved identity
+
+| Layer | Identity and verification |
+| --- | --- |
+| Repository source | Exact UTF-8 bytes SHA-256 `1bb0613634f6cd941853552aaa5bab605b2296a541007ffb6c70f24f20b73c91`, 11,164 bytes. |
+| Reproducible build ID | Replace only the value of the `const string BUILD_ID` declaration with `__BUILD__`, keeping the quotes, other bytes and line endings. SHA-256 of those bytes is `7fbb3eb381b64b8fe5104fb07f15c25da80130c3f514e9499862279134957296`. Prefix the first 12 hex characters with `L08-0.1.1-`. The release test verifies this binding. |
+| Editor | Copied back the complete pasted source. Its SHA-256 matched the repository bytes. The same bytes remained in the editor after the first reload. |
+| Compiled chart | Identified by the displayed Build cell, the release title and the compiled panel fields. The Build cell is sourced from the constant, independent of inputs. The editor hash verifies the input bytes. TradingView exposes no independent compiled binary digest in this check. |
+| Saved script | A private save attempt stopped at TradingView's Basic limit of one saved script. There is no v0.1.1 saved-script restoration result. |
+
+### Lifecycle and declaration identity
+
+The closed departure candle may still record a first qualification under the existing R2 rules. At that same cutoff, **Current state** shows **REASSESS · episode ended**, **At last cutoff** lists the newly recorded policy or policies, and **Recorded R2-B / R2-A** retains the first cutoffs. Subsequent bars retain REASSESS and the first cutoffs, with the new-record indication cleared. The existing contact, decision, terminal and confirmation predicates continue to govern the same evidence.
+
+Setup identity is an ordered declaration key:
+
+`L08/<revision>/<anchor UTC ms>/<context known UTC ms>/<zone known UTC ms>/<exclusive expiry UTC ms>/zone=<floor>/<ceiling>`
+
+The panel wraps the zone component for readability. It displays contact open UTC, with the full contact ID in that cell's tooltip. The contact ID appends the contact open in UTC milliseconds to the setup key. The market and methodology are fixed for this profile. The key uses separate timestamps, so changing the earlier availability clock changes the identity even if the later clock and effective start remain the same. Zone values use the parsed Pine numeric values with up to 16 fractional digits in the key. Equivalent decimal spellings refer to the same numeric value. Optional nominal geometry inputs affect only that display. Enabled declarations use their full keys, and disabling the setup removes active processing. Re-enabling an identical declaration reconstructs the same identity. A new setup with an otherwise identical declaration needs a new revision. Pine recalculation still requires external records to substantiate earlier as-issued observations. [Pine numeric types](https://www.tradingview.com/pine-script-docs/language/type-system/) · [Pine input behavior](https://www.tradingview.com/pine-script-docs/concepts/inputs/)
+
+**21 local checks passed.** The existing P11 test now verifies REASSESS and the new R2-A record on the same cutoff, prior R2-B retention, and no new event or revival on the following bar. P04 verifies the both-new case. The release and declaration tests cover the source digest, each material field, distinct sub-tick values, and equivalent decimal spellings. The Python adapter still executes the bounded Pine core separately from native Pine acceptance.
+
+### Native compiled instance and historical chart checks
+
+- At **14:48:40 PHT**, Native in-place **Update on chart** compiled v0.1.1 and showed its exact Build cell on standard 5m BINANCE:PAXGUSDT. Existing revision 3 showed last closed cutoff 06:45 UTC, WAIT for closed confirmation, contact 06:20 UTC and blank R2 cutoffs.
+- At **14:49:03 PHT**, An actual reload restored the compiled v0.1.0 chart instance at the same cutoff. The editor still copied back the exact v0.1.1 bytes. The in-place update succeeded before reload. Its chart restoration failed. This is not a same-build state comparison.
+- At **14:50 PHT**, TradingView's separate Basic cap of two chart indicators surfaced during re-attachment. Once removal of the stale Lesson 08 chart instance was confirmed, the verified v0.1.1 draft was added within the available slot. The existing other indicator and saved scripts were untouched.
+- **Retrospective departure fixture, 11 November:** Version 31 used 22:00 PHT anchor, 22:50 PHT for both availability inputs, 23:15 PHT expiry and zone [4000, 4008]. In the frozen input, the 22:50 bar overlapped at low 4007.74 and the 22:55 strict engulf had low 4008.25. Native history showed both first cutoffs at **15:00 UTC**, Strict UNKNOWN and current **REASSESS**. The exact same-cutoff new-event display is also checked deterministically.
+- **Native declaration edits:** With revision 31 held fixed, support floor 4000 → 4000.001 changed the zone component. Moving context-known time from 22:50 → 22:45 PHT changed the context clock component while zone-known stayed at 22:50. The build ID and observed departure cutoffs stayed stable.
+- **Retrospective split fixture, 11 November:** Version 32 used the prior Phase 3 historical setup with the same inputs other than revision. The final build again showed R2-B **00:45 UTC**, R2-A **01:05 UTC**, Strict UNKNOWN and current EXPIRED.
+
+### Genuine live hourly rollover and fresh-instance reload
+
+On 12 November 2026, version 33 was declared prospectively at about 14:52 PHT. The anchor was 14:00 PHT, both availability inputs 14:55 PHT, exclusive expiry 15:20 PHT and the test support [3900, 4050]. Nominal risk display was disabled, with each optional price input zero. The standard BINANCE:PAXGUSDT 5m chart reported an open market. Before and after reload, the settings dialog showed exactly the same values in all 16 visible input controls.
+
+| Observed PHT | Confirmed 1H UTC / price | Last closed 5m cutoff UTC | Compiled panel observation |
+| --- | --- | --- | --- |
+| 14:54:18 | 06:00 / 3974.23 | 06:50 | WAIT for availability, no contact. |
+| 14:55:25 and 14:59:22 | 06:00 / 3974.23 | 06:55 | First eligible 5m bar forming. Previous WAIT decision retained, no contact or recorded R2 cutoff. |
+| 15:00:09 | 07:00 / 3961.14 | 07:00 | New 15:00–15:05 PHT candle forming. The closed decision recorded geometric contact at bar open 06:55 UTC and showed WAIT for confirmation. Both R2 cutoffs remained blank. |
+| 15:00:32, after actual browser reload | 07:00 / 3961.14 | 07:00 | Identical fresh build marker, setup declaration, cutoff, contact open, current WAIT reason, geometric evidence and R2 history. |
+
+The declaration key was `L08/33/1794463200000/1794466500000/1794466500000/1794468000000/zone=3900/4050`. The contact-open component is `1794466500000`. The observed hourly reference advanced on the first forming 5m bar after the hour. The closed 5m decision and open-bar display were checked independently at the same boundary. These wall-clock observations give a sampled bracket on the visible change. Exact TradingView execution time and native venue receipt ordering remain unknown. [TradingView execution model](https://www.tradingview.com/pine-script-docs/language/execution-model/) · [Confirmed higher-timeframe data](https://www.tradingview.com/pine-script-docs/concepts/other-timeframes-and-data/)
+
+### Phase 3.1 gate disposition
+
+| Gate | Status | Evidence |
+| --- | --- | --- |
+| Deterministic regression, release identity and material setup inputs | PASS | 21 local checks, including both qualifying-departure scenarios and single-field identity changes. |
+| Exact editor bytes and native compilation | PASS | Source copy-back matched the repository SHA-256. The native panel showed the corresponding build ID. |
+| In-place source update before reload | PASS | The linked update immediately displayed the v0.1.1 chart instance and build ID. |
+| Native historical lifecycle, R2 timing and declaration identity | PASS | Retrospective departure and split R2 fixtures, plus native zone and availability edits with unchanged analyst revision. |
+| Genuine live hourly rollover and closed 5m decision | PASS | Observed before and after the 15:00 PHT boundary with one identifiable build and setup. |
+| Fresh-instance same-build realtime-to-reload | PASS | 07:00 UTC cutoff, exact input readback and observed panel matched. |
+| In-place unsaved chart restoration | FAIL | Actual reload restored v0.1.0, while the editor retained the v0.1.1 text. |
+| Private saved-script creation | FAIL | TradingView Basic blocked the attempt at its one-saved-script limit. |
+| Durable saved-script restoration | NOT RUN | No saved v0.1.1 instance was available after the blocked save. |
+| Native receipt, physical touch and execution evidence | INSUFFICIENT | Chart observations preserve the geometric-only claim. |
+
+**Next verification gate.** When a private save slot is available, check saved editor source copy-back and restoration of the same compiled build with identical setup inputs. Keep the diagnostic bounded while the saved-script gate remains open.

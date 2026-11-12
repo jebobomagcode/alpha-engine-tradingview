@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3 chart diagnostic, 12 November 2026
+## Current recovery point — Phase 3.1 reliability, 12 November 2026
+
+Verify main and read [STATE](STATE.md), D-022 in [DECISIONS](DECISIONS.md), and the [acceptance record](implementation/phase3-lesson08-diagnostic.md). The current [Pine source](../pine/lesson08-diagnostic.pine) is v0.1.1, build `L08-0.1.1-7fbb3eb381b6`. Run the 21 local checks before changing it. Compare source, editor, compiled chart and durable saved script as distinct identities. Retain historical evidence and work within the single diagnostic scope.
+
+## Prior recovery point — Phase 3 chart diagnostic, 12 November 2026
 
 Verify the GitHub main HEAD and read [STATE](STATE.md), D-021 in [DECISIONS](DECISIONS.md) and the [implementation and acceptance record](implementation/phase3-lesson08-diagnostic.md). The only Phase 3 implementation is the [PAXGUSDT 5m Lesson 08 diagnostic](../pine/lesson08-diagnostic.pine). Reproduce the 19 local checks before changing logic. The implementation record identifies which native gates passed, the saved-script limit and any remaining parity gaps. Resume at owner review of this bounded diagnostic.
 

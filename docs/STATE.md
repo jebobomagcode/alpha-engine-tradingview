@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3 — one bounded chart-only diagnostic implemented. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.1 — Lesson 08 diagnostic reliability and acceptance. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
-**D-021 implementation scope:** only the Lesson 08 chart diagnostic on standard BINANCE:PAXGUSDT Spot 5m, with bounded native checks and verified repository documentation.
-**Outside D-021:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
+**D-021 / D-022 implementation scope:** the Lesson 08 chart diagnostic on standard BINANCE:PAXGUSDT Spot 5m, with bounded identity, lifecycle and native persistence checks.
+**Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3 chart diagnostic, 2026-11-12
+## Current checkpoint — Phase 3.1 reliability, 2026-11-12
+
+- Starting verified main was `168eabc645d3c94e1f0ec35a49966fbb3f28de18`. D-022 authorizes the narrow increment. [Implementation commit](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/43b9a855cc5d8018b765375ee356046dec2c5ffb) identifies Pine v0.1.1 as `L08-0.1.1-7fbb3eb381b6`.
+- **21 local checks passed.** Material declaration inputs are encoded in setup identity. A qualifying departure records the first cutoffs and shows REASSESS as current state at that cutoff.
+- Native compilation, historical fixtures and input identity passed. The genuine 15:00 PHT hourly rollover, closed 5m decision and fresh-instance same-build reload passed. In-place reload restored v0.1.0 while the editor retained the exact new bytes. TradingView Basic blocked private saving at one saved script. See the [versioned acceptance record](implementation/phase3-lesson08-diagnostic.md#phase-31--v011-build-identity-and-lifecycle-12-november-2026) for native timing and reload results.
+- **Next decision:** owner review of persistence. Run a durable private saved-script restore when supported before widening features.
+
+## Prior checkpoint — Phase 3 chart diagnostic, 2026-11-12
 
 - Started from verified `bd0a0da03a936fe9754aea0100b124a13ac00c09`. [Implementation commit](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/387c425b24ee5bb9b56a3a1c464cd4d313d7cb74) adds Pine v6 and the deterministic suite. [Source and acceptance record](implementation/phase3-lesson08-diagnostic.md).
 - **19 local checks passed**, including pinned timing cases, risk geometry, and the frozen Binance evidence. Native compilation and the exact chart identity passed. Two native chart candles matched the frozen Binance 5m OHLC and preceding 1H references. The fresh final build matched one genuine live close after browser reload. An earlier in-place update restored an older chart instance, and the Basic plan blocked private script saving.
@@ -116,4 +123,4 @@ Keep the methodology study and decision log synchronized after each verified inc
 - Actual Pine compilation and TradingView account constraints (not yet assessed for this new project).
 
 ## Explicit guardrails
-Keep development isolated to this repository. D-021 authorizes the one chart-only diagnostic. Any wider implementation needs separate owner direction. Resume using [RECOVERY](RECOVERY.md).
+Keep development isolated to this repository. D-021 and D-022 authorize the one chart-only diagnostic and its reliability checks. Any wider implementation needs separate owner direction. Resume using [RECOVERY](RECOVERY.md).
