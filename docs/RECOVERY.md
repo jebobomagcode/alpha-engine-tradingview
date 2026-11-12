@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.3 M01 pivot information probe awaiting native acceptance, 12 November 2026
+## Current recovery point — Phase 3.3 two-pivot native verification passed, 12 November 2026
+
+Owner's native v0.1.2 Spot 5m screenshots plus separate Binance public 5m retrieval independently verified strict left/right=2 pivot high **3961.97**, origin 07:55 UTC / confirmed 08:10 UTC, and pivot low **3952.13**, origin 07:30 UTC / confirmed 07:45 UTC. See [Phase 3.3 evidence](implementation/phase3-3-m01-pivot-probe.md#phase-33-owner-assisted-native-pivot-acceptance--2026-11-12-1709-pht). Not a full runtime/realtime or saved-instance parity result. **Next:** exact source v0.1.2 into the sole existing saved TradingView script and perform reopen/reload verification. No new trading features.
+
+## Prior recovery point — Phase 3.3 M01 pivot information probe awaiting native acceptance, 12 November 2026
 
 **Owner authorization D-024 and verified candidate:** [Pine v0.1.2](../pine/lesson08-diagnostic.pine) with optional strict M01-P1 5m pivot audit, OFF by default. Build `L08-0.1.2-3b9eb3065294`. [Phase 3.3 implementation/gates](implementation/phase3-3-m01-pivot-probe.md): 13 new local tests PASS, prior 21 not re-run on this version, Pine native compilation and chart/save/reload are NOT RUN. The owner's one private saved TradingView script remains **v0.1.1** until explicitly updated in the UI; rollback version retained at pre-Phase-3.3 checkpoint. Do not change previous projects, restart the original Coach PCSS study or infer financial performance. **Next:** owner-assisted 5m Spot compile and chart acceptance, compare OFF baseline and opt-in pivots, save into same slot, reload. Stop before more features.
 

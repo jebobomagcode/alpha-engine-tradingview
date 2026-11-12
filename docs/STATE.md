@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.3 — opt-in M01-P1 confirmed 5m pivot research candidate COMMITTED, native TradingView acceptance OPEN. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.3 — opt-in M01-P1 native two-pivot comparison PASSED; saved-script source/reload acceptance OPEN. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.3 M01-P1 pivot audit candidate, 2026-11-12
+## Current checkpoint — Phase 3.3 native two-pivot comparison, 2026-11-12
+
+- Owner screenshots: v0.1.2 `L08-0.1.2-3b9eb3065294` on Binance PAXGUSDT Spot 5m; M01 audit ON, strict left/right=2. Independently fetched Binance 5m candles matched **high 3961.97, origin 07:55 UTC, known 08:10 UTC** and **low 3952.13, origin 07:30 UTC, known 07:45 UTC**.
+- **PASS:** Two specific native pivot prices and modeled causal cutoffs match independent Binance OHLC recalculation. **OPEN/NOT RUN:** same-input Lesson 08 regression, full realtime pivot behavior and v0.1.2 private saved-script source/reload.
+- [Detailed acceptance evidence](implementation/phase3-3-m01-pivot-probe.md#phase-33-owner-assisted-native-pivot-acceptance--2026-11-12-1709-pht).
+- **Next:** user-assisted update of the one existing private TradingView script, preserving GitHub v0.1.1 rollback.
+
+## Previous checkpoint — Phase 3.3 M01-P1 pivot audit candidate, 2026-11-12
 
 - **Owner continuation D-024:** after Phase 3.2 completion, owner said `lets proceed` with Ponder and GitHub. Scope is one bounded research-only indicator increment. Preserve strict independence from older projects, one saved TradingView script, no trading/backtests/alerts/publication.
 - [Pine v0.1.2](../pine/lesson08-diagnostic.pine), build `L08-0.1.2-3b9eb3065294`, adds **optional OFF-by-default strict 5m pivot high/low audit** to the existing Lesson 08 source. `left/right=2` illustrative only, configurable 1–8; valid consecutive closed 5m bars required, ties excluded; origin and earliest modeled chart confirmation separated; no BOS/CHoCH automated or past backplotting.

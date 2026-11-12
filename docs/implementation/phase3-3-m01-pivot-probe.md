@@ -82,6 +82,23 @@ The initial alternative-\(\ell/r\) fixture expectation failed because it moved t
 | Same saved private script source equality and reload | NOT RUN |
 | Profitability, exchange receipt, physical touch, execution | NOT RUN / INSUFFICIENT |
 
+## Phase 3.3 owner-assisted native pivot acceptance — 2026-11-12, ~17:09 PHT
+
+The owner provided two screenshots: the v0.1.2 Pine panel on the standard Binance PAXGUSDT Spot 5-minute chart, and the `Inputs` dialog with **Show confirmed 5m pivots** enabled, **Strict pivot left bars = 2**, **Strict pivot right bars = 2**. The panel shows exact build `L08-0.1.2-3b9eb3065294`, M01 high `3961.97 · known 11-12 08:10` (UTC), and M01 low `3952.13 · known 11-12 07:45` (UTC). The Lesson 08 setup was not enabled, so `INSUFFICIENT · setup declaration` is expected.
+
+**Independent external corroboration, read-only:** Queried Binance Spot public PAXGUSDT 5m klines covering `2026-11-12T07:10:00Z` through `08:25:00Z` (16 rows). Applying the independent strict `left=2, right=2` high/low comparisons to that returned OHLC yielded:
+
+| Swing | Price USDT/PAXG | Origin 5m open UTC | Last right-bar close / earliest modeled confirmation UTC | Compared to TradingView |
+| --- | ---: | --- | --- | --- |
+| High | **3961.97** | 07:55 | **08:10** | MATCH |
+| Low | **3952.13** | 07:30 | **07:45** | MATCH |
+
+**PASS (bounded native + Binance candle comparison):** The two observed native pivot prices and known-at labels agree with independently retrieved exchange-candle data and causal two-right-bar timing. The chart rendered the v0.1.2 panel and the opt-in controls; the earlier screenshot independently showed the two M01 rows OFF by default.
+
+**Still not verified:** Full-session pivot output, realtime developing-candle behavior, future data revisions, native receipt timestamps, v0.1.1 versus v0.1.2 identical-setup parity, exact saved-source v0.1.2 contents, saved-chart reload, and trading performance. Do not infer these from a two-pivot match.
+
+**Next:** Update the existing sole private TradingView script in Pine Editor to the exact verified v0.1.2 source (preserve v0.1.1 rollback in GitHub), save to the **same script slot**, reopen it and verify build / source / chart restoration. Do not create a second script or add full BOS/CHoCH before acceptance.
+
 ## Stop and follow-up
 
 Stop this increment at the **v0.1.2 candidate awaiting native TradingView acceptance**. Do not auto-enable pivot audit for signals, auto-arm BOS/CHoCH, claim source-verified structural trend or expand to new symbols. If the prototype fails compile or parity, fix the specific defect against v0.1.1 rollback and retain both records. Native acceptance must precede any broad feature expansion.
