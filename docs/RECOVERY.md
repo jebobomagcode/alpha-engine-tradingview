@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.3 two-pivot native verification passed, 12 November 2026
+## Current recovery point — Phase 3.3 saved-build visual restoration and third pivot, 12 November 2026
+
+Owner screenshot after instructed refresh shows build `L08-0.1.2-3b9eb3065294` on qualified BINANCE:PAXGUSDT Spot 5m and reopened named Pine Editor with matching v0.1.2 header. A new low `3922.30`, origin 09:00 UTC and known 09:15 UTC, was separately checked against Binance Spot 5m OHLC and passed strict 2-left/2-right pivot timing. Prior 3961.97 high remains. **Only visual source header and compiled build verified after reload; full saved-source SHA-256 and all-input persistence still open.** See [Phase 3.3 gate ledger](implementation/phase3-3-m01-pivot-probe.md#owner-assisted-v012-saved-build-reload-and-third-pivot--2026-11-12-approximately-1716-pht). Next owner-assisted step: copy entire reopened named Pine v0.1.2 editor file for content comparison, then assess remaining parity. Do not create another private script or expand to BOS/CHoCH.
+
+## Prior recovery point — Phase 3.3 two-pivot native verification passed, 12 November 2026
 
 Owner's native v0.1.2 Spot 5m screenshots plus separate Binance public 5m retrieval independently verified strict left/right=2 pivot high **3961.97**, origin 07:55 UTC / confirmed 08:10 UTC, and pivot low **3952.13**, origin 07:30 UTC / confirmed 07:45 UTC. See [Phase 3.3 evidence](implementation/phase3-3-m01-pivot-probe.md#phase-33-owner-assisted-native-pivot-acceptance--2026-11-12-1709-pht). Not a full runtime/realtime or saved-instance parity result. **Next:** exact source v0.1.2 into the sole existing saved TradingView script and perform reopen/reload verification. No new trading features.
 

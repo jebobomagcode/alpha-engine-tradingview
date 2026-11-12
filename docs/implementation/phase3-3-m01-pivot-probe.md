@@ -99,6 +99,26 @@ The owner provided two screenshots: the v0.1.2 Pine panel on the standard Binanc
 
 **Next:** Update the existing sole private TradingView script in Pine Editor to the exact verified v0.1.2 source (preserve v0.1.1 rollback in GitHub), save to the **same script slot**, reopen it and verify build / source / chart restoration. Do not create a second script or add full BOS/CHoCH before acceptance.
 
+## Owner-assisted v0.1.2 saved-build reload and third pivot — 2026-11-12, approximately 17:16 PHT
+
+The owner supplied a TradingView screenshot following the previously instructed hard refresh and reopened-script check. It shows **Binance PAX Gold / TetherUS Spot 5m** (no perpetual marker), the active chart indicator title `Alpha Engine | Lesson 08 Research v0.1.2`, and on-chart build `L08-0.1.2-3b9eb3065294`. The Pine Editor displays the named `Alpha Engine TradingVie...` document and source lines `//@version=6`, `indicator("Alpha Engine | Lesson 08 Research v0.1.2", ...)`, and `const string BUILD_ID = "L08-0.1.2-3b9eb3065294"`. This supports the **visible build/editor restoration** result after the owner's reported reload. It does **not** prove exact saved-source byte parity, since no complete v0.1.2 editor export was supplied. It also does not establish an independent remote TradingView storage/API readback.
+
+The M01 panel remained active and showed **high 3961.97, known 08:10 UTC**, while the most recent qualifying low had advanced from 3952.13 to **3922.30, known 09:15 UTC**. The expected `INSUFFICIENT · setup declaration` remained present for the separately disabled Lesson 08 setup, and this is not an indicator defect.
+
+**Independent corroboration:** A public read-only Binance **Spot PAXGUSDT 5m** query for `2026-11-12T08:40:00Z` through `09:20:00Z` yielded the relevant candles. The pivot-origin bar opened at **09:00 UTC** with low **3922.30**; the two later completed 5m bars opened 09:05 (low 3924.79) and 09:10 (low 3926.20). Both earlier neighboring 5m bars opened 08:50 (low 3931.67) and 08:55 (low 3926.02). Therefore `3922.30` is a strict low among two preceding and two following bars. The **09:10–09:15** final right-hand candle gives a modeled earliest confirmation at **09:15 UTC**, exactly matching the panel.
+
+| Acceptance gate | Status | Scope and limitation |
+| --- | --- | --- |
+| v0.1.2 build visible on Spot 5m after owner's reported hard refresh | **PASS (visual)** | Correct v0.1.2 build, non-perpetual symbol and source header in named Pine Editor |
+| Reopened named Pine Editor header/build | **PASS (visual)** | Only first source lines inspected, not all bytes |
+| M01 pivot low 3922.30 / 09:15 UTC | **PASS (native + independent Binance OHLC)** | Third specific pivot corroborated; origin 09:00 UTC, 2+2 strict comparison |
+| Prior high 3961.97 / 08:10 UTC still displayed | **PASS (visual)** | Previously independently corroborated |
+| Complete saved v0.1.2 source hash equality | **NOT VERIFIED** | Requires owner copy/export of complete named editor source |
+| Native v0.1.2 all-input reload parity and full-session/realtime behavior | **NOT VERIFIED / NOT RUN** | Screenshot does not show all settings across refresh, native receipt times or forming-bar behavior |
+| Full Coach structure, BOS/CHoCH, strategy, trading performance | **NOT IMPLEMENTED / NOT RUN** | Beyond current opt-in research probe |
+
+**Next:** Complete **same-saved-script** source equality without creating another script. From the reopened named Pine Editor, copy the entire source to `.pine` or `.txt`, upload it, and compare raw and LF-normalized SHA-256 against GitHub. Optionally check pivot audit ON and left/right=2 after another refresh. Do not claim the whole Phase 3.3 is accepted solely on the screenshot or develop further detector logic yet.
+
 ## Stop and follow-up
 
 Stop this increment at the **v0.1.2 candidate awaiting native TradingView acceptance**. Do not auto-enable pivot audit for signals, auto-arm BOS/CHoCH, claim source-verified structural trend or expand to new symbols. If the prototype fails compile or parity, fix the specific defect against v0.1.1 rollback and retain both records. Native acceptance must precede any broad feature expansion.

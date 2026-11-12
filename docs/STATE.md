@@ -2,12 +2,18 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.3 — opt-in M01-P1 native two-pivot comparison PASSED; saved-script source/reload acceptance OPEN. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.3 — M01-P1 three native pivots independently corroborated; reported reload restores v0.1.2 build/editor header; exact saved-source and broader parity OPEN. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.3 native two-pivot comparison, 2026-11-12
+## Current checkpoint — Phase 3.3 reported v0.1.2 reload and third pivot, 2026-11-12
+
+- Owner screenshot after the instructed reload shows the named saved Pine Editor with `v0.1.2` source header, the qualified Binance PAXGUSDT **Spot 5m** chart and the same build `L08-0.1.2-3b9eb3065294` displayed. **PASS (visual)** for same-build restoration; **NOT VERIFIED** for full saved-source byte equality.
+- **Third independently checked pivot:** strict M01 low **3922.30 USDT/PAXG**, origin **09:00 UTC**, earliest modeled confirmation **09:15 UTC**. Read-only Binance 5m OHLC has two higher lows on both sides of the candidate; native panel matches the result. Prior high 3961.97, known 08:10 UTC, remains displayed.
+- [Full evidence and gate ledger](implementation/phase3-3-m01-pivot-probe.md#owner-assisted-v012-saved-build-reload-and-third-pivot--2026-11-12-approximately-1716-pht). **Next:** owner export complete named v0.1.2 Pine Editor source for hash comparison, with same single private script slot retained.
+
+## Prior checkpoint — Phase 3.3 native two-pivot comparison, 2026-11-12
 
 - Owner screenshots: v0.1.2 `L08-0.1.2-3b9eb3065294` on Binance PAXGUSDT Spot 5m; M01 audit ON, strict left/right=2. Independently fetched Binance 5m candles matched **high 3961.97, origin 07:55 UTC, known 08:10 UTC** and **low 3952.13, origin 07:30 UTC, known 07:45 UTC**.
 - **PASS:** Two specific native pivot prices and modeled causal cutoffs match independent Binance OHLC recalculation. **OPEN/NOT RUN:** same-input Lesson 08 regression, full realtime pivot behavior and v0.1.2 private saved-script source/reload.
