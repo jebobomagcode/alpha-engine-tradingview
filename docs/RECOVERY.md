@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.4 inactive-setup native toggle comparison passed, 12 November 2026
+## Current recovery point — Work resumption and native terminal-state comparisons, 12 November 2026
+
+Verify actual GitHub main and read [STATE](STATE.md) and the [dated audit](audits/2026-11-12-work-resumption-phase3-4.md). At reviewed main `43d2af1a03554eeeb013837863c43bfc20e466ef`, the existing 39 checks passed locally, the corrected GitHub CI log matched, and five pivot prices and modeled cutoffs matched fresh Binance Spot evidence. The installed private Pine build `L08-0.1.2-3b9eb3065294` showed same-cutoff M01 OFF/ON parity for pinned revisions 31/32 on the standard Spot 5m chart, with enabled historical contact/R2 and retained REASSESS/EXPIRED states. The original chart inputs were restored and read back. No saved-script operations were performed. Keep original transition-cutoff and live/reload gates open, and retain the M01 nonpositive-price discrepancy for owner review. D-023 was used once; do not repeat deletion or create an additional save. Stop before any new Pine increment.
+
+## Prior recovery point — Phase 3.4 inactive-setup native toggle comparison passed, 12 November 2026
 
 Owner screenshots comparing 18:12:42 and 18:14:40 PHT showed the same last completed `BINANCE:PAXGUSDT` Spot 5m cutoff (`2026-11-12 10:10 UTC`) with M01 audit ON vs OFF. All original Lesson 08 panel outputs matched; only M01 high `3961.97 known 08:10` and low `3938.08 known 10:10` changed to `Off · research`. [Detailed native comparison](implementation/phase3-4-lesson08-m01-isolation.md#owner-assisted-native-m01-onoff-comparison--november-12-2026-18121814-pht). CI source/model tests still 39/39 PASS. **Scope:** The declared setup was disabled, so contact and R2-B/R2-A active branches remain NOT RUN. No Pine source changes required. Maintain v0.1.2 saved private script, v0.1.1 rollback and isolated repo; proceed with actual source-grounded branch coverage only if owner authorizes next step.
 

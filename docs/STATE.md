@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.4 — Lesson 08/M01 isolation CI 39/39 PASS, native same-cutoff OFF/ON parity PASS for disabled-setup branch; active contact/R2 native parity OPEN. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.4 — Lesson 08/M01 isolation, 39/39 local and pinned CI PASS. Native same-cutoff OFF/ON PASS for the disabled setup and two enabled historical terminal reconstructions. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
-**D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
+**D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 authorizes the review and bounded comparisons; preserve the sole private v0.1.2 save.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.4 owner-assisted M01 toggle regression, 2026-11-12
+## Current checkpoint — Work resumption audit and native Phase 3.4 continuation, 2026-11-12
+
+- Reviewed main `43d2af1a03554eeeb013837863c43bfc20e466ef`. Pine v0.1.2 build `L08-0.1.2-3b9eb3065294`, test source, original Coach PDF and prior evidence preserved. See the [full audit, methodology assessment and gate ledger](audits/2026-11-12-work-resumption-phase3-4.md).
+- **PASS:** 39/39 local and pinned CI regression checks. All five prior pivot observations match the [34-row Binance Spot receipt](research/evidence/phase34-audit-paxgusdt-5m-2026-11-12.json). At native cutoff 2026-11-12 10:45 UTC, only the M01 rows changed in two pinned enabled-setup pairs: revision 32 EXPIRED with retained split R2 cutoffs and revision 31 REASSESS with both retained cutoffs at departure. Original chart inputs verified after restoration.
+- **FAIL:** M01's OHLC-window predicate admits nonpositive prices, unlike L08. The demonstrated edge case does not affect the five observed positive-price windows or L08 isolation. **NOT RUN:** native toggle pairs at original nonterminal/terminal transition cutoffs, native invalidation and genuine v0.1.2 live-to-reload parity. **INSUFFICIENT:** atomic all-input saved-script reload, physical touch and actual receipt order.
+- **Next decision:** owner review. Prefer a prospective same-input native transition comparison and matched reload, then a separately scoped M01 data-validity correction if approved.
+
+## Previous checkpoint — Phase 3.4 owner-assisted disabled-setup M01 toggle regression, 2026-11-12
 
 - Owner screenshots 18:12:42 (M01 ON, left/right 2/2) and 18:14:40 PHT (M01 OFF) show **same PAXGUSDT Spot 5m last-closed cutoff 10:10 UTC**, v0.1.2 build, prior 1H context `10:00 · 3940.63 · anchor unverified`, `INSUFFICIENT · setup declaration`, no contact, no R2 cutoffs, same strict/evidence/nominal/policy rows; M01 high/low switch correctly from prices to `Off · research`.
 - **PASS:** native OFF/ON original-field parity for the disabled-setup branch, plus 39/39 CI source/model tests. **NOT RUN:** active contact, R2-B/R2-A and terminal state toggle parity; realtime receipt behavior. [Evidence table](implementation/phase3-4-lesson08-m01-isolation.md#owner-assisted-native-m01-onoff-comparison--november-12-2026-18121814-pht).
@@ -172,7 +179,7 @@
 - **Boundaries:** Coach original PDF sole Coach source; user targets crypto including separately exchange/product-qualified XAUUSDT, XAUTUSDT, PAXGUSDT. 0 Pine implementations, 0 actual TradingView chart tests, 0 market backtests, 0 deployments, 0 trades, no other projects accessed.
 
 ## GitHub continuity rule
-Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and read SOURCE_STUDY_COMPLETION_AUDIT.md, then continue the next OPEN Phase2 methodological definition without restarting source-study lessons. Don't restart Lessons01–21, Q&A1–3 or N-01/N-02; no coding without explicit authorization.
+Keep the methodology study and decision log synchronized after each verified increment. Obtain the actual latest commit from GitHub, do not assume this text contains a self-updating SHA. If a new chat begins, verify the PDF identity and read SOURCE_STUDY_COMPLETION_AUDIT.md, then use the current checkpoint above without restarting source-study lessons. Don't restart Lessons01–21, Q&A1–3 or N-01/N-02; no coding without explicit authorization.
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.

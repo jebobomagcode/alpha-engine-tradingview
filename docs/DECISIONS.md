@@ -33,11 +33,13 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 
 | D-025 | **Owner authorized Phase 3.4 regression-only L08/M01 compatibility checks, 2026-11-12.** | Following Phase 3.3 bounded acceptance, owner directed `lets proceed` with Ponder/GitHub. Scope: confirm opt-in M01 cannot change original L08 method; source isolation and deterministic replay only, followed by owner-assisted native ON/OFF comparison. [Phase 3.4 acceptance record](implementation/phase3-4-lesson08-m01-isolation.md). `v0.1.2` Pine unchanged; CI [39/39 PASS](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43195302296). | Stop before new market-structure/trade features; native same-input/same-cutoff parity, contact/R2 and realtime branches remain open. |
 
+| D-026 | **Owner authorized the Work resumption audit and bounded Phase 3.4 verification, 2026-11-12.** | Review prior Work and owner-assisted acceptance, verify CI and fresh public pivot evidence, and compare pinned setups on the existing qualified TradingView chart. [Dated audit and ledger](audits/2026-11-12-work-resumption-phase3-4.md). | Stop for owner review. The D-023 cleanup was exercised. Preserve the existing private save and source. Further Pine changes, deletion, public publishing and strategy expansion are outside this authorization. |
+
 ## Why indicator-first is a working default
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
-Owner has authorized Phase 3.3 one-step M01 pivot audit under D-024; see [current plan and native open gates](implementation/phase3-3-m01-pivot-probe.md). Preserve Phase 3.2 completion and the installed v0.1.1 rollback; native compilation/acceptance pending. [Current checkpoint](STATE.md)
+Retain v0.1.2 and the v0.1.1 GitHub rollback. Review the Phase 3.4 native transition/reload gates and M01 price-domain finding before authorizing further Pine work. [Current checkpoint](STATE.md)
 
 ## Earlier research-stage decision
 Full original source study of 21 lessons, 3 Q&As and both final notes, all 35 pages, is COMPLETE. See [source completion audit](SOURCE_STUDY_COMPLETION_AUDIT.md). Last note title says BSP charting but plots PSE:BPI, distinct from BSP central-bank rate context. Phase 2 methodology research has started: five written traceability/reconciliation/method specs are linked from README and STATE. Their quantitative definitions are independent candidates, NOT selected Pine or an empirically validated trading edge; no code/backtests/deployments/trades. Crypto-only market scope and independent-project boundaries remain.

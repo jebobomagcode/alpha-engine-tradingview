@@ -102,3 +102,7 @@ The owner provided two screenshots of the *same* `BINANCE:PAXGUSDT` **Spot 5m** 
 | Native realtime forming-to-close / venue receipt order | **NOT RUN / INSUFFICIENT** |
 
 **Disposition:** The strictly bounded Phase 3.4 *code-level isolation plus disabled-setup native toggle test* passes. Full activated-setup contact/reaction parity remains an explicit follow-up acceptance task. Do not alter Pine, override historical source events, automate trades or label those unexercised branches as passed.
+
+### Subsequent Work audit and bounded continuation — November 12, 2026
+
+The [dated Work audit](../audits/2026-11-12-work-resumption-phase3-4.md) adds direct native same-cutoff M01 toggle parity for two pinned **enabled historical reconstructions** with retained contact and R2 records, one EXPIRED and one REASSESS. The earlier owner-assisted disabled-setup results above remain the original record. Toggle parity at original transition cutoffs, native invalidation and genuine live-to-reload parity remain NOT RUN. The current gate ledger is in the dated audit.
