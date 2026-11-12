@@ -7,7 +7,14 @@
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 covers bounded Phase 3.4 review. D-027 authorizes the exact private v0.1.3 replacement and preserves the observed native v0.1.2 backup for rollback.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current draft research — Phase 3.6, 2026-11-13 (Asia/Manila)
+## Current Phase 3.6 prospective annotation pilot — authorized, preparation complete (2026-11-13 Asia/Manila)
+
+- **Owner authorized** a bounded external S0 structural-reference annotation pilot; this does NOT authorize v0.1.4 Pine, automated BOS/CHoCH, trading, publication, or changing the accepted private save. The [preregistered 12-slot protocol](research/phase3-6-prospective-annotation-pilot.md) and research-only validator were committed to [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2). Fixed PAXGUSDT Spot standard 5m cutoff slots 09:00, 15:00 and 21:00 PHT Nov 14–17, 2026, all prospective collection **NOT RUN** until witnessed.
+- **PASS:** [GitHub Actions run 43290622458](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43290622458): **67/67** checks (55 accepted baseline + 12 validator regression tests). The checks verify schema/time/role consistency, not truth of screenshot time, independent reviewers or future-hidden source evidence. Existing isolated structural research suite 21/21 was previously reported by Work but not rerun by this CI.
+- **Next evidence gate:** owner/Work must secure time-stamped chart snapshots and prospectively submitted S0 annotations (R1, R2 when independently available), recording MISSED/INVALID slots and keeping owner-private raw screenshots out of the public repository. No data capture, independent annotation or human agreement is claimed yet.
+- **Preserved:** `main` at `319459863fc138e8d347a1b00bc1de56fabb114c` and sole private TradingView Pine v0.1.3 build `L08-0.1.3-3e3d909ba9f5`; no Pine/source modifications or new saved scripts.
+
+## Previous draft research — Phase 3.6, 2026-11-13 (Asia/Manila)
 
 - Accepted main was verified at `319459863fc138e8d347a1b00bc1de56fabb114c`. [Draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) contains research only. This branch checkpoint does not change the accepted main or private v0.1.3 baseline recorded below.
 - **PASS:** original Coach figure and text review for PDF pp. 6, 9–10, 14–16 and 25, plus 21/21 isolated Python checks on F01–F20 and a constructed S0/S1 prefix. See [contract](research/phase3-6-structural-reference-contract.md) and [results and limitations](research/phase3-6-structural-reference-adjudication.md).

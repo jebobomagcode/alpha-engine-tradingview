@@ -70,7 +70,7 @@ Practical pilot **process gate**, not a statistical power threshold: aim for at 
 | Gate | At protocol creation |
 | --- | --- |
 | Fixed sampling slots, evidence schema and abstention policy | PREREGISTERED, pending independent review |
-| Research validator and controlled tests | Pending CI |
+| Research validator and controlled tests | **PASS** — [GitHub Actions run 43290622458](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43290622458) **67/67** including 12 new validator tests |
 | Any of the 12 live chart captures | **NOT RUN** |
 | Any prospective human/manual annotation | **NOT RUN** |
 | Inter-reviewer agreement | **NOT RUN** |
