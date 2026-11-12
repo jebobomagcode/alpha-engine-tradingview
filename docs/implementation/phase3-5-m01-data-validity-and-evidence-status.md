@@ -34,12 +34,20 @@ Rows `M01 high` and `M01 low` intentionally **retain the last known historical p
 
 | Gate | Current |
 | --- | --- |
-| New v0.1.3 candidate committed to GitHub | PENDING |
-| Historical 39 v0.1.2 checks | PENDING new CI |
-| New independent M01 validity and freshness checks | PENDING new CI |
+| New v0.1.3 candidate committed to GitHub | **PASS** — commit `4065e3b422fa5d2a5b4a92e12bbd364cea2a56f5`, draft PR #1 |
+| Historical 39 v0.1.2 checks | **PASS** — pinned baseline tests on GitHub Actions |
+| New independent M01 validity and freshness checks | **PASS** — 11 new tests on GitHub Actions |
 | Native TradingView compilation and panel evidence | NOT RUN |
 | New build persistence in sole private saved script | NOT RUN — do not overwrite v0.1.2 prematurely |
 | Realtime forming → close / receipt timing | NOT RUN |
 | Trading performance or signal validation | OUT OF SCOPE |
 
 **Deployment discipline:** v0.1.2 remains the single private saved TradingView script. Keep the v0.1.2 and v0.1.1 exact source history as rollback. Do not publish the Pine script publicly or change other projects.
+
+## Actual automated acceptance
+
+- [Push CI 43212688894](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43212688894) at `4065e3b422fa5d2a5b4a92e12bbd364cea2a56f5`: **50/50 PASS** (21 original L08, 13 historically pinned Phase 3.3, five historically pinned Phase 3.4, eleven new Phase 3.5).
+- [PR CI 43213003067](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43213003067): **PASS**, same code revision. Pine file has reproducible build `L08-0.1.3-3e3d909ba9f5`, Git blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`.
+- **Not validated:** Pine v6 native compiler, chart states, full exact source save/reload, causal realtime cutoffs, venue receipts. Local Python source/model checks cannot establish those gates.
+
+**Promotion gate:** Keep this [draft PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) separate from accepted `main` until native TradingView compile and at least the currently observable valid-window/unchanged-L08 checks have been reviewed. No replacement of the sole private saved v0.1.2 script before acceptance. Later native work must distinguish historical reconstructed values and actual closed-bar live observations.
