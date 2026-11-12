@@ -1,13 +1,19 @@
 # Current project state — canonical checkpoint
 
-**Checkpoint date:** 2026-11-12 (Asia/Manila)
+**Checkpoint date:** 2026-11-13 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.5 ACCEPTED and merged to GitHub `main` as Pine v0.1.3; named private TradingView script v0.1.3 (version 3.0) also accepted within bounded evidence. 55/55 post-merge CI PASS. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** AI-only accelerated engineering (I1 research structure next); accepted Pine v0.1.3 from Phase 3.5 remains baseline. 55/55 merged CI PASS. Original 35-page/26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 covers bounded Phase 3.4 review. D-027 authorizes the exact private v0.1.3 replacement and preserves the observed native v0.1.2 backup for rollback.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current Phase 3.6 prospective annotation pilot — authorized, preparation complete (2026-11-13 Asia/Manila)
+## ACTIVE DIRECTIVE D-032 — AI-only accelerated completion, 2026-11-13 PHT
+
+**Owner override:** No additional human reviewers or chart annotation tasks. Only the original Coach PDF and completed PCSS are Coach-authoritative; AI independently formalizes unquantified mechanics as explicitly labeled, testable experimental rules. **The 12-slot prospective human pilot is cancelled as a required gate before data collection:** 0 captures, 0 labels, 0 human agreement; the November 14–17 slots are cancelled, not missed. Preserve the historical preregistration for audit, but do not seek owner screenshots, recruit reviewers, schedule reminders or wait for those observations.
+
+**Next required execution:** [I1–I6 AI-only completion roadmap](implementation/ai-only-accelerated-completion-plan.md). Start causal M01 ordered structure and reference arming with synthetic and verified historical closed-bar tests; then M02 zone, M03 EMA/RSI, M04 candle, M05 top-down state, M06 risk and private Pine acceptance increments. The accepted GitHub main and sole private Pine v0.1.3 remain unchanged until a new candidate is genuinely verified. No public publication, auto trading, broker access, guarantees or unverified venue receipts.
+
+## HISTORICAL Phase 3.6 prospective annotation pilot — authorized, preparation complete (2026-11-13 Asia/Manila)
 
 - **Owner authorized** a bounded external S0 structural-reference annotation pilot; this does NOT authorize v0.1.4 Pine, automated BOS/CHoCH, trading, publication, or changing the accepted private save. The [preregistered 12-slot protocol](research/phase3-6-prospective-annotation-pilot.md) and research-only validator were committed to [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2). Fixed PAXGUSDT Spot standard 5m cutoff slots 09:00, 15:00 and 21:00 PHT Nov 14–17, 2026, all prospective collection **NOT RUN** until witnessed.
 - **PASS:** [GitHub Actions run 43290622458](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43290622458): **67/67** checks (55 accepted baseline + 12 validator regression tests). The checks verify schema/time/role consistency, not truth of screenshot time, independent reviewers or future-hidden source evidence. Existing isolated structural research suite 21/21 was previously reported by Work but not rerun by this CI.

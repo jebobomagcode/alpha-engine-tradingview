@@ -1,4 +1,8 @@
-# Phase 3.6 — prospective S0 annotation pilot (preregistered protocol v1)
+# Phase 3.6 — prospective S0 annotation pilot (historical, superseded)
+
+**HISTORICAL — CANCELLED BEFORE COLLECTION by owner D-032 on 2026-11-13 PHT.** This proposal and its validator are retained only as prior research. Its 12 planned future slots were cancelled, NOT missed or completed; 0 captures, 0 reviewer records, no human agreement. Do not solicit any reviewer or owner action. Current path: [AI-only engineering](../implementation/ai-only-accelerated-completion-plan.md). The text below is superseded historical documentation, not an active task.
+
+
 
 **Status: COLLECTION NOT STARTED.** Authorized by the owner after the Phase 3.6 review (2026-11-13, Asia/Manila). This is a **read-only research protocol**, not a selected BOS/CHoCH rule, live signal, accepted Pine feature, trading strategy or finding about analyst agreement. Complete original Coach source and Phase 3.6 methodology remain unchanged.
 

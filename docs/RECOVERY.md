@@ -1,5 +1,11 @@
 # New ChatGPT conversation recovery — START HERE
 
+## CURRENT: D-032 AI-only development; no further human consultation (2026-11-13 PHT)
+
+Owner removed prospective human annotations and routine screenshot tasks as project requirements. The 12-slot Nov 14–17 pilot is **CANCELLED BEFORE COLLECTION**, preserving its research-only preflight (0 captures, 0 manual labels, 0 reviewer pairs). Do not count slots as missed, schedule reminders or wait for humans. Use [AI-only completion plan](implementation/ai-only-accelerated-completion-plan.md) immediately: build AI-selected, clearly labeled experimental M01 structural references and tests, then M02/M03/M04/M05/M06 integration and bounded private Pine acceptance. Preserve 26 completed PCSS lessons, original Coach PDF, Phase 3.5 main v0.1.3 / private save 3.0 / rollback. Keep source-unknown as UNKNOWN and distinguish real venue receipts from modeled closed-bar clocks. No public publication or live trades.
+
+
+
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
 ## Current draft recovery point — Phase 3.6 structural-reference research, 13 November 2026 (Asia/Manila)

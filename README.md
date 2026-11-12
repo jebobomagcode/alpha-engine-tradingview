@@ -2,6 +2,9 @@
 
 **Independent, source-grounded, research-enhanced TradingView project.**
 
+**Active owner directive D-032 (2026-11-13 PHT): [accelerated AI-only implementation](docs/implementation/ai-only-accelerated-completion-plan.md).** No more human consultations, manual annotation tasks or screenshot collection gates; the planned 12-slot pilot was cancelled before any captures. The Coach PDF and 26 PCSS studies are the only Coach-method authority. AI-generated numeric rules must be explicitly independent and tested. Continue I1 structural reference, then zones, candles, EMA/RSI, MTF context and risk; preserve accepted private Pine v0.1.3 and rollbacks. No trades or public publication.
+
+
 **Phase 1 and early Phase 2 record (2026-11-09, Asia/Manila):** Full original Coach PDF PCSS study COMPLETE (35 pages / 26 units). **Phase 2 formal methodology research IN PROGRESS.** New: [26-unit source traceability](docs/methodology/00-source-to-rule-traceability.md), [20 cross-lesson reconciliations](docs/METHODOLOGY_RECONCILIATION.md), [causal BOS/CHoCH foundation](docs/methodology/01-causal-market-structure.md), [entry/RSI/EMA/risk research](docs/methodology/02-topdown-entry-state-and-risk.md), [zone-generation alternatives](docs/methodology/03-zones-sr-ob-fvg-fibonacci.md). No Pine code, market backtests or deployments.
 
 

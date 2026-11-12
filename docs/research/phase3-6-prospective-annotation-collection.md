@@ -1,4 +1,8 @@
-# Phase 3.6 — S0 pilot collection checklist and preflight ledger
+# Phase 3.6 — S0 pilot collection checklist and preflight ledger (historical, superseded)
+
+**HISTORICAL — CANCELLED BEFORE COLLECTION by owner D-032 on 2026-11-13 PHT.** This proposal and its validator are retained only as prior research. Its 12 planned future slots were cancelled, NOT missed or completed; 0 captures, 0 reviewer records, no human agreement. Do not solicit any reviewer or owner action. Current path: [AI-only engineering](../implementation/ai-only-accelerated-completion-plan.md). The text below is superseded historical documentation, not an active task.
+
+
 
 **Checkpoint:** 2026-11-13 PHT. **INDEPENDENT_EXTENSION:** operator checklist for the [preregistered v1 protocol](phase3-6-prospective-annotation-pilot.md). The sampling grid, evidence schema and policy comparators are unchanged.
 
