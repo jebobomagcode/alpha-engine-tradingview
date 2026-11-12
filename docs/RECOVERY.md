@@ -1,8 +1,8 @@
 # New ChatGPT conversation recovery — START HERE
 
-## CURRENT — AI-only integrated Pine v0.1.4 candidate
+## CURRENT — AI-only integrated Pine v0.1.4 private release
 
-Verify [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) and the [integrated candidate record](implementation/ai-only-integrated-candidate.md). The experimental candidate compiled and displayed on Binance Spot PAXGUSDT 5m in a separate unsaved editor buffer. Accepted private v0.1.3 and main remain the rollback/accepted baseline. Continue with supported native comparisons and private save/readback gates. D-032 removes the human annotation dependency.
+Verify [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) and the [integrated acceptance record](implementation/ai-only-integrated-candidate.md). Pine v0.1.4 build `AE-0.1.4-93081cd2faee` compiled and ran on standard Binance Spot PAXGUSDT 5m. Existing named private script version 4, separate layout save, exact source readback, same-cutoff normal reload and all 24 restored controls passed. Keep v0.1.3 source and saved version history as rollback. Main stays at `319459863fc138e8d347a1b00bc1de56fabb114c` and PR #2 remains draft. D-032 removes the human annotation dependency.
 
 ## ACTIVE PRODUCT OBJECTIVE — D-033 foundation first, iterative AI improvement (2026-11-13 PHT)
 
