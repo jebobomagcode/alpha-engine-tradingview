@@ -7,6 +7,12 @@
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 covers bounded Phase 3.4 review. D-027 authorizes the exact private v0.1.3 replacement and preserves the observed native v0.1.2 backup for rollback.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
+## Current draft research — Phase 3.6, 2026-11-13 (Asia/Manila)
+
+- Accepted main was verified at `319459863fc138e8d347a1b00bc1de56fabb114c`. [Draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) contains research only. This branch checkpoint does not change the accepted main or private v0.1.3 baseline recorded below.
+- **PASS:** original Coach figure and text review for PDF pp. 6, 9–10, 14–16 and 25, plus 21/21 isolated Python checks on F01–F20 and a constructed S0/S1 prefix. See [contract](research/phase3-6-structural-reference-contract.md) and [results and limitations](research/phase3-6-structural-reference-adjudication.md).
+- **Recommendation:** READY FOR BOUNDED IMPLEMENTATION PROPOSAL for one manual-reference research panel, subject to separate owner authorization. S0 and R1-A provide the initial comparison, with R1-B and complete-history veto retained. Automated swing significance and role selection are INSUFFICIENT. Prospective blind labels, new Pine and native acceptance are NOT RUN.
+
 ## Current checkpoint — Phase 3.5 integrated on main, 2026-11-12
 
 - **Owner authorized [PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) merge.** GitHub reports merged/closed at exact merge commit [`b37af94f7a3f377c094f39f98f04f0ccc93233ba`](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/b37af94f7a3f377c094f39f98f04f0ccc93233ba). Pine v0.1.3 build `L08-0.1.3-3e3d909ba9f5` preserved with Git blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`.

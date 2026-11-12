@@ -2,6 +2,10 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
+## Current draft recovery point — Phase 3.6 structural-reference research, 13 November 2026 (Asia/Manila)
+
+Verify actual main and [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2), branch `research/phase3-6-m01-structural-reference-readiness-20261113`. Main was `319459863fc138e8d347a1b00bc1de56fabb114c`. Start with the [as-of contract](research/phase3-6-structural-reference-contract.md) and [adjudicated findings](research/phase3-6-structural-reference-adjudication.md). F01–F20 and the constructed S0/S1 prefix passed 21 isolated Python checks. The accepted v0.1.3 source and private saved baseline remain as documented below. The next owner decision is whether to collect prospective S0 labels externally first or authorize a one-reference informational prototype. No approval to merge PR #2 or change Pine follows from this checkpoint.
+
 ## Current recovery point — Phase 3.5 merged and privately accepted, 12 November 2026
 
 Owner explicitly authorized merging PR #1. [Merge commit `b37af94f7a3f377c094f39f98f04f0ccc93233ba`](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/b37af94f7a3f377c094f39f98f04f0ccc93233ba) is verified as the GitHub main integration checkpoint. Pine v0.1.3 exact blob `218e54cf573d6dfcc7b3306d22a0a34f966db160` and build `L08-0.1.3-3e3d909ba9f5` match the previously accepted sole private TradingView script version 3.0. [Post-merge main CI](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43251028044) ran **55/55 PASS**. Preserve detailed [private persistence evidence](implementation/phase3-5-private-persistence-acceptance.md), both v0.1.2 rollback representations and v0.1.1. PR #1 is CLOSED/MERGED, not draft or awaiting owner review. Do not repeat completed Phase 3.5 tests or private saves without evidence of a regression or new authorization. Receipt order, touch, unsampled invalid native feed windows and strategy-level features remain open or outside scope. No legacy project access.

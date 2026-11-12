@@ -1,6 +1,6 @@
 # Phase 3.6 — M01 structural-reference readiness and falsification plan
 
-**Continuation:** See the [Phase 3.6 source review and as-of structural-reference contract](../research/phase3-6-structural-reference-contract.md) for explicit boundary phases, ordered-segment policies and an adjudicated comparison scope. The original proposal below is retained as the audit baseline.
+**Continuation:** See the [Phase 3.6 source review and as-of structural-reference contract](../research/phase3-6-structural-reference-contract.md) and [adjudicated fixtures, results and bounded proposal](../research/phase3-6-structural-reference-adjudication.md). The original proposal and its gate statuses below are retained as the pre-adjudication audit baseline.
 
 **Date:** 2026-11-13 Asia/Manila · **Status:** RESEARCH-ONLY DRAFT, not an approved BOS/CHoCH implementation.  
 **Repository:** `jebobomagcode/alpha-engine-tradingview` **ONLY**.  

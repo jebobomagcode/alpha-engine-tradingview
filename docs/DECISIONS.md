@@ -39,11 +39,18 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 
 | D-028 | **Owner explicitly authorized merging Phase 3.5 PR #1 into this repository's main (2026-11-12).** | [PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) merged as [`b37af94f7a3f377c094f39f98f04f0ccc93233ba`](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/b37af94f7a3f377c094f39f98f04f0ccc93233ba). Exact Pine v0.1.3 blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`, build `L08-0.1.3-3e3d909ba9f5`; [post-merge CI 55/55 PASS](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43251028044). Owner-private saved v0.1.3 (library 3.0) pre-verified with source/layout/input parity. | Phase 3.5 accepted in its bounded diagnostic scope. This does not authorize future indicator feature additions, strategies, trading, alerts, public publication or unrelated repositories. |
 
+## Phase 3.6 draft decisions
+
+| ID | Decision/status | Basis and consequence | Revisit when |
+| --- | --- | --- | --- |
+| D-029 | **Owner authorized Phase 3.6 research only (2026-11-13 Asia/Manila).** | Audit Coach source and prior methodology, independently adjudicate F01–F14, test controlled research-only fixtures, update and verify [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2). Preserve accepted Pine, saved script, PCSS and native evidence. | Separate owner decision before Pine, native feature work or PR merge. |
+| D-030 | **Experimental recommendation, awaiting owner review.** | S0 manual prior role and regime with R1-A is the first comparison baseline. Retain R1-B, complete-history veto and S1 quarantine/compression comparisons. [Phase 3.6 results](research/phase3-6-structural-reference-adjudication.md). | Reconsider with independent, timestamped prefix annotations and held-out disagreements. Scale, automated role, reset/expiry, buffer and production policy remain OPEN_UNRESOLVED. |
+
 ## Why indicator-first is a working default
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
-Phase 3.5 is merged and accepted within documented software and native persistence gates. Preserve all rollback versions and evidence. Evaluate any next research scope against Coach source, PCSS, causal evidence and fresh owner authorization before modifying Pine, publishing or trading. [Current checkpoint](STATE.md)
+Review the draft Phase 3.6 comparison and decide whether a prospective annotation log or a separately authorized one-reference information panel best addresses the source-to-structure gap. Preserve the Phase 3.5 software and native persistence checkpoint and its rollback evidence. [Current checkpoint](STATE.md)
 
 ## Earlier research-stage decision
 Full original source study of 21 lessons, 3 Q&As and both final notes, all 35 pages, is COMPLETE. See [source completion audit](SOURCE_STUDY_COMPLETION_AUDIT.md). Last note title says BSP charting but plots PSE:BPI, distinct from BSP central-bank rate context. Phase 2 methodology research has started: five written traceability/reconciliation/method specs are linked from README and STATE. Their quantitative definitions are independent candidates, NOT selected Pine or an empirically validated trading edge; no code/backtests/deployments/trades. Crypto-only market scope and independent-project boundaries remain.
