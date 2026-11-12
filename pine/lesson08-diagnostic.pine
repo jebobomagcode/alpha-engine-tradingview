@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Lesson 08 Research v0.1.2", overlay = true, max_boxes_count = 1, max_labels_count = 3)
+indicator("Alpha Engine | Lesson 08 Research v0.1.3", overlay = true, max_boxes_count = 1, max_labels_count = 3)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "L08-0.1.2-3b9eb3065294"
+const string BUILD_ID = "L08-0.1.3-3e3d909ba9f5"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -82,24 +82,27 @@ assess(string terminal, int contact, int firstB, int firstA, bool ready, bool hi
     [reason, nextTerminal, nextContact, nextB, nextA]
 
 // Pivots are only declared at the CLOSE of the last required right-hand 5m bar.
+// Require strictly positive prices on every source bar for Binance Spot.
 // No origin-bar backplotting, implicit receipt timestamps, or trend inference.
 strictPivots(int leftCount, int rightCount) =>
     bool enough = bar_index >= leftCount + rightCount
     float candidateHigh = high[rightCount]
     float candidateLow = low[rightCount]
+    bool validWindow = enough
     bool strictHigh = enough and not na(candidateHigh)
     bool strictLow = enough and not na(candidateLow)
     if enough
         for offset = 0 to leftCount + rightCount
-            bool valid = not na(time[offset]) and not na(time_close[offset]) and not na(open[offset]) and not na(high[offset]) and not na(low[offset]) and not na(close[offset]) and time_close[offset] == time[offset] + STEP and high[offset] >= math.max(open[offset], close[offset]) and low[offset] <= math.min(open[offset], close[offset])
+            bool valid = not na(time[offset]) and not na(time_close[offset]) and not na(open[offset]) and not na(high[offset]) and not na(low[offset]) and not na(close[offset]) and time_close[offset] == time[offset] + STEP and high[offset] >= math.max(open[offset], close[offset]) and low[offset] <= math.min(open[offset], close[offset]) and low[offset] > 0
             if offset < leftCount + rightCount
                 valid := valid and time[offset] - time[offset + 1] == STEP
+            validWindow := validWindow and valid
             strictHigh := strictHigh and valid
             strictLow := strictLow and valid
             if offset != rightCount
                 strictHigh := strictHigh and candidateHigh > high[offset]
                 strictLow := strictLow and candidateLow < low[offset]
-    [strictHigh, strictLow]
+    [strictHigh, strictLow, validWindow, enough]
 
 nominalRisk(float e, float s, float t, float lo) =>
     float loss = na
@@ -141,14 +144,18 @@ var int lastDecision = na
 bool complete = not na(open) and not na(high) and not na(low) and not na(close) and low > 0 and high >= math.max(open, close) and low <= math.min(open, close) and time_close == time + STEP
 bool adjacent = bar_index > 0 and complete[1] and time[1] == time - STEP
 // Evaluate on every chart bar for stable history. Only record on confirmed bar close.
-[pivotHighNow, pivotLowNow] = strictPivots(pivotLeft, pivotRight)
+[pivotHighNow, pivotLowNow, pivotWindowValid, pivotWindowEnough] = strictPivots(pivotLeft, pivotRight)
 var float latestPivotHigh = na
 var int highOriginUTC = na
 var int highKnownUTC = na
 var float latestPivotLow = na
 var int lowOriginUTC = na
 var int lowKnownUTC = na
+// The evidence status describes the most recent CLOSED window, not the forming bar.
+// Previously confirmed pivot values remain historical records through invalid windows.
+var string pivotEvidence = "INSUFFICIENT · no closed 5m evaluation"
 if chartOK and pivotProbe and barstate.isconfirmed
+    pivotEvidence := not pivotWindowEnough ? "INSUFFICIENT · 5m history" : not pivotWindowValid ? "INVALID · 5m OHLC/clock window" : pivotHighNow or pivotLowNow ? "VALID · new pivot" : "VALID · no new pivot"
     if pivotHighNow
         latestPivotHigh := high[pivotRight]
         highOriginUTC := time[pivotRight]
@@ -195,7 +202,7 @@ row(table panel, int n, string key, string value, string detail = "") =>
     table.cell(panel, 0, n, key, text_color = color.silver, text_halign = text.align_left, text_size = size.small)
     table.cell(panel, 1, n, value, text_color = color.white, text_halign = text.align_left, text_size = size.small, tooltip = detail)
 
-var table panel = table.new(position.top_right, 2, 15, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+var table panel = table.new(position.top_right, 2, 16, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
 if barstate.islast
     [loss, reward] = nominalRisk(entry, stop, target, floor)
     string risk = "Disabled"
@@ -226,6 +233,7 @@ if barstate.islast
     row(panel, 12, "Policy", "R2-B provisional · R2-A comparator")
     row(panel, 13, "M01 high", pivotProbe ? (na(highKnownUTC) ? "No confirmed pivot" : str.tostring(latestPivotHigh, format.mintick) + " · known " + utc(highKnownUTC)) : "Off · research", pivotProbe and not na(highOriginUTC) ? "Origin " + utc(highOriginUTC) + " · known " + utc(highKnownUTC) : "")
     row(panel, 14, "M01 low", pivotProbe ? (na(lowKnownUTC) ? "No confirmed pivot" : str.tostring(latestPivotLow, format.mintick) + " · known " + utc(lowKnownUTC)) : "Off · research", pivotProbe and not na(lowOriginUTC) ? "Origin " + utc(lowOriginUTC) + " · known " + utc(lowKnownUTC) : "")
+    row(panel, 15, "M01 evidence", not pivotProbe ? "Off · research" : not chartOK ? "INSUFFICIENT · chart identity" : pivotEvidence, "Status of latest closed 5m window. Pivot values in rows 13–14 are retained historical confirmations, not proof of current data validity.")
 
 plot(hourOK ? hourClose / 1000 : na, "Confirmed 1H close (Unix s)", display = display.data_window, precision = 0)
 plot(hourOK ? hourPrice : na, "Confirmed 1H close (USDT)", display = display.data_window, precision = 2)

@@ -35,11 +35,13 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 
 | D-026 | **Owner authorized the Work resumption audit and bounded Phase 3.4 verification, 2026-11-12.** | Review prior Work and owner-assisted acceptance, verify CI and fresh public pivot evidence, and compare pinned setups on the existing qualified TradingView chart. [Dated audit and ledger](audits/2026-11-12-work-resumption-phase3-4.md). | Stop for owner review. The D-023 cleanup was exercised. Preserve the existing private save and source. Further Pine changes, deletion, public publishing and strategy expansion are outside this authorization. |
 
+| D-027 | **Owner authorized the existing named private v0.1.3 replacement and exact observed v0.1.2 rollback, 2026-11-12.** | The prior native v0.1.2 bytes were backed up with their observed ending. Save only the exact verified v0.1.3 candidate in the existing private script and verify the same layout after reload. [Native persistence evidence](implementation/phase3-5-private-persistence-acceptance.md). | Keep the draft PR open for evidence review. No new saved script, deletion, public publication, or broader feature work. |
+
 ## Why indicator-first is a working default
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
-Retain v0.1.2 and the v0.1.1 GitHub rollback. Review the Phase 3.4 native transition/reload gates and M01 price-domain finding before authorizing further Pine work. [Current checkpoint](STATE.md)
+Review the Phase 3.5 native persistence evidence, including the verified owner-assisted hard refresh. Preserve the exact native v0.1.2 backup and v0.1.1 GitHub rollback. Keep the PR draft pending review. [Current checkpoint](STATE.md)
 
 ## Earlier research-stage decision
 Full original source study of 21 lessons, 3 Q&As and both final notes, all 35 pages, is COMPLETE. See [source completion audit](SOURCE_STUDY_COMPLETION_AUDIT.md). Last note title says BSP charting but plots PSE:BPI, distinct from BSP central-bank rate context. Phase 2 methodology research has started: five written traceability/reconciliation/method specs are linked from README and STATE. Their quantitative definitions are independent candidates, NOT selected Pine or an empirically validated trading edge; no code/backtests/deployments/trades. Crypto-only market scope and independent-project boundaries remain.

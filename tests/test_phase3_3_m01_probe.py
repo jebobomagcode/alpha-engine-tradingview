@@ -8,7 +8,10 @@ import unittest
 import hashlib
 import re
 
-SOURCE = (Path(__file__).parent.parent / "pine/lesson08-diagnostic.pine").read_text(encoding="utf-8")
+# Historical v0.1.2 study must remain pinned when a newer candidate exists.
+import subprocess
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = subprocess.check_output(["git", "show", "3458ff6854e9c349aef10a30e487a908a3648441:pine/lesson08-diagnostic.pine"], cwd=ROOT).decode("utf-8")
 STEP=300000
 
 
