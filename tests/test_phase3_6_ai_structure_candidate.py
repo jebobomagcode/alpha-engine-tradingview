@@ -2,14 +2,23 @@
 
 import unittest
 from dataclasses import replace
+from decimal import Decimal
+import hashlib
+import json
+from pathlib import Path
 
 from research.phase3_6.reference_model import Bar
-from research.phase3_6.ai_structure_candidate import evaluate_structure, PROVENANCE
+from research.phase3_6.ai_structure_candidate import evaluate_structure, replay_structure, PROVENANCE
 
 
 def sequence():
     values = (104, 103, 100, 103, 110, 107, 105, 108, 107, 106, 107, 112, 109, 108, 109)
     return tuple(Bar(i * 5, p, p + 1, p - 1, p) for i, p in enumerate(values))
+
+
+def recross_sequence():
+    closes = (104, 105, 94, 91, 96, 98, 91, 104, 101, 96, 100, 101, 106, 92, 93, 91, 96, 92, 97, 92, 109, 108)
+    return tuple(Bar(i * 5, c, c + 1, c - 1, c) for i, c in enumerate(closes))
 
 
 DUAL = (
@@ -91,6 +100,62 @@ class AIOnlyStructuralCandidateTests(unittest.TestCase):
         result = evaluate_structure((), as_of=65)
         self.assertEqual(result.trend, "UNKNOWN")
         self.assertEqual(result.references, ())
+
+    def test_prebreach_policies_diverge_without_backdating(self):
+        tape = recross_sequence()
+        a = replay_structure(tape, as_of=110)
+        b = replay_structure(tape, as_of=110, policy="B")
+        self.assertEqual(a[14].references[1].status, "PREBREACHED")
+        self.assertEqual(a[16].references[1].status, "PREBREACHED")
+        self.assertEqual(b[14].references[1].status, "RESET_PENDING")
+        self.assertEqual(b[16].references[1].armed_at, 85)
+        self.assertEqual([event for frame in a for event in frame.events], [])
+        self.assertEqual([(e.cutoff, e.classification, e.predecessor_close, e.close)
+                          for frame in b for e in frame.events],
+                         [(90, "CHOCH_CANDIDATE_DOWN", 96, 92)])
+        self.assertEqual(b[17].status, "POSSIBLE_SHIFT")
+        self.assertEqual([r.status for r in b[17].retired], ["RETIRED", "CONSUMED"])
+
+    def test_fresh_bos_uses_prior_snapshot_then_consumes_once(self):
+        tape = (*sequence()[:14], Bar(70, 108, 116, 107, 115),
+                Bar(75, 115, 116, 110, 111), Bar(80, 111, 116, 110, 115))
+        frames = replay_structure(tape, as_of=85)
+        events = [e for frame in frames for e in frame.events]
+        self.assertEqual([(e.cutoff, e.classification) for e in events], [(75, "BOS_CANDIDATE_UP")])
+        self.assertEqual(events[0].reference.first_regime_observed_at, 70)
+        self.assertEqual(events[0].reference.level_ticks, 113)
+
+    def test_malformed_current_and_missing_predecessor_do_not_emit(self):
+        tape = (*sequence()[:14], Bar(70, 108, 110, 107, 115),
+                Bar(75, 111, 116, 110, 115))
+        for bad in (tape, (*tape[:14], tape[15]), (*tape[:14], replace(tape[14], received=76), tape[15])):
+            with self.subTest(tape=bad):
+                frames = replay_structure(bad, as_of=80)
+                self.assertEqual(frames[14].status, "INSUFFICIENT")
+                self.assertEqual([e for frame in frames for e in frame.events], [])
+                self.assertEqual(frames[14].references, ())
+
+    def test_frozen_binance_receipt_prefix_invariance(self):
+        file = (Path(__file__).resolve().parents[1] / "docs/research/evidence"
+                / "m07-paxgusdt-spot-v1/klines-5m.json")
+        payload = file.read_bytes()
+        self.assertEqual(hashlib.sha256(payload).hexdigest(),
+                         "48c2cb774b312a6a7061fae4b9dd8fae8b0274cea0cb476f0a1e54033163e180")
+        rows = json.loads(payload)["result"]
+        tape = tuple(Bar(row[0] // 60_000, *(int(Decimal(p) * 100) for p in row[1:5])) for row in rows)
+        self.assertEqual(len(tape), 288)
+        for left in (1, 2, 3):
+            for policy in ("A", "B"):
+                full = replay_structure(tape, as_of=tape[-1].cutoff, policy=policy, left=left, right=left)
+                self.assertEqual(len(full), 288)
+                for n in (5, 72, 144, 216):
+                    prefix = replay_structure(tape[:n], as_of=tape[n - 1].cutoff,
+                                              policy=policy, left=left, right=left)
+                    self.assertEqual(full[:n], prefix)
+                events = [e for frame in full for e in frame.events]
+                keys = {(e.reference.origin_open, e.reference.side, e.reference.level_ticks) for e in events}
+                self.assertEqual(len(events), len(keys))
+                self.assertTrue(all(e.cutoff >= e.reference.earliest_cross_close for e in events))
 
 
 if __name__ == "__main__":

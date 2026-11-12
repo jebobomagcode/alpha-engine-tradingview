@@ -1,5 +1,11 @@
 # Current project state — canonical checkpoint
 
+## D-032/D-033 I1 causal reference replay — branch checkpoint
+
+- **VALIDATED (research):** `research/phase3_6/ai_structure_candidate.py` now evaluates earlier-open references at final adjacent closes, records one-time consumption and retirement, and distinguishes R1-A prebreach from R1-B reset/re-cross. A CHoCH candidate retires the active references and requires four post-event ordered swings before releasing the shift gate. Gaps and invalid evidence clear the active segment. Modeled times are not venue receipts.
+- **PASS locally:** 80 standard regression checks and the preserved 21 isolated structural checks. On the pinned 288-bar Binance Spot PAXGUSDT receipt, sampled prefix parity held across 1/1, 2/2 and 3/3 and both arming policies. Event counts were 15, 8 and 3 by width for each policy on this tape. A constructed case distinguishes the policies. Counts characterize behavior and do not measure performance.
+- **Next:** integrate the bounded Pine candidate on this draft branch with chart-native acceptance tracked separately. Accepted v0.1.3 and original source remain pinned.
+
 **Checkpoint date:** 2026-11-13 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
 **Phase:** AI-only accelerated engineering (I1 research structure next); accepted Pine v0.1.3 from Phase 3.5 remains baseline. 55/55 merged CI PASS. Original 35-page/26-unit Coach study complete.
