@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.5 private persistence evidence on draft PR #1. Accepted GitHub main is v0.1.2. The existing named private TradingView save is v0.1.3. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.5 ACCEPTED and merged to GitHub `main` as Pine v0.1.3; named private TradingView script v0.1.3 (version 3.0) also accepted within bounded evidence. 55/55 post-merge CI PASS. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 covers bounded Phase 3.4 review. D-027 authorizes the exact private v0.1.3 replacement and preserves the observed native v0.1.2 backup for rollback.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current draft PR checkpoint — Phase 3.5 native private persistence, 2026-11-12
+## Current checkpoint — Phase 3.5 integrated on main, 2026-11-12
+
+- **Owner authorized [PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) merge.** GitHub reports merged/closed at exact merge commit [`b37af94f7a3f377c094f39f98f04f0ccc93233ba`](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/b37af94f7a3f377c094f39f98f04f0ccc93233ba). Pine v0.1.3 build `L08-0.1.3-3e3d909ba9f5` preserved with Git blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`.
+- **PASS:** [post-merge main CI run 43251028044](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43251028044), **55/55 tests**. Previously verified private version 3.0 save, exact editor source, both input manifests, same-closed-cutoff M01 ON/OFF Lesson 08 parity, and 15:30 UTC hard-refresh restoration remain the separately qualified native evidence. [Native acceptance record](implementation/phase3-5-private-persistence-acceptance.md).
+- **Preserved:** original owner-private raw v0.1.2 rollback (terminal LF absent in native copy), canonical v0.1.2 Git blob `dd1691072e3f81d18217c50efa87c4d6fa6b43e3`, v0.1.1 rollback commit `74e7814e308a40f769d9b57607ebde145f492b8d`. The v0.1.2 CRLF-only strict comparison **FAIL** remains recorded; it does not apply to the accepted v0.1.3 source readback.
+- **OPEN (separate research):** actual venue receipt order, physical touch, unsampled native malformed-history cases, broader realtime/HTF transition coverage, and future methodology extensions. No strategies, alerts, backtests, trading, public publication, or legacy-project access authorized by this merge.
+
+## Historical checkpoint — Phase 3.5 native private persistence, 2026-11-12
 
 - Accepted GitHub `main` remains `3458ff6854e9c349aef10a30e487a908a3648441`. The owner-authorized existing private script now contains exact v0.1.3, build `L08-0.1.3-3e3d909ba9f5`, blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`. Native library version 3.0 was observed.
 - **PASS:** private named save, separate layout save, exact saved-editor source, restored build and qualified chart, all 19 input controls for both the owner and non-default manifests, matched-cutoff M01 ON/OFF at 15:25 UTC, and sampled 15:30 UTC realtime closed-state parity after normal tab reload. The original owner inputs were restored and saved.

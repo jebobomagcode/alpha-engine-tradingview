@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.5 private save and reload evidence, 12 November 2026
+## Current recovery point — Phase 3.5 merged and privately accepted, 12 November 2026
+
+Owner explicitly authorized merging PR #1. [Merge commit `b37af94f7a3f377c094f39f98f04f0ccc93233ba`](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/b37af94f7a3f377c094f39f98f04f0ccc93233ba) is verified as the GitHub main integration checkpoint. Pine v0.1.3 exact blob `218e54cf573d6dfcc7b3306d22a0a34f966db160` and build `L08-0.1.3-3e3d909ba9f5` match the previously accepted sole private TradingView script version 3.0. [Post-merge main CI](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43251028044) ran **55/55 PASS**. Preserve detailed [private persistence evidence](implementation/phase3-5-private-persistence-acceptance.md), both v0.1.2 rollback representations and v0.1.1. PR #1 is CLOSED/MERGED, not draft or awaiting owner review. Do not repeat completed Phase 3.5 tests or private saves without evidence of a regression or new authorization. Receipt order, touch, unsampled invalid native feed windows and strategy-level features remain open or outside scope. No legacy project access.
+
+## Historical recovery point — Phase 3.5 private save and reload evidence, 12 November 2026
 
 Verify actual GitHub main and [draft PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1). Accepted main is `3458ff6854e9c349aef10a30e487a908a3648441`. The existing private TradingView script is v0.1.3, build `L08-0.1.3-3e3d909ba9f5`. It passed exact named source readback, ordinary reload, both 19-input manifests, and matched-cutoff native checks. The owner’s original inputs are saved. See the [private persistence record](implementation/phase3-5-private-persistence-acceptance.md). The owner completed Chrome Ctrl+Shift+R. The restored 15:30 UTC panel, all 19 original inputs and exact named source were verified. Keep the draft open for owner review. Preserve the owner-private exact native v0.1.2 backup and both pinned Git rollback versions. Do not rerun the 55 tests without a Pine, test, or relevant dependency change.
 
