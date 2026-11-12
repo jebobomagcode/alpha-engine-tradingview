@@ -47,6 +47,28 @@ These are **owner-supplied screenshots containing Work's reported observations**
 7. Record exact PASS/FAIL/INSUFFICIENT/NOT RUN for editor, saved source, compiled chart, browser reload, input identity and any genuine realtime observation. Preserve previous draft-restore failures.
 8. Update [Phase 3 acceptance](phase3-lesson08-diagnostic.md), [STATE](../STATE.md), [DECISIONS](../DECISIONS.md) and [RECOVERY](../RECOVERY.md) **only after** actual new evidence; verify the GitHub commit/readback.
 
+## Owner-assisted TradingView verification after Work interruption — 2026-11-12, approximately 16:12–16:29 PHT
+
+The owner supplied further screenshots from their own authenticated TradingView browser. Unlike the earlier Work-only report, these show the current account UI, but they are **visual evidence**, not full-source byte attestations.
+
+- **Saved-script presence:** In *Indicators → My scripts*, the single visible saved entry is named `Alpha Engine TradingView — Lesson 08 Diagnostic`. A subsequently opened named Pine Editor document showed the expected v0.1.1 indicator header, `SYMBOL = "BINANCE:PAXGUSDT"` and `BUILD_ID = "L08-0.1.1-7fbb3eb381b6"`. The previous screenshot with `Untitled script` was a separate default editor document and is not evidence that the saved source is a template. Full editor contents were **not** extracted or byte-compared during this user-assisted step.
+- **Compiled chart and initial refresh:** The chart panel displayed the exact v0.1.1 build. One owner hard refresh restored the saved v0.1.1 build but also restored the **wrong** `PAXGUSDT.P` perpetual market, so the explicit `INSUFFICIENT · chart identity` guard was correctly shown. The chart's instrument restoration is a separate layout/state concern from the Pine source.
+- **Qualified spot chart:** After selecting the non-`.P` Binance PAXG/USDT **Spot** 5m chart, the panel displayed `EXPIRED · exclusive cutoff`, geometric overlap with physical touch unknown, and the unchanged v0.1.1 build. That terminal result matches the old declared expiry in the saved chart inputs; it is not evidence of an indicator error.
+- **Latest refresh report:** The owner then returned screenshots responding to the instructed layout-save and refresh test: the chart again displayed `PAX Gold / TetherUS · 5 · Binance` (Spot, no `.P`) with the same `L08-0.1.1-7fbb3eb381b6` build. The named saved script remained accessible in Pine Editor, and the beginning of its source still matched the expected release header, build constant and exact symbol. Screenshots do not independently establish that every source byte or all 16 original input values were preserved, nor that chart layout was durably saved.
+- **Scope:** These are owner-supplied screenshots. No direct browser-control action, full script export, broker activity, market trade, or new Pine release was performed by this conversation.
+
+| Phase 3.2 acceptance gate | Updated result | Bound of support |
+| --- | --- | --- |
+| Named private saved-script inventory entry | **PASS (visual inventory)** | Entry visible under My scripts; count/ownership of any hidden entries not independently inventoried here. |
+| Saved Pine Editor script reopen | **PASS (visual)** | Named document and expected v0.1.1 source header visible. |
+| Expected visible build marker after hard refresh | **PASS (visual)** | Exact build ID displayed on chart. |
+| Correct Spot chart after user's subsequent refresh | **PASS (visual, reported refresh)** | Chart label PAX Gold / TetherUS, 5m, Binance, no perpetual marker. |
+| Saved source full SHA-256 / byte equality | **NOT VERIFIED** | Requires complete saved-source copy/export rather than screenshots of the first lines. |
+| All 16 saved setup inputs and full state parity | **NOT VERIFIED** | No paired full settings and exact state capture across refresh. |
+| TradingView native venue receipt, physical touch, execution | **INSUFFICIENT** | The diagnostic remains geometric-only. |
+
+**Next:** Have the owner export or copy the complete named saved-script text (as `.pine` or plain text) and compare its SHA-256 against the authoritative repository source hash `1bb0613634f6cd941853552aaa5bab605b2296a541007ffb6c70f24f20b73c91`. A copied source may contain platform line-ending changes; report and compare raw and LF-normalized bytes separately if needed. If exact source matches, record the saved-source gate PASS. Preserve the v0.1.0 draft-restore failure as historical; do not change Pine logic merely to improve a document-level acceptance gate.
+
 ## Non-goals
 
 No new Pine features or changed v0.1.1 algorithm. No strategy, alerts, backtesting, trading or publication. No cross-project access. The account's **one saved script** cap is not lifted by deleting older scripts; maintain this one saved slot for the current Alpha Engine diagnostic.

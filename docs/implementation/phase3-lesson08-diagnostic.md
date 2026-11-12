@@ -175,3 +175,10 @@ The declaration key was `L08/33/1794463200000/1794466500000/1794466500000/179446
 | Native receipt, physical touch and execution evidence | INSUFFICIENT | Chart observations preserve the geometric-only claim. |
 
 **Next verification gate.** When a private save slot is available, check saved editor source copy-back and restoration of the same compiled build with identical setup inputs. Keep the diagnostic bounded while the saved-script gate remains open.
+
+
+## Phase 3.2 — owner-assisted saved-script restoration checkpoint, 12 November 2026
+
+Additional screenshots from the owner's own TradingView session establish a named `Alpha Engine TradingView — Lesson 08 Diagnostic` entry under *My scripts*, the expected v0.1.1 source header when opened, and the correct build `L08-0.1.1-7fbb3eb381b6` on the chart after a hard refresh. One refresh initially restored the wrong `PAXGUSDT.P` perpetual chart, correctly producing `INSUFFICIENT · chart identity`. After the owner selected the non-`.P` Binance Spot instrument and repeated the requested refresh, the supplied chart screenshot showed Spot 5m, the same build, and `EXPIRED` under the already elapsed declaration. [Detailed evidence and remaining gates](phase3-2-persistence-interruption-handoff-2026-11-12.md#owner-assisted-tradingview-verification-after-work-interruption--2026-11-12-approximately-16121629-pht).
+
+**Acceptance boundary:** Visual saved-script reopen and build-marker persistence are now observed in the owner-supplied screenshots. No full saved-source export or hash equality has yet been established. Exact saved-source bytes and complete input-state parity remain NOT VERIFIED. No new Pine source changes or new realtime methodology gates were attempted.

@@ -2,7 +2,9 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.2 interrupted private-save verification, 12 November 2026
+## Current recovery point — Phase 3.2 saved-source verification, 12 November 2026
+
+**Latest owner-assisted evidence, ~16:12–16:29 PHT:** The named Alpha Engine private saved script is visible under *My scripts* and opens in Pine Editor with the expected v0.1.1 header. The displayed build survived refresh. One refresh restored `PAXGUSDT.P` (perpetual), triggering the chart identity guard; a subsequent screenshot after returning to Spot and refreshing shows the expected Spot chart and build. **Still missing: exported full saved-source hash and complete settings parity.** See the [updated handoff](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md). Do not re-delete scripts or rebuild Pine.
 
 Verify current `main`, then read [STATE](STATE.md), [D-023](DECISIONS.md), and the [Phase 3.2 handoff](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md). The owner supplied screenshots showing Work **reported** one old TradingView saved script deleted and an empty inventory after refreshing. Work had **not** reported a successful Alpha Engine private save before its usage limit interrupted the task. The only remaining authorized mission is to verify inventory, save and reopen the exact v0.1.1 source privately, and test saved-instance reload with build `L08-0.1.1-7fbb3eb381b6`. Preserve the distinct failure and NOT RUN gates from Phase 3.1. Do not re-run completed source study or expand features. Browser control requires a supported interactive environment; this ordinary ChatGPT conversation has read-only browser-tab access.
 
