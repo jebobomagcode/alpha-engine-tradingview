@@ -1,5 +1,11 @@
 # New ChatGPT conversation recovery — START HERE
 
+## ACTIVE PRODUCT OBJECTIVE — D-033 foundation first, iterative AI improvement (2026-11-13 PHT)
+
+The owner clarified that the Coach PDF and PCSS are the **basis**, not a fixed exhaustive set of rules. Deliver a working, verifiably causal **AI-improved** private TradingView research indicator quickly, and continue improving it through versioned tests and evidence. The only Coach-origin source remains unchanged; independently invented methods must be clearly differentiated, not silently attributed to Coach. Human reviewer approval and exact discretionary equivalence are **not** required gates. This clarification does NOT waive software correctness, native acceptance, risk disclosures, or restrictions on orders, paid actions and public publication. [D-033](DECISIONS.md) · [AI-only roadmap](implementation/ai-only-accelerated-completion-plan.md).
+
+
+
 ## CURRENT RESEARCH INCREMENT — I1 initial executable AI structure candidate (2026-11-13 PHT)
 
 The D-032 no-human plan remains authoritative. [I1 research implementation](../research/phase3_6/ai_structure_candidate.py) provides as-of strict-pivot ordered swings and provisional references; [9 new tests](../tests/test_phase3_6_ai_structure_candidate.py) passed together with 67 existing checks, [CI 76/76 PASS](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43300428886). Corrected a test-harness duplicate keyword, not the source algorithm. This research package does **not** implement a full BOS/CHoCH engine, Pine v0.1.4, trading signals or verified venue timing. Next execute I1 frozen reference-arming/consumption and competing policies, then continue the modular [AI-only roadmap](implementation/ai-only-accelerated-completion-plan.md).

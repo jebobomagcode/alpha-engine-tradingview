@@ -8,6 +8,12 @@ Applies to any ChatGPT, coding agent, or collaborator working in this repository
 3. Confirm source availability and SHA-256 checksums before making source-specific fidelity claims.
 4. Resume from the earliest incomplete, verified checkpoint. Never manufacture study progress, implementation, tests, GitHub writes, or user decisions.
 
+## Owner clarification D-033 — Coach foundation, not a fixed terminal specification
+
+- The owner explicitly wants an **evolving AI-improved system**, using Coach PDF and PCSS as the starting basis, not exact unrecoverable Coach discretion as a completion requirement. Ship a minimal useful, tested private research-indicator release ASAP, then improve with evidence. Maintain Coach/PCSS/AI provenance and no future leak; no human-review dependency or fabricated validation.
+- Unknown discretionary intent cannot be proven from repeated AI deliberation. Choose explicit experimental algorithms, test disconfirming cases, and expose UNKNOWN for unsupported decisions. Separate research-indicator engineering acceptance from hypothetical trading performance.
+- This is a clarification, not authorization for trading, public publication, unsupported private-save overwrites, or abandoning source traceability.
+
 ## Owner directive D-032 — no-human-touch accelerated research/implementation
 
 - The owner explicitly replaces the human annotation/peer agreement gate with AI-only source-based engineering. The original Coach PDF + completed PCSS remain the only Coach-origin materials. New automated definitions are **AI-INDEPENDENT EXPERIMENTAL**, never implied Coach prescriptions. Use [the AI-only roadmap](docs/implementation/ai-only-accelerated-completion-plan.md).

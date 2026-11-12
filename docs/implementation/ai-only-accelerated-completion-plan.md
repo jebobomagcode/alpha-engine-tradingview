@@ -1,6 +1,14 @@
 # AI-only accelerated completion plan — Coach-source + independently specified research rules
 
-**Owner directive D-032 · 2026-11-13 PHT · Status: ACTIVE implementation program, NOT a claim of completed features.**
+**Owner directives D-032 and D-033 · 2026-11-13 PHT · Status: ACTIVE implementation program, NOT a claim of completed features.**
+
+## Product objective and release philosophy — D-033
+
+**Coach is the baseline, not the ceiling.** The user explicitly wants Alpha Engine TradingView to be an evolving, independently researched system that *starts from* Coach Fredy's lessons and PCSS but progressively improves beyond them. No future human review is available or required. Do not overconstrain the product to unobservable source-exact discretionary judgments. Continue to preserve the original lesson interpretation for traceability while building explicitly named AI_INDEPENDENT_EXPERIMENTAL alternatives and choosing coherent evidence-backed defaults.
+
+**Two-track development:** (1) deliver the fastest **useful, private, non-executing v1 research indicator** with causal guards, clear limitations, usable chart labels/panel and regression/native verification; (2) maintain versioned backlog of enhancements, ablations, measured false positives, detector disagreement, venue/data support and usability fixes. *A first engineering release is not the end of future research, and an indefinitely unclosed research question is not necessarily a v1 blocker.* A rule may be bounded/disabled or produce UNKNOWN where unsupported. Correctness, no-lookahead, provenance and tested rollback remain release-critical.
+
+**Completion semantics:** Engineering v1 can be declared complete only upon its actual feature acceptance, test evidence and verified private save/readback. Do not conflate it with Coach-intent equivalence or empirical positive expected returns; trading-profit claims require an independent realistic evaluation stage. This is not an automatic order or public publication authorization.
 
 ## Decision and historical disposition
 

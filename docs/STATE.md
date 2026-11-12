@@ -7,6 +7,10 @@
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 covers bounded Phase 3.4 review. D-027 authorizes the exact private v0.1.3 replacement and preserves the observed native v0.1.2 backup for rollback.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
+## ACTIVE OWNER CLARIFICATION D-033 — source foundation, evolving AI-designed system (2026-11-13 PHT)
+
+Coach Fredy's original PDF and completed PCSS are the starting methodological foundation, **not the ceiling or an assertion of perfect recoverability of unstated discretion**. The owner expects the independent AI research indicator to evolve through measurable improvements after its first usable private release. Prioritize a functional, testable v1 over indefinite requests for human consensus or exact Coach equivalence. Distinguish what Coach actually taught from PCSS interpretation and from AI_INDEPENDENT_EXPERIMENTAL choices. Preserve rigorous correctness, causal evidence, risk disclosures and accepted release/rollback gates. No trading-performance or financial guarantees follow. [Decision D-033](DECISIONS.md) · [roadmap](implementation/ai-only-accelerated-completion-plan.md).
+
 ## I1 research implementation checkpoint — 2026-11-13 PHT
 
 - **Implemented first AI-INDEPENDENT EXPERIMENTAL structure candidate**, not a selected source-exact BOS/CHoCH algorithm: [research code](../research/phase3_6/ai_structure_candidate.py) and [9 additional regression cases](../tests/test_phase3_6_ai_structure_candidate.py) (relative paths apply from docs directory). A separate same-prefix test reproduces S1 2/2 UNKNOWN at minute 65 and UP at 70; S1 1/1 already UP at 65. Dual extremes remain unordered, missing/forming right bars cannot confirm, and a delayed left bar does not backdate confirmation.
