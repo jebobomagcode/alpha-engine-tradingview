@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.2 — bounded owner-assisted saved-script persistence acceptance COMPLETE, awaiting owner direction. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.3 — opt-in M01-P1 confirmed 5m pivot research candidate COMMITTED, native TradingView acceptance OPEN. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.2 bounded persistence acceptance, 2026-11-12
+## Current checkpoint — Phase 3.3 M01-P1 pivot audit candidate, 2026-11-12
+
+- **Owner continuation D-024:** after Phase 3.2 completion, owner said `lets proceed` with Ponder and GitHub. Scope is one bounded research-only indicator increment. Preserve strict independence from older projects, one saved TradingView script, no trading/backtests/alerts/publication.
+- [Pine v0.1.2](../pine/lesson08-diagnostic.pine), build `L08-0.1.2-3b9eb3065294`, adds **optional OFF-by-default strict 5m pivot high/low audit** to the existing Lesson 08 source. `left/right=2` illustrative only, configurable 1–8; valid consecutive closed 5m bars required, ties excluded; origin and earliest modeled chart confirmation separated; no BOS/CHoCH automated or past backplotting.
+- [Phase 3.3 implementation/acceptance plan](implementation/phase3-3-m01-pivot-probe.md) identifies test provenance and native gates. **13 new local Python semantic/static checks PASS**. Prior 21 v0.1.1 tests not re-run; **native Pine compilation, chart comparison and saved-instance v0.1.2 reload NOT RUN**.
+- Original v0.1.1 source and owner-verified private TradingView save remain the rollback baseline at [`74e7814`](https://github.com/jebobomagcode/alpha-engine-tradingview/blob/74e7814e308a40f769d9b57607ebde145f492b8d/pine/lesson08-diagnostic.pine). Do not imply current user's saved script auto-updated from GitHub. Next action is **owner-assisted compile/compare and same-slot private save**, not another feature addition.
+
+## Prior checkpoint — Phase 3.2 bounded persistence acceptance, 2026-11-12
 
 - **Final owner-assisted settings screenshot ~16:38 PHT:** optional nominal geometry was disabled, entry/stop/target reference prices were all `0`; earlier paired screenshots matched the eight other Pine input declarations. **All 12 Pine input values have now been visually checked and match the Phase 3.1 manifest.** The final four were not seen as an atomic before/after reload pair. [Final bounded gate record](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md#remaining-optional-risk-fields-captured--2026-11-12-163837-pht).
 - **Disposition:** named saved-script entry and full source content match, correct v0.1.1 chart build observed after hard refresh, Spot identity accepted, and all input values visually checked. **PHASE 3.2 bounded owner-assisted acceptance COMPLETE.** Atomic all-input before/after reload parity remains NOT VERIFIED; native receipt/physical touch/fill/performance remain outside scope. Do not claim independent TradingView server API attestation.
