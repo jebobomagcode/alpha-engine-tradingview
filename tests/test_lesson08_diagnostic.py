@@ -9,6 +9,7 @@ import re
 import unittest
 from decimal import Decimal
 from pathlib import Path
+from types import SimpleNamespace
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,13 +24,22 @@ STEP = 300
 PREFIX = "INSUFFICIENT · "
 
 
+def pine_to_string(value, pattern=None):
+    if pattern is None:
+        return str(value)
+    if pattern == "0.################":
+        return format(value, ".16f").rstrip("0").rstrip(".")
+    raise ValueError(f"Unsupported Pine number format: {pattern}")
+
+
 def pine_core(name):
-    """Translate local assignments, branches and the final tuple from one function."""
+    """Translate local assignments, branches and a final expression from one function."""
     match = re.search(rf"(?m)^{name}\(([^\n]*)\) =>\n((?:    [^\n]+\n)+)", SOURCE)
     signature, body = match.groups()
     params = [item.split()[1] for item in signature.split(", ")]
     lines = [f"def {name}({', '.join(params)}):"]
-    for line in body.splitlines():
+    body_lines = body.splitlines()
+    for index, line in enumerate(body_lines):
         indent = len(line) - len(line.lstrip())
         value = line.strip()
         if value.startswith("//"):
@@ -41,10 +51,13 @@ def pine_core(name):
             value = value.replace("else if ", "elif ", 1) + ":"
         elif value.startswith("["):
             value = "return tuple(" + value + ")"
+        elif index == len(body_lines) - 1 and indent == 4:
+            value = "return " + value
         elif not re.match(r"^\w+ = ", value):
             raise ValueError(f"Unsupported Pine core line: {value}")
         lines.append(" " * indent + value)
-    env = {"na": lambda value: value is None, "tuple": tuple, "__builtins__": {}}
+    env = {"na": lambda value: value is None, "tuple": tuple,
+           "str": SimpleNamespace(tostring=pine_to_string), "__builtins__": {}}
     exec("\n".join(lines), env)
     return env[name]
 
@@ -52,6 +65,8 @@ def pine_core(name):
 bar_facts = pine_core("barFacts")
 assess = pine_core("assess")
 risk = pine_core("nominalRisk")
+setup_identity = pine_core("setupIdentity")
+reaction_recorded = pine_core("reactionRecorded")
 
 
 def run_bars(rows, *, available=-20, expires=930):
@@ -86,13 +101,25 @@ class DiagnosticCases(unittest.TestCase):
         self.assertEqual(out[300][2:], (0, 300, None))
         self.assertEqual(out[600][2:], (0, 300, None))
         self.assertEqual(out[900][2:], (0, 300, 900))
-        self.assertEqual(out[900][1], "REASSESS · episode ended")
+        terminal = "REASSESS · episode ended"
+        self.assertEqual(out[900][:2], (terminal, terminal))
+        self.assertEqual(reaction_recorded(900, *out[900][3:]), (False, True))
+        following = assess(*out[900][1:], True, False, True, True, True,
+                           True, False, False, True, 900, 1200, -20, 1500)
+        self.assertEqual(following, out[900])
+        self.assertEqual(reaction_recorded(1200, *following[3:]), (False, False))
         self.assertEqual(run_bars(rows[:2])[300], out[300])
+        self.assertIn("status := reason", SOURCE)
+        self.assertIn("reactionRecorded(lastDecision, firstB, firstA)", SOURCE)
+        self.assertIn('row(panel, 1, "Current state", chartOK ? status', SOURCE)
+        self.assertIn('row(panel, 8, "At last cutoff", recorded', SOURCE)
 
     def test_earlier_touch_later_reaction_and_unknown_receipt(self):
         out = run_bars(self.cases("P04"))
         self.assertEqual(out[300][2:], (0, None, None))
         self.assertEqual(out[600][2:], (0, 600, 600))
+        self.assertEqual(reaction_recorded(600, *out[600][3:]), (True, True))
+        self.assertEqual(reaction_recorded(0, None, None), (False, False))
         self.assertIn('na(firstA) ? "Waiting for later candidate" : "UNKNOWN · receipt order"', SOURCE)
 
     def test_no_contact_for_outside_engulf(self):
@@ -192,6 +219,34 @@ class DiagnosticCases(unittest.TestCase):
         self.assertIn("timeframe.multiplier == 5 and chart.is_standard", SOURCE)
         self.assertEqual(re.findall(r"(?m)^( +)\[reason, disposition,", SOURCE), ["    "])
         self.assertIn("if chartOK and barstate.isconfirmed\n", SOURCE)
+
+
+
+class ReleaseIdentity(unittest.TestCase):
+    def test_release_id_is_reproducible_and_visible(self):
+        prefix = b'const string BUILD_ID = "'
+        raw = (ROOT / "pine/lesson08-diagnostic.pine").read_bytes()
+        binding = re.search(rb'^const string BUILD_ID = "(L08-(\d+\.\d+\.\d+)-([0-9a-f]{12}))"$', raw, re.M)
+        self.assertIsNotNone(binding)
+        release, version, digest = binding.groups()
+        canonical = raw.replace(prefix + release + b'"', prefix + b'__BUILD__"', 1)
+        self.assertEqual(hashlib.sha256(canonical).hexdigest()[:12], digest.decode())
+        self.assertIn(b"Research v" + version + b'"', raw)
+        self.assertIn('row(panel, 0, "Build", BUILD_ID + ', SOURCE)
+
+    def test_each_material_declaration_changes_identity(self):
+        manifest = [3, 3600000, 3610000, 3620000, 5400000, 100, 101]
+        expected = "L08/3/3600000/3610000/3620000/5400000/zone=100/101"
+        self.assertEqual(setup_identity(*manifest), expected)
+        self.assertEqual(setup_identity(*manifest[:5], Decimal("100.00"), Decimal("101.0")), expected)
+        for index, change in enumerate([4, 7200000, 3610001, 3620001, 5400001,
+                                        Decimal("100.000000001"), Decimal("101.001")]):
+            with self.subTest(index=index):
+                modified = manifest.copy()
+                modified[index] = change
+                self.assertNotEqual(setup_identity(*modified), expected)
+        self.assertIn("setupIdentity(revision, anchor, contextKnown, zoneKnown, expiry, floor, ceiling)", SOURCE)
+        self.assertIn('setupId + "/" + str.tostring(contact)', SOURCE)
 
 
 class FrozenBinance(unittest.TestCase):

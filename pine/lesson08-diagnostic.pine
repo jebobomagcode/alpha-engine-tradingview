@@ -1,6 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Lesson 08 Research v0.1.0", overlay = true, max_boxes_count = 1, max_labels_count = 3)
+indicator("Alpha Engine | Lesson 08 Research v0.1.1", overlay = true, max_boxes_count = 1, max_labels_count = 3)
 
+// Build SHA-256 input is this file with this literal replaced by __BUILD__.
+const string BUILD_ID = "L08-0.1.1-7fbb3eb381b6"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -71,6 +73,7 @@ assess(string terminal, int contact, int firstB, int firstA, bool ready, bool hi
                 // The first departure can complete a later reaction, then ends the episode.
                 if departure
                     nextTerminal := "REASSESS · episode ended"
+                    reason := nextTerminal
     [reason, nextTerminal, nextContact, nextB, nextA]
 
 nominalRisk(float e, float s, float t, float lo) =>
@@ -81,6 +84,17 @@ nominalRisk(float e, float s, float t, float lo) =>
         reward := t - e
     [loss, reward]
 
+// Keep each material declaration in the key, including the two independent clocks.
+setupIdentity(int version, int contextAnchor, int contextAt, int zoneAt, int expires, float lo, float hi) =>
+    string clocks = str.tostring(contextAnchor) + "/" + str.tostring(contextAt) + "/" + str.tostring(zoneAt) + "/" + str.tostring(expires)
+    string bounds = str.tostring(lo, "0.################") + "/" + str.tostring(hi, "0.################")
+    "L08/" + str.tostring(version) + "/" + clocks + "/zone=" + bounds
+
+reactionRecorded(int cutoff, int firstB, int firstA) =>
+    bool recordedB = not na(firstB) and firstB == cutoff
+    bool recordedA = not na(firstA) and firstA == cutoff
+    [recordedB, recordedA]
+
 // The previous-hour tuple is aligned to the opening of each chart bar. IDs expose stale gaps.
 bool chartOK = syminfo.tickerid == SYMBOL and syminfo.basecurrency == "PAXG" and syminfo.currency == "USDT" and timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard
 [hourOpen, hourClose, hourPrice] = request.security(SYMBOL, "60", [time[1], time_close[1], close[1]], gaps = barmerge.gaps_off, lookahead = barmerge.lookahead_on)
@@ -89,7 +103,7 @@ bool hourOK = chartOK and not na(hourPrice) and hourPrice > 0 and hourClose == r
 
 int available = math.max(contextKnown, zoneKnown)
 bool ready = configured and anchor > 0 and anchor % HOUR == 0 and contextKnown >= anchor and zoneKnown > 0 and expiry > available and floor > 0 and ceiling >= floor
-string setupId = "L08/" + str.tostring(revision) + "/" + str.tostring(anchor) + "/" + str.tostring(available)
+string setupId = setupIdentity(revision, anchor, contextKnown, zoneKnown, expiry, floor, ceiling)
 var string status = "WAIT · first closed 5m candle"
 var string terminal = ""
 var bool anchorSeen = false
@@ -135,11 +149,11 @@ if chartOK and ready and barstate.isconfirmed and time >= available and time_clo
 utc(int stamp) =>
     na(stamp) ? "—" : str.format_time(stamp, "MM-dd HH:mm", "Etc/UTC")
 
-row(table panel, int n, string key, string value) =>
+row(table panel, int n, string key, string value, string detail = "") =>
     table.cell(panel, 0, n, key, text_color = color.silver, text_halign = text.align_left, text_size = size.small)
-    table.cell(panel, 1, n, value, text_color = color.white, text_halign = text.align_left, text_size = size.small)
+    table.cell(panel, 1, n, value, text_color = color.white, text_halign = text.align_left, text_size = size.small, tooltip = detail)
 
-var table panel = table.new(position.top_right, 2, 11, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+var table panel = table.new(position.top_right, 2, 13, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
 if barstate.islast
     [loss, reward] = nominalRisk(entry, stop, target, floor)
     string risk = "Disabled"
@@ -151,17 +165,23 @@ if barstate.islast
                 risk := "Loss " + str.tostring(loss, "#.########") + " USDT/PAXG · " + str.tostring(reward / loss, "#.###") + "R"
     string strict = na(firstA) ? "Waiting for later candidate" : "UNKNOWN · receipt order"
     string contactId = na(contact) ? "—" : setupId + "/" + str.tostring(contact)
-    row(panel, 0, "Research v0.1.0", "PAXGUSDT Spot · 5m · UTC")
-    row(panel, 1, "State", chartOK ? status : "INSUFFICIENT · chart identity")
+    [recordedB, recordedA] = reactionRecorded(lastDecision, firstB, firstA)
+    string recorded = "—"
+    if recordedB or recordedA
+        recorded := recordedB and recordedA ? "R2-B + R2-A" : recordedB ? "R2-B" : "R2-A"
+    row(panel, 0, "Build", BUILD_ID + " · PAXGUSDT 5m")
+    row(panel, 1, "Current state", chartOK ? status : "INSUFFICIENT · chart identity")
     row(panel, 2, "Chart clock", chartOK ? (barstate.isconfirmed ? "Closed 5m · " + utc(lastDecision) : "5m forming · last close " + utc(lastDecision)) : "Use standard BINANCE:PAXGUSDT 5m")
     row(panel, 3, "1H / analyst context", hourOK ? utc(hourClose) + " · " + str.tostring(hourPrice, format.mintick) + (anchorSeen ? " · declared bullish" : " · anchor unverified") : "INSUFFICIENT · exact prior 1H")
-    row(panel, 4, "Setup", ready ? setupId : "Enable and declare context / zone")
-    row(panel, 5, "Contact ID", contactId)
+    row(panel, 4, "Setup ID", ready ? str.replace(setupId, "/zone=", "\nzone=") : "Enable and declare context / zone", ready ? setupId : "")
+    row(panel, 5, "Contact open UTC", utc(contact), contactId)
     row(panel, 6, "Touch evidence", na(contact) ? "No accepted overlap" : "Geometric overlap · physical touch UNKNOWN")
-    row(panel, 7, "R2-B (prov.) / R2-A", utc(firstB) + " / " + utc(firstA))
-    row(panel, 8, "Strict", strict)
-    row(panel, 9, "Evidence model", "Declared availability · history reconstructed")
-    row(panel, 10, "Nominal only", risk)
+    row(panel, 7, "Recorded R2-B / R2-A", utc(firstB) + " / " + utc(firstA))
+    row(panel, 8, "At last cutoff", recorded, "First qualification recorded at the last closed 5m cutoff")
+    row(panel, 9, "Strict", strict)
+    row(panel, 10, "Evidence model", "Declared availability · history reconstructed")
+    row(panel, 11, "Nominal only", risk)
+    row(panel, 12, "Policy", "R2-B provisional · R2-A comparator")
 
 plot(hourOK ? hourClose / 1000 : na, "Confirmed 1H close (Unix s)", display = display.data_window, precision = 0)
 plot(hourOK ? hourPrice : na, "Confirmed 1H close (USDT)", display = display.data_window, precision = 2)
