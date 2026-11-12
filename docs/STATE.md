@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.3 — M01-P1 v0.1.2 source integrity, saved-build visual reload, input spot-check and FOUR Binance-checked pivots PASS; broader parity OPEN. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.4 — Lesson 08 / optional M01 model isolation and regression CI PASS (39/39); native same-cutoff ON/OFF parity OPEN. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.3 fourth native swing and settings readback, 2026-11-12
+## Current checkpoint — Phase 3.4 source-level isolation and CI, 2026-11-12
+
+- Owner authorized continuing the next narrowly scoped check after Phase 3.3. No new Pine features or modifications; preserve v0.1.2 and the sole private TradingView save.
+- [Phase 3.4 regression](implementation/phase3-4-lesson08-m01-isolation.md): mechanically removing the M01 additions from v0.1.2 reconstructs the entire pinned v0.1.1 Pine source exactly. Original L08 state machine, 1H request, reactions, labels, risk, identities and old panel rows unchanged.
+- [Successful GitHub Actions CI run 43195302296](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43195302296) on `70981d7ead5bcc284a32724e4129c81425c5debb`: **39/39 Python deterministic/static tests PASS** (21 existing + 13 M01 + 5 Phase3.4), including 15 frozen-prefix baseline/new-replay comparisons. An earlier 38/39 failure was fixed in the test helper, with no Pine change.
+- **NOT RUN:** owner native chart M01 OFF/ON comparison at the same cutoff with the same activated Lesson 08 setup, R2 contact/qualification branch parity, and live realtime onset. **Next:** owner-assisted same-cutoff panel comparison, not a new indicator version.
+
+## Previous checkpoint — Phase 3.3 fourth native swing and settings readback, 2026-11-12
 
 - Owner screenshot at ~17:38 PHT shows current private-saved v0.1.2 indicator on Spot 5m with M01 probe ON, `pivotLeft=2`, `pivotRight=2`, optional nominal risk OFF and entry/stop/target `0/0/0`. These match the declared settings from earlier screenshots; not an independently observed atomic all-input before/after reload test.
 - Public read-only Binance Spot PAXGUSDT 5m candles independently corroborate **fourth** strict low **3922.84**, origin **09:15 UTC**, modeled known-at **09:30 UTC**. Two preceding lows `3924.79/3926.20`, two subsequent lows `3927.54/3931.85`. [Detailed verification](implementation/phase3-3-m01-pivot-probe.md#owner-assisted-v012-m01-settings-check-and-fourth-verified-pivot--2026-11-12-1738-pht).

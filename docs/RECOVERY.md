@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.3 fourth native M01 pivot and settings, 12 November 2026
+## Current recovery point — Phase 3.4 L08/M01 source isolation and CI accepted, 12 November 2026
+
+Current Pine remains v0.1.2 build `L08-0.1.2-3b9eb3065294`. Owner approved a **regression-only** Phase 3.4 increment. [Details](implementation/phase3-4-lesson08-m01-isolation.md): mechanical reverse of only M01 additions yields exact original v0.1.1 code; five new Python tests verify source and frozen-prefix equivalence. [GitHub Actions run 43195302296](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43195302296) **39/39 PASS**, original 21 plus M01 13 plus Phase 3.4 five. First run's one failed test was caused by an overly broad text anchor; corrected without modifying Pine. **Next native owner action:** compare Lesson 08 panel with optional M01 OFF then ON on the same `BINANCE:PAXGUSDT` Spot 5m chart, same declared setup, same cutoff. Native active contact/R2 and live realtime parity remain NOT RUN. Do not touch other projects or implement BOS/CHoCH without separate authorization.
+
+## Prior recovery point — Phase 3.3 fourth native M01 pivot and settings, 12 November 2026
 
 Owner's 17:38 PHT screenshot of saved indicator v0.1.2 on Binance PAXGUSDT Spot 5m shows M01 audit ON with left=2/right=2, nominal risk OFF, prices 0/0/0, and correct build. A fourth specific strict pivot low **3922.84**, origin 09:15 UTC / known 09:30 UTC, was independently verified against Binance Spot 5m OHLC. Earlier three pivots already accepted; complete uploaded v0.1.2 source also matches repository after CRLF→LF and terminal-newline normalization. See [M01 native evidence](implementation/phase3-3-m01-pivot-probe.md#owner-assisted-v012-m01-settings-check-and-fourth-verified-pivot--2026-11-12-1738-pht). Bounded opt-in M01-P1 increment accepted; **full Lesson 08 same-input and realtime pivot onset remain NOT RUN**, all-input atomic reload parity NOT VERIFIED. Await owner direction; no new Pine features or other project access.
 
