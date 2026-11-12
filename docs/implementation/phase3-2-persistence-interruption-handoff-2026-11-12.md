@@ -90,6 +90,27 @@ After the user reopened the named saved script in Pine Editor, they followed the
 
 This upload must **not** replace or modify the checked-in Pine source; its canonical content is already identical.
 
+## Owner-assisted paired Inputs screenshots — 2026-11-12, 16:36 PHT
+
+The owner supplied **two** TradingView screenshot captures of the `Alpha Engine | Lesson 08 Research v0.1.1` **Inputs** dialog, from approximately **16:36:19** and **16:36:51 PHT**, in response to the request for a before/after reload settings check. Both screenshots show the same values for **eight of the twelve Pine input declarations**, represented by **twelve visible UI controls** because four datetime inputs have two controls each:
+
+| Visible Pine input | First screenshot | Second screenshot | Visual parity |
+| --- | --- | --- | --- |
+| Enable declared setup | Checked | Checked | MATCH |
+| Setup version | 33 | 33 | MATCH |
+| Bullish context reference · 1H close | 2026-11-12 14:00 | 2026-11-12 14:00 | MATCH |
+| Context available at · declared | 2026-11-12 14:55 | 2026-11-12 14:55 | MATCH |
+| Zone available at · declared | 2026-11-12 14:55 | 2026-11-12 14:55 | MATCH |
+| Exclusive expiry | 2026-11-12 15:20 | 2026-11-12 15:20 | MATCH |
+| Support floor | 3900 | 3900 | MATCH |
+| Support ceiling | 4050 | 4050 | MATCH |
+
+**Observation — PASS for visible-field equality.** Both screenshots show the named v0.1.1 indicator settings, qualified non-perpetual `PAXGUSDT` chart context and consistent values for the eight visible Pine inputs. The owner was following a requested reload check, but the screenshots **do not themselves prove the precise sequence of a browser refresh between captures**, and no separate browser reload event was observed by this chat. Other earlier screenshots established a same-build chart restoration after a reported hard refresh.
+
+**Remaining exact-input gate — INSUFFICIENT for all-input parity:** Four Pine input declarations were below the visible scroll area in both screenshots: `Show nominal geometry`, `Entry reference`, `Stop reference` and `Target reference`. These must be checked after scrolling inside the Inputs dialog. The separately accepted Phase 3.1 manifest listed nominal geometry disabled and the three optional prices zero, but these current screenshots do not verify their persisted values. Do not describe the eight checked inputs as all sixteen UI controls or all twelve Pine inputs. Timezone interpretation is based on the earlier PHT input manifest; both screenshots display the same literal date/time.
+
+A prior complete Pine Editor upload already established **full source equality** after CRLF→LF normalization. This update changes neither Pine code nor acceptance of live venue receipt, physical-touch or execution outcomes.
+
 ## Non-goals
 
 No new Pine features or changed v0.1.1 algorithm. No strategy, alerts, backtesting, trading or publication. No cross-project access. The account's **one saved script** cap is not lifted by deleting older scripts; maintain this one saved slot for the current Alpha Engine diagnostic.
