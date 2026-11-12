@@ -139,6 +139,42 @@ The owner uploaded `0.1.2.txt` after reopening the named private saved Pine scri
 
 **Remaining NOT VERIFIED / NOT RUN:** atomic comparison of all 15 v0.1.2 Pine input declarations before and after refresh (12 existing plus 3 M01 inputs); identical-setup Lesson 08 v0.1.1 vs v0.1.2 runtime regression; realtime forming-to-closed 5m pivot acceptance; TradingView-native receipt timing and performance. Keep these separate from the successful source check. Do not expand features or overwrite v0.1.1 rollback.
 
+## Owner-assisted v0.1.2 M01 settings check and fourth verified pivot — 2026-11-12, 17:38 PHT
+
+The owner supplied another screenshot of the indicator's TradingView `Inputs` dialog on non-perpetual Binance PAXGUSDT Spot 5m, following the previously requested settings-persistence check. The panel shows `L08-0.1.2-3b9eb3065294` and these inputs:
+
+| Visible input | Screenshot observation | Expected test setting |
+| --- | --- | --- |
+| Show confirmed 5m pivots (research only) | **ON** | ON |
+| Strict pivot left bars | **2** | 2 |
+| Strict pivot right bars | **2** | 2 |
+| Show nominal geometry | **OFF** | OFF |
+| Entry, Stop, Target references | **0, 0, 0** | 0, 0, 0 |
+
+**PASS (visual owner-assisted settings readback):** the new M01 audit remains enabled with the expected two-left/two-right confirmation settings, and the visible optional risk controls agree with the earlier zero/disabled baseline. This image is consistent with the user's instructed refreshed-chart sequence, but it is not direct machine observation of the reload action or an atomic before/after comparison of all 15 Pine input declarations.
+
+The panel displayed a subsequent strict M01 low of **3922.84 USDT/PAXG, known 2026-11-12 09:30 UTC**. Independently retrieved public Binance Spot `PAXGUSDT` 5m klines covering `2026-11-12T09:00:00Z` through `09:40:00Z` confirmed:
+
+| Bar open UTC | Low (USDT/PAXG) | Role |
+| --- | ---: | --- |
+| 09:05 | 3924.79 | First earlier comparison |
+| 09:10 | 3926.20 | Second earlier comparison |
+| **09:15** | **3922.84** | **Candidate strict swing low** |
+| 09:20 | 3927.54 | First right-hand confirming bar, closes 09:25 |
+| 09:25 | 3931.85 | Second right-hand confirming bar, closes **09:30** |
+
+All four neighboring lows exceed 3922.84. Thus the strict 2+2 rule confirms this low only at the **09:30 UTC close**, matching the native panel. The earlier 3922.30 low known at 09:15 is a **different earlier swing origin**; showing the latest now as 3922.84 is consistent with incremental confirmed-pivot updates, not a revision to that original observation.
+
+**PASS (bounded Binance/native cross-check):** a **fourth** specific M01 pivot value and causal known-at cutoff matches independently fetched public Binance 5m OHLC. This is not evidence of exact exchange receipt timestamps or predictive trading value.
+
+### Bounded M01 acceptance summary at this checkpoint
+
+- **Accepted:** Pine v0.1.2 on a qualified native Spot 5m chart; immutable build displayed after owner's reported refresh; user-exported full editor source matching GitHub by normalized SHA-256 and Git blob; optional M01 enabled (left=2/right=2) and visible after refresh; **four** pivot price/confirmation pairs individually corroborated against Binance Spot 5m OHLC.
+- **Still open:** full 15-input paired before/after refresh comparison; original Lesson 08 identical-setup v0.1.1-to-v0.1.2 parity; live forming-to-closed pivot confirmation; nonstandard/irregular chart bars in native TradingView. These are not implied PASS by the four-pivot checks.
+- **Outside scope:** production BOS/CHoCH, automated trade entries, Pine strategies/backtesting, account-specific executions, physical trade prints, and trading performance.
+
+**Decision for this research increment:** The bounded opt-in M01-P1 implementation, native fixed-window pivot checks, saved source identity and visible persistence are supported; retain v0.1.2 as current working research candidate and v0.1.1 as rollback. Do not automatically implement broader market-structure or trading features before owner review.
+
 ## Stop and follow-up
 
 Stop this increment at the **v0.1.2 candidate awaiting native TradingView acceptance**. Do not auto-enable pivot audit for signals, auto-arm BOS/CHoCH, claim source-verified structural trend or expand to new symbols. If the prototype fails compile or parity, fix the specific defect against v0.1.1 rollback and retain both records. Native acceptance must precede any broad feature expansion.

@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.3 full v0.1.2 editor-source equality, 12 November 2026
+## Current recovery point — Phase 3.3 fourth native M01 pivot and settings, 12 November 2026
+
+Owner's 17:38 PHT screenshot of saved indicator v0.1.2 on Binance PAXGUSDT Spot 5m shows M01 audit ON with left=2/right=2, nominal risk OFF, prices 0/0/0, and correct build. A fourth specific strict pivot low **3922.84**, origin 09:15 UTC / known 09:30 UTC, was independently verified against Binance Spot 5m OHLC. Earlier three pivots already accepted; complete uploaded v0.1.2 source also matches repository after CRLF→LF and terminal-newline normalization. See [M01 native evidence](implementation/phase3-3-m01-pivot-probe.md#owner-assisted-v012-m01-settings-check-and-fourth-verified-pivot--2026-11-12-1738-pht). Bounded opt-in M01-P1 increment accepted; **full Lesson 08 same-input and realtime pivot onset remain NOT RUN**, all-input atomic reload parity NOT VERIFIED. Await owner direction; no new Pine features or other project access.
+
+## Prior recovery point — Phase 3.3 full v0.1.2 editor-source equality, 12 November 2026
 
 The owner-uploaded complete `0.1.2.txt` was compared with the authoritative Pine file: **231/231 code lines match**, after CRLF→LF normalization and adding terminal LF. Canonical SHA-256 `a6e624777d792ec528389746da86d54bacc58f412d7ab8040c84fde325b78dd2` and Git blob `dd1691072e3f81d18217c50efa87c4d6fa6b43e3` are exact matches. See [Phase 3.3 evidence](implementation/phase3-3-m01-pivot-probe.md#phase-33--complete-v012-owner-exported-pine-source-comparison-2026-11-12). Source **PASS**; previous v0.1.2 visual build reload and three Binance-corroborated pivot observations accepted. Still open: all-15-input atomic reload parity, original Lesson 08 same-input comparison and realtime pivot transition. Do not change Pine code or access other projects without further owner authorization.
 

@@ -2,12 +2,18 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.3 — complete owner-exported v0.1.2 source equality and three Binance-checked pivots PASS; broader native parity OPEN. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.3 — M01-P1 v0.1.2 source integrity, saved-build visual reload, input spot-check and FOUR Binance-checked pivots PASS; broader parity OPEN. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.3 full source equality, 2026-11-12
+## Current checkpoint — Phase 3.3 fourth native swing and settings readback, 2026-11-12
+
+- Owner screenshot at ~17:38 PHT shows current private-saved v0.1.2 indicator on Spot 5m with M01 probe ON, `pivotLeft=2`, `pivotRight=2`, optional nominal risk OFF and entry/stop/target `0/0/0`. These match the declared settings from earlier screenshots; not an independently observed atomic all-input before/after reload test.
+- Public read-only Binance Spot PAXGUSDT 5m candles independently corroborate **fourth** strict low **3922.84**, origin **09:15 UTC**, modeled known-at **09:30 UTC**. Two preceding lows `3924.79/3926.20`, two subsequent lows `3927.54/3931.85`. [Detailed verification](implementation/phase3-3-m01-pivot-probe.md#owner-assisted-v012-m01-settings-check-and-fourth-verified-pivot--2026-11-12-1738-pht).
+- **Bounded Phase 3.3 M01 acceptance:** four native pivot comparisons PASS; full saved-editor source equality PASS; visual post-refresh build/settings check PASS. **Separate gates remain open:** same-input Lesson 08 regression, real-time forming-bar onset, all-15-input atomic parity. Keep v0.1.2 and v0.1.1 rollback; stop before unapproved features.
+
+## Prior checkpoint — Phase 3.3 full source equality, 2026-11-12
 
 - Uploaded complete saved-editor `0.1.2.txt`: **231/231 lines match** GitHub Pine v0.1.2 after CRLF→LF and final newline normalization. Canonical SHA-256 `a6e624777d792ec528389746da86d54bacc58f412d7ab8040c84fde325b78dd2`; canonical Git blob `dd1691072e3f81d18217c50efa87c4d6fa6b43e3`. [Verification table](implementation/phase3-3-m01-pivot-probe.md#phase-33--complete-v012-owner-exported-pine-source-comparison-2026-11-12).
 - Source integrity **PASS**. Previous post-reload visual build and three independently corroborated pivot checks remain accepted. Exact all-15-input before/after reload comparison, Lesson 08 same-input baseline and realtime pivot onset remain unverified.
