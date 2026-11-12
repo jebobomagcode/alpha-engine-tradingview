@@ -61,3 +61,44 @@ Preserve the existing sole **privately saved v0.1.2** script, exact build `L08-0
 | Live realtime forming-to-closed bar parity | NOT RUN |
 
 **Next:** Owner screenshot of OFF/ON at comparable cutoff on the correct saved-script v0.1.2 chart. Do not widen to production BOS/CHoCH or open a new feature sprint before recording this bounded acceptance result.
+
+## Owner-assisted native M01 ON/OFF comparison — November 12, 2026, 18:12–18:14 PHT
+
+The owner provided two screenshots of the *same* `BINANCE:PAXGUSDT` **Spot 5m** chart with active build `L08-0.1.2-3b9eb3065294`. The first capture at approximately **18:12:42 PHT** shows M01 research pivot audit **ON**, `left=2, right=2`. The second at **18:14:40 PHT** shows the M01 checkbox **OFF**, with unchanged left/right settings. Both screenshots display the **same last completed candle cutoff, 2026-11-12 10:10 UTC**; each also shows the *next* 5m candle forming. The changing current market price is not treated as a completed-bar decision change.
+
+| Original Lesson 08 panel field | M01 ON | M01 OFF | Comparison |
+| --- | --- | --- | --- |
+| Instrument / timeframe | Binance PAX Gold / TetherUS Spot 5m | Same | MATCH |
+| Build | `L08-0.1.2-3b9eb3065294` | Same | MATCH |
+| Last closed 5m cutoff | `11-12 10:10` UTC | Same | MATCH |
+| Current state | `INSUFFICIENT · setup declaration` | Same | MATCH |
+| 1H / analyst context | `11-12 10:00 · 3940.63 · anchor unverified` | Same | MATCH |
+| Setup ID | `Enable and declare context / zone` | Same | MATCH |
+| Contact open UTC | `—` | Same | MATCH |
+| Touch evidence | `No accepted overlap` | Same | MATCH |
+| Recorded R2-B / R2-A | `— / —` | Same | MATCH |
+| At last cutoff | `—` | Same | MATCH |
+| Strict | `Waiting for later candidate` | Same | MATCH |
+| Evidence model | `Declared availability · history reconstructed` | Same | MATCH |
+| Nominal only | `Disabled` | Same | MATCH |
+| Policy | `R2-B provisional · R2-A comparator` | Same | MATCH |
+| M01 high | `3961.97 · known 11-12 08:10` | `Off · research` | EXPECTED AUDIT CHANGE |
+| M01 low | `3938.08 · known 11-12 10:10` | `Off · research` | EXPECTED AUDIT CHANGE |
+
+**PASS — bounded native same-cutoff toggle isolation for the disabled-setup branch.** All original Lesson 08 panel outputs are visually identical at the same *completed* 5m decision cutoff. The two optional M01 rows alone switch from displayed confirmed pivots to `Off · research`. This is consistent with the 39/39 automated source/model regression suite.
+
+**Limits and unexercised branches:** The Lesson 08 declaration was disabled in **both** screenshots (`INSUFFICIENT · setup declaration`). Thus **no setup contact, active R2-B/R2-A reaction, invalidation, expiry or reassessment path was exercised by this native ON/OFF pair**. Those branch-specific native regression claims must remain **NOT RUN**, not PASS. The snapshots were taken approximately two minutes apart but show the same last completed cutoff, avoiding a completed-bar rollover; the forming candle's price changed. These are owner-supplied UI screenshots, not a TradingView API capture or realtime tick-by-tick equivalence proof.
+
+### Updated Phase 3.4 gate ledger
+
+| Gate | Updated status |
+| --- | --- |
+| Exact source isolation: reverse only M01 changes → baseline v0.1.1 | **PASS** |
+| GitHub CI 21 original + 13 M01 + 5 Phase 3.4 tests | **PASS — 39/39** |
+| Native same-cutoff M01 ON/OFF parity for disabled Lesson 08 declaration | **PASS — owner screenshots** |
+| Expected M01 high/low rows ON and OFF | **PASS — owner screenshots** |
+| Native activated setup contact and R2-B/R2-A toggle regression | **NOT RUN — branch unexercised** |
+| Native terminal lifecycle states under toggle | **NOT RUN — branch unexercised** |
+| Native realtime forming-to-close / venue receipt order | **NOT RUN / INSUFFICIENT** |
+
+**Disposition:** The strictly bounded Phase 3.4 *code-level isolation plus disabled-setup native toggle test* passes. Full activated-setup contact/reaction parity remains an explicit follow-up acceptance task. Do not alter Pine, override historical source events, automate trades or label those unexercised branches as passed.

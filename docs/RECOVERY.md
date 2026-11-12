@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.4 L08/M01 source isolation and CI accepted, 12 November 2026
+## Current recovery point — Phase 3.4 inactive-setup native toggle comparison passed, 12 November 2026
+
+Owner screenshots comparing 18:12:42 and 18:14:40 PHT showed the same last completed `BINANCE:PAXGUSDT` Spot 5m cutoff (`2026-11-12 10:10 UTC`) with M01 audit ON vs OFF. All original Lesson 08 panel outputs matched; only M01 high `3961.97 known 08:10` and low `3938.08 known 10:10` changed to `Off · research`. [Detailed native comparison](implementation/phase3-4-lesson08-m01-isolation.md#owner-assisted-native-m01-onoff-comparison--november-12-2026-18121814-pht). CI source/model tests still 39/39 PASS. **Scope:** The declared setup was disabled, so contact and R2-B/R2-A active branches remain NOT RUN. No Pine source changes required. Maintain v0.1.2 saved private script, v0.1.1 rollback and isolated repo; proceed with actual source-grounded branch coverage only if owner authorizes next step.
+
+## Prior recovery point — Phase 3.4 L08/M01 source isolation and CI accepted, 12 November 2026
 
 Current Pine remains v0.1.2 build `L08-0.1.2-3b9eb3065294`. Owner approved a **regression-only** Phase 3.4 increment. [Details](implementation/phase3-4-lesson08-m01-isolation.md): mechanical reverse of only M01 additions yields exact original v0.1.1 code; five new Python tests verify source and frozen-prefix equivalence. [GitHub Actions run 43195302296](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43195302296) **39/39 PASS**, original 21 plus M01 13 plus Phase 3.4 five. First run's one failed test was caused by an overly broad text anchor; corrected without modifying Pine. **Next native owner action:** compare Lesson 08 panel with optional M01 OFF then ON on the same `BINANCE:PAXGUSDT` Spot 5m chart, same declared setup, same cutoff. Native active contact/R2 and live realtime parity remain NOT RUN. Do not touch other projects or implement BOS/CHoCH without separate authorization.
 

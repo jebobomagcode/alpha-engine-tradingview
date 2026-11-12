@@ -2,12 +2,18 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.4 — Lesson 08 / optional M01 model isolation and regression CI PASS (39/39); native same-cutoff ON/OFF parity OPEN. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.4 — Lesson 08/M01 isolation CI 39/39 PASS, native same-cutoff OFF/ON parity PASS for disabled-setup branch; active contact/R2 native parity OPEN. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.4 source-level isolation and CI, 2026-11-12
+## Current checkpoint — Phase 3.4 owner-assisted M01 toggle regression, 2026-11-12
+
+- Owner screenshots 18:12:42 (M01 ON, left/right 2/2) and 18:14:40 PHT (M01 OFF) show **same PAXGUSDT Spot 5m last-closed cutoff 10:10 UTC**, v0.1.2 build, prior 1H context `10:00 · 3940.63 · anchor unverified`, `INSUFFICIENT · setup declaration`, no contact, no R2 cutoffs, same strict/evidence/nominal/policy rows; M01 high/low switch correctly from prices to `Off · research`.
+- **PASS:** native OFF/ON original-field parity for the disabled-setup branch, plus 39/39 CI source/model tests. **NOT RUN:** active contact, R2-B/R2-A and terminal state toggle parity; realtime receipt behavior. [Evidence table](implementation/phase3-4-lesson08-m01-isolation.md#owner-assisted-native-m01-onoff-comparison--november-12-2026-18121814-pht).
+- **Next:** if native branch coverage is required, use a properly evidenced historical setup with active contact/reaction; otherwise treat Phase 3.4 as bounded source + inactive-toggle acceptance only. Do not widen features or modify Pine to fabricate a signal.
+
+## Previous checkpoint — Phase 3.4 source-level isolation and CI, 2026-11-12
 
 - Owner authorized continuing the next narrowly scoped check after Phase 3.3. No new Pine features or modifications; preserve v0.1.2 and the sole private TradingView save.
 - [Phase 3.4 regression](implementation/phase3-4-lesson08-m01-isolation.md): mechanically removing the M01 additions from v0.1.2 reconstructs the entire pinned v0.1.1 Pine source exactly. Original L08 state machine, 1H request, reactions, labels, risk, identities and old panel rows unchanged.
