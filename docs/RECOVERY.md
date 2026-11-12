@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.5 draft and owner persistence gate, 12 November 2026
+## Current recovery point — Phase 3.5 private save and reload evidence, 12 November 2026
+
+Verify actual GitHub main and [draft PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1). Accepted main is `3458ff6854e9c349aef10a30e487a908a3648441`. The existing private TradingView script is v0.1.3, build `L08-0.1.3-3e3d909ba9f5`. It passed exact named source readback, ordinary reload, both 19-input manifests, and matched-cutoff native checks. The owner’s original inputs are saved. See the [private persistence record](implementation/phase3-5-private-persistence-acceptance.md). The explicit cache-bypassing refresh still needs owner-side execution and verification. Keep the draft open for review. Preserve the owner-private exact native v0.1.2 backup and both pinned Git rollback versions. Do not rerun the 55 tests without a Pine, test, or relevant dependency change.
+
+## Prior recovery point — Phase 3.5 draft and owner persistence gate, 12 November 2026
 
 Verify actual GitHub `main` and [draft PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) before any work. Accepted main is `3458ff6854e9c349aef10a30e487a908a3648441`. The PR branch is `feat/phase3-5-m01-validity-freshness-20261112`. Its test commit `227ef8d7f79198b54cb67661f2aa3cf8238ad666` passed 55 checks and the three original mutation gaps are closed. Follow the [owner-assisted persistence procedure](implementation/phase3-5-test-hardening-and-persistence.md). The prior exact-source native compile applies to the same v0.1.3 blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`. The private saved script remains v0.1.2. Candidate private save and matched reload are NOT RUN. Preserve both rollback sources and stop at the owner gate.
 

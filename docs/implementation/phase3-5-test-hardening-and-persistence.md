@@ -4,6 +4,8 @@
 
 **Disposition: Ready for owner-assisted persistence acceptance.** Draft PR #1 contains the tested candidate. The private saved script remains v0.1.2. Candidate saved-source readback and matched reload are **NOT RUN**.
 
+The [later private persistence record](phase3-5-private-persistence-acceptance.md) supersedes this pre-save status. The procedure and test evidence below remain the historical checkpoint.
+
 ## Checkpoints and scope
 
 | Item | Verified identity |

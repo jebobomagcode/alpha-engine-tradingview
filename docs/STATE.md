@@ -2,12 +2,18 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.5 test hardening on draft PR #1. Accepted main and the private saved TradingView script remain v0.1.2. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.5 private persistence evidence on draft PR #1. Accepted GitHub main is v0.1.2. The existing named private TradingView save is v0.1.3. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
-**D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 authorizes the review and bounded comparisons; preserve the sole private v0.1.2 save.
+**D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 covers bounded Phase 3.4 review. D-027 authorizes the exact private v0.1.3 replacement and preserves the observed native v0.1.2 backup for rollback.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Draft PR checkpoint — Phase 3.5 test hardening, 2026-11-12
+## Current draft PR checkpoint — Phase 3.5 native private persistence, 2026-11-12
+
+- Accepted GitHub `main` remains `3458ff6854e9c349aef10a30e487a908a3648441`. The owner-authorized existing private script now contains exact v0.1.3, build `L08-0.1.3-3e3d909ba9f5`, blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`. Native library version 3.0 was observed.
+- **PASS:** private named save, separate layout save, exact saved-editor source, restored build and qualified chart, all 19 input controls for both the owner and non-default manifests, matched-cutoff M01 ON/OFF at 15:25 UTC, and sampled 15:30 UTC realtime closed-state parity after normal tab reload. The original owner inputs were restored and saved.
+- **NOT RUN:** explicit cache-bypassing hard refresh. The connected browser shortcuts did not navigate. Owner hard-refresh verification and review of this evidence are outstanding. Keep [PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) draft. [Detailed gate ledger](implementation/phase3-5-private-persistence-acceptance.md)
+
+## Prior draft PR checkpoint — Phase 3.5 test hardening, 2026-11-12
 
 - Accepted GitHub `main`: `3458ff6854e9c349aef10a30e487a908a3648441`. Existing private TradingView script: v0.1.2, build `L08-0.1.2-3b9eb3065294`.
 - [Draft PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) contains byte-identical Pine v0.1.3, build `L08-0.1.3-3e3d909ba9f5`, blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`. At test commit `227ef8d7f79198b54cb67661f2aa3cf8238ad666`, 55/55 passed locally and in the actual push and PR CI logs. The three original surviving mutations and ten additional variants were rejected in isolated runs. Both sequential gap/recovery settings passed.
