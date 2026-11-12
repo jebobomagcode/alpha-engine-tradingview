@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## CURRENT RESEARCH INCREMENT — I1 initial executable AI structure candidate (2026-11-13 PHT)
+
+The D-032 no-human plan remains authoritative. [I1 research implementation](../research/phase3_6/ai_structure_candidate.py) provides as-of strict-pivot ordered swings and provisional references; [9 new tests](../tests/test_phase3_6_ai_structure_candidate.py) passed together with 67 existing checks, [CI 76/76 PASS](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43300428886). Corrected a test-harness duplicate keyword, not the source algorithm. This research package does **not** implement a full BOS/CHoCH engine, Pine v0.1.4, trading signals or verified venue timing. Next execute I1 frozen reference-arming/consumption and competing policies, then continue the modular [AI-only roadmap](implementation/ai-only-accelerated-completion-plan.md).
+
 ## CURRENT: D-032 AI-only development; no further human consultation (2026-11-13 PHT)
 
 Owner removed prospective human annotations and routine screenshot tasks as project requirements. The 12-slot Nov 14–17 pilot is **CANCELLED BEFORE COLLECTION**, preserving its research-only preflight (0 captures, 0 manual labels, 0 reviewer pairs). Do not count slots as missed, schedule reminders or wait for humans. Use [AI-only completion plan](implementation/ai-only-accelerated-completion-plan.md) immediately: build AI-selected, clearly labeled experimental M01 structural references and tests, then M02/M03/M04/M05/M06 integration and bounded private Pine acceptance. Preserve 26 completed PCSS lessons, original Coach PDF, Phase 3.5 main v0.1.3 / private save 3.0 / rollback. Keep source-unknown as UNKNOWN and distinguish real venue receipts from modeled closed-bar clocks. No public publication or live trades.

@@ -2,6 +2,8 @@
 
 **Independent, source-grounded, research-enhanced TradingView project.**
 
+**Latest I1 engineering evidence:** [Experimental S1 research module](research/phase3_6/ai_structure_candidate.py) + nine tests now accompany the accepted 67-check suite: [GitHub Actions 76/76 PASS](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43300428886). Chart-clock causal candidate and ordered-swing diagnostic only; not yet a completed BOS/CHoCH engine or Pine feature.
+
 **Active owner directive D-032 (2026-11-13 PHT): [accelerated AI-only implementation](docs/implementation/ai-only-accelerated-completion-plan.md).** No more human consultations, manual annotation tasks or screenshot collection gates; the planned 12-slot pilot was cancelled before any captures. The Coach PDF and 26 PCSS studies are the only Coach-method authority. AI-generated numeric rules must be explicitly independent and tested. Continue I1 structural reference, then zones, candles, EMA/RSI, MTF context and risk; preserve accepted private Pine v0.1.3 and rollbacks. No trades or public publication.
 
 
