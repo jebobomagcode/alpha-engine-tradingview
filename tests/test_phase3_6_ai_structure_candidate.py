@@ -85,7 +85,7 @@ class AIOnlyStructuralCandidateTests(unittest.TestCase):
     def test_invalid_parameter_settings_rejected(self):
         for kw in ({"left": 0}, {"right": 9}, {"left": 2.0}, {"as_of": 66}):
             with self.subTest(kw=kw), self.assertRaises(ValueError):
-                evaluate_structure(sequence(), as_of=65, **kw)
+                evaluate_structure(sequence(), **({"as_of": 65} | kw))
 
     def test_no_bars_is_unknown_not_a_signal(self):
         result = evaluate_structure((), as_of=65)
