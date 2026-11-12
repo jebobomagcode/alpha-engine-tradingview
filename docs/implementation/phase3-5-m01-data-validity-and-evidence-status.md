@@ -5,6 +5,8 @@
 **Candidate:** Pine v0.1.3, build `L08-0.1.3-3e3d909ba9f5`.  
 **Scope:** Independent research-only M01 hardening; not Coach-specified pivot methodology, no trading signals.
 
+The [Phase 3.5 test hardening and persistence record](phase3-5-test-hardening-and-persistence.md) contains the current gate ledger. The sections below retain the initial candidate checkpoint.
+
 ## Purpose and changes
 
 The Work resumption audit identified a demonstrable defect: the v0.1.2 strict pivot window checked bar availability and OHLC geometry but admitted nonpositive OHLC prices. This is inconsistent with the positive-price check used by the Lesson 08 Spot profile.

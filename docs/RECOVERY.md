@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Work resumption and native terminal-state comparisons, 12 November 2026
+## Current recovery point — Phase 3.5 draft and owner persistence gate, 12 November 2026
+
+Verify actual GitHub `main` and [draft PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) before any work. Accepted main is `3458ff6854e9c349aef10a30e487a908a3648441`. The PR branch is `feat/phase3-5-m01-validity-freshness-20261112`. Its test commit `227ef8d7f79198b54cb67661f2aa3cf8238ad666` passed 55 checks and the three original mutation gaps are closed. Follow the [owner-assisted persistence procedure](implementation/phase3-5-test-hardening-and-persistence.md). The prior exact-source native compile applies to the same v0.1.3 blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`. The private saved script remains v0.1.2. Candidate private save and matched reload are NOT RUN. Preserve both rollback sources and stop at the owner gate.
+
+## Accepted main recovery point — Work resumption and native terminal-state comparisons, 12 November 2026
 
 Verify actual GitHub main and read [STATE](STATE.md) and the [dated audit](audits/2026-11-12-work-resumption-phase3-4.md). At reviewed main `43d2af1a03554eeeb013837863c43bfc20e466ef`, the existing 39 checks passed locally, the corrected GitHub CI log matched, and five pivot prices and modeled cutoffs matched fresh Binance Spot evidence. The installed private Pine build `L08-0.1.2-3b9eb3065294` showed same-cutoff M01 OFF/ON parity for pinned revisions 31/32 on the standard Spot 5m chart, with enabled historical contact/R2 and retained REASSESS/EXPIRED states. The original chart inputs were restored and read back. No saved-script operations were performed. Keep original transition-cutoff and live/reload gates open, and retain the M01 nonpositive-price discrepancy for owner review. D-023 was used once; do not repeat deletion or create an additional save. Stop before any new Pine increment.
 
