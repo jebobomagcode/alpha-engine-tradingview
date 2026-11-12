@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## D-032/D-033 integrated research candidate — branch checkpoint
+
+- [Pine v0.1.4 candidate and acceptance](implementation/ai-only-integrated-candidate.md): experimental structure, locations, momentum, prior 1H/4H context, 5m support reaction, and nominal geometry integrated on draft PR #2. Accepted private v0.1.3 and `main` are preserved.
+- **PASS:** 84 local standard checks, 21 isolated research checks, exact normalized native editor readback and compilation/chart display. Native exhaustive parity and durable private save are separate open gates.
+
 ## D-032/D-033 I1 causal reference replay — branch checkpoint
 
 - **VALIDATED (research):** `research/phase3_6/ai_structure_candidate.py` now evaluates earlier-open references at final adjacent closes, records one-time consumption and retirement, and distinguishes R1-A prebreach from R1-B reset/re-cross. A CHoCH candidate retires the active references and requires four post-event ordered swings before releasing the shift gate. Gaps and invalid evidence clear the active segment. Modeled times are not venue receipts.

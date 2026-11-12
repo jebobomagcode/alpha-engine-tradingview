@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## CURRENT — AI-only integrated Pine v0.1.4 candidate
+
+Verify [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) and the [integrated candidate record](implementation/ai-only-integrated-candidate.md). The experimental candidate compiled and displayed on Binance Spot PAXGUSDT 5m in a separate unsaved editor buffer. Accepted private v0.1.3 and main remain the rollback/accepted baseline. Continue with supported native comparisons and private save/readback gates. D-032 removes the human annotation dependency.
+
 ## ACTIVE PRODUCT OBJECTIVE — D-033 foundation first, iterative AI improvement (2026-11-13 PHT)
 
 The owner clarified that the Coach PDF and PCSS are the **basis**, not a fixed exhaustive set of rules. Deliver a working, verifiably causal **AI-improved** private TradingView research indicator quickly, and continue improving it through versioned tests and evidence. The only Coach-origin source remains unchanged; independently invented methods must be clearly differentiated, not silently attributed to Coach. Human reviewer approval and exact discretionary equivalence are **not** required gates. This clarification does NOT waive software correctness, native acceptance, risk disclosures, or restrictions on orders, paid actions and public publication. [D-033](DECISIONS.md) · [AI-only roadmap](implementation/ai-only-accelerated-completion-plan.md).
