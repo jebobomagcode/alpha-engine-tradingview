@@ -2,12 +2,18 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.2 — private saved-script persistence acceptance IN PROGRESS. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.2 — bounded owner-assisted saved-script persistence acceptance COMPLETE, awaiting owner direction. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.2 saved-script interruption, 2026-11-12
+## Current checkpoint — Phase 3.2 bounded persistence acceptance, 2026-11-12
+
+- **Final owner-assisted settings screenshot ~16:38 PHT:** optional nominal geometry was disabled, entry/stop/target reference prices were all `0`; earlier paired screenshots matched the eight other Pine input declarations. **All 12 Pine input values have now been visually checked and match the Phase 3.1 manifest.** The final four were not seen as an atomic before/after reload pair. [Final bounded gate record](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md#remaining-optional-risk-fields-captured--2026-11-12-163837-pht).
+- **Disposition:** named saved-script entry and full source content match, correct v0.1.1 chart build observed after hard refresh, Spot identity accepted, and all input values visually checked. **PHASE 3.2 bounded owner-assisted acceptance COMPLETE.** Atomic all-input before/after reload parity remains NOT VERIFIED; native receipt/physical touch/fill/performance remain outside scope. Do not claim independent TradingView server API attestation.
+- **Next:** owner review of a new bounded development increment only. Preserve the sole saved Alpha Engine script; no need to repeat deletion or version 0.1.1 setup tests.
+
+## Earlier Phase 3.2 interruption and evidence acquisition, 2026-11-12
 
 - Owner D-023 authorized permanent deletion of all owned pre-existing saved TradingView Pine scripts to free the account's one saved-script slot; this is a narrow TradingView-only exception to project isolation.
 - [Phase 3.2 interruption handoff](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md): owner-supplied Work screenshots report **one** old saved script deleted and a refreshed inventory left empty. These are reported Work observations, not independently rechecked by this chat.

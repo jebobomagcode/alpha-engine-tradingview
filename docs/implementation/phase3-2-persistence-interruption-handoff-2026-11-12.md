@@ -5,7 +5,7 @@
 **Starting verified main:** `534aa6945095b090ee85d0051257f571a46f4141`  
 **Accepted source:** [Pine v0.1.1](../../pine/lesson08-diagnostic.pine); build `L08-0.1.1-7fbb3eb381b6`  
 **Prior native acceptance:** [Phase 3.1](phase3-lesson08-diagnostic.md#phase-31--v011-build-identity-and-lifecycle-12-november-2026)  
-**Status:** IN PROGRESS. This entry records an interruption, not a successful private save.
+**Status:** Phase 3.2 bounded owner-assisted persistence acceptance COMPLETE (with narrowly stated remaining verification limits). Earlier work interruption retained below as history.
 
 ## Owner authorization and scope
 
@@ -111,8 +111,38 @@ The owner supplied **two** TradingView screenshot captures of the `Alpha Engine 
 
 A prior complete Pine Editor upload already established **full source equality** after CRLF→LF normalization. This update changes neither Pine code nor acceptance of live venue receipt, physical-touch or execution outcomes.
 
+## Remaining optional-risk fields captured — 2026-11-12, 16:38:37 PHT
+
+In response to the request to scroll down within the named v0.1.1 indicator's `Inputs` dialog, the owner provided a further screenshot showing the previously obscured four Pine declarations:
+
+| Input | Visible value | Phase 3.1 manifest | Result |
+| --- | --- | --- | --- |
+| `Show nominal geometry` | Unchecked | Disabled | MATCH |
+| `Entry reference` | `0` | `0` | MATCH |
+| `Stop reference` | `0` | `0` | MATCH |
+| `Target reference` | `0` | `0` | MATCH |
+
+The lower screenshot simultaneously reconfirms expiry `2026-11-12 15:20`, support floor `3900` and support ceiling `4050`, also consistent with the prior paired captures. The earlier two screenshots matched the other eight Pine declarations (12 visible UI controls once date/time fields are counted separately). **All 12 Pine declarations have therefore been observed in the owner-assisted session, with values matching the accepted v0.1.1 setup manifest.** There is no new algorithmic modification or setup declaration.
+
+### Phase 3.2 bounded acceptance disposition
+
+| Gate | Result | Evidence scope |
+| --- | --- | --- |
+| Previous saved-script inventory cleanup | REPORTED PASS | Work report after user-specific deletion consent, with refreshed empty inventory in Work's own observed session |
+| New named Alpha Engine private saved-script entry | PASS — owner screenshot | One named item under `My scripts`, then opened in Pine Editor |
+| Full saved-editor-source identity | PASS — complete owner copy | 11,351 CRLF bytes; normalized SHA-256 and Git blob exactly match GitHub v0.1.1 |
+| Compiled v0.1.1 after reported hard reload | PASS — owner screenshot | Exact immutable build ID visible; old v0.1.0 did not reappear |
+| Qualified Spot 5m chart after reported layout correction and refresh | PASS — owner screenshot | Non-perpetual PAXG/USDT chart and v0.1.1 build displayed |
+| All 12 saved-setup field values observed | PASS — value inspection | Eight inputs compared between earlier screenshots; four optional-risk fields seen in this capture and match the previously accepted manifest |
+| All 12 fields compared as **one paired before/after reload** | NOT VERIFIED | No single before/after pair covers all four optional-risk fields, and the actual refresh operation was not observed by this chat |
+| Physical touch, receipt order, fills, performance | INSUFFICIENT / NOT RUN | Outside the current chart-only scope |
+
+**Owner-assisted milestone disposition: PHASE 3.2 BOUNDED ACCEPTANCE COMPLETE.** The objective of recovering the available saved-script slot and obtaining an exact-content saved editor source and identifiable compiled chart after reload is supported by the user-supplied evidence. This is *not* certification of a TradingView server-side binary digest, all-input atomic reload parity, native market-data receipt order or trading performance. Preserve the initial v0.1.0 unsaved in-place restoration failures in the historical acceptance record.
+
+**Next:** Owner review of the next bounded development mission. Retain the single saved Alpha Engine script and GitHub v0.1.1 baseline. Do not retry cleanup, redo the 26 lessons, or expand implementation without new authorization.
+
 ## Non-goals
 
 No new Pine features or changed v0.1.1 algorithm. No strategy, alerts, backtesting, trading or publication. No cross-project access. The account's **one saved script** cap is not lifted by deleting older scripts; maintain this one saved slot for the current Alpha Engine diagnostic.
 
-**Recovery point:** Complete named saved-script editor source identity is now PASS after CRLF→LF normalization, and the expected chart build survived hard refresh on the correct Spot instrument. The remaining optional exact acceptance item is a paired full 16-input settings readback; do not change/rebuild source merely for that. Do not repeat completed studies.
+**Recovery point:** Phase 3.2 bounded owner-assisted acceptance is complete: current full source matches GitHub, chart build survived the reported refresh, and all 12 Pine input declarations were inspected with matching accepted values. Atomic all-field before/after reload parity remains unverified, not failed. Stop here for owner direction; do not rebuild/re-delete.

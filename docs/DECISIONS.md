@@ -33,7 +33,7 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
-Resume the [Phase 3.2 persistence handoff](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md): save exact v0.1.1 privately, reopen and verify source bytes, then check durable chart restoration. Do not assume Work completed the save. [Current checkpoint](STATE.md)
+Phase 3.2 owner-assisted bounded persistence acceptance is complete; see [final evidence and limits](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md#remaining-optional-risk-fields-captured--2026-11-12-163837-pht). Await owner's next bounded mission before expanding Pine features. [Current checkpoint](STATE.md)
 
 ## Earlier research-stage decision
 Full original source study of 21 lessons, 3 Q&As and both final notes, all 35 pages, is COMPLETE. See [source completion audit](SOURCE_STUDY_COMPLETION_AUDIT.md). Last note title says BSP charting but plots PSE:BPI, distinct from BSP central-bank rate context. Phase 2 methodology research has started: five written traceability/reconciliation/method specs are linked from README and STATE. Their quantitative definitions are independent candidates, NOT selected Pine or an empirically validated trading edge; no code/backtests/deployments/trades. Crypto-only market scope and independent-project boundaries remain.

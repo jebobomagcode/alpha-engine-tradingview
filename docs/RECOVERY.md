@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.2 saved-source verification, 12 November 2026
+## Current recovery point — Phase 3.2 bounded owner-assisted acceptance completed, 12 November 2026
+
+**Accepted baseline:** Pine v0.1.1, build `L08-0.1.1-7fbb3eb381b6`, independent repo `jebobomagcode/alpha-engine-tradingview`. Owner-assisted saved-script and hard-refresh evidence is accepted within the limits in [Phase 3.2 gate ledger](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md#remaining-optional-risk-fields-captured--2026-11-12-163837-pht). Full source equality has been checked after CRLF→LF normalization; the remaining four optional risk inputs were subsequently observed as Disabled / 0 / 0 / 0, completing inspection of all 12 Pine inputs. **Atomic all-input before/after reload comparison remains NOT VERIFIED but is not a blocker to closing the bounded owner-assisted milestone.** Prior unsaved in-place restoration failures and unknown physical/venue evidence remain historical. Stop and await owner authorization for any further Pine feature work. No cross-project access, re-deletion, or source-study restart.
+
+## Prior recovery point — Phase 3.2 saved-source verification, 12 November 2026
 
 **Latest owner-assisted evidence, ~16:12–16:29 PHT:** The named Alpha Engine private saved script is visible under *My scripts* and opens in Pine Editor with the expected v0.1.1 header. The displayed build survived refresh. One refresh restored `PAXGUSDT.P` (perpetual), triggering the chart identity guard; a subsequent screenshot after returning to Spot and refreshing shows the expected Spot chart and build. **Full source now verified:** uploaded editor text had CRLF line endings and normalized exactly to the repository v0.1.1 SHA-256 and Git blob. **Paired screenshots matched all eight visible Pine input values; four optional-risk inputs remain below-fold and full settings parity remains unverified.** See the [updated handoff](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md). Do not re-delete scripts or rebuild Pine. See [full-source evidence](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md#uploaded-complete-pine-editor-export--exact-source-check-2026-11-12).
 
