@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Lesson 08 Research v0.1.1", overlay = true, max_boxes_count = 1, max_labels_count = 3)
+indicator("Alpha Engine | Lesson 08 Research v0.1.2", overlay = true, max_boxes_count = 1, max_labels_count = 3)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "L08-0.1.1-7fbb3eb381b6"
+const string BUILD_ID = "L08-0.1.2-3b9eb3065294"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -20,6 +20,11 @@ bool showRisk = input.bool(false, "Show nominal geometry", group = "Optional ris
 float entry = input.float(0, "Entry reference", minval = 0, group = "Optional risk")
 float stop = input.float(0, "Stop reference", minval = 0, group = "Optional risk")
 float target = input.float(0, "Target reference", minval = 0, group = "Optional risk")
+
+// M01-P1 research comparator: strict local swings, not Coach-specified thresholds or BOS signals.
+bool pivotProbe = input.bool(false, "Show confirmed 5m pivots (research only)", group = "Optional M01 audit")
+int pivotLeft = input.int(2, "Strict pivot left bars", minval = 1, maxval = 8, group = "Optional M01 audit")
+int pivotRight = input.int(2, "Strict pivot right bars", minval = 1, maxval = 8, group = "Optional M01 audit")
 
 // Deterministic core. All times are epoch ms. The chart adapter supplies the evidence gates.
 barFacts(float o, float h, float l, float c, float lo, float hi, bool adjacent, float prevO, float prevC) =>
@@ -76,6 +81,26 @@ assess(string terminal, int contact, int firstB, int firstA, bool ready, bool hi
                     reason := nextTerminal
     [reason, nextTerminal, nextContact, nextB, nextA]
 
+// Pivots are only declared at the CLOSE of the last required right-hand 5m bar.
+// No origin-bar backplotting, implicit receipt timestamps, or trend inference.
+strictPivots(int leftCount, int rightCount) =>
+    bool enough = bar_index >= leftCount + rightCount
+    float candidateHigh = high[rightCount]
+    float candidateLow = low[rightCount]
+    bool strictHigh = enough and not na(candidateHigh)
+    bool strictLow = enough and not na(candidateLow)
+    if enough
+        for offset = 0 to leftCount + rightCount
+            bool valid = not na(time[offset]) and not na(time_close[offset]) and not na(open[offset]) and not na(high[offset]) and not na(low[offset]) and not na(close[offset]) and time_close[offset] == time[offset] + STEP and high[offset] >= math.max(open[offset], close[offset]) and low[offset] <= math.min(open[offset], close[offset])
+            if offset < leftCount + rightCount
+                valid := valid and time[offset] - time[offset + 1] == STEP
+            strictHigh := strictHigh and valid
+            strictLow := strictLow and valid
+            if offset != rightCount
+                strictHigh := strictHigh and candidateHigh > high[offset]
+                strictLow := strictLow and candidateLow < low[offset]
+    [strictHigh, strictLow]
+
 nominalRisk(float e, float s, float t, float lo) =>
     float loss = na
     float reward = na
@@ -115,6 +140,23 @@ var int lastDecision = na
 
 bool complete = not na(open) and not na(high) and not na(low) and not na(close) and low > 0 and high >= math.max(open, close) and low <= math.min(open, close) and time_close == time + STEP
 bool adjacent = bar_index > 0 and complete[1] and time[1] == time - STEP
+// Evaluate on every chart bar for stable history. Only record on confirmed bar close.
+[pivotHighNow, pivotLowNow] = strictPivots(pivotLeft, pivotRight)
+var float latestPivotHigh = na
+var int highOriginUTC = na
+var int highKnownUTC = na
+var float latestPivotLow = na
+var int lowOriginUTC = na
+var int lowKnownUTC = na
+if chartOK and pivotProbe and barstate.isconfirmed
+    if pivotHighNow
+        latestPivotHigh := high[pivotRight]
+        highOriginUTC := time[pivotRight]
+        highKnownUTC := time_close
+    if pivotLowNow
+        latestPivotLow := low[pivotRight]
+        lowOriginUTC := time[pivotRight]
+        lowKnownUTC := time_close
 [overlap, departure, invalid, engulf] = barFacts(open, high, low, close, floor, ceiling, adjacent, open[1], close[1])
 
 if chartOK and barstate.isconfirmed
@@ -153,7 +195,7 @@ row(table panel, int n, string key, string value, string detail = "") =>
     table.cell(panel, 0, n, key, text_color = color.silver, text_halign = text.align_left, text_size = size.small)
     table.cell(panel, 1, n, value, text_color = color.white, text_halign = text.align_left, text_size = size.small, tooltip = detail)
 
-var table panel = table.new(position.top_right, 2, 13, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+var table panel = table.new(position.top_right, 2, 15, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
 if barstate.islast
     [loss, reward] = nominalRisk(entry, stop, target, floor)
     string risk = "Disabled"
@@ -182,6 +224,8 @@ if barstate.islast
     row(panel, 10, "Evidence model", "Declared availability · history reconstructed")
     row(panel, 11, "Nominal only", risk)
     row(panel, 12, "Policy", "R2-B provisional · R2-A comparator")
+    row(panel, 13, "M01 high", pivotProbe ? (na(highKnownUTC) ? "No confirmed pivot" : str.tostring(latestPivotHigh, format.mintick) + " · known " + utc(highKnownUTC)) : "Off · research", pivotProbe and not na(highOriginUTC) ? "Origin " + utc(highOriginUTC) + " · known " + utc(highKnownUTC) : "")
+    row(panel, 14, "M01 low", pivotProbe ? (na(lowKnownUTC) ? "No confirmed pivot" : str.tostring(latestPivotLow, format.mintick) + " · known " + utc(lowKnownUTC)) : "Off · research", pivotProbe and not na(lowOriginUTC) ? "Origin " + utc(lowOriginUTC) + " · known " + utc(lowKnownUTC) : "")
 
 plot(hourOK ? hourClose / 1000 : na, "Confirmed 1H close (Unix s)", display = display.data_window, precision = 0)
 plot(hourOK ? hourPrice : na, "Confirmed 1H close (USDT)", display = display.data_window, precision = 2)
