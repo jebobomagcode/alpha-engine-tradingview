@@ -41,7 +41,7 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
-Review the Phase 3.5 native evidence and outstanding explicit cache-bypassing refresh. Preserve the exact native v0.1.2 backup and v0.1.1 GitHub rollback. Keep the PR draft pending review. [Current checkpoint](STATE.md)
+Review the Phase 3.5 native persistence evidence, including the verified owner-assisted hard refresh. Preserve the exact native v0.1.2 backup and v0.1.1 GitHub rollback. Keep the PR draft pending review. [Current checkpoint](STATE.md)
 
 ## Earlier research-stage decision
 Full original source study of 21 lessons, 3 Q&As and both final notes, all 35 pages, is COMPLETE. See [source completion audit](SOURCE_STUDY_COMPLETION_AUDIT.md). Last note title says BSP charting but plots PSE:BPI, distinct from BSP central-bank rate context. Phase 2 methodology research has started: five written traceability/reconciliation/method specs are linked from README and STATE. Their quantitative definitions are independent candidates, NOT selected Pine or an empirically validated trading edge; no code/backtests/deployments/trades. Crypto-only market scope and independent-project boundaries remain.

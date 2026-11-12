@@ -20,6 +20,10 @@ The non-default revision-31 ON layout was saved for a second persistence check. 
 
 The owner’s original input manifest was subsequently restored, separately saved to the layout, and read back. The final private chart uses v0.1.3 with setup disabled, nominal geometry disabled and M01 OFF. The revision-31 fixture was temporary.
 
+### Owner-assisted cache-bypassing refresh
+
+After the original input manifest was restored and saved at 23:31:38 PHT, the owner completed Chrome Ctrl+Shift+R on the existing chart. The native undo marker present before the handoff was absent afterward. At 23:34:26 PHT the saved layout had restored without any indicator or setting changes. The chart showed the same 15:30 UTC cutoff, the v0.1.3 build, the qualified Spot 5m chart and the original disabled-setup panel with all three M01 rows off. All 19 original controls matched when reopened. The named editor copy matched canonical v0.1.3 after CRLF-to-LF conversion only, retained the terminal LF and matched the raw copy from the prior normal reload.
+
 ## Gate ledger
 
 | Gate | Outcome | Evidence |
@@ -34,7 +38,7 @@ The owner’s original input manifest was subsequently restored, separately save
 | All 19 inputs on reload | **PASS** | Matched both the original manifest and a separate non-default revision-31 manifest. |
 | Matched-cutoff M01 OFF/ON and original Lesson 08 fields | **PASS** | Same 15:25 UTC cutoff and identical other inputs. Revision-31 setup and R2 history reconstructed. |
 | Sampled realtime closed state across ordinary reload | **PASS** | Same 15:30 UTC cutoff and panel after a genuine observed live cutoff advance. |
-| Explicit cache-bypassing hard refresh | **NOT RUN** | Connected-browser Ctrl+Shift+R and Ctrl+F5 attempts did not navigate. The supported normal tab reload did navigate. A browser-level owner hard refresh is outstanding. |
+| Explicit cache-bypassing hard refresh | **PASS, owner-assisted** | The owner completed Ctrl+Shift+R. The native undo marker cleared and the same 15:30 UTC panel, saved build, 19 controls and exact named source were verified after restoration. Earlier connected-browser shortcut attempts did not navigate. |
 | Venue receipt and physical touch | **INSUFFICIENT** | Chart confirmation and modeled geometric overlap are distinct from venue receipt and verified touch. |
 
 There was no observed v0.1.3 source or layout restoration mismatch requiring rollback. See the [rollback procedure](phase3-5-test-hardening-and-persistence.md#final-owner-assisted-persistence-procedure) for later failures. The test and Pine files retain the exact verified identities from [CI run 43243497408](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43243497408). This checkpoint changes documentation only. The 55 tests were not rerun.

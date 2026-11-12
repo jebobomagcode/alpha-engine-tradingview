@@ -11,7 +11,7 @@
 
 - Accepted GitHub `main` remains `3458ff6854e9c349aef10a30e487a908a3648441`. The owner-authorized existing private script now contains exact v0.1.3, build `L08-0.1.3-3e3d909ba9f5`, blob `218e54cf573d6dfcc7b3306d22a0a34f966db160`. Native library version 3.0 was observed.
 - **PASS:** private named save, separate layout save, exact saved-editor source, restored build and qualified chart, all 19 input controls for both the owner and non-default manifests, matched-cutoff M01 ON/OFF at 15:25 UTC, and sampled 15:30 UTC realtime closed-state parity after normal tab reload. The original owner inputs were restored and saved.
-- **NOT RUN:** explicit cache-bypassing hard refresh. The connected browser shortcuts did not navigate. Owner hard-refresh verification and review of this evidence are outstanding. Keep [PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) draft. [Detailed gate ledger](implementation/phase3-5-private-persistence-acceptance.md)
+- **PASS:** owner-assisted Chrome hard refresh restored the same 15:30 UTC panel, build, all 19 original inputs and exact named editor source. Keep [PR #1](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/1) draft until the owner reviews the persistence evidence. [Detailed gate ledger](implementation/phase3-5-private-persistence-acceptance.md)
 
 ## Prior draft PR checkpoint — Phase 3.5 test hardening, 2026-11-12
 
