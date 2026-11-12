@@ -1,0 +1,27 @@
+name: Phase 3.4 research regression
+
+on:
+  push:
+    paths:
+      - "pine/**"
+      - "tests/**"
+      - ".github/workflows/phase3-4-regression.yml"
+  pull_request:
+    paths:
+      - "pine/**"
+      - "tests/**"
+      - ".github/workflows/phase3-4-regression.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lesson08-m01-isolation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run all deterministic and source-isolation checks
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
