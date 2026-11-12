@@ -14,7 +14,7 @@ import test_lesson08_diagnostic as l08
 ROOT = Path(__file__).resolve().parents[1]
 PINNED_V011 = "74e7814e308a40f769d9b57607ebde145f492b8d"
 SOURCE_PATH = "pine/lesson08-diagnostic.pine"
-V012 = (ROOT / SOURCE_PATH).read_text(encoding="utf-8")
+V012 = subprocess.check_output(["git", "show", "3458ff6854e9c349aef10a30e487a908a3648441:"+SOURCE_PATH], cwd=ROOT).decode("utf-8")
 
 
 def v011_source():
