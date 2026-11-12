@@ -243,9 +243,9 @@ def replay_structure(bars: Sequence[Bar], *, as_of: int, policy: str = "A",
 
         old = {item.reference: item for item in active}
         active = ()
-        shift_pending = shift_at is not None and (
-            len(snapshot.ordered) < 4 or snapshot.ordered[-4].start < shift_at
-        )
+        if shift_at is not None and len(snapshot.ordered) >= 4 and snapshot.ordered[-4].start >= shift_at:
+            shift_at = None
+        shift_pending = shift_at is not None
         if not shift_pending and current is not None:
             active = tuple(_arm(ref, current.close, now, old.get(ref), terminal, policy, buffer_ticks)
                            for ref in snapshot.references)

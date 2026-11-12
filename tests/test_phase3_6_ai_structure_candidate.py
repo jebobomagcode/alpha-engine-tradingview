@@ -156,6 +156,9 @@ class AIOnlyStructuralCandidateTests(unittest.TestCase):
                 keys = {(e.reference.origin_open, e.reference.side, e.reference.level_ticks) for e in events}
                 self.assertEqual(len(events), len(keys))
                 self.assertTrue(all(e.cutoff >= e.reference.earliest_cross_close for e in events))
+                for previous, current in zip(full, full[1:]):
+                    if previous.status in {"UP", "DOWN"} and current.status == "POSSIBLE_SHIFT":
+                        self.assertTrue(any(e.classification.startswith("CHOCH") for e in current.events))
 
 
 if __name__ == "__main__":

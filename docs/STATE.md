@@ -3,7 +3,8 @@
 ## D-032/D-033 integrated research candidate — branch checkpoint
 
 - [Pine v0.1.4 candidate and acceptance](implementation/ai-only-integrated-candidate.md): experimental structure, locations, momentum, prior 1H/4H context, 5m support reaction, and nominal geometry integrated on draft PR #2. Accepted private v0.1.3 and `main` are preserved.
-- **PASS:** 84 local standard checks, 21 isolated research checks, exact normalized native editor readback and compilation/chart display. Native exhaustive parity and durable private save are separate open gates.
+- **PASS:** 84 local standard checks, 21 isolated research checks, exact normalized native editor readback, compilation/chart display, bounded 5m live transition, same-cutoff toggle and R1 comparison, and unsaved browser reload. Native exhaustive parity and durable private save are separate open gates.
+- **I1 lifecycle correction:** once four post-event swings release a possible shift, subsequent incomplete structure cannot reactivate that old shift. The 288-bar receipt regression requires a new CHoCH for a new transition from UP/DOWN into POSSIBLE_SHIFT.
 
 ## D-032/D-033 I1 causal reference replay — branch checkpoint
 
