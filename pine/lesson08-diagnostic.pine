@@ -1,0 +1,167 @@
+//@version=6
+indicator("Alpha Engine | Lesson 08 Research v0.1.0", overlay = true, max_boxes_count = 1, max_labels_count = 3)
+
+const string SYMBOL = "BINANCE:PAXGUSDT"
+const int STEP = 300000
+const int HOUR = 3600000
+
+bool configured = input.bool(false, "Enable declared setup", group = "Setup")
+int revision = input.int(1, "Setup version", minval = 1, group = "Setup")
+int anchor = input.time(0, "Bullish context reference · 1H close", group = "Setup")
+int contextKnown = input.time(0, "Context available at · declared", group = "Setup")
+int zoneKnown = input.time(0, "Zone available at · declared", group = "Setup")
+int expiry = input.time(0, "Exclusive expiry", group = "Setup")
+float floor = input.float(0, "Support floor (USDT/PAXG)", minval = 0, group = "Setup")
+float ceiling = input.float(0, "Support ceiling (USDT/PAXG)", minval = 0, group = "Setup")
+
+bool showRisk = input.bool(false, "Show nominal geometry", group = "Optional risk")
+float entry = input.float(0, "Entry reference", minval = 0, group = "Optional risk")
+float stop = input.float(0, "Stop reference", minval = 0, group = "Optional risk")
+float target = input.float(0, "Target reference", minval = 0, group = "Optional risk")
+
+// Deterministic core. All times are epoch ms. The chart adapter supplies the evidence gates.
+barFacts(float o, float h, float l, float c, float lo, float hi, bool adjacent, float prevO, float prevC) =>
+    bool overlap = h >= lo and l <= hi
+    bool departure = l > hi
+    bool invalid = c < lo
+    bool engulf = adjacent and prevC < prevO and c > o and o < prevC and c > prevO
+    [overlap, departure, invalid, engulf]
+
+assess(string terminal, int contact, int firstB, int firstA, bool ready, bool historyGap, bool htfReady, bool complete, bool adjacent, bool overlap, bool departure, bool invalid, bool engulf, int opened, int closed, int available, int expires) =>
+    string reason = terminal
+    string nextTerminal = terminal
+    int nextContact = contact
+    int nextB = firstB
+    int nextA = firstA
+    if terminal == ""
+        if not ready
+            reason := "INSUFFICIENT · setup declaration"
+        else if closed >= expires
+            reason := "EXPIRED · exclusive cutoff"
+            nextTerminal := reason
+        else if opened < available
+            reason := "WAIT · declaration not yet available at open"
+        else if historyGap
+            reason := "INSUFFICIENT · setup history gap"
+        else if not htfReady
+            reason := "INSUFFICIENT · confirmed 1H reference"
+        else if not complete
+            reason := "INSUFFICIENT · closed 5m OHLC"
+        else if invalid
+            reason := "INVALIDATED · close below support"
+            nextTerminal := reason
+        else if departure and not na(contact) and not engulf
+            reason := "REASSESS · episode ended"
+            nextTerminal := reason
+        else if na(contact) and not overlap
+            reason := "WAIT · zone overlap"
+        else
+            if na(contact)
+                nextContact := opened
+            if not adjacent
+                reason := "INSUFFICIENT · adjacent 5m predecessor"
+            else
+                if engulf and na(firstB)
+                    nextB := closed
+                if engulf and opened > nextContact and na(firstA)
+                    nextA := closed
+                reason := "WAIT · closed 5m confirmation"
+                if not na(nextB)
+                    reason := "QUALIFIED · geometric reaction"
+                // The first departure can complete a later reaction, then ends the episode.
+                if departure
+                    nextTerminal := "REASSESS · episode ended"
+    [reason, nextTerminal, nextContact, nextB, nextA]
+
+nominalRisk(float e, float s, float t, float lo) =>
+    float loss = na
+    float reward = na
+    if e > 0 and s > 0 and t > e and s < e and s < lo
+        loss := e - s
+        reward := t - e
+    [loss, reward]
+
+// The previous-hour tuple is aligned to the opening of each chart bar. IDs expose stale gaps.
+bool chartOK = syminfo.tickerid == SYMBOL and syminfo.basecurrency == "PAXG" and syminfo.currency == "USDT" and timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard
+[hourOpen, hourClose, hourPrice] = request.security(SYMBOL, "60", [time[1], time_close[1], close[1]], gaps = barmerge.gaps_off, lookahead = barmerge.lookahead_on)
+int requiredHourClose = time - time % HOUR
+bool hourOK = chartOK and not na(hourPrice) and hourPrice > 0 and hourClose == requiredHourClose and hourOpen == requiredHourClose - HOUR
+
+int available = math.max(contextKnown, zoneKnown)
+bool ready = configured and anchor > 0 and anchor % HOUR == 0 and contextKnown >= anchor and zoneKnown > 0 and expiry > available and floor > 0 and ceiling >= floor
+string setupId = "L08/" + str.tostring(revision) + "/" + str.tostring(anchor) + "/" + str.tostring(available)
+var string status = "WAIT · first closed 5m candle"
+var string terminal = ""
+var bool anchorSeen = false
+var bool historyGap = false
+var int contact = na
+var int firstB = na
+var int firstA = na
+var int lastDecision = na
+
+bool complete = not na(open) and not na(high) and not na(low) and not na(close) and low > 0 and high >= math.max(open, close) and low <= math.min(open, close) and time_close == time + STEP
+bool adjacent = bar_index > 0 and complete[1] and time[1] == time - STEP
+[overlap, departure, invalid, engulf] = barFacts(open, high, low, close, floor, ceiling, adjacent, open[1], close[1])
+
+if chartOK and barstate.isconfirmed
+    anchorSeen := anchorSeen or (hourOK and hourClose == anchor)
+    // A missing bar since activation can hide an earlier contact or terminal transition.
+    if ready and time - STEP >= available and (barstate.isfirst or not adjacent)
+        historyGap := true
+    [reason, disposition, nextContact, nextB, nextA] = assess(terminal, contact, firstB, firstA, ready, historyGap, hourOK and anchorSeen, complete, adjacent, overlap, departure, invalid, engulf, time, time_close, available, expiry)
+    if na(contact) and not na(nextContact)
+        label.new(time_close, floor, "Overlap", xloc = xloc.bar_time, style = label.style_label_up, color = color.teal, textcolor = color.white, size = size.tiny)
+    if na(firstB) and not na(nextB)
+        label.new(time_close, ceiling, "R2-B", xloc = xloc.bar_time, style = label.style_label_down, color = color.blue, textcolor = color.white, size = size.tiny)
+    if na(firstA) and not na(nextA)
+        label.new(time_close, ceiling, "R2-A", xloc = xloc.bar_time, style = label.style_label_lower_left, color = color.purple, textcolor = color.white, size = size.tiny)
+    terminal := disposition
+    contact := nextContact
+    firstB := nextB
+    firstA := nextA
+    status := reason
+    lastDecision := time_close
+    // An unresolved active bar can hide an earlier first event on subsequent bars.
+    if ready and time >= available and time_close < expiry and (not complete or not hourOK or not anchorSeen)
+        historyGap := true
+
+var box support = na
+if chartOK and ready and barstate.isconfirmed and time >= available and time_close < expiry and terminal == ""
+    if na(support)
+        support := box.new(time, ceiling, time_close, floor, xloc = xloc.bar_time, border_color = color.teal, bgcolor = color.new(color.teal, 90))
+    else
+        box.set_right(support, time_close)
+
+utc(int stamp) =>
+    na(stamp) ? "—" : str.format_time(stamp, "MM-dd HH:mm", "Etc/UTC")
+
+row(table panel, int n, string key, string value) =>
+    table.cell(panel, 0, n, key, text_color = color.silver, text_halign = text.align_left, text_size = size.small)
+    table.cell(panel, 1, n, value, text_color = color.white, text_halign = text.align_left, text_size = size.small)
+
+var table panel = table.new(position.top_right, 2, 11, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+if barstate.islast
+    [loss, reward] = nominalRisk(entry, stop, target, floor)
+    string risk = "Disabled"
+    if showRisk
+        risk := "INSUFFICIENT · nominal inputs"
+        if ready and entry > 0 and stop > 0 and target > 0
+            risk := "INVALID · need stop < support floor, stop < entry < target"
+            if not na(loss)
+                risk := "Loss " + str.tostring(loss, "#.########") + " USDT/PAXG · " + str.tostring(reward / loss, "#.###") + "R"
+    string strict = na(firstA) ? "Waiting for later candidate" : "UNKNOWN · receipt order"
+    string contactId = na(contact) ? "—" : setupId + "/" + str.tostring(contact)
+    row(panel, 0, "Research v0.1.0", "PAXGUSDT Spot · 5m · UTC")
+    row(panel, 1, "State", chartOK ? status : "INSUFFICIENT · chart identity")
+    row(panel, 2, "Chart clock", chartOK ? (barstate.isconfirmed ? "Closed 5m · " + utc(lastDecision) : "5m forming · last close " + utc(lastDecision)) : "Use standard BINANCE:PAXGUSDT 5m")
+    row(panel, 3, "1H / analyst context", hourOK ? utc(hourClose) + " · " + str.tostring(hourPrice, format.mintick) + (anchorSeen ? " · declared bullish" : " · anchor unverified") : "INSUFFICIENT · exact prior 1H")
+    row(panel, 4, "Setup", ready ? setupId : "Enable and declare context / zone")
+    row(panel, 5, "Contact ID", contactId)
+    row(panel, 6, "Touch evidence", na(contact) ? "No accepted overlap" : "Geometric overlap · physical touch UNKNOWN")
+    row(panel, 7, "R2-B (prov.) / R2-A", utc(firstB) + " / " + utc(firstA))
+    row(panel, 8, "Strict", strict)
+    row(panel, 9, "Evidence model", "Declared availability · history reconstructed")
+    row(panel, 10, "Nominal only", risk)
+
+plot(hourOK ? hourClose / 1000 : na, "Confirmed 1H close (Unix s)", display = display.data_window, precision = 0)
+plot(hourOK ? hourPrice : na, "Confirmed 1H close (USDT)", display = display.data_window, precision = 2)
