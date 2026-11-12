@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — M06 conceptual risk and execution-uncertainty research complete for owner review. Production policies and runtime validation remain open. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 2 — M07 bounded validation design complete for owner review. Production policies and genuine TradingView validation remain open. Original 35/35-page, 26-unit Coach study complete.
 **Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
 **Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
 
-## Current checkpoint — M06 risk and execution uncertainty, 2026-11-12
+## Current checkpoint — M07 bounded validation design, 2026-11-12
+
+- [Owner scope D-020](DECISIONS.md) authorized conceptual validation and bounded public market-data verification. The starting main HEAD was [ecad009](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/ecad009c015bad7138256ad708345748e4b488c4). [Frozen receipt and product rationale](research/phase2-m07-frozen-market-evidence.md) are verified at [e83d901](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/e83d901b8a7c41abb3b50c15b6a28dba3a08591c).
+- Initial product is Binance Spot PAXGUSDT for one Lesson 08 1H→5m long continuation profile. Evidence is 288 completed 5m bars for 11 November UTC and 48 completed 1H bars for 10–11 November UTC, with 216 matching aggregate fields over the overlapping 24 hours. Native historical receipt order and TradingView feed parity are unknown.
+- The [extended M07 protocol](research/phase2-mtf-validation-and-falsification-protocol.md#i-bounded-m07-profile) defines eight acceptance layers, 13 future acceptance cases and the implementation-readiness gates. R2-B is provisional, R2-A is the comparator, Strict is diagnostic. M06 nominal geometry is the source-facing baseline with the cost-aware envelope as comparator.
+- **Next decision:** owner review and separate implementation authorization for a chart-only diagnostic with declared 1H context/support, confirmed 5m reaction, explicit lifecycle and optional nominal risk. First runtime gates are exact chart identity, hourly rollover, closed 5m behavior, and realtime/reload parity. M07 supplies no executed indicator tests or performance estimates.
+
+## Prior checkpoint — M06 risk and execution uncertainty, 2026-11-12
 
 - [Owner scope D-019](DECISIONS.md) authorized M06 conceptual research. [Specification and seven open decisions](methodology/09-m06-risk-and-execution-uncertainty.md) trace the Coach risk examples and define an as-of M05 handoff, nominal versus account-currency risk, and product/cost/uncertain-path comparisons.
 - [Binance metadata](research/phase2-m06-binance-public-metadata.md) was verified at [27f03a6](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/27f03a66085bf5beaaef34dbb5e10a9ead5166aa). Five Spot and USDⓈ-M product records and an invalid Spot XAUUSDT lookup were documented, with scoped funding and underlying-session settings. Account-specific rates, bracket and realized execution remain unverified.
@@ -95,7 +102,7 @@ Keep the methodology study and decision log synchronized after each verified inc
 
 ## Unresolved decisions
 - Final feature set and exact formal signal definitions.
-- Exact crypto venues, chart symbol prefixes, trading products, session specifications, and initial test universe (including product variants for XAUTUSDT/PAXGUSDT).
+- Exact TradingView chart/feed identity for the selected Binance Spot PAXGUSDT scope. Additional product variants, venue/session mapping, and the future empirical universe remain open.
 - Which enhanced methods survive empirical scrutiny.
 - Strategy delivery date and whether it is optional or essential.
 - Actual source-file availability in any later chat.

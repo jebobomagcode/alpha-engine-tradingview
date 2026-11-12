@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — M06 conceptual research, 12 November 2026
+## Current recovery point — M07 bounded validation design, 12 November 2026
+
+Verify the current GitHub main HEAD and read [STATE](STATE.md), [D-020](DECISIONS.md), the [M07 protocol extension](research/phase2-mtf-validation-and-falsification-protocol.md#i-bounded-m07-profile), and the [PAXGUSDT Spot evidence receipt](research/phase2-m07-frozen-market-evidence.md). The bounded evidence consists of 288 5m and 48 1H completed historical bars with a scoped input-integrity check. Preserve the completed 26 Coach units, causal reconciliation, frozen timing evidence, and M06. Resume at owner review of the proposed chart-only diagnostic. Verify TradingView identity and timing on an actual chart if separately authorized.
+
+## Prior recovery point — M06 conceptual research, 12 November 2026
 
 Verify the GitHub HEAD and read [STATE](STATE.md), the [M06 risk specification](methodology/09-m06-risk-and-execution-uncertainty.md), [Binance evidence](research/phase2-m06-binance-public-metadata.md), and [paper cases](research/phase2-m06-paper-cases.md). D-019 ends at owner review. The next proposed bounded phase is an M07 validation protocol for one qualified product and the Lesson 08 1H→5m descriptive profile. Preserve the 26 completed units, the causal reconciliation and the frozen timing evidence.
 
