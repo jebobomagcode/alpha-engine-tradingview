@@ -54,7 +54,7 @@ def reverse_only_the_authorized_m01_patch(source):
         source, "// M01-P1 research comparator:", "// Deterministic core."
     )
     source = remove_between_once(
-        source, "// Pivots are only declared at the CLOSE", "nominalRisk("
+        source, "// Pivots are only declared at the CLOSE", "nominalRisk(float e, float s, float t, float lo) =>"
     )
     source = remove_between_once(
         source, "// Evaluate on every chart bar for stable history.",
