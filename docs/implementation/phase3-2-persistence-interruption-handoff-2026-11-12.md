@@ -69,8 +69,29 @@ The owner supplied further screenshots from their own authenticated TradingView 
 
 **Next:** Have the owner export or copy the complete named saved-script text (as `.pine` or plain text) and compare its SHA-256 against the authoritative repository source hash `1bb0613634f6cd941853552aaa5bab605b2296a541007ffb6c70f24f20b73c91`. A copied source may contain platform line-ending changes; report and compare raw and LF-normalized bytes separately if needed. If exact source matches, record the saved-source gate PASS. Preserve the v0.1.0 draft-restore failure as historical; do not change Pine logic merely to improve a document-level acceptance gate.
 
+## Uploaded complete Pine editor export — exact-source check, 2026-11-12
+
+After the user reopened the named saved script in Pine Editor, they followed the requested complete-copy workflow and uploaded `alpha-engine-v0.1.1.pine.txt` to this conversation. The uploaded file was read byte-for-byte in the local analysis container and compared with the version-controlled v0.1.1 source.
+
+| Measurement | Observed value |
+| --- | --- |
+| Original uploaded byte length | **11,351** |
+| Original uploaded SHA-256 | `f38ac37c9b9f89400396c7d41155fa8cf38545af8878065740adbb05b04337e1` |
+| Original line endings | **187 CRLF** terminators; no bare CR, no BOM |
+| Canonical LF-normalized length | **11,164 bytes** |
+| Canonical LF-normalized SHA-256 | `1bb0613634f6cd941853552aaa5bab605b2296a541007ffb6c70f24f20b73c91` |
+| Canonical Git blob SHA-1 (with Git blob header) | `80cd5291507fcbb8c919ed02c0f56fb921299b98` |
+| Current repository Pine blob | `80cd5291507fcbb8c919ed02c0f56fb921299b98` |
+| Embedded release identifier | `L08-0.1.1-7fbb3eb381b6` |
+
+**Result — PASS (saved editor export, canonical content equality):** The LF-normalized complete uploaded source matches both the accepted repository SHA-256 and the exact Git blob identity. The sole difference is Windows CRLF versus repository LF serialization. This resolves the previous full-source content-identity gap for the complete owner-exported editor text. The comparison is **not** an independent TradingView API fetch or cryptographic digest of TradingView's compiled artifact; provenance from the saved-script editor is based on the owner's immediately preceding screenshots and upload.
+
+**Remaining checkpoint:** The user's screenshots visually support the correct compiled v0.1.1 build after reload on the qualified Spot 5m chart. A screenshot-level build marker and complete saved editor export are stronger than header inspection, but no paired before/after inspection of **all 16 setup input values** was supplied. Treat that exact-input parity as **NOT VERIFIED**. Native receipt sequence, physical touch, fills and financial performance remain outside scope.
+
+This upload must **not** replace or modify the checked-in Pine source; its canonical content is already identical.
+
 ## Non-goals
 
 No new Pine features or changed v0.1.1 algorithm. No strategy, alerts, backtesting, trading or publication. No cross-project access. The account's **one saved script** cap is not lifted by deleting older scripts; maintain this one saved slot for the current Alpha Engine diagnostic.
 
-**Recovery point:** Continue at **private save of exact v0.1.1**. Do not repeat the completed Coach study, M01–M07 research, or Phase 3.1 test campaign.
+**Recovery point:** Complete named saved-script editor source identity is now PASS after CRLF→LF normalization, and the expected chart build survived hard refresh on the correct Spot instrument. The remaining optional exact acceptance item is a paired full 16-input settings readback; do not change/rebuild source merely for that. Do not repeat completed studies.
