@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.3 saved-build visual restoration and third pivot, 12 November 2026
+## Current recovery point — Phase 3.3 full v0.1.2 editor-source equality, 12 November 2026
+
+The owner-uploaded complete `0.1.2.txt` was compared with the authoritative Pine file: **231/231 code lines match**, after CRLF→LF normalization and adding terminal LF. Canonical SHA-256 `a6e624777d792ec528389746da86d54bacc58f412d7ab8040c84fde325b78dd2` and Git blob `dd1691072e3f81d18217c50efa87c4d6fa6b43e3` are exact matches. See [Phase 3.3 evidence](implementation/phase3-3-m01-pivot-probe.md#phase-33--complete-v012-owner-exported-pine-source-comparison-2026-11-12). Source **PASS**; previous v0.1.2 visual build reload and three Binance-corroborated pivot observations accepted. Still open: all-15-input atomic reload parity, original Lesson 08 same-input comparison and realtime pivot transition. Do not change Pine code or access other projects without further owner authorization.
+
+## Prior recovery point — Phase 3.3 saved-build visual restoration and third pivot, 12 November 2026
 
 Owner screenshot after instructed refresh shows build `L08-0.1.2-3b9eb3065294` on qualified BINANCE:PAXGUSDT Spot 5m and reopened named Pine Editor with matching v0.1.2 header. A new low `3922.30`, origin 09:00 UTC and known 09:15 UTC, was separately checked against Binance Spot 5m OHLC and passed strict 2-left/2-right pivot timing. Prior 3961.97 high remains. **Only visual source header and compiled build verified after reload; full saved-source SHA-256 and all-input persistence still open.** See [Phase 3.3 gate ledger](implementation/phase3-3-m01-pivot-probe.md#owner-assisted-v012-saved-build-reload-and-third-pivot--2026-11-12-approximately-1716-pht). Next owner-assisted step: copy entire reopened named Pine v0.1.2 editor file for content comparison, then assess remaining parity. Do not create another private script or expand to BOS/CHoCH.
 

@@ -2,12 +2,18 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.3 — M01-P1 three native pivots independently corroborated; reported reload restores v0.1.2 build/editor header; exact saved-source and broader parity OPEN. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** 3.3 — complete owner-exported v0.1.2 source equality and three Binance-checked pivots PASS; broader native parity OPEN. Original 35/35-page, 26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks; D-023 separately authorizes clearing the owner's old TradingView saved-script inventory to free the Basic saved slot.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — Phase 3.3 reported v0.1.2 reload and third pivot, 2026-11-12
+## Current checkpoint — Phase 3.3 full source equality, 2026-11-12
+
+- Uploaded complete saved-editor `0.1.2.txt`: **231/231 lines match** GitHub Pine v0.1.2 after CRLF→LF and final newline normalization. Canonical SHA-256 `a6e624777d792ec528389746da86d54bacc58f412d7ab8040c84fde325b78dd2`; canonical Git blob `dd1691072e3f81d18217c50efa87c4d6fa6b43e3`. [Verification table](implementation/phase3-3-m01-pivot-probe.md#phase-33--complete-v012-owner-exported-pine-source-comparison-2026-11-12).
+- Source integrity **PASS**. Previous post-reload visual build and three independently corroborated pivot checks remain accepted. Exact all-15-input before/after reload comparison, Lesson 08 same-input baseline and realtime pivot onset remain unverified.
+- Preserve the private saved v0.1.2 script and v0.1.1 GitHub rollback. Do not expand into BOS/CHoCH or signals.
+
+## Prior checkpoint — Phase 3.3 reported v0.1.2 reload and third pivot, 2026-11-12
 
 - Owner screenshot after the instructed reload shows the named saved Pine Editor with `v0.1.2` source header, the qualified Binance PAXGUSDT **Spot 5m** chart and the same build `L08-0.1.2-3b9eb3065294` displayed. **PASS (visual)** for same-build restoration; **NOT VERIFIED** for full saved-source byte equality.
 - **Third independently checked pivot:** strict M01 low **3922.30 USDT/PAXG**, origin **09:00 UTC**, earliest modeled confirmation **09:15 UTC**. Read-only Binance 5m OHLC has two higher lows on both sides of the candidate; native panel matches the result. Prior high 3961.97, known 08:10 UTC, remains displayed.

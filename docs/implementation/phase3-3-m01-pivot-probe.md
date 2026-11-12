@@ -119,6 +119,26 @@ The M01 panel remained active and showed **high 3961.97, known 08:10 UTC**, whil
 
 **Next:** Complete **same-saved-script** source equality without creating another script. From the reopened named Pine Editor, copy the entire source to `.pine` or `.txt`, upload it, and compare raw and LF-normalized SHA-256 against GitHub. Optionally check pivot audit ON and left/right=2 after another refresh. Do not claim the whole Phase 3.3 is accepted solely on the screenshot or develop further detector logic yet.
 
+## Phase 3.3 — complete v0.1.2 owner-exported Pine source comparison, 2026-11-12
+
+The owner uploaded `0.1.2.txt` after reopening the named private saved Pine script. The plain-text upload, rather than the earlier Markdown-formatted paste, was read directly for this test.
+
+| Metric | Observed |
+| --- | --- |
+| Raw upload | **14,342 bytes**; SHA-256 `549b6af465c03ac53ed04d0d98e331025a91fd4154b6104abb2e7af7524849fc` |
+| Raw line endings | 230 CRLF, no BOM, missing final newline |
+| Canonical LF and final newline | **14,113 bytes** |
+| Canonical SHA-256 | `a6e624777d792ec528389746da86d54bacc58f412d7ab8040c84fde325b78dd2` |
+| Canonical Git blob SHA-1 | `dd1691072e3f81d18217c50efa87c4d6fa6b43e3` |
+| Authoritative repository Pine Git blob | `dd1691072e3f81d18217c50efa87c4d6fa6b43e3` |
+| Complete code lines | **231/231 match** |
+
+**PASS — owner-exported saved Pine Editor content equality:** The sole differences are CRLF serialization and the missing terminal newline, with exact byte equality after canonical normalization. This establishes complete editor text equality when combined with the owner's prior screenshots of the saved-script editor. It is **not** a direct TradingView server API attestation or binary digest of the compiled artifact.
+
+**Existing PASS results:** build v0.1.2 displayed after reported browser refresh on Binance PAXGUSDT Spot 5m; three individually verified strict M01 swing pivot price/known-at pairs matched independent Binance 5m OHLC.
+
+**Remaining NOT VERIFIED / NOT RUN:** atomic comparison of all 15 v0.1.2 Pine input declarations before and after refresh (12 existing plus 3 M01 inputs); identical-setup Lesson 08 v0.1.1 vs v0.1.2 runtime regression; realtime forming-to-closed 5m pivot acceptance; TradingView-native receipt timing and performance. Keep these separate from the successful source check. Do not expand features or overwrite v0.1.1 rollback.
+
 ## Stop and follow-up
 
 Stop this increment at the **v0.1.2 candidate awaiting native TradingView acceptance**. Do not auto-enable pivot audit for signals, auto-arm BOS/CHoCH, claim source-verified structural trend or expand to new symbols. If the prototype fails compile or parity, fix the specific defect against v0.1.1 rollback and retain both records. Native acceptance must precede any broad feature expansion.
