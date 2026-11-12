@@ -2,12 +2,19 @@
 
 **Checkpoint date:** 2026-11-12 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 2 — M07 bounded validation design complete for owner review. Production policies and genuine TradingView validation remain open. Original 35/35-page, 26-unit Coach study complete.
-**Authorized market implementation scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
-**Scope authorized:** sequential PCSS source study, independent literature/research supplements, study/rule-design notes, and continuous verified GitHub documentation. User explicitly said "lets start!" on 2026-11-09.
-**Scope NOT YET authorized:** Pine code/compiled charts, automated market backtests, brokerage integrations, trading or deployment. Conceptual research, mathematical examples and GitHub documentation are authorized.
+**Phase:** 3 — one bounded chart-only diagnostic implemented. Original 35/35-page, 26-unit Coach study complete.
+**Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
+**D-021 implementation scope:** only the Lesson 08 chart diagnostic on standard BINANCE:PAXGUSDT Spot 5m, with bounded native checks and verified repository documentation.
+**Outside D-021:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
 
-## Current checkpoint — M07 bounded validation design, 2026-11-12
+## Current checkpoint — Phase 3 chart diagnostic, 2026-11-12
+
+- Started from verified `bd0a0da03a936fe9754aea0100b124a13ac00c09`. [Implementation commit](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/387c425b24ee5bb9b56a3a1c464cd4d313d7cb74) adds Pine v6 and the deterministic suite. [Source and acceptance record](implementation/phase3-lesson08-diagnostic.md).
+- **19 local checks passed**, including pinned timing cases, risk geometry, and the frozen Binance evidence. Native compilation and the exact chart identity passed. Two native chart candles matched the frozen Binance 5m OHLC and preceding 1H references. The fresh final build matched one genuine live close after browser reload. An earlier in-place update restored an older chart instance, and the Basic plan blocked private script saving.
+- The original Coach PDF, completed study units, frozen evidence and Phase 2 research history remain the reference. The study's prospective declarations and retrospective fixture are documented separately. Scope, observed mismatches and all acceptance dispositions are in the implementation record.
+- **Next decision:** owner review. Close the exact-build persistence/acceptance gaps recorded in the implementation record before expanding functionality.
+
+## Prior checkpoint — M07 bounded validation design, 2026-11-12
 
 - [Owner scope D-020](DECISIONS.md) authorized conceptual validation and bounded public market-data verification. The starting main HEAD was [ecad009](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/ecad009c015bad7138256ad708345748e4b488c4). [Frozen receipt and product rationale](research/phase2-m07-frozen-market-evidence.md) are verified at [e83d901](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/e83d901b8a7c41abb3b50c15b6a28dba3a08591c).
 - Initial product is Binance Spot PAXGUSDT for one Lesson 08 1H→5m long continuation profile. Evidence is 288 completed 5m bars for 11 November UTC and 48 completed 1H bars for 10–11 November UTC, with 216 matching aggregate fields over the overlapping 24 hours. Native historical receipt order and TradingView feed parity are unknown.
@@ -109,4 +116,4 @@ Keep the methodology study and decision log synchronized after each verified inc
 - Actual Pine compilation and TradingView account constraints (not yet assessed for this new project).
 
 ## Explicit guardrails
-No reliance on or modification of older projects; no unsupported success claims; study is authorized, but **coding remains on hold pending later owner direction**. Resume using docs/RECOVERY.md.
+Keep development isolated to this repository. D-021 authorizes the one chart-only diagnostic. Any wider implementation needs separate owner direction. Resume using [RECOVERY](RECOVERY.md).
