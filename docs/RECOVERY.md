@@ -2,7 +2,11 @@
 
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.1 reliability, 12 November 2026
+## Current recovery point — Phase 3.2 interrupted private-save verification, 12 November 2026
+
+Verify current `main`, then read [STATE](STATE.md), [D-023](DECISIONS.md), and the [Phase 3.2 handoff](implementation/phase3-2-persistence-interruption-handoff-2026-11-12.md). The owner supplied screenshots showing Work **reported** one old TradingView saved script deleted and an empty inventory after refreshing. Work had **not** reported a successful Alpha Engine private save before its usage limit interrupted the task. The only remaining authorized mission is to verify inventory, save and reopen the exact v0.1.1 source privately, and test saved-instance reload with build `L08-0.1.1-7fbb3eb381b6`. Preserve the distinct failure and NOT RUN gates from Phase 3.1. Do not re-run completed source study or expand features. Browser control requires a supported interactive environment; this ordinary ChatGPT conversation has read-only browser-tab access.
+
+## Prior recovery point — Phase 3.1 reliability, 12 November 2026
 
 Verify main and read [STATE](STATE.md), D-022 in [DECISIONS](DECISIONS.md), and the [acceptance record](implementation/phase3-lesson08-diagnostic.md). The current [Pine source](../pine/lesson08-diagnostic.pine) is v0.1.1, build `L08-0.1.1-7fbb3eb381b6`. Run the 21 local checks before changing it. Compare source, editor, compiled chart and durable saved script as distinct identities. Retain historical evidence and work within the single diagnostic scope.
 
