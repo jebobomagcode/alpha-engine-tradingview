@@ -6,7 +6,7 @@ import re
 import subprocess
 import unittest
 
-from overlay_source_fixture import without_new_visuals
+from overlay_source_fixture import without_new_visuals, without_observation_visuals
 
 ROOT = Path(__file__).resolve().parents[1]
 PATH = "pine/alpha-engine-research.pine"
@@ -17,7 +17,7 @@ class ChartGuidesTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.source = (ROOT / PATH).read_text()
-        cls.core, cls.guides = cls.source.split("\n// Chart Fibonacci and EMA overlays.", 1)
+        cls.core, cls.guides = without_observation_visuals(cls.source).split("\n// Chart Fibonacci and EMA overlays.", 1)
 
     def test_v018_engine_and_drawing_layers_remain_exact(self):
         baseline = subprocess.check_output(["git", "show", f"{BASE}:{PATH}"], cwd=ROOT)

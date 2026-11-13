@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.9", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 37, max_lines_count = 5)
+indicator("Alpha Engine | Integrated Research v0.1.10", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 54, max_lines_count = 8)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.9-98ca36885208"
+const string BUILD_ID = "AE-0.1.10-f9c4f8af6c84"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -328,6 +328,14 @@ var string aiWorkflow = "INSUFFICIENT"
 var string aiContext = "INSUFFICIENT"
 var string aiMomentum = "WARMUP"
 var string aiGeometry = "—"
+// Close-stamped observations for the display layer.
+var bool aiVisualContact = false
+var bool aiVisualReaction = false
+var string aiVisualInvalid = ""
+var float aiGeometryEntry = na
+var float aiGeometryStop = na
+var float aiGeometryTarget = na
+var float aiGeometryR = na
 var string aiFib = "—"
 // Numeric values and pivot identities for the same dashboard Fibonacci observation.
 var float aiFib50 = na
@@ -430,18 +438,29 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
         aiEpisodeEnded := false
     bool supportConsumed = supportKnown and crossLow
     bool departure = supportKnown and aiTouched and lowTicks > ceilingTicks
+    aiVisualInvalid := not aiEpisodeEnded ? (invalidSupport ? "Support closed through" : supportConsumed ? "Support reference consumed" : "") : ""
     if invalidSupport or departure or supportConsumed
         aiEpisodeEnded := true
+    aiVisualContact := touch and bullishContext and not aiEpisodeEnded and not aiTouched
     if touch and bullishContext and not aiEpisodeEnded
         aiTouched := true
     bool reaction = touch and bullishContext and not aiEpisodeEnded and (engulf or rejects)
+    aiVisualReaction := reaction
     aiWorkflow := not contiguous or not contextOK ? "INSUFFICIENT · closed data" : not bullishContext ? "WAIT · 1H / 4H bullish alignment" : not supportKnown ? "WAIT · prior UP support" : invalidSupport ? "REASSESS · support closed through" : supportConsumed ? "REASSESS · support reference consumed" : aiEpisodeEnded ? "REASSESS · episode ended" : not touch ? "WAIT · geometric overlap" : reaction ? "OBSERVED · closed reaction" : "WAIT · closed reaction"
     aiGeometry := "—"
+    aiGeometryEntry := na
+    aiGeometryStop := na
+    aiGeometryTarget := na
+    aiGeometryR := na
     if reaction and bullishContext and aiUpper.role == "HH" and aiUpper.state == "ARMED"
         float stopLevel = (floorTicks - 1) * syminfo.mintick
         float targetLevel = aiUpper.level
         if stopLevel > 0 and stopLevel < close and close < targetLevel
-            aiGeometry := str.tostring(close, format.mintick) + " / " + str.tostring(stopLevel, format.mintick) + " / " + str.tostring(targetLevel, format.mintick) + " · " + str.tostring((targetLevel - close) / (close - stopLevel), "#.00") + "R"
+            aiGeometryEntry := close
+            aiGeometryStop := stopLevel
+            aiGeometryTarget := targetLevel
+            aiGeometryR := (targetLevel - close) / (close - stopLevel)
+            aiGeometry := str.tostring(aiGeometryEntry, format.mintick) + " / " + str.tostring(aiGeometryStop, format.mintick) + " / " + str.tostring(aiGeometryTarget, format.mintick) + " · " + str.tostring(aiGeometryR, "#.00") + "R"
 
     // One most recent three-bar gap, tested only after it was first observable.
     if contiguous and not na(aiGapKnown) and time >= aiGapKnown and aiGapState == "OPEN"
@@ -704,3 +723,53 @@ plot(visualEma200 and emaOverlayReady ? aiEma200 : na, "Confirmed EMA 200", colo
 plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib50 : na, "Current Fib 50", display = display.data_window)
 plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib618 : na, "Current Fib 61.8", display = display.data_window)
 plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib705 : na, "Current Fib 70.5", display = display.data_window)
+
+// Chart contact, reaction and nominal geometry. No orders or simulated fills.
+const string REACTION_GROUP = "Experimental chart observations"
+bool visualContact = input.bool(true, "First geometric contact", group = REACTION_GROUP)
+bool visualReaction = input.bool(true, "Closed reaction", group = REACTION_GROUP)
+bool visualInvalidation = input.bool(true, "Support invalidation", group = REACTION_GROUP)
+bool visualGeometry = input.bool(false, "Nominal entry / stop / target", group = REACTION_GROUP)
+string panelLayout = input.string("Corners", "Dashboard layout", options = ["Corners", "Both left", "Research only", "Hidden"], group = "Chart display")
+
+var array<label> visualObservations = array.new<label>()
+var line visualEntryLine = na
+var line visualStopLine = na
+var line visualTargetLine = na
+var label visualRiskBadge = na
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    bool markContact = visualContact and aiVisualContact
+    bool markReaction = visualReaction and aiVisualReaction
+    bool markInvalid = visualInvalidation and aiVisualInvalid != ""
+    if markContact or markReaction or markInvalid
+        string caption = markInvalid ? "Support invalidated" : markReaction ? (markContact ? "Contact + reaction" : "Closed reaction") : "Geometric contact"
+        string detail = markInvalid ? aiVisualInvalid : "Experimental · OHLC geometry"
+        float pad = math.max((high - low) * 0.3, 5 * syminfo.mintick)
+        addStructureLabel(visualObservations, aiDecisionAt, low - pad, caption,
+             detail + " · " + utc(aiDecisionAt) + " UTC", false, markInvalid ? visualUpperColor : visualLowerColor)
+
+    bool showGeometry = visualGeometry and not na(aiGeometryR)
+    if showGeometry or not na(visualRiskBadge)
+        color entryTint = color.new(color.rgb(154, 181, 216), 18)
+        visualEntryLine := drawPriceGuide(visualEntryLine, aiDecisionAt, showGeometry ? aiGeometryEntry : na, entryTint, line.style_solid, false)
+        visualStopLine := drawPriceGuide(visualStopLine, aiDecisionAt, showGeometry ? aiGeometryStop : na, visualUpperColor, line.style_dashed, false)
+        visualTargetLine := drawPriceGuide(visualTargetLine, aiDecisionAt, showGeometry ? aiGeometryTarget : na, visualLowerColor, line.style_dashed, false)
+        if showGeometry
+            if na(visualRiskBadge)
+                visualRiskBadge := label.new(aiDecisionAt, aiGeometryEntry, "", xloc = xloc.bar_time,
+                     style = label.style_label_left, size = size.small, color = color.new(entryTint, 78), textcolor = entryTint)
+            label.set_xy(visualRiskBadge, aiDecisionAt, aiGeometryEntry)
+            label.set_text(visualRiskBadge, "Nominal · " + str.tostring(aiGeometryR, "#.00") + "R")
+            label.set_tooltip(visualRiskBadge, "Entry / stop / target · " + aiGeometry + "\n" + utc(aiDecisionAt) + " UTC · informational geometry")
+        else
+            label.delete(visualRiskBadge)
+            visualRiskBadge := na
+
+// Placement and visibility are display-only. All existing dashboard rows remain available.
+if barstate.islast
+    table.set_position(panel, panelLayout == "Both left" ? position.top_left : position.top_right)
+    if panelLayout == "Research only" or panelLayout == "Hidden"
+        table.clear(panel, 0, 0, 1, 15)
+    if panelLayout == "Hidden"
+        table.clear(aiPanel, 0, 0, 1, 10)
