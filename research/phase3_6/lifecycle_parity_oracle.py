@@ -87,6 +87,7 @@ def advance_episode(
     support_low: int | None,
     support_high: int | None,
     wick_alternative: bool = False,
+    reference_consumed: bool = False,
 ) -> EpisodeDecision:
     """Contract mirror: evaluate only final bars and prior-open armed support.
 
@@ -102,6 +103,7 @@ def advance_episode(
     support = armed_anchor is not None and support_low is not None and support_high is not None
     if support and (support_low <= 0 or support_high < support_low):
         raise ValueError("invalid support")
+    bullish_context = context_ok and bullish_context
     active = previous
     if support and previous.anchor != armed_anchor:
         active = Episode(anchor=armed_anchor)
@@ -109,6 +111,8 @@ def advance_episode(
     invalid = support and bar.c < support_low
     departure = support and active.touched and bar.l > support_high
     if invalid or departure:
+        active = replace(active, ended=True)
+    if support and reference_consumed:
         active = replace(active, ended=True)
     if touch and bullish_context and not active.ended:
         active = replace(active, touched=True)
@@ -127,6 +131,8 @@ def advance_episode(
         reason = "WAIT · prior UP support"
     elif invalid:
         reason = "REASSESS · support closed through"
+    elif reference_consumed:
+        reason = "REASSESS · support reference consumed"
     elif active.ended:
         reason = "REASSESS · episode ended"
     elif not touch:

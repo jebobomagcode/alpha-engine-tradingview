@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## v0.1.5 lifecycle candidate — 2026-11-13 PHT
+
+- [Audit and verification](implementation/phase3-6-v015-lifecycle-audit.md): 119 standard and 21 separate local tests passed. The older terminal-reference recurrence is excluded by fixed-width, monotone per-side origin selection and absent from 19,683 exhaustive short paths and 784 longer runs. The candidate adds a constant-memory retirement guard and terminates a support episode on the close that consumes its reference.
+- Accepted private v0.1.4 version 4 and GitHub main are preserved. Native verification and persistence for v0.1.5 are tracked separately.
+
 ## Source-projected Pine lifecycle differential — 2026-11-13 PHT
 
 - **PASS:** [GitHub Actions 43343804439](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43343804439), **112/112** standard checks (prior 104 + two malformed/finality reset fixes + six source-projected differential cases). Existing 21 separate structural-research checks were not rerun in this workflow.

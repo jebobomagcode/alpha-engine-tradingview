@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.4", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
+indicator("Alpha Engine | Integrated Research v0.1.5", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.4-93081cd2faee"
+const string BUILD_ID = "AE-0.1.5-9e033123db0f"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -259,7 +259,9 @@ updateRef(ResearchReference previous, int origin, float level, string role, int 
     ResearchReference next = ResearchReference.new()
     if not na(origin)
         bool broken = above ? close > level : close < level
-        if origin == terminalOrigin
+        if not na(terminalOrigin) and origin < terminalOrigin
+            next := ResearchReference.new(origin, na, level, role, "RETIRED")
+        else if origin == terminalOrigin
             next := ResearchReference.new(origin, previous.origin == origin ? previous.armedAt : na, level, role, terminalStatus)
         else if previous.origin == origin and previous.role == role and previous.state == "ARMED"
             next := previous
@@ -386,13 +388,14 @@ if aiEnabled and chartOK and barstate.isconfirmed
         aiContactOrigin := aiLower.origin
         aiTouched := false
         aiEpisodeEnded := false
+    bool supportConsumed = supportKnown and crossLow
     bool departure = supportKnown and aiTouched and low > supportHi
-    if invalidSupport or departure
+    if invalidSupport or departure or supportConsumed
         aiEpisodeEnded := true
     if touch and bullishContext and not aiEpisodeEnded
         aiTouched := true
     bool reaction = touch and bullishContext and not aiEpisodeEnded and (engulf or rejects)
-    aiWorkflow := not contiguous or not contextOK ? "INSUFFICIENT · closed data" : not bullishContext ? "WAIT · 1H / 4H bullish alignment" : not supportKnown ? "WAIT · prior UP support" : invalidSupport ? "REASSESS · support closed through" : aiEpisodeEnded ? "REASSESS · episode ended" : not touch ? "WAIT · geometric overlap" : reaction ? "OBSERVED · closed reaction" : "WAIT · closed reaction"
+    aiWorkflow := not contiguous or not contextOK ? "INSUFFICIENT · closed data" : not bullishContext ? "WAIT · 1H / 4H bullish alignment" : not supportKnown ? "WAIT · prior UP support" : invalidSupport ? "REASSESS · support closed through" : supportConsumed ? "REASSESS · support reference consumed" : aiEpisodeEnded ? "REASSESS · episode ended" : not touch ? "WAIT · geometric overlap" : reaction ? "OBSERVED · closed reaction" : "WAIT · closed reaction"
     aiGeometry := "—"
     if reaction and bullishContext and aiUpper.role == "HH" and aiUpper.state == "ARMED"
         float stopLevel = supportLo - syminfo.mintick
@@ -412,6 +415,7 @@ if aiEnabled and chartOK and barstate.isconfirmed
             aiGapKnown := time_close
             aiGapState := "OPEN"
 
+    // Fixed-width origins advance monotonically. Keep a single terminal watermark per side.
     // Admit current confirmed pivots only after evaluating the earlier-open references.
     if aiEnough and aiPivotValid and time[2 * aiWindow] >= aiEpoch
         if aiHighPivot and aiLowPivot

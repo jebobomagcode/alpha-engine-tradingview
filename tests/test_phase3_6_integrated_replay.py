@@ -59,6 +59,7 @@ class IntegratedLifecycleChecks(unittest.TestCase):
         self.assertIsNone(result[4].gap)
         self.assertEqual(result[4].reaction_status, "INSUFFICIENT · closed data")
         self.assertIsNone(result[4].episode.anchor)
+        self.assertEqual(result[4].structural_status, "INSUFFICIENT")
 
     def test_unqualified_higher_timeframes_cannot_produce_reaction(self):
         result = replay_integrated(frozen_tape(), as_of=frozen_tape()[-1].cutoff)
@@ -104,6 +105,30 @@ class IntegratedLifecycleChecks(unittest.TestCase):
         for value in (-1, 0.2, True):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 replay_integrated((), as_of=5, support_tolerance_ticks=value)
+
+    def test_consumed_support_reassesses_at_inclusive_band_boundary(self):
+        closes = (104, 105, 94, 91, 96, 98, 91, 104, 101, 96, 100, 101, 106, 92, 93, 91, 96, 92)
+        bars = tuple(Bar(i * 5, p, p + 1, p - 1, p) for i, p in enumerate(closes))
+        a = replay_integrated(bars, as_of=90, confirmed_bullish_context=True, support_tolerance_ticks=3)
+        b = replay_integrated(bars, as_of=90, policy="B",
+                              confirmed_bullish_context=True, support_tolerance_ticks=3)
+        self.assertEqual(a[-1].event_classes, ())
+        self.assertEqual(b[-1].event_classes, ("CHOCH_CANDIDATE_DOWN",))
+        self.assertEqual(b[-1].reaction_status, "REASSESS · support reference consumed")
+        self.assertTrue(b[-1].episode.ended)
+        self.assertFalse(b[-1].reaction_observed)
+
+    def test_integrated_wick_comparator_changes_only_reaction(self):
+        closes = (104, 105, 94, 91, 96, 98, 91, 104, 101, 96, 100, 101, 106, 92, 93, 91, 96)
+        bars = tuple(Bar(i * 5, p, p + 1, p - 1, p) for i, p in enumerate(closes))
+        bars += (Bar(85, 99, 102, 95, 101),)
+        kw = dict(as_of=90, policy="B", confirmed_bullish_context=True, support_tolerance_ticks=3)
+        strict = replay_integrated(bars, **kw)
+        wick = replay_integrated(bars, **kw, wick_alternative=True)
+        self.assertEqual(strict[:-1], wick[:-1])
+        self.assertEqual(strict[-1].reaction_status, "WAIT · closed reaction")
+        self.assertEqual(wick[-1].reaction_status, "OBSERVED · closed reaction")
+        self.assertEqual(strict[-1].event_classes, wick[-1].event_classes)
 
     def test_htf_context_type_cannot_implicitly_coerce_numeric_or_text(self):
         for value in (0, 1, "UP", 1.0):

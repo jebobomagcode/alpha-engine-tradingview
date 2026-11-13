@@ -93,6 +93,7 @@ def project_episode(
                and support_high is not None)
     if support and (support_low <= 0 or support_high < support_low):
         raise ValueError("invalid support")
+    bullish_context = context_ok and bullish_context
     episode = previous
     if support and (episode.anchor is None or episode.anchor != armed_anchor):
         episode = Episode(armed_anchor, False, False)

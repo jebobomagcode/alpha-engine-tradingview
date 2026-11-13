@@ -97,6 +97,18 @@ class BoundedLifecycleTests(unittest.TestCase):
         self.assertEqual(result.status, "INSUFFICIENT · closed data")
         self.assertFalse(result.reaction)
 
+    def test_stale_bullish_flag_cannot_record_contact_or_reaction(self):
+        result = advance_episode(
+            Episode(), bar=Candle(5, 99, 107, 98, 106),
+            predecessor=Candle(0, 105, 106, 99, 100), adjacent=True,
+            context_ok=False, bullish_context=True, armed_anchor="HL",
+            support_low=97, support_high=102,
+        )
+        self.assertEqual(result.state, Episode("HL"))
+        self.assertTrue(result.overlap)
+        self.assertFalse(result.reaction)
+        self.assertEqual(result.status, "INSUFFICIENT · closed data")
+
     def test_malformed_final_candle_clears_stale_episode(self):
         """Pine marks incomplete OHLC contiguous=false and resets the epoch."""
         before = Episode("HL-1", touched=True, ended=True)

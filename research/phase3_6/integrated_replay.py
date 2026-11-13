@@ -38,7 +38,8 @@ def _anchor_identity(reference):
 def replay_integrated(bars: tuple[Bar, ...], *, as_of: int,
                       policy: str = "A", width: int = 2,
                       support_tolerance_ticks: int = 1,
-                      confirmed_bullish_context: bool | None = None
+                      confirmed_bullish_context: bool | None = None,
+                      wick_alternative: bool = False,
                       ) -> tuple[IntegratedFrame, ...]:
     """Compare frozen structural refs to simple latest-only zone lifecycles.
 
@@ -50,6 +51,8 @@ def replay_integrated(bars: tuple[Bar, ...], *, as_of: int,
         raise ValueError("support tolerance must be nonnegative integer ticks")
     if confirmed_bullish_context is not None and type(confirmed_bullish_context) is not bool:
         raise ValueError("HTF context must be explicit bool or unavailable")
+    if type(wick_alternative) is not bool:
+        raise ValueError("wick alternative must be an explicit bool")
 
     source = {}
     for bar in bars:
@@ -102,6 +105,8 @@ def replay_integrated(bars: tuple[Bar, ...], *, as_of: int,
                 bullish_context=confirmed_bullish_context is True,
                 armed_anchor=_anchor_identity(ref) if ref is not None else None,
                 support_low=low, support_high=high,
+                wick_alternative=wick_alternative,
+                reference_consumed=ref is not None and any(event.reference == ref for event in frame.events),
             )
             episode = reaction_result.state
             status = reaction_result.status

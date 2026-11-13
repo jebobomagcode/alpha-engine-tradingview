@@ -4,7 +4,9 @@ Both copies are separate Python source interpretations. The frozen Pine source
 is inspected for key transition guards, but only TradingView can execute Pine.
 """
 from itertools import product
+import hashlib
 from pathlib import Path
+import subprocess
 import unittest
 
 from research.phase3_6.lifecycle_parity_oracle import (
@@ -116,7 +118,13 @@ class PineSourceProjectedTransitionTests(unittest.TestCase):
         self.assertEqual(old_again.armed_at, 45)
 
     def test_source_frozen_pine_branch_guards(self):
-        source = (ROOT / "pine/alpha-engine-research.pine").read_text()
+        accepted = subprocess.check_output(
+            ["git", "show", "4b736218d0131758f6d5f26733e3c5b23bc27390:pine/alpha-engine-research.pine"],
+            cwd=ROOT,
+        )
+        self.assertEqual(hashlib.sha256(accepted).hexdigest(),
+                         "1c93604857281b3c3fd673d6d30ca7a33178e43f76b20a6a40cd29ebbdf17235")
+        source = accepted.decode()
         for needle in (
             "if origin == terminalOrigin",
             'previous.state == "ARMED"',

@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current v0.1.5 lifecycle candidate — 2026-11-13 PHT
+
+Start with [the audit and release gates](implementation/phase3-6-v015-lifecycle-audit.md). The candidate is on draft PR #2. Preserve named private v0.1.4 version 4 and its pinned bytes until native acceptance of the replacement. The fixed-width lifecycle search, controlled mutation suite and both local regression suites passed.
+
 ## CURRENT CHECKPOINT — 112/112 source-projected lifecycle QA, 2026-11-13 PHT
 
 [GitHub Actions 43343804439](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43343804439) PASS **112/112** (104 prior + 2 malformed-episode resets + 6 new Pine-source-projected differential cases). 288 bounded zone-state combinations and 1,536 episode combinations matched independent Python oracle; the companion projection is **not a Pine executor**, so native parity remains NOT RUN. The oracle stale-episode-on-invalid-candle discrepancy was corrected. A constructed terminal-origin-reintroduction sequence shows v0.1.4's one-slot terminal-key helper could rearm a prior consumed origin if reintroduced; full structural-replay reachability has NOT been established. Preserve exact private Pine v0.1.4 version 4, rollback v0.1.3 and accepted main, keep PR #2 draft. [Lifecycle report](implementation/phase3-6-lifecycle-parity-checks.md). Next: test terminal-origin reachability and guarded reference ledger as an unsaved v0.1.5 candidate if justified; separately seek actual Pine native equivalence without owner screenshots.

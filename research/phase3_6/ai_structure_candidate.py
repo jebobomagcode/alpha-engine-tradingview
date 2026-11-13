@@ -254,7 +254,7 @@ def replay_structure(bars: Sequence[Bar], *, as_of: int, policy: str = "A",
             ActiveReference(ref, terminal.get(_anchor(ref), "RETIRED"), old[ref].armed_at)
             for ref in old if ref not in retained
         )
-        if current is None:
+        if current is None or previous is None:
             status = "INSUFFICIENT"
         elif shift_pending:
             status = "POSSIBLE_SHIFT"
