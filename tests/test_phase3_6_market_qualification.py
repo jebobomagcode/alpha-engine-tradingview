@@ -102,6 +102,11 @@ class MarketQualification(unittest.TestCase):
         self.assertCountEqual(ids, [ticker for ticker, _, _ in expected] + ["BINANCE:XAUUSDT.P"])
         self.assertIn('syminfo.currency == "USDT" and syminfo.mintick == 0.01', source)
         self.assertIn("timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard", source)
+        self.assertIn('not chart.is_standard or not timeframe.isminutes or timeframe.multiplier != 5 ? "INSUFFICIENT · use standard 5m candles"', source)
+        self.assertIn('"Market / evidence", ticker.standard(syminfo.tickerid)', source)
+        for line in source.splitlines():
+            if "request.security(syminfo.tickerid," in line:
+                self.assertNotIn("ticker.standard(", line)
         self.assertIn("closed == boundary and opened == boundary - period and opened - first == 49 * period", source)
         self.assertIn("highTicks >= floorTicks and lowTicks <= ceilingTicks", source)
         self.assertIn("closeTicks < floorTicks", source)
