@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.6", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
+indicator("Alpha Engine | Integrated Research v0.1.7", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 35, max_lines_count = 2)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.6-00d26a21011a"
+const string BUILD_ID = "AE-0.1.7-9e93706426d6"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -516,3 +516,66 @@ if barstate.islast and aiEnabled
     researchRow(aiPanel, 8, "Fib 50 / 61.8 / 70.5", aiFib)
     researchRow(aiPanel, 9, "Latest OB / supply-demand", na(aiBlockKnown) ? "—" : (aiBlockSide == 1 ? "Demand " : "Supply ") + aiBlockState + " · " + str.tostring(aiBlockLo, format.mintick) + "–" + str.tostring(aiBlockHi, format.mintick))
     researchRow(aiPanel, 10, "Market / evidence", ticker.standard(syminfo.tickerid) + (researchMarketOK ? " · " + researchProduct + " · tick " + str.tostring(syminfo.mintick, format.mintick) : "") + "\n1H " + utc(aiContextHourAt) + " · 4H " + utc(aiContextFourAt) + " UTC", researchChartOK ? "Chart-clock geometry. 1H / 4H use this exact product. The manual Lesson 08 setup remains scoped to PAXGUSDT Spot." : researchGate)
+
+// Chart structure overlay. Read only the accepted closed research state.
+const string VISUAL_GROUP = "Experimental chart structure"
+bool visualSwings = input.bool(true, "Swing role labels", group = VISUAL_GROUP)
+bool visualReferences = input.bool(true, "Armed support / resistance", group = VISUAL_GROUP)
+bool visualEvents = input.bool(true, "BOS / possible CHoCH candidates", group = VISUAL_GROUP)
+int visualLimit = input.int(8, "History per label type", minval = 2, maxval = 16, group = VISUAL_GROUP)
+
+var array<label> visualSwingLabels = array.new<label>()
+var array<label> visualEventLabels = array.new<label>()
+var int visualHighSeen = na
+var int visualLowSeen = na
+var line visualResistance = na
+var line visualSupport = na
+
+color visualUpperColor = color.rgb(216, 161, 104)
+color visualLowerColor = color.rgb(106, 192, 183)
+
+addStructureLabel(array<label> labels, int cutoff, float y, string caption, string detail, bool above, color tint) =>
+    if array.size(labels) >= visualLimit
+        label.delete(array.shift(labels))
+    label mark = label.new(cutoff, y, caption, xloc = xloc.bar_time,
+         style = above ? label.style_label_down : label.style_label_up,
+         color = color.new(tint, 78), textcolor = tint, size = size.small, tooltip = detail)
+    array.push(labels, mark)
+
+drawArmedReference(line previous, ResearchReference ref, color tint) =>
+    line drawing = previous
+    if ref.state != "ARMED" or na(ref.armedAt)
+        if not na(drawing)
+            line.delete(drawing)
+        drawing := na
+    else if na(drawing)
+        drawing := line.new(ref.armedAt, ref.level, ref.armedAt + STEP, ref.level,
+             xloc = xloc.bar_time, extend = extend.right, color = color.new(tint, 15), style = line.style_dashed)
+    else if line.get_x1(drawing) != ref.armedAt or line.get_y1(drawing) != ref.level
+        line.set_xy1(drawing, ref.armedAt, ref.level)
+        line.set_xy2(drawing, ref.armedAt + STEP, ref.level)
+    drawing
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    float markerPad = math.max((high - low) * 0.3, 5 * syminfo.mintick)
+    if visualSwings
+        if not na(aiUpper.origin) and (na(visualHighSeen) or aiUpper.origin > visualHighSeen)
+            visualHighSeen := aiUpper.origin
+            addStructureLabel(visualSwingLabels, time_close, high + markerPad, aiUpper.role,
+                 "Experimental swing role · " + utc(time_close) + " UTC\nPivot open " + utc(aiUpper.origin) +
+                 " UTC · " + str.tostring(aiUpper.level, format.mintick), true, visualUpperColor)
+        if not na(aiLower.origin) and (na(visualLowSeen) or aiLower.origin > visualLowSeen)
+            visualLowSeen := aiLower.origin
+            addStructureLabel(visualSwingLabels, time_close, low - markerPad, aiLower.role,
+                 "Experimental swing role · " + utc(time_close) + " UTC\nPivot open " + utc(aiLower.origin) +
+                 " UTC · " + str.tostring(aiLower.level, format.mintick), false, visualLowerColor)
+    if visualReferences
+        visualResistance := drawArmedReference(visualResistance, aiUpper, visualUpperColor)
+        visualSupport := drawArmedReference(visualSupport, aiLower, visualLowerColor)
+    if visualEvents and aiEventAt == time_close
+        bool upwards = str.endswith(aiEvent, "↑")
+        bool continuation = str.startswith(aiEvent, "BOS")
+        string caption = (continuation ? "BOS? " : "CHoCH? ") + (upwards ? "↑" : "↓")
+        addStructureLabel(visualEventLabels, aiEventAt, upwards ? high + 3 * markerPad : low - 3 * markerPad, caption,
+             aiEvent + " · " + utc(aiEventAt) + " UTC\nCrossed " + str.tostring(aiEventLevel, format.mintick) +
+             " · " + aiPolicy + " · experimental", upwards, upwards ? visualLowerColor : visualUpperColor)
