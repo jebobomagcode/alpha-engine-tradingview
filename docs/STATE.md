@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## Fibonacci, EMA, reaction and nominal chart overlays — 2026-11-13 PHT
+
+- [Native visualization acceptance](implementation/phase3-7-complete-chart-overlays.md). Final candidate `AE-0.1.10-148c152b12d2` at `a3f78d498b34b697257d00f030dacafafcdbfdce` adds the remaining chart display layers and dashboard controls. 146 standard and 21 separate structural local checks passed. Exact Pine compilation and sampled native checks passed on Binance PAXGUSDT and BTCUSDT Spot 5m.
+- Private v0.1.6 remains named version 6. Exact saved source, 24 controls and restored original layout verified. Draft PR #3 stays based on draft PR #2. Successor private persistence, rollback and same-cutoff reload remain release gates.
+
 ## Order-block and FVG chart overlay candidate — 2026-11-13 PHT
 
 - [Native zone overlay](implementation/phase3-7-zone-overlay.md) renders the latest experimental supply/demand block and three-bar FVG from their source known-at cutoffs. Build `AE-0.1.8-6927cc23e060`, source `14b57b6148a6c39d215ca309354544a59c6a5e74`. The structure drawings, dashboard and research calculations are preserved.
