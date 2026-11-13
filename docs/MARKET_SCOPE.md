@@ -1,3 +1,11 @@
+# Current market mandate — crypto-wide coverage (D-037, 2026-11-14)
+
+**Owner clarification:** “all markets” means **all cryptocurrency markets** (spot, dated futures, perpetual swaps, inverse/coin-margined contracts, and other crypto derivatives with adequate TradingView chart evidence). It does **not** mean traditional forex, equities, indices, commodities or other non-crypto asset classes. Expand beyond Binance and beyond any finite symbol whitelist, subject to explicit instrument/feed/timeframe capabilities and test qualification. This is a **v1.1 product goal**, not a claim that the current accepted v1 indicator supports these markets today.
+
+This clarification **extends the scope of D-013 while preserving its crypto-only asset-class boundary**. The former five Binance instruments are a v1 research qualification sample, not the future allowed universe. Preserve the established private v1 release and version 7 rollback. See [D-037](DECISIONS.md) and the [v1.1 crypto universe qualification plan](implementation/v1-1-crypto-universe-qualification.md). The historical D-013 text follows unchanged for traceability.
+
+---
+
 # Authorized market scope — crypto-first, including gold-linked crypto products
 
 **Status:** OWNER DIRECTIVE — 2026-11-09 (Asia/Manila)  
