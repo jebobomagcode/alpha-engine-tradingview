@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.10", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 54, max_lines_count = 8)
+indicator("Alpha Engine | Integrated Research v0.1.11", overlay = true, behind_chart = false, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 54, max_lines_count = 8)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.10-148c152b12d2"
+const string BUILD_ID = "AE-0.1.11-0f4b3df98b90"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -272,8 +272,9 @@ updateRef(ResearchReference previous, int origin, float level, string role, int 
     next
 
 researchRow(table panel, int rowNumber, string name, string value, string detail = "") =>
-    table.cell(panel, 0, rowNumber, name, text_color = color.rgb(158, 179, 204), text_size = size.small, text_halign = text.align_left)
-    table.cell(panel, 1, rowNumber, value, text_color = color.rgb(230, 238, 249), text_size = size.small, text_halign = text.align_left, tooltip = detail)
+    color cellBackground = color.rgb(20, 26, 36)
+    table.cell(panel, 0, rowNumber, name, text_color = color.rgb(158, 179, 204), text_size = size.small, bgcolor = cellBackground, text_halign = text.align_left)
+    table.cell(panel, 1, rowNumber, value, text_color = color.rgb(230, 238, 249), text_size = size.small, bgcolor = cellBackground, text_halign = text.align_left, tooltip = detail)
 
 // Qualified feed identities. Exact TradingView IDs bind venue and product.
 string researchProduct = switch syminfo.tickerid
@@ -538,7 +539,7 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
     aiUpper := nextHigh
     aiLower := nextLow
 
-var table aiPanel = table.new(position.bottom_left, 2, 11, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+var table aiPanel = table.new(position.bottom_left, 2, 12)
 if barstate.islast and aiEnabled
     researchRow(aiPanel, 0, "Experimental research", BUILD_ID + " · " + aiPolicy)
     researchRow(aiPanel, 1, "Closed cutoff", researchChartOK ? utc(aiDecisionAt) : researchGate)
@@ -768,8 +769,13 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
 
 // Placement and visibility are display-only. All existing dashboard rows remain available.
 if barstate.islast
-    table.set_position(panel, panelLayout == "Both left" ? position.middle_left : position.top_right)
+    bool bothLeft = panelLayout == "Both left"
+    table.set_position(aiPanel, bothLeft ? position.bottom_left : position.middle_left)
+    table.set_position(panel, bothLeft ? position.middle_left : position.top_right)
+    if bothLeft and aiEnabled
+        // Clear the chart watermark in the legacy lower-left placement.
+        table.cell(aiPanel, 0, 11, " \n ", text_size = size.small, bgcolor = color.new(color.black, 100))
     if panelLayout == "Research only" or panelLayout == "Hidden"
         table.clear(panel, 0, 0, 1, 15)
     if panelLayout == "Hidden"
-        table.clear(aiPanel, 0, 0, 1, 10)
+        table.clear(aiPanel, 0, 0, 1, 11)

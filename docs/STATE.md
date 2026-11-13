@@ -1,5 +1,11 @@
 # Current project state — canonical checkpoint
 
+## v1 dashboard stabilization — 2026-11-13 PHT
+
+- The display-only candidate `AE-0.1.11-0f4b3df98b90` passed exact native compilation and visual checks in ordinary and constrained chart panes. The research table is foregrounded and avoids the lower-left watermark. The release candidate reverses byte for byte to accepted v0.1.10 after removing its display changes. 148 standard and 21 separate local tests passed. [Stabilization and release gates](implementation/phase3-8-v1-stabilization.md).
+- Accepted private v0.1.10 remains version 7.0 with exact reopened source, version 6 and earlier rollback history, and a verified PAXGUSDT Spot 5m layout. On the saved build, the 13:40 UTC close produced a new bullish FVG in both dashboard and chart and the state survived same-cutoff reload. The positive Fib/reference/reaction/geometry reload sample remains insufficient. Continuous intrabar and cross-device coverage remain NOT RUN.
+- PR #2 was checked first against main with 127 standard and 21 structural tests. PR #3 remains stacked and draft. Preserve SHA-pinned fixture ancestry, integrate base first when the draft integration decision is authorized, and verify fresh CI and native acceptance on each resulting source.
+
 ## Accepted private v0.1.10 release — 2026-11-13 PHT
 
 - **PASS.** The existing named private script restores version 7.0, build `AE-0.1.10-148c152b12d2`, on standard Binance PAXGUSDT Spot 5m. Exact source, separate layout save, all 39 displayed controls and two same-closed-cutoff reloads passed. Private version 6 was byte-verified before the update and remains in version history as the rollback. [Gate ledger](implementation/phase3-7-complete-chart-overlays.md#named-private-release-acceptance--2026-11-13-pht).

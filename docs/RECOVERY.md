@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current v1 stabilization — 2026-11-13 PHT
+
+Verify main and the draft PR #2 → PR #3 stack. Read the [v1 stabilization ledger](implementation/phase3-8-v1-stabilization.md). Build `AE-0.1.11-0f4b3df98b90` is a natively checked display candidate. Reattach the candidate as a fresh instance to evaluate foreground order. The named private script remains v0.1.10 version 7.0, build `AE-0.1.10-148c152b12d2`. Version 6 remains in history. A saved v7 forming-to-close and same-cutoff FVG reload passed. Keep the target positive-state reload and continuous intrabar coverage separate. The next release decision is ancestry-preserving PR #2 integration first, then refresh and qualify PR #3. Do not repeat completed visualization work or save a new named Pine version from the disposable experiment.
+
 ## Current accepted private v0.1.10 release — 2026-11-13 PHT
 
 Read the [named private release ledger](implementation/phase3-7-complete-chart-overlays.md#named-private-release-acceptance--2026-11-13-pht) and verify live refs for draft PR #3, draft PR #2 and main. The named script restores version 7.0 and exact build `AE-0.1.10-148c152b12d2` on standard Binance PAXGUSDT Spot 5m. The complete source matches commit `a3f78d498b34b697257d00f030dacafafcdbfdce`, SHA-256 `4c01ea5b52cf7aeaa81b698b0286d0764ea7e113b569e8eb8489321dfd8ef21b`. The layout separately restores all 39 controls at defaults. Preserve verified rollback v0.1.6 version 6. Resume at bounded v1 readability and integration readiness. Preserve both drafts and the original commit ancestry used by the isolation tests. Continuous intrabar observation remains NOT RUN. Do not repeat completed visualization work.

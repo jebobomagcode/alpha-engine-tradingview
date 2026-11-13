@@ -5,13 +5,14 @@ from pathlib import Path
 import subprocess
 import unittest
 
-from overlay_source_fixture import without_observation_visuals
+from overlay_source_fixture import without_dashboard_stabilization, without_observation_visuals
 from research.phase3_6.lifecycle_parity_oracle import Candle, Episode, advance_episode
 
 
 ROOT = Path(__file__).resolve().parents[1]
 PATH = "pine/alpha-engine-research.pine"
 GUIDE_COMMIT = "579ed3ec997c3f9a7807f076ade4daf1e3351149"
+ACCEPTED_COMMIT = "a3f78d498b34b697257d00f030dacafafcdbfdce"
 
 
 class ChartObservationsTests(unittest.TestCase):
@@ -65,6 +66,20 @@ class ChartObservationsTests(unittest.TestCase):
         self.assertEqual(self.display.count("label.new("), 1)
         self.assertIn('visualGeometry = input.bool(false, "Nominal entry / stop / target"', self.display)
         self.assertIn('options = ["Corners", "Both left", "Research only", "Hidden"]', self.display)
-        self.assertIn('table.set_position(panel, panelLayout == "Both left" ? position.middle_left', self.display)
-        self.assertIn("table.clear(aiPanel, 0, 0, 1, 10)", self.display)
+        self.assertIn("table.clear(aiPanel, 0, 0, 1, 11)", self.display)
         self.assertIn("table.clear(panel, 0, 0, 1, 15)", self.display)
+
+    def test_dashboard_changes_recover_the_accepted_source_byte_for_byte(self):
+        accepted = subprocess.check_output(["git", "show", f"{ACCEPTED_COMMIT}:{PATH}"], cwd=ROOT)
+        self.assertEqual(without_dashboard_stabilization(self.source).encode(), accepted)
+
+    def test_dashboard_uses_foreground_cells_and_a_transparent_footer_only_in_both_left(self):
+        self.assertIn("behind_chart = false", self.core)
+        self.assertIn("var table aiPanel = table.new(position.bottom_left, 2, 12)", self.core)
+        self.assertEqual(self.core.count("bgcolor = cellBackground"), 2)
+        self.assertIn('bool bothLeft = panelLayout == "Both left"', self.display)
+        self.assertIn("table.set_position(aiPanel, bothLeft ? position.bottom_left : position.middle_left)", self.display)
+        self.assertIn("table.set_position(panel, bothLeft ? position.middle_left : position.top_right)", self.display)
+        self.assertIn('if bothLeft and aiEnabled\n        // Clear the chart watermark', self.display)
+        self.assertIn('table.cell(aiPanel, 0, 11, " \\n ", text_size = size.small, bgcolor = color.new(color.black, 100))',
+                      self.display)
