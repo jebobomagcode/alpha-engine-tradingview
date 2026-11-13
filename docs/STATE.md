@@ -1,5 +1,11 @@
 # Current project state — canonical checkpoint
 
+## Accepted bounded private v1 — 2026-11-13 PHT
+
+- **PASS.** The existing private TradingView script saved v0.1.11 as version 8.0, build `AE-0.1.11-0f4b3df98b90`. Exact source, a fresh chart attachment, separate layout save, 39 restored controls and the same 14:25 UTC closed state on standard Binance PAXGUSDT Spot 5m all passed. Named v0.1.10 version 7.0 was byte-verified before promotion and remains the rollback. [Release evidence](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht).
+- PR #2 merged as `7c03215f5e39953ab06e833248f365b7967d6a6f` and passed 127/127 on main. PR #3 was retargeted, verified with fresh CI and merged as `3ec0fe7938fa4f74856ddf959601de49f212fe0a`. Main passed 148/148 with all nine SHA-pinned fixture commits reachable and 21/21 separate structural tests passed locally.
+- No release-critical failure was observed for the tested private research scope. Positive current Fib, armed references, contact/reaction and nominal geometry at matched reload remain INSUFFICIENT. Continuous intrabar, cross-device and profitability remain NOT RUN.
+
 ## v1 dashboard stabilization — 2026-11-13 PHT
 
 - The display-only candidate `AE-0.1.11-0f4b3df98b90` passed exact native compilation and visual checks in ordinary and constrained chart panes. The research table is foregrounded and avoids the lower-left watermark. The release candidate reverses byte for byte to accepted v0.1.10 after removing its display changes. 148 standard and 21 separate local tests passed. [Stabilization and release gates](implementation/phase3-8-v1-stabilization.md).

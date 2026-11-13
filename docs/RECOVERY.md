@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current bounded private v1 release — 2026-11-13 PHT
+
+Read the [integrated release evidence](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht) and verify current main. Both PRs are merged with ancestry intact. The integrated Pine source is at `3ec0fe7938fa4f74856ddf959601de49f212fe0a`, blob `6fe1f8718ba8b742be500262a1df84fbd933c871`. The original named private script and saved PAXGUSDT Spot 5m chart restore version 8.0, build `AE-0.1.11-0f4b3df98b90`. Preserve version 7.0 as rollback. The bounded v1 acceptance is complete. Resume only with new authorized research or maintenance, keeping unobserved positive states and wider runtime evidence separate from this acceptance.
+
 ## Current v1 stabilization — 2026-11-13 PHT
 
 Verify main and the draft PR #2 → PR #3 stack. Read the [v1 stabilization ledger](implementation/phase3-8-v1-stabilization.md). Build `AE-0.1.11-0f4b3df98b90` is a natively checked display candidate. Reattach the candidate as a fresh instance to evaluate foreground order. The named private script remains v0.1.10 version 7.0, build `AE-0.1.10-148c152b12d2`. Version 6 remains in history. A saved v7 forming-to-close and same-cutoff FVG reload passed. Keep the target positive-state reload and continuous intrabar coverage separate. The next release decision is ancestry-preserving PR #2 integration first, then refresh and qualify PR #3. Do not repeat completed visualization work or save a new named Pine version from the disposable experiment.

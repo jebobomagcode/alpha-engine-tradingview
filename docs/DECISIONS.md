@@ -56,6 +56,12 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 
 | D-035 | **Accept exact v0.1.6 privately and stage the visual layer separately (2026-11-13 PHT).** | The existing named private script saved version 6. Exact reopened source, same-cutoff chart reload and all 24 inputs passed; version 5 is retained as the exact rollback. [Native release evidence](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht). | Keep PR #2 draft. Start with read-only causal swing labels, qualified reference lines and experimental BOS/possible CHoCH annotations on a separate branch. |
 
+## Bounded private v1 integration decision
+
+| ID | Decision | Scope | Evidence |
+| --- | --- | --- | --- |
+| D-036 | The owner authorized sequential PR #2 and PR #3 integration and a new version of the named private script after the applicable gates passed. | Use ancestry-preserving merges, keep version 7.0 as rollback and accept v0.1.11 for bounded private research. | [Integration and private version 8 acceptance](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht). |
+
 ## Why indicator-first is a working default
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 

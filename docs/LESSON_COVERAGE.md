@@ -1,5 +1,7 @@
 # Coach PDF — source-order lesson and item coverage ledger
 
+The [integrated private v1 release](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht) records engineering acceptance separately from this completed source-study ledger.
+
 The [v1 dashboard stabilization](implementation/phase3-8-v1-stabilization.md) records display engineering and bounded runtime checks. Source-study coverage is unchanged.
 
 The [v0.1.10 private visualization acceptance](implementation/phase3-7-complete-chart-overlays.md#named-private-release-acceptance--2026-11-13-pht) records implementation evidence separately from this completed source-study ledger.
