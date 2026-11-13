@@ -1,5 +1,7 @@
 # Alpha Engine TradingView
 
+> **Active v1.1 owner scope (D-038, 2026-11-14):** Focus ONLY on Binance USDⓈ-M USD-stablecoin-settled **perpetual** contracts (USDT/USDC, with any additional stablecoin only after positive verification), supporting LONG and SHORT research. Exclude Spot, COIN-M, dated futures and non-Binance exchanges. See [current v1.1 qualification](docs/implementation/v1-1-binance-usds-m-perpetual-qualification.md), [scope](docs/MARKET_SCOPE.md) and [decisions](docs/DECISIONS.md). The accepted private v1 build remains unchanged. Earlier phase narratives below are historical.
+
 **Independent, source-grounded, research-enhanced TradingView project.**
 
 **Latest owner product clarification D-033:** Coach Fredy's PDF and the completed PCSS provide the **foundation**, not the permanent ceiling. Alpha Engine TradingView is intended to become an **evolving AI-improved indicator**: deliver a source-informed, causal and verified private v1 ASAP, then iteratively improve independently designed rules with explicit provenance and tests. Human review or perfect agreement with unwritten Coach preferences is not a release gate. No profitability or trading-performance claims without separate evidence. [Owner decisions](docs/DECISIONS.md) · [roadmap](docs/implementation/ai-only-accelerated-completion-plan.md).
