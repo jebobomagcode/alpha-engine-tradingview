@@ -1,5 +1,11 @@
 # Current project state — canonical checkpoint
 
+## v0.1.6 five-market candidate and v0.1.5 native edge audit — 2026-11-13 UTC
+
+- [Market qualification and acceptance ledger](implementation/phase3-6-v016-market-qualification.md). Candidate source `0cd16934a203d894d2164f83a376d03eff2afd19`, build `AE-0.1.6-00d26a21011a`. Exact editor/native compile and standard 5m checks passed for Binance PAXGUSDT, XAUTUSDT, BTCUSDT, ETHUSDT Spot and XAUUSDT gold perpetual. The manual Lesson 08 setup remains specific to PAXGUSDT Spot.
+- **PASS:** 127 standard local and CI checks, 21 separate structural tests, 265 bounded Binance candles, all 25 HTF aggregates, default native parity, live 5m and PAXGUSDT hourly-boundary evidence, 20 native OHLC field matches, and retrospective revision-31 M01 ON/OFF parity. Native v0.1.5 observed the R1-B reset/re-cross and in-band consumption with 50-tick sensitivity. The watermark passed a native injected helper test.
+- **NOT RUN:** v0.1.6 private save and durable reload. The temporary instance restored in the browser at the same cutoff. The original layout was then explicitly restored to private v0.1.5 named version 5, build `AE-0.1.5-9e033123db0f`, with exact source, all 24 controls, and reload verified. Main stays at `319459863fc138e8d347a1b00bc1de56fabb114c`. [PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) remains open draft.
+
 ## v0.1.5 lifecycle private release — 2026-11-13 PHT
 
 - [Audit and verification](implementation/phase3-6-v015-lifecycle-audit.md): 119 standard and 21 separate local tests passed. The older terminal-reference recurrence is excluded by fixed-width, monotone per-side origin selection and absent from 19,683 exhaustive short paths and 784 longer runs. The candidate adds a constant-memory retirement guard and terminates a support episode on the close that consumes its reference.

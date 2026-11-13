@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current v0.1.6 native market candidate — 2026-11-13 UTC
+
+Verify actual [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) and main. Start with the [v0.1.6 qualification ledger](implementation/phase3-6-v016-market-qualification.md). Source commit `0cd16934a203d894d2164f83a376d03eff2afd19` and build `AE-0.1.6-00d26a21011a` passed exact-source native checks for five specified Binance 5m feeds, 127 local and CI regressions, and 21 separate research tests. Accepted private v0.1.5 remains named version 5 with exact bytes and all 24 controls verified. The temporary chart instance persisted across tabs during the same-session test. The original layout was explicitly restored to v0.1.5, saved, and reloaded successfully. The native lifecycle probe was temporary. Review the separate market-history and injected-helper outcomes. Resume at the bounded private durability/reload gate without restarting earlier studies or widening features. Keep the current script and earlier rollback versions until the release safeguards are satisfied.
+
 ## Current v0.1.5 lifecycle private release — 2026-11-13 PHT
 
 Start with [the audit and release gates](implementation/phase3-6-v015-lifecycle-audit.md). The existing named private script version 5 restores build `AE-0.1.5-9e033123db0f` on standard Binance Spot PAXGUSDT 5m. Exact source, 24 input controls, sampled native comparison and ordinary reload passed. Preserve the verified v0.1.4 version 4 rollback and earlier v0.1.3 source. The new edge transitions are verified in modeled and source checks. Broader native parity remains open. Main is unchanged and PR #2 remains draft.
