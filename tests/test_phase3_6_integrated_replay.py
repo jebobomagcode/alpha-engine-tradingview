@@ -25,13 +25,27 @@ class IntegratedLifecycleChecks(unittest.TestCase):
             Bar(0, 100, 101, 99, 100),
             Bar(5, 100, 102, 99, 101),
             Bar(10, 106, 108, 105, 107),
-            Bar(15, 108, 110, 103, 104),
+            Bar(15, 108, 110, 101, 104),
         )
         result = replay_integrated(bars, as_of=20)
         self.assertIsNone(result[1].gap)
         self.assertEqual((result[2].gap.low, result[2].gap.high), (101, 105))
         self.assertEqual(result[2].gap.state, "OPEN")
         self.assertEqual(result[3].gap.state, "GEOMETRIC TEST")
+
+    def test_fresh_three_bar_gap_replaces_latest_tested_gap(self):
+        # The later candle tests GAP:15 yet also creates GAP:20.
+        # Pine reports only the most recently created candidate.
+        bars = (
+            Bar(0, 100, 101, 99, 100),
+            Bar(5, 100, 102, 99, 101),
+            Bar(10, 106, 108, 105, 107),
+            Bar(15, 108, 110, 103, 104),
+        )
+        frames = replay_integrated(bars, as_of=20)
+        self.assertEqual(frames[2].gap.identity, "GAP:15")
+        self.assertEqual(frames[3].gap.identity, "GAP:20")
+        self.assertEqual(frames[3].gap.state, "OPEN")
 
     def test_missing_adjacent_bar_resets_gap_and_reaction_epoch(self):
         bars = (
