@@ -1,5 +1,11 @@
 # New ChatGPT conversation recovery — START HERE
 
+## CURRENT VALIDATION — Integrated structural/zone/reaction Python research replay (2026-11-13 PHT)
+
+[GitHub Actions 43341833165](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43341833165) **104/104 PASS** (prior 95 + nine new integration tests). [Integrated model](../research/phase3_6/integrated_replay.py) is a research-only, latest-zone structure/episode replay, with frozen 288-bar PAXGUSDT Spot 5m sampled-prefix invariance across width 1/2/3 and R1-A/R1-B, gap test/replacement order, missing-window epoch resets and explicit HTF evidence handling. **Do not claim Pine-native dynamic parity, live market receipt authentication, usable HTF analysis from only this dataset, or trading performance.** The accepted private v0.1.4 version 4 remains untouched; v0.1.3 rollback and GitHub main are preserved. [Gates](implementation/phase3-6-lifecycle-parity-checks.md). Next: compare the same closed cutoff's reference retirement / zone invalidation / reaction against native Pine only when supported.
+
+
+
 ## Current QA update — 95/95 GitHub checks, private v0.1.4 preserved
 
 [GitHub CI 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361) passed **95/95** after adding 11 synthetic lifecycle cases and a separate Python specification projection for zone invalidation, geometric gap tests, support contact/reaction, and terminal episode behavior. [QA scope](implementation/phase3-6-lifecycle-parity-checks.md). These tests **do not execute Pine**, and true matched-cutoff Pine↔Python runtime parity remains NOT RUN. The accepted private v0.1.4 version 4 is untouched; rollback v0.1.3 and main unchanged. Next compare retirement/invalidation/reaction on native evidence without requiring human manual annotation.

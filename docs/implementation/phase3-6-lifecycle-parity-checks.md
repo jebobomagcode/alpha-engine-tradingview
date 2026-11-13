@@ -16,6 +16,15 @@ Eleven explicitly constructed, hand-adjudicated Python tests are in `tests/test_
 
 **Important open ambiguity:** a prior reference of the same underlying origin may later regain ARMED status under an R1-B reset/re-cross policy. Reusing the identical episode identity means the previously ended reaction remains ended. Whether a new reset epoch should create a distinct reaction episode needs an explicitly versioned decision and native adversarial evidence; do not silently make historical events reusable.
 
+## Integrated multi-module modeled replay — 2026-11-13 PHT
+
+**PASS:** Nine new integrated replay unit tests; [GitHub Actions run 43341833165](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43341833165) **104/104** standard tests (95 prior + nine integrated). These checks use [research/phase3_6/integrated_replay.py](../../research/phase3_6/integrated_replay.py) and [tests/test_phase3_6_integrated_replay.py](../../tests/test_phase3_6_integrated_replay.py).
+
+- Frozen 288-bar PAXGUSDT Spot 5m source is evaluated under S1 strict widths 1/2/3, R1-A/R1-B, and several genuinely truncated prefix cutoffs. Result snapshots—including latest gap, block, candidate event and support episode—were invariant to future candles in the checked comparisons.
+- Distinguish older-gap `OPEN → GEOMETRIC TEST` from the case where the same candle also creates a newer gap; latest-only Pine policy overwrites the displayed gap with new `OPEN`. The first draft test incorrectly assumed both could be reported simultaneously; it was corrected and the replacement policy pinned as a separate test. Earlier failed run [43341495424](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43341495424) is preserved for traceability.
+- An incomplete/missing adjacent bar clears the latest zone and reaction episode research states. Synthetic model epochs and explicitly supplied HTF booleans are not proof of actual 1H/4H feed confirmation. Unknown HTF context remains INSUFFICIENT, never inferred. Numeric values such as `1` or `0` cannot silently stand for verified context.
+- **NOT RUN:** executing these candles in Pine, an independent venue-timed HTF receipt, same-cutoff native Pine/reference-model parity, cross-market stress testing, or full multi-zone lifecycle. Do not mark private TradingView v0.1.4 native acceptance as newly expanded; the previous approved scope remains unchanged.
+
 ## Acceptance status
 
 | Gate | Status |
@@ -23,7 +32,7 @@ Eleven explicitly constructed, hand-adjudicated Python tests are in `tests/test_
 | v0.1.4 prior private acceptance | PASS within prior recorded scope |
 | New isolated lifecycle Python tests | **PASS:** 11/11 new cases; [GitHub Actions 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361) **95/95** standard checks overall |
 | Same synthetic close sequence through actual Pine native executor | NOT RUN |
-| Matched cutoff Pine/experimental Python lifecycle event parity | NOT RUN |
+| Matched cutoff Pine/experimental Python lifecycle event parity | NOT RUN; integrated Python prefix consistency PASS only |
 | Wider venues/timeframes/cache-bypass persistence | OPEN_UNRESOLVED |
 
 The next native verification should compare the precise cutoff/source on BLOCK→GEOMETRIC TEST→INVALIDATED, GAP OPEN→GEOMETRIC TEST, REACTION WAIT→OBSERVED or REASSESS, and reference R1-A/R1-B retirement transitions. If the platform cannot inject controlled OHLC into a native Pine study, use witnessed chart evidence as a narrower acceptance and mark synthetic native equivalence NOT RUN. No human annotations or extra Coach sources are required.

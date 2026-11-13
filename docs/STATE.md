@@ -1,5 +1,12 @@
 # Current project state — canonical checkpoint
 
+## Integrated research replay — source-frozen zone/reaction checks (2026-11-13 PHT)
+
+- **PASS:** [GitHub Actions run 43341833165](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43341833165), **104/104** standard regression tests. Nine integrated replay tests were added to the prior 95, including a fix to distinguish an old gap's geometric test from a newly opened latest gap. The isolated 21 structural research checks were not rerun by this workflow.
+- [Integrated structure-to-lifecycle replay](../research/phase3_6/integrated_replay.py) and [nine checks](../tests/test_phase3_6_integrated_replay.py) connect the prior-open structure ledger to latest-only order-block/gap states and prior-HL support/reaction episodes; the frozen 288-bar PAXGUSDT Spot 5m receipt fixture was compared at sampled cutoffs for three strict widths (1/1, 2/2, 3/3), R1-A and R1-B, with prefix invariance PASS.
+- **Important behavior:** v0.1.4 only retains the **latest gap candidate**. If a candle geometrically tests an old gap and simultaneously creates a new one, the new gap is displayed as OPEN. This is bounded implementation behavior, not a complete multi-zone lifecycle. After a missing bar, gap and episode epochs are cleared. Higher-timeframe context is **NOT INFERRED** from 5m-only evidence; real-fixture runs therefore yield no HTF-qualified reaction status. Numeric truthiness is rejected as a context input.
+- **Native Pine equivalence NOT RUN:** The integration replay is a separate research model, not Pine execution. Chart-native comparison of actual reference retirement, block invalidation and reaction at matched bar cutoffs remains necessary for any v0.1.4 parity upgrade. The accepted private v0.1.4 version 4, original accepted v0.1.3 rollback and GitHub main were not modified.
+
 ## v0.1.4 lifecycle controlled-model QA — 2026-11-13 PHT
 
 - **PASS:** [GitHub Actions run 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361), **95/95** (84 prior standard + 11 new controlled lifecycle tests); existing 21 separate structural research tests were not rerun by this job.
