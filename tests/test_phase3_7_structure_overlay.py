@@ -20,7 +20,8 @@ class StructureOverlayTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         source = (ROOT / SOURCE_PATH).read_text()
-        cls.core, cls.overlay = source.split(SEPARATOR, 1)
+        cls.core, overlay = source.split(SEPARATOR, 1)
+        cls.overlay = overlay.split("\n// Chart zone overlay.", 1)[0]
 
     def test_research_engine_and_dashboard_are_exactly_the_accepted_release(self):
         accepted = subprocess.check_output(
@@ -28,9 +29,9 @@ class StructureOverlayTests(unittest.TestCase):
         )
         self.assertEqual(sha256(accepted).hexdigest(),
                          "9376df68e43cb76d260ab109ca69b1b2813366a75072856b506ae2397f76fcec")
-        restored = self.core.replace("Integrated Research v0.1.7", "Integrated Research v0.1.6", 1)
-        restored = restored.replace("max_labels_count = 35, max_lines_count = 2", "max_labels_count = 3", 1)
-        restored = re.sub(r'AE-0\.1\.7-[0-9a-f]{12}', "AE-0.1.6-00d26a21011a", restored, count=1)
+        restored = self.core.replace("Integrated Research v0.1.8", "Integrated Research v0.1.6", 1)
+        restored = restored.replace("max_boxes_count = 3, max_labels_count = 37, max_lines_count = 2", "max_boxes_count = 1, max_labels_count = 3", 1)
+        restored = re.sub(r'AE-0\.1\.8-[0-9a-f]{12}', "AE-0.1.6-00d26a21011a", restored, count=1)
         self.assertEqual(restored.encode(), accepted)
         self.assertNotRegex(self.overlay, r"\bai\w+\s*:=")
         self.assertNotIn("request.security", self.overlay)
@@ -55,7 +56,7 @@ class StructureOverlayTests(unittest.TestCase):
         self.assertIn("visualSupport := drawArmedReference(visualSupport, aiLower,", self.overlay)
         self.assertIn('maxval = 16, group = VISUAL_GROUP', self.overlay)
         self.assertLess(self.overlay.index("label.delete(array.shift(labels))"), self.overlay.index("label.new("))
-        self.assertIn("max_labels_count = 35, max_lines_count = 2", self.core)
+        self.assertIn("max_labels_count = 37, max_lines_count = 2", self.core)
 
     def test_frozen_references_and_events_supply_distinct_causal_anchors(self):
         tape = frozen_tape()

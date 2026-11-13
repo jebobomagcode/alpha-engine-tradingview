@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.7", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 35, max_lines_count = 2)
+indicator("Alpha Engine | Integrated Research v0.1.8", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 37, max_lines_count = 2)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.7-9e93706426d6"
+const string BUILD_ID = "AE-0.1.8-5e35421758d2"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -579,3 +579,62 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
         addStructureLabel(visualEventLabels, aiEventAt, upwards ? high + 3 * markerPad : low - 3 * markerPad, caption,
              aiEvent + " · " + utc(aiEventAt) + " UTC\nCrossed " + str.tostring(aiEventLevel, format.mintick) +
              " · " + aiPolicy + " · experimental", upwards, upwards ? visualLowerColor : visualUpperColor)
+
+// Chart zone overlay. Draw the latest closed snapshot of each independent family.
+const string ZONE_VISUAL_GROUP = "Experimental chart zones"
+bool visualBlocks = input.bool(true, "Order-block / supply-demand", group = ZONE_VISUAL_GROUP)
+bool visualGaps = input.bool(true, "Three-bar FVG", group = ZONE_VISUAL_GROUP)
+
+type ZoneDrawing
+    box band = na
+    label badge = na
+    int knownAt = na
+    string state = ""
+
+drawResearchZone(ZoneDrawing drawing, bool visible, bool gap, int knownAt, int cutoff, float lo, float hi, int side, string state) =>
+    bool valid = visible and not na(knownAt) and knownAt <= cutoff and lo > 0 and hi >= lo and (side == 1 or side == -1) and
+         (state == "OPEN" or state == "GEOMETRIC TEST" or state == "INVALIDATED")
+    // A new source identity replaces the previous box and its state badge.
+    if not na(drawing.band) and (not valid or drawing.knownAt != knownAt)
+        box.delete(drawing.band)
+        label.delete(drawing.badge)
+        drawing.band := na
+        drawing.badge := na
+        drawing.knownAt := na
+        drawing.state := ""
+    if valid
+        bool invalidated = state == "INVALIDATED"
+        color tint = gap ? (side == 1 ? color.rgb(122, 165, 214) : color.rgb(171, 150, 204)) :
+             (side == 1 ? visualLowerColor : visualUpperColor)
+        if na(drawing.band)
+            drawing.band := box.new(knownAt, hi, knownAt + STEP, lo, xloc = xloc.bar_time, extend = extend.right,
+                 border_color = color.new(tint, 65), border_style = gap ? line.style_dotted : line.style_solid,
+                 bgcolor = color.new(tint, 92))
+            drawing.badge := label.new(cutoff, gap ? lo : hi, "", xloc = xloc.bar_time,
+                 style = gap ? label.style_label_upper_left : label.style_label_lower_left, size = size.small)
+            drawing.knownAt := knownAt
+        if drawing.state != state
+            string family = gap ? (side == 1 ? "Bull FVG?" : "Bear FVG?") : (side == 1 ? "Demand OB?" : "Supply OB?")
+            string detail = "Experimental " + family + " · known " + utc(knownAt) + " UTC\n" +
+                 str.tostring(lo, format.mintick) + "–" + str.tostring(hi, format.mintick) + "\n" +
+                 state + " since " + utc(cutoff) + " UTC · geometric evidence"
+            label.set_x(drawing.badge, cutoff)
+            label.set_text(drawing.badge, family + " · " + state)
+            label.set_tooltip(drawing.badge, detail)
+            label.set_color(drawing.badge, color.new(invalidated ? color.gray : tint, 80))
+            label.set_textcolor(drawing.badge, invalidated ? color.silver : tint)
+            color stateTint = invalidated ? color.gray : tint
+            box.set_border_color(drawing.band, color.new(stateTint, state == "GEOMETRIC TEST" ? 79 : 65))
+            box.set_bgcolor(drawing.band, color.new(stateTint, state == "GEOMETRIC TEST" ? 96 : 92))
+            if invalidated
+                box.set_right(drawing.band, cutoff)
+                box.set_extend(drawing.band, extend.none)
+            drawing.state := state
+    drawing
+
+var ZoneDrawing visualBlock = ZoneDrawing.new()
+var ZoneDrawing visualGap = ZoneDrawing.new()
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    visualBlock := drawResearchZone(visualBlock, visualBlocks, false, aiBlockKnown, aiDecisionAt, aiBlockLo, aiBlockHi, aiBlockSide, aiBlockState)
+    visualGap := drawResearchZone(visualGap, visualGaps, true, aiGapKnown, aiDecisionAt, aiGapLo, aiGapHi, aiGapSide, aiGapState)
