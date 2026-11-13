@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Active v1.1 scope correction — D-038 (2026-11-14 PHT)
+
+The owner clarified that the next Alpha Engine TradingView development target is **only Binance USDⓈ-M USDT/USDC and other positively verified USD-stablecoin-settled perpetual swaps**, with both LONG and SHORT research. **Exclude Spot, COIN-M/inverse, dated futures and other exchanges.** This supersedes the earlier wider D-037 proposal while preserving it historically. Read [D-038](DECISIONS.md), the [active qualification plan](implementation/v1-1-binance-usds-m-perpetual-qualification.md) and [market scope](MARKET_SCOPE.md). The accepted private v1 version 8.0 and version 7 rollback remain unchanged; no native compatibility work is yet accepted for the new scope.
+
 ## Current bounded private v1 release — 2026-11-13 PHT
 
 Read the [integrated release evidence](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht) and verify current main. Both PRs are merged with ancestry intact. The integrated Pine source is at `3ec0fe7938fa4f74856ddf959601de49f212fe0a`, blob `6fe1f8718ba8b742be500262a1df84fbd933c871`. The original named private script and saved PAXGUSDT Spot 5m chart restore version 8.0, build `AE-0.1.11-0f4b3df98b90`. Preserve version 7.0 as rollback. The bounded v1 acceptance is complete. Resume only with new authorized research or maintenance, keeping unobserved positive states and wider runtime evidence separate from this acceptance.
