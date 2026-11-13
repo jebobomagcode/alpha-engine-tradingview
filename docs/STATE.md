@@ -1,5 +1,11 @@
 # Current project state — canonical checkpoint
 
+## New owner requirement D-037 — crypto-wide market compatibility (2026-11-14 PHT)
+
+- The owner clarified that “all markets” means **all cryptocurrency markets**, including crypto spot, futures, perpetual swaps and other crypto derivatives—not non-crypto traditional asset classes. Crypto implementation is no longer intended to be confined to five exact Binance chart symbols or USDT quotes. The bounded private v1 acceptance remains intact.
+- **Current state:** product requirement and [v1.1 qualification plan](implementation/v1-1-crypto-universe-qualification.md) documented on a development branch; **not yet implemented/qualified in native Pine**, with no new saved-script promotion. Implement using market/product/feed/timeframe capabilities, explicit unknown/insufficient states and controlled venue/product samples. Do not remove safety gates simply to display output on additional charts. Decision record: [D-037](DECISIONS.md).
+- The previously accepted v1 remains version 8.0, build `AE-0.1.11-0f4b3df98b90`; preserve version 7 rollback and 148 standard + 21 structural regression baselines.
+
 ## Accepted bounded private v1 — 2026-11-13 PHT
 
 - **PASS.** The existing private TradingView script saved v0.1.11 as version 8.0, build `AE-0.1.11-0f4b3df98b90`. Exact source, a fresh chart attachment, separate layout save, 39 restored controls and the same 14:25 UTC closed state on standard Binance PAXGUSDT Spot 5m all passed. Named v0.1.10 version 7.0 was byte-verified before promotion and remains the rollback. [Release evidence](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht).
