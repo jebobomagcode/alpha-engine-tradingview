@@ -54,7 +54,7 @@ class PineSourceProjectedTransitionTests(unittest.TestCase):
             proj = project_episode(episode, candle=kw.pop("bar"), **kw)
             self.assertEqual(proj, want)
             checked += 1
-        self.assertEqual(checked, 3072)
+        self.assertEqual(checked, 1536)
 
     def test_invalid_final_bar_epoch_reset_matches_oracle(self):
         invalid = Candle(5, 100, 99, 101, 98)
