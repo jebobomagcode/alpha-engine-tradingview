@@ -105,6 +105,11 @@ class IntegratedLifecycleChecks(unittest.TestCase):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 replay_integrated((), as_of=5, support_tolerance_ticks=value)
 
+    def test_htf_context_type_cannot_implicitly_coerce_numeric_or_text(self):
+        for value in (0, 1, "UP", 1.0):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                replay_integrated((), as_of=5, confirmed_bullish_context=value)
+
     def test_static_pine_ordering_guards_remain_visible(self):
         source = (ROOT / "pine/alpha-engine-research.pine").read_text()
         extension = source.split("// Independent experimental extension.", 1)[1]

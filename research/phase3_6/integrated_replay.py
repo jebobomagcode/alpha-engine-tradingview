@@ -48,8 +48,8 @@ def replay_integrated(bars: tuple[Bar, ...], *, as_of: int,
     """
     if type(support_tolerance_ticks) is not int or support_tolerance_ticks < 0:
         raise ValueError("support tolerance must be nonnegative integer ticks")
-    if confirmed_bullish_context not in (None, True, False):
-        raise ValueError("HTF context must be true, false or unavailable")
+    if confirmed_bullish_context is not None and type(confirmed_bullish_context) is not bool:
+        raise ValueError("HTF context must be explicit bool or unavailable")
 
     source = {}
     for bar in bars:
