@@ -1,8 +1,8 @@
 # New ChatGPT conversation recovery — START HERE
 
-## Current v0.1.5 lifecycle candidate — 2026-11-13 PHT
+## Current v0.1.5 lifecycle private release — 2026-11-13 PHT
 
-Start with [the audit and release gates](implementation/phase3-6-v015-lifecycle-audit.md). The candidate is on draft PR #2. Preserve named private v0.1.4 version 4 and its pinned bytes until native acceptance of the replacement. The fixed-width lifecycle search, controlled mutation suite and both local regression suites passed.
+Start with [the audit and release gates](implementation/phase3-6-v015-lifecycle-audit.md). The existing named private script version 5 restores build `AE-0.1.5-9e033123db0f` on standard Binance Spot PAXGUSDT 5m. Exact source, 24 input controls, sampled native comparison and ordinary reload passed. Preserve the verified v0.1.4 version 4 rollback and earlier v0.1.3 source. The new edge transitions are verified in modeled and source checks. Broader native parity remains open. Main is unchanged and PR #2 remains draft.
 
 ## CURRENT CHECKPOINT — 112/112 source-projected lifecycle QA, 2026-11-13 PHT
 

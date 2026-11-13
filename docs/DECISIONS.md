@@ -56,6 +56,8 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
 ## Next decision
+The v0.1.5 lifecycle increment applies D-032/D-033. It keeps a monotone terminal origin per side, retires older proposed origins as a defensive guard, and ends the experimental reaction episode on the cutoff that consumes the exact support reference. These are independent research mechanics. The [audit and private acceptance](implementation/phase3-6-v015-lifecycle-audit.md) establish the evidence and preserve the prior version as rollback. The next engineering target is matched-cutoff native evidence for the changed transitions before widening scope.
+
 Execute D-032/D-033 AI-only accelerated iterative indicator roadmap: Coach is the initial reference, while reproducible AI-designed improvements are an intended product capability. Start with causal M01 structure and reference tests. Do not solicit manual annotations, human consensus or scheduled screenshots. Preserve the Phase 3.5 software and native persistence checkpoint and its rollback evidence. [Current checkpoint](STATE.md)
 
 ## Earlier research-stage decision

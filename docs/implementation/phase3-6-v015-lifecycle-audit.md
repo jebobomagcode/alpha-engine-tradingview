@@ -26,4 +26,17 @@ At a fixed width, every admitted pivot origin advances with its confirmation bar
 - **PASS:** six controlled Python source-projection mutations were detected against explicit expected outcomes. They covered invalidation, known-at equality, stale episode state, arming boundary, crossing equality and missing HTF qualification. These checks do not measure Pine execution.
 - **PASS:** pinned frozen 288-bar prefix checks. R1-A/R1-B each recorded 15/8/3 events for widths 1/2/3. The constructed support case distinguishes them. Counts provide descriptive behavior only.
 - Candidate build `AE-0.1.5-9e033123db0f`, Git blob `6271d1e25ffe41a927f76fab6a509a65fe666f8c`, SHA-256 `f29e7980db347dd9cfd4e799a4c3b807ccf6ed2e5d05bc709281f96eacdaa452`. Legacy Lesson 08 body and v0.1.3 source unchanged. v0.1.4 source remains pinned at `4b736218d0131758f6d5f26733e3c5b23bc27390`.
-- **NOT RUN at this checkpoint:** v0.1.5 native compile, matched-cutoff Pine behavior, and private persistence. Record each separately before promotion.
+- **PASS:** [GitHub Actions run 43352496170](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43352496170), 119 standard tests confirmed in the job log. The separately executed 21 tests are outside that CI count.
+
+## Native and private acceptance
+
+| Gate | Result |
+| --- | --- |
+| Exact Pine source and native compile | **PASS.** Read the committed raw source and verified its SHA-256. Copied back the complete unsaved editor after compiling the candidate in TradingView. The exact source matched after CRLF-to-LF normalization. |
+| Qualified chart and v0.1.4 comparison | **PASS for one default-input sample.** Standard Binance Spot PAXGUSDT 5m, Nov 13 02:30 UTC. Both builds showed R1-A, UNKNOWN with latest upward BOS candidate at 01:20 UTC and 3892.41, no current high/low references, down-aligned 1H/4H, mixed local EMA with RSI 57.9, WAIT for bullish alignment, bear gap GEOMETRIC TEST at 3907.70–3908.21, and demand OPEN at 3887.22–3891.60. Both retained the same Lesson 08 declaration-insufficient state. |
+| Previous private source and rollback | **PASS.** Reopened named version 4 and copied back the full v0.1.4 source, SHA-256 `1c93604857281b3c3fd673d6d30ca7a33178e43f76b20a6a40cd29ebbdf17235` after newline normalization. Both version 4 and the accepted v0.1.3 source remain rollback anchors. |
+| Named private save and layout save | **PASS.** Updated the existing private entry, which reported version 5 at 10:33 PHT. Removed the temporary chart instance before promotion. Saved the existing layout separately and verified it reported all changes saved. |
+| Reload, input manifest and live cutoff | **PASS.** Ordinary reload restored the sole candidate instance, build, standard candles and same 02:30 UTC closed state. Reopened version 5 and verified the complete normalized source. All 24 displayed controls matched the pre-save candidate defaults. The restored live chart advanced to 02:35 UTC with RSI 65.8 and the same retained event, gap and block. |
+| Changed edge transition and broader parity | **NOT RUN natively.** The same-close support-consumption branch, below-watermark branch, native R1-B re-cross, malformed data, nondefault enabled Lesson 08 fixture and cross-device/cache-bypass persistence were not observed on v0.1.5. The native sample establishes compiled behavior and default layout persistence. The new edge logic is covered by constructed Python cases and Pine source checks. |
+
+The accepted private release is now v0.1.5. [Draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) remains unmerged. No private chart identifiers, screenshot bytes or account details are included in this public record.

@@ -1,9 +1,9 @@
 # Current project state — canonical checkpoint
 
-## v0.1.5 lifecycle candidate — 2026-11-13 PHT
+## v0.1.5 lifecycle private release — 2026-11-13 PHT
 
 - [Audit and verification](implementation/phase3-6-v015-lifecycle-audit.md): 119 standard and 21 separate local tests passed. The older terminal-reference recurrence is excluded by fixed-width, monotone per-side origin selection and absent from 19,683 exhaustive short paths and 784 longer runs. The candidate adds a constant-memory retirement guard and terminates a support episode on the close that consumes its reference.
-- Accepted private v0.1.4 version 4 and GitHub main are preserved. Native verification and persistence for v0.1.5 are tracked separately.
+- **PASS:** CI 119/119, native compile and exact source, same-cutoff default comparison with v0.1.4, named private version 5, layout save, exact restored source, all 24 inputs and live 02:30→02:35 UTC cutoff. v0.1.4 version 4 is the verified rollback. GitHub main stays at `319459863fc138e8d347a1b00bc1de56fabb114c`; PR #2 remains draft. Targeted native edge transitions remain NOT RUN.
 
 ## Source-projected Pine lifecycle differential — 2026-11-13 PHT
 
