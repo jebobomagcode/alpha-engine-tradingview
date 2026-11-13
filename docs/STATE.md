@@ -1,6 +1,12 @@
 # Current project state — canonical checkpoint
 
-## New owner requirement D-037 — crypto-wide market compatibility (2026-11-14 PHT)
+## Active owner requirement D-038 — Binance USDⓈ-M perpetual-only focus (2026-11-14 PHT)
+
+- **OWNER SCOPE CHANGE:** v1.1 must focus **only** on Binance USDⓈ-M linear, USD-stablecoin-quoted/settled perpetual contracts. Initial stablecoins: **USDT and USDC**; any additional USD-stablecoin-settled Binance perpetual needs exact positive contract metadata confirmation. Include both LONG and SHORT research, subject to instrument identity and causal evidence gates. **Explicit exclusions:** Binance Spot, COIN-M / inverse/coin-margined perpetuals, dated futures, other exchanges and traditional standalone markets. Binance gold-referencing USDⓈ-M perpetual may qualify as a Binance contract; no spot gold substitution.
+- D-038 **supersedes D-037's broader all-crypto product target**, which remains below as a historical decision. Current plan: [Binance USDⓈ-M perpetual qualification](implementation/v1-1-binance-usds-m-perpetual-qualification.md). No new Pine implementation or native acceptance is claimed by this documentation change.
+- Preserve integrated accepted private v1 version 8.0, `AE-0.1.11-0f4b3df98b90`, v7 rollback, baseline source and 148 standard plus 21 structural tests. Development should occur separately from main pending evidence and integration gates.
+
+## Historical owner requirement D-037 — crypto-wide market compatibility (2026-11-14 PHT)
 
 - The owner clarified that “all markets” means **all cryptocurrency markets**, including crypto spot, futures, perpetual swaps and other crypto derivatives—not non-crypto traditional asset classes. Crypto implementation is no longer intended to be confined to five exact Binance chart symbols or USDT quotes. The bounded private v1 acceptance remains intact.
 - **Current state:** product requirement and [v1.1 qualification plan](implementation/v1-1-crypto-universe-qualification.md) documented on a development branch; **not yet implemented/qualified in native Pine**, with no new saved-script promotion. Implement using market/product/feed/timeframe capabilities, explicit unknown/insufficient states and controlled venue/product samples. Do not remove safety gates simply to display output on additional charts. Decision record: [D-037](DECISIONS.md).
