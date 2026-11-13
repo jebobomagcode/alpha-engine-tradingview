@@ -97,6 +97,29 @@ class BoundedLifecycleTests(unittest.TestCase):
         self.assertEqual(result.status, "INSUFFICIENT · closed data")
         self.assertFalse(result.reaction)
 
+    def test_malformed_final_candle_clears_stale_episode(self):
+        """Pine marks incomplete OHLC contiguous=false and resets the epoch."""
+        before = Episode("HL-1", touched=True, ended=True)
+        malformed = Candle(10, 100, 101, 102, 99)
+        result = advance_episode(
+            before, bar=malformed, predecessor=Candle(5, 100, 104, 97, 103),
+            adjacent=True, context_ok=True, bullish_context=True,
+            armed_anchor="HL-1", support_low=97, support_high=102)
+        self.assertEqual(result.status, "INSUFFICIENT · closed data")
+        self.assertEqual(result.state, Episode())
+        self.assertFalse(result.reaction)
+
+    def test_nonfinal_candle_clears_stale_episode_in_research_projection(self):
+        before = Episode("HL-1", touched=True, ended=True)
+        forming = Candle(10, 100, 104, 97, 103, final=False)
+        result = advance_episode(
+            before, bar=forming, predecessor=Candle(5, 100, 104, 97, 103),
+            adjacent=True, context_ok=True, bullish_context=True,
+            armed_anchor="HL-1", support_low=97, support_high=102)
+        self.assertEqual(result.status, "INSUFFICIENT · closed data")
+        self.assertEqual(result.state, Episode())
+        self.assertFalse(result.reaction)
+
     def test_gap_clears_reaction_state_without_claiming_event(self):
         old = Episode("HL-1", True, True)
         result = advance_episode(old, bar=Candle(10, 101, 104, 97, 99),

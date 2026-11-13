@@ -95,9 +95,9 @@ def advance_episode(
     eligible. If a retired anchor reappears without a new identity, existing
     terminal episode state remains; that lifecycle choice requires native QA.
     """
-    if not bar.valid():
-        return EpisodeDecision(previous, "NOT_EVALUATED")
-    if not adjacent:
+    # Pine's enclosing finalized-bar evaluation clears the episode when
+    # complete=false, because contiguous = complete and adjacent.
+    if not bar.valid() or not adjacent:
         return EpisodeDecision(Episode(), "INSUFFICIENT · closed data")
     support = armed_anchor is not None and support_low is not None and support_high is not None
     if support and (support_low <= 0 or support_high < support_low):
