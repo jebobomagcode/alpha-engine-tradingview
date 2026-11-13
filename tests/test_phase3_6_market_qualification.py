@@ -93,8 +93,13 @@ class MarketQualification(unittest.TestCase):
         source = self.source
         candidates = re.findall(r'^    "(BINANCE:[A-Z.]+)" => syminfo.basecurrency == "([A-Z]+)" \? "([^"]+)"', source, re.M)
         expected = [(f"BINANCE:{symbol}", base, "Spot") for symbol, base in SPOT.items()]
-        expected.append(("BINANCE:XAUUSDT.P", "XAU", "USDT-margined gold perpetual"))
         self.assertCountEqual(candidates, expected)
+        self.assertIn(
+            '"BINANCE:XAUUSDT.P" => syminfo.basecurrency == "" or syminfo.basecurrency == "XAU"'
+            ' ? "USDT-margined gold perpetual" : ""', source,
+        )
+        ids = re.findall(r'^    "([^"]+)" =>', source.split("switch syminfo.tickerid", 1)[1], re.M)
+        self.assertCountEqual(ids, [ticker for ticker, _, _ in expected] + ["BINANCE:XAUUSDT.P"])
         self.assertIn('syminfo.currency == "USDT" and syminfo.mintick == 0.01', source)
         self.assertIn("timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard", source)
         self.assertIn("closed == boundary and opened == boundary - period and opened - first == 49 * period", source)

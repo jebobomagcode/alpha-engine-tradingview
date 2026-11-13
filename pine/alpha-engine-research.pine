@@ -2,7 +2,7 @@
 indicator("Alpha Engine | Integrated Research v0.1.6", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.6-27afff6a8f21"
+const string BUILD_ID = "AE-0.1.6-2ea93bdcbe5a"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -281,7 +281,8 @@ string researchProduct = switch syminfo.tickerid
     "BINANCE:XAUTUSDT" => syminfo.basecurrency == "XAUT" ? "Spot" : ""
     "BINANCE:BTCUSDT" => syminfo.basecurrency == "BTC" ? "Spot" : ""
     "BINANCE:ETHUSDT" => syminfo.basecurrency == "ETH" ? "Spot" : ""
-    "BINANCE:XAUUSDT.P" => syminfo.basecurrency == "XAU" ? "USDT-margined gold perpetual" : ""
+    // TradingView can omit the base for this contract. Exact ID and Binance metadata bind XAU.
+    "BINANCE:XAUUSDT.P" => syminfo.basecurrency == "" or syminfo.basecurrency == "XAU" ? "USDT-margined gold perpetual" : ""
     => ""
 bool researchMarketOK = researchProduct != "" and syminfo.currency == "USDT" and syminfo.mintick == 0.01
 bool researchChartOK = researchMarketOK and timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard
@@ -514,4 +515,4 @@ if barstate.islast and aiEnabled
     researchRow(aiPanel, 7, "Latest 3-bar gap", na(aiGapKnown) ? "—" : (aiGapSide == 1 ? "Bull " : "Bear ") + aiGapState + " · " + str.tostring(aiGapLo, format.mintick) + "–" + str.tostring(aiGapHi, format.mintick))
     researchRow(aiPanel, 8, "Fib 50 / 61.8 / 70.5", aiFib)
     researchRow(aiPanel, 9, "Latest OB / supply-demand", na(aiBlockKnown) ? "—" : (aiBlockSide == 1 ? "Demand " : "Supply ") + aiBlockState + " · " + str.tostring(aiBlockLo, format.mintick) + "–" + str.tostring(aiBlockHi, format.mintick))
-    researchRow(aiPanel, 10, "Market / evidence", syminfo.tickerid + (researchMarketOK ? " · " + researchProduct + " · tick " + str.tostring(syminfo.mintick, format.mintick) : "") + "\nChart-clock geometry · " + syminfo.currency, researchChartOK ? "1H / 4H use this exact product. The manual Lesson 08 setup remains scoped to PAXGUSDT Spot." : researchGate)
+    researchRow(aiPanel, 10, "Market / evidence", syminfo.tickerid + (researchMarketOK ? " · " + researchProduct + " · tick " + str.tostring(syminfo.mintick, format.mintick) : "") + "\n1H " + utc(aiContextHourAt) + " · 4H " + utc(aiContextFourAt) + " UTC", researchChartOK ? "Chart-clock geometry. 1H / 4H use this exact product. The manual Lesson 08 setup remains scoped to PAXGUSDT Spot." : researchGate)
