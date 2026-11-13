@@ -1,5 +1,13 @@
 # Current project state — canonical checkpoint
 
+## Source-projected Pine lifecycle differential — 2026-11-13 PHT
+
+- **PASS:** [GitHub Actions 43343804439](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43343804439), **112/112** standard checks (prior 104 + two malformed/finality reset fixes + six source-projected differential cases). Existing 21 separate structural-research checks were not rerun in this workflow.
+- **Corrected model mismatch:** `advance_episode` previously retained an ended episode on malformed/finality-withheld modeled closed evidence. The Pine-relevant `contiguous=false` interval resets the episode; the oracle now resets to `INSUFFICIENT · closed data`, with two new fixtures. No Pine changes.
+- [Source-projected transition model](../research/phase3_6/pine_lifecycle_projection.py) and [independent differential tests](../tests/test_phase3_6_pine_lifecycle_projection.py) compare **288** generated block/gap test states and **1,536** generated support/reaction state combinations against the separate research lifecycle oracle; all matched. Also pinned R1-A/R1-B arming/reset, first-cross guards and source-fragment checks. The first draft test miscounted 1,536 generated cases as 3,072, corrected before the accepted run; no discovered oracle-vs-projection mismatch in these tested cases.
+- **Potential invariant weakness (constructed, NOT observed on charts):** accepted v0.1.4 Pine `updateRef` keeps only one `aiTerminalHigh` and `aiTerminalLow` origin. If an already consumed older exact origin were somehow reintroduced after a later terminal origin, `updateRef` alone could rearm it. The source-projection test demonstrates that helper behavior, **not** that the full four-swing engine can actually recreate such a sequence. Reachability and a full reference-identity ledger remain an explicit candidate for the next v0.1.5 hardening gate; do not declare a live defect or silently modify the accepted version.
+- **NOT RUN:** genuine execution of this generated sequence inside TradingView/Pine, complete Pine-vs-Python dynamic equivalence, owner-private cross-device save acceptance, additional venue/session acceptance. The saved v0.1.4 build is unchanged; PR #2 draft and accepted main v0.1.3 remain separate.
+
 ## Integrated research replay — source-frozen zone/reaction checks (2026-11-13 PHT)
 
 - **PASS:** [GitHub Actions run 43341833165](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43341833165), **104/104** standard regression tests. Nine integrated replay tests were added to the prior 95, including a fix to distinguish an old gap's geometric test from a newly opened latest gap. The isolated 21 structural research checks were not rerun by this workflow.

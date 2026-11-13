@@ -25,6 +25,18 @@ Eleven explicitly constructed, hand-adjudicated Python tests are in `tests/test_
 - An incomplete/missing adjacent bar clears the latest zone and reaction episode research states. Synthetic model epochs and explicitly supplied HTF booleans are not proof of actual 1H/4H feed confirmation. Unknown HTF context remains INSUFFICIENT, never inferred. Numeric values such as `1` or `0` cannot silently stand for verified context.
 - **NOT RUN:** executing these candles in Pine, an independent venue-timed HTF receipt, same-cutoff native Pine/reference-model parity, cross-market stress testing, or full multi-zone lifecycle. Do not mark private TradingView v0.1.4 native acceptance as newly expanded; the previous approved scope remains unchanged.
 
+## Source-projected transition differential and invalid evidence fix
+
+[Source-projected Python mirror](../../research/phase3_6/pine_lifecycle_projection.py) and [test harness](../../tests/test_phase3_6_pine_lifecycle_projection.py) were introduced on the same draft branch **without modifying Pine**. [GitHub Actions 43343804439](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43343804439) **112/112 PASS**, 104 previously passed + two closed-interval oracle reset cases + six mirror checks. The 288 generated BLOCK/GAP combinations and 1,536 episode combinations match the separate reference model for the declared state inputs. Source substring guards check that the frozen v0.1.4 Pine transitions still contain the modeled branch order.
+
+**Verified research defect and correction:** the earlier Python `advance_episode` returned the existing episode unchanged when a modeled close was invalid. The frozen Pine evaluation clears episodes on `contiguous=false`, including a malformed finalized close. The research oracle now clears instead; an unconfirmed forming candle in realtime is not claimed to have executed any close transition.
+
+**Source-helper risk, reachability OPEN:** The v0.1.4 Pine helper stores a single most recent terminal origin per side. The mirror's isolated constructed case shows an older origin can be marked ARMED if it is presented again after the latest terminal origin changes. This is **not evidence that actual Pine S1 pivot progression can produce the problematic recurrence**, and is not an observed live-chart fault. Check adversarial source-consistent structural progression and consider full immutable anchor-key terminal history for an unsaved future candidate. Do not change the saved v0.1.4 acceptance without full validation.
+
+A draft differential test incorrectly asserted 3,072 combinations; the actual Cartesian grid enumerated 1,536. The corrected count passed; the prior failure is preserved in [Actions run 43343716407](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43343716407).
+
+**Evidence classification:** source-projected Python consistency PASS only; true runtime Pine/Python parity **NOT RUN**. Human annotation and new Coach consultation are not required; no trading outcome or venue receipt authentication is implied.
+
 ## Acceptance status
 
 | Gate | Status |
@@ -32,7 +44,7 @@ Eleven explicitly constructed, hand-adjudicated Python tests are in `tests/test_
 | v0.1.4 prior private acceptance | PASS within prior recorded scope |
 | New isolated lifecycle Python tests | **PASS:** 11/11 new cases; [GitHub Actions 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361) **95/95** standard checks overall |
 | Same synthetic close sequence through actual Pine native executor | NOT RUN |
-| Matched cutoff Pine/experimental Python lifecycle event parity | NOT RUN; integrated Python prefix consistency PASS only |
+| Matched cutoff Pine/experimental Python lifecycle event parity | NOT RUN; integrated Python prefix checks and source-projected Python differential PASS only |
 | Wider venues/timeframes/cache-bypass persistence | OPEN_UNRESOLVED |
 
 The next native verification should compare the precise cutoff/source on BLOCK→GEOMETRIC TEST→INVALIDATED, GAP OPEN→GEOMETRIC TEST, REACTION WAIT→OBSERVED or REASSESS, and reference R1-A/R1-B retirement transitions. If the platform cannot inject controlled OHLC into a native Pine study, use witnessed chart evidence as a narrower acceptance and mark synthetic native equivalence NOT RUN. No human annotations or extra Coach sources are required.
