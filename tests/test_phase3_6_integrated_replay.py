@@ -138,7 +138,7 @@ class IntegratedLifecycleChecks(unittest.TestCase):
     def test_static_pine_ordering_guards_remain_visible(self):
         source = (ROOT / "pine/alpha-engine-research.pine").read_text()
         extension = source.split("// Independent experimental extension.", 1)[1]
-        close_gate = extension.index("if aiEnabled and chartOK and barstate.isconfirmed")
+        close_gate = extension.index("if aiEnabled and researchChartOK and barstate.isconfirmed")
         cross = extension.index("bool crossHigh")
         block_update = extension.index('if contiguous and not na(aiBlockKnown)')
         contact = extension.index("bool touch")

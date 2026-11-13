@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.5", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
+indicator("Alpha Engine | Integrated Research v0.1.6", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.5-9e033123db0f"
+const string BUILD_ID = "AE-0.1.6-27afff6a8f21"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -203,7 +203,7 @@ row(table panel, int n, string key, string value, string detail = "") =>
     table.cell(panel, 1, n, value, text_color = color.white, text_halign = text.align_left, text_size = size.small, tooltip = detail)
 
 var table panel = table.new(position.top_right, 2, 16, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
-if barstate.islast
+if barstate.islast and syminfo.tickerid == SYMBOL
     [loss, reward] = nominalRisk(entry, stop, target, floor)
     string risk = "Disabled"
     if showRisk
@@ -271,13 +271,38 @@ updateRef(ResearchReference previous, int origin, float level, string role, int 
             next := ResearchReference.new(origin, time_close, level, role, "ARMED")
     next
 
-researchRow(table panel, int rowNumber, string name, string value) =>
+researchRow(table panel, int rowNumber, string name, string value, string detail = "") =>
     table.cell(panel, 0, rowNumber, name, text_color = color.rgb(158, 179, 204), text_size = size.small, text_halign = text.align_left)
-    table.cell(panel, 1, rowNumber, value, text_color = color.rgb(230, 238, 249), text_size = size.small, text_halign = text.align_left)
+    table.cell(panel, 1, rowNumber, value, text_color = color.rgb(230, 238, 249), text_size = size.small, text_halign = text.align_left, tooltip = detail)
+
+// Qualified feed identities. Exact TradingView IDs bind venue and product.
+string researchProduct = switch syminfo.tickerid
+    "BINANCE:PAXGUSDT" => syminfo.basecurrency == "PAXG" ? "Spot" : ""
+    "BINANCE:XAUTUSDT" => syminfo.basecurrency == "XAUT" ? "Spot" : ""
+    "BINANCE:BTCUSDT" => syminfo.basecurrency == "BTC" ? "Spot" : ""
+    "BINANCE:ETHUSDT" => syminfo.basecurrency == "ETH" ? "Spot" : ""
+    "BINANCE:XAUUSDT.P" => syminfo.basecurrency == "XAU" ? "USDT-margined gold perpetual" : ""
+    => ""
+bool researchMarketOK = researchProduct != "" and syminfo.currency == "USDT" and syminfo.mintick == 0.01
+bool researchChartOK = researchMarketOK and timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard
+string researchGate = researchProduct == "" ? "INSUFFICIENT · unqualified venue/product" : not researchMarketOK ? "INSUFFICIENT · quote/tick mismatch" : "INSUFFICIENT · use standard 5m candles"
 
 [aiHighPivot, aiLowPivot, aiPivotValid, aiEnough] = strictPivots(aiWindow, aiWindow)
-[aiHourClose, aiHourFast, aiHourSlow, aiHourBars] = request.security(SYMBOL, "60", [time_close[1], ta.ema(close, 20)[1], ta.ema(close, 50)[1], bar_index[1] + 1], lookahead = barmerge.lookahead_on)
-[aiFourClose, aiFourFast, aiFourSlow, aiFourBars] = request.security(SYMBOL, "240", [time_close[1], ta.ema(close, 20)[1], ta.ema(close, 50)[1], bar_index[1] + 1], lookahead = barmerge.lookahead_on)
+// Every field comes from completed bars of this exact chart product.
+// Confirm the latest 50 HTF opens span exactly 49 intervals before using the EMA context.
+[aiHourOpen, aiHourClose, aiHourFirst, aiHourFast, aiHourSlow] = if researchChartOK
+    request.security(syminfo.tickerid, "60", [time[1], time_close[1], time[50], ta.ema(close, 20)[1], ta.ema(close, 50)[1]], lookahead = barmerge.lookahead_on)
+else
+    [int(na), int(na), int(na), float(na), float(na)]
+[aiFourOpen, aiFourClose, aiFourFirst, aiFourFast, aiFourSlow] = if researchChartOK
+    request.security(syminfo.tickerid, "240", [time[1], time_close[1], time[50], ta.ema(close, 20)[1], ta.ema(close, 50)[1]], lookahead = barmerge.lookahead_on)
+else
+    [int(na), int(na), int(na), float(na), float(na)]
+
+qualifiedContext(int opened, int closed, int first, int period, float fast, float slow) =>
+    int boundary = time - time % period
+    closed == boundary and opened == boundary - period and opened - first == 49 * period and fast > 0 and slow > 0
+
 float aiEma20 = ta.ema(close, 20)
 float aiEma50 = ta.ema(close, 50)
 float aiEma200 = ta.ema(close, 200)
@@ -317,9 +342,10 @@ var int aiContactOrigin = na
 var bool aiTouched = false
 var bool aiEpisodeEnded = false
 var int aiDecisionAt = na
-float aiTol = aiZoneTicks * syminfo.mintick
+var int aiContextHourAt = na
+var int aiContextFourAt = na
 
-if aiEnabled and chartOK and barstate.isconfirmed
+if aiEnabled and researchChartOK and barstate.isconfirmed
     aiDecisionAt := time_close
     bool contiguous = complete and adjacent
     if not contiguous
@@ -373,23 +399,29 @@ if aiEnabled and chartOK and barstate.isconfirmed
             aiBlockState := "OPEN"
 
     // Use only previous-snapshot UP support for the independent Lesson 08-style view.
-    bool contextOK = aiHourClose == requiredHourClose and aiFourClose == time - time % (4 * HOUR) and aiHourBars >= 50 and aiFourBars >= 50 and aiHourSlow > 0 and aiFourSlow > 0
+    bool contextOK = qualifiedContext(aiHourOpen, aiHourClose, aiHourFirst, HOUR, aiHourFast, aiHourSlow) and qualifiedContext(aiFourOpen, aiFourClose, aiFourFirst, 4 * HOUR, aiFourFast, aiFourSlow)
+    aiContextHourAt := contextOK ? aiHourClose : na
+    aiContextFourAt := contextOK ? aiFourClose : na
     bool bullishContext = contextOK and aiHourFast > aiHourSlow and aiFourFast > aiFourSlow
     bool bearishContext = contextOK and aiHourFast < aiHourSlow and aiFourFast < aiFourSlow
     aiContext := not contextOK ? "INSUFFICIENT" : bullishContext ? "1H / 4H up" : bearishContext ? "1H / 4H down" : "1H / 4H mixed or flat"
     aiMomentum := aiRun < 200 or na(aiRsi) ? "WARMUP · " + str.tostring(aiRun) + "/200" : "EMA20/50/200 " + (aiEma20 > aiEma50 and aiEma50 > aiEma200 ? "↑" : aiEma20 < aiEma50 and aiEma50 < aiEma200 ? "↓" : "mixed") + " · RSI " + str.tostring(aiRsi, "#.0")
-    bool supportKnown = contiguous and aiLower.role == "HL" and aiLower.state == "ARMED" and aiLower.armedAt <= time and aiLower.level > aiTol
-    float supportLo = supportKnown ? aiLower.level - aiTol : na
-    float supportHi = supportKnown ? aiLower.level + aiTol : na
-    bool touch = supportKnown and high >= supportLo and low <= supportHi
-    bool invalidSupport = supportKnown and close < supportLo
-    bool rejects = aiWick and close > open and math.min(open, close) - low >= 2 * math.abs(close - open) and close > supportHi
+    int supportTicks = int(math.round(aiLower.level / syminfo.mintick))
+    int closeTicks = int(math.round(close / syminfo.mintick))
+    int lowTicks = int(math.round(low / syminfo.mintick))
+    int highTicks = int(math.round(high / syminfo.mintick))
+    int floorTicks = supportTicks - aiZoneTicks
+    int ceilingTicks = supportTicks + aiZoneTicks
+    bool supportKnown = contiguous and aiLower.role == "HL" and aiLower.state == "ARMED" and aiLower.armedAt <= time and floorTicks > 0
+    bool touch = supportKnown and highTicks >= floorTicks and lowTicks <= ceilingTicks
+    bool invalidSupport = supportKnown and closeTicks < floorTicks
+    bool rejects = aiWick and close > open and math.min(open, close) - low >= 2 * math.abs(close - open) and closeTicks > ceilingTicks
     if supportKnown and (na(aiContactOrigin) or aiContactOrigin != aiLower.origin)
         aiContactOrigin := aiLower.origin
         aiTouched := false
         aiEpisodeEnded := false
     bool supportConsumed = supportKnown and crossLow
-    bool departure = supportKnown and aiTouched and low > supportHi
+    bool departure = supportKnown and aiTouched and lowTicks > ceilingTicks
     if invalidSupport or departure or supportConsumed
         aiEpisodeEnded := true
     if touch and bullishContext and not aiEpisodeEnded
@@ -398,7 +430,7 @@ if aiEnabled and chartOK and barstate.isconfirmed
     aiWorkflow := not contiguous or not contextOK ? "INSUFFICIENT · closed data" : not bullishContext ? "WAIT · 1H / 4H bullish alignment" : not supportKnown ? "WAIT · prior UP support" : invalidSupport ? "REASSESS · support closed through" : supportConsumed ? "REASSESS · support reference consumed" : aiEpisodeEnded ? "REASSESS · episode ended" : not touch ? "WAIT · geometric overlap" : reaction ? "OBSERVED · closed reaction" : "WAIT · closed reaction"
     aiGeometry := "—"
     if reaction and bullishContext and aiUpper.role == "HH" and aiUpper.state == "ARMED"
-        float stopLevel = supportLo - syminfo.mintick
+        float stopLevel = (floorTicks - 1) * syminfo.mintick
         float targetLevel = aiUpper.level
         if stopLevel > 0 and stopLevel < close and close < targetLevel
             aiGeometry := str.tostring(close, format.mintick) + " / " + str.tostring(stopLevel, format.mintick) + " / " + str.tostring(targetLevel, format.mintick) + " · " + str.tostring((targetLevel - close) / (close - stopLevel), "#.00") + "R"
@@ -473,13 +505,13 @@ if aiEnabled and chartOK and barstate.isconfirmed
 var table aiPanel = table.new(position.bottom_left, 2, 11, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
 if barstate.islast and aiEnabled
     researchRow(aiPanel, 0, "Experimental research", BUILD_ID + " · " + aiPolicy)
-    researchRow(aiPanel, 1, "Closed cutoff", chartOK ? utc(aiDecisionAt) : "INSUFFICIENT · qualified Spot 5m only")
+    researchRow(aiPanel, 1, "Closed cutoff", researchChartOK ? utc(aiDecisionAt) : researchGate)
     researchRow(aiPanel, 2, "Structure / last event", aiStructure + " · " + aiEvent + (na(aiEventAt) ? "" : " " + utc(aiEventAt) + " @ " + str.tostring(aiEventLevel, format.mintick)))
     researchRow(aiPanel, 3, "High / low references", showRef(aiUpper) + " / " + showRef(aiLower))
-    researchRow(aiPanel, 4, "HTF / momentum", aiContext + " · " + aiMomentum)
+    researchRow(aiPanel, 4, "HTF / momentum", aiContext + " · " + aiMomentum, "Confirmed closes (UTC): 1H " + utc(aiContextHourAt) + " / 4H " + utc(aiContextFourAt))
     researchRow(aiPanel, 5, "Prior support reaction", aiWorkflow)
     researchRow(aiPanel, 6, "Nominal E / SL / TP", aiGeometry)
     researchRow(aiPanel, 7, "Latest 3-bar gap", na(aiGapKnown) ? "—" : (aiGapSide == 1 ? "Bull " : "Bear ") + aiGapState + " · " + str.tostring(aiGapLo, format.mintick) + "–" + str.tostring(aiGapHi, format.mintick))
     researchRow(aiPanel, 8, "Fib 50 / 61.8 / 70.5", aiFib)
     researchRow(aiPanel, 9, "Latest OB / supply-demand", na(aiBlockKnown) ? "—" : (aiBlockSide == 1 ? "Demand " : "Supply ") + aiBlockState + " · " + str.tostring(aiBlockLo, format.mintick) + "–" + str.tostring(aiBlockHi, format.mintick))
-    researchRow(aiPanel, 10, "Evidence", "Chart-clock model · geometry only")
+    researchRow(aiPanel, 10, "Market / evidence", syminfo.tickerid + (researchMarketOK ? " · " + researchProduct + " · tick " + str.tostring(syminfo.mintick, format.mintick) : "") + "\nChart-clock geometry · " + syminfo.currency, researchChartOK ? "1H / 4H use this exact product. The manual Lesson 08 setup remains scoped to PAXGUSDT Spot." : researchGate)
