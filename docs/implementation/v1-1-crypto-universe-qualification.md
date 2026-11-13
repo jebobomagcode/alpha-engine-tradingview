@@ -1,3 +1,5 @@
+> **SUPERSEDED PRODUCT TARGET (2026-11-14, D-038):** This file preserves the earlier, broader D-037 exploratory scope as historical context only. The owner subsequently narrowed Alpha Engine TradingView to **Binance USDⓈ-M USDT/USDC/verified USD-stablecoin-settled PERPETUAL contracts only**. No Spot, COIN-M, dated futures or other exchanges. Use the [current active v1.1 plan](v1-1-binance-usds-m-perpetual-qualification.md). The source study and accepted private v1 are not changed.
+
 # v1.1 — Crypto-wide market coverage (product scope and qualification)
 
 **Status:** OWNER REQUIREMENT RECORDED / RESEARCH PLAN ONLY — 2026-11-14 Asia/Manila  
