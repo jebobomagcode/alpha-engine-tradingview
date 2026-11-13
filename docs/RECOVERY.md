@@ -1,5 +1,25 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current v1 stabilization — 2026-11-13 PHT
+
+Verify main and the draft PR #2 → PR #3 stack. Read the [v1 stabilization ledger](implementation/phase3-8-v1-stabilization.md). Build `AE-0.1.11-0f4b3df98b90` is a natively checked display candidate. Reattach the candidate as a fresh instance to evaluate foreground order. The named private script remains v0.1.10 version 7.0, build `AE-0.1.10-148c152b12d2`. Version 6 remains in history. A saved v7 forming-to-close and same-cutoff FVG reload passed. Keep the target positive-state reload and continuous intrabar coverage separate. The next release decision is ancestry-preserving PR #2 integration first, then refresh and qualify PR #3. Do not repeat completed visualization work or save a new named Pine version from the disposable experiment.
+
+## Current accepted private v0.1.10 release — 2026-11-13 PHT
+
+Read the [named private release ledger](implementation/phase3-7-complete-chart-overlays.md#named-private-release-acceptance--2026-11-13-pht) and verify live refs for draft PR #3, draft PR #2 and main. The named script restores version 7.0 and exact build `AE-0.1.10-148c152b12d2` on standard Binance PAXGUSDT Spot 5m. The complete source matches commit `a3f78d498b34b697257d00f030dacafafcdbfdce`, SHA-256 `4c01ea5b52cf7aeaa81b698b0286d0764ea7e113b569e8eb8489321dfd8ef21b`. The layout separately restores all 39 controls at defaults. Preserve verified rollback v0.1.6 version 6. Resume at bounded v1 readability and integration readiness. Preserve both drafts and the original commit ancestry used by the isolation tests. Continuous intrabar observation remains NOT RUN. Do not repeat completed visualization work.
+
+## Current chart overlay candidate — 2026-11-13 PHT
+
+Verify [draft PR #3](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/3) and its base draft PR #2. Read [the visualization acceptance](implementation/phase3-7-complete-chart-overlays.md) for exact candidate `a3f78d498b34b697257d00f030dacafafcdbfdce`, build `AE-0.1.10-148c152b12d2`. The original named private script and restored chart still use v0.1.6 version 6. Resume at the successor private persistence and rollback gates.
+
+## Current order-block and FVG overlay — 2026-11-13 PHT
+
+Verify [draft PR #3](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/3) and its base draft PR #2. Start with the [zone visualization acceptance](implementation/phase3-7-zone-overlay.md). Exact source `14b57b6148a6c39d215ca309354544a59c6a5e74` compiled and passed native PAXGUSDT/BTCUSDT Spot 5m render checks. The original named script and restored chart remain private v0.1.6 version 6. Resume at the next visualization layer.
+
+## Current chart overlay development — 2026-11-13 PHT
+
+Read the [structure overlay acceptance record](implementation/phase3-7-structure-overlay.md) and verify `feat/causal-structure-overlay` separately from draft PR #2. Candidate source `5fcd4caf099f57340aa3fc4e6aa972428f358a3c` compiled and rendered on native Binance Spot PAXGUSDT and BTCUSDT standard 5m charts. The saved named private script and original layout still restore v0.1.6 version 6. Resume at the bounded zone/gap layer and preserve the structure checks.
+
 ## Current accepted private v0.1.6 release — 2026-11-13 PHT
 
 Verify main and draft PR #2 before resuming. The existing named TradingView script restores private version 6, build `AE-0.1.6-00d26a21011a` on standard Binance PAXGUSDT Spot 5m. Exact version 6 source, all 24 controls and the same 05:15 UTC cutoff passed normal reload. Version 5 is the exact verified rollback. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht). Keep the release source pinned while developing the structural chart overlay on a separate branch.

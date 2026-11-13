@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.6", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
+indicator("Alpha Engine | Integrated Research v0.1.11", overlay = true, behind_chart = false, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 54, max_lines_count = 8)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.6-00d26a21011a"
+const string BUILD_ID = "AE-0.1.11-0f4b3df98b90"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -272,8 +272,9 @@ updateRef(ResearchReference previous, int origin, float level, string role, int 
     next
 
 researchRow(table panel, int rowNumber, string name, string value, string detail = "") =>
-    table.cell(panel, 0, rowNumber, name, text_color = color.rgb(158, 179, 204), text_size = size.small, text_halign = text.align_left)
-    table.cell(panel, 1, rowNumber, value, text_color = color.rgb(230, 238, 249), text_size = size.small, text_halign = text.align_left, tooltip = detail)
+    color cellBackground = color.rgb(20, 26, 36)
+    table.cell(panel, 0, rowNumber, name, text_color = color.rgb(158, 179, 204), text_size = size.small, bgcolor = cellBackground, text_halign = text.align_left)
+    table.cell(panel, 1, rowNumber, value, text_color = color.rgb(230, 238, 249), text_size = size.small, bgcolor = cellBackground, text_halign = text.align_left, tooltip = detail)
 
 // Qualified feed identities. Exact TradingView IDs bind venue and product.
 string researchProduct = switch syminfo.tickerid
@@ -328,7 +329,22 @@ var string aiWorkflow = "INSUFFICIENT"
 var string aiContext = "INSUFFICIENT"
 var string aiMomentum = "WARMUP"
 var string aiGeometry = "—"
+// Close-stamped observations for the display layer.
+var bool aiVisualContact = false
+var bool aiVisualReaction = false
+var string aiVisualInvalid = ""
+var float aiGeometryEntry = na
+var float aiGeometryStop = na
+var float aiGeometryTarget = na
+var float aiGeometryR = na
 var string aiFib = "—"
+// Numeric values and pivot identities for the same dashboard Fibonacci observation.
+var float aiFib50 = na
+var float aiFib618 = na
+var float aiFib705 = na
+var int aiFibUpperOrigin = na
+var int aiFibLowerOrigin = na
+var bool aiFibUp = false
 var float aiGapLo = na
 var float aiGapHi = na
 var int aiGapSide = 0
@@ -423,18 +439,29 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
         aiEpisodeEnded := false
     bool supportConsumed = supportKnown and crossLow
     bool departure = supportKnown and aiTouched and lowTicks > ceilingTicks
+    aiVisualInvalid := not aiEpisodeEnded ? (invalidSupport ? "Support closed through" : supportConsumed ? "Support reference consumed" : "") : ""
     if invalidSupport or departure or supportConsumed
         aiEpisodeEnded := true
+    aiVisualContact := touch and bullishContext and not aiEpisodeEnded and not aiTouched
     if touch and bullishContext and not aiEpisodeEnded
         aiTouched := true
     bool reaction = touch and bullishContext and not aiEpisodeEnded and (engulf or rejects)
+    aiVisualReaction := reaction
     aiWorkflow := not contiguous or not contextOK ? "INSUFFICIENT · closed data" : not bullishContext ? "WAIT · 1H / 4H bullish alignment" : not supportKnown ? "WAIT · prior UP support" : invalidSupport ? "REASSESS · support closed through" : supportConsumed ? "REASSESS · support reference consumed" : aiEpisodeEnded ? "REASSESS · episode ended" : not touch ? "WAIT · geometric overlap" : reaction ? "OBSERVED · closed reaction" : "WAIT · closed reaction"
     aiGeometry := "—"
+    aiGeometryEntry := na
+    aiGeometryStop := na
+    aiGeometryTarget := na
+    aiGeometryR := na
     if reaction and bullishContext and aiUpper.role == "HH" and aiUpper.state == "ARMED"
         float stopLevel = (floorTicks - 1) * syminfo.mintick
         float targetLevel = aiUpper.level
         if stopLevel > 0 and stopLevel < close and close < targetLevel
-            aiGeometry := str.tostring(close, format.mintick) + " / " + str.tostring(stopLevel, format.mintick) + " / " + str.tostring(targetLevel, format.mintick) + " · " + str.tostring((targetLevel - close) / (close - stopLevel), "#.00") + "R"
+            aiGeometryEntry := close
+            aiGeometryStop := stopLevel
+            aiGeometryTarget := targetLevel
+            aiGeometryR := (targetLevel - close) / (close - stopLevel)
+            aiGeometry := str.tostring(aiGeometryEntry, format.mintick) + " / " + str.tostring(aiGeometryStop, format.mintick) + " / " + str.tostring(aiGeometryTarget, format.mintick) + " · " + str.tostring(aiGeometryR, "#.00") + "R"
 
     // One most recent three-bar gap, tested only after it was first observable.
     if contiguous and not na(aiGapKnown) and time >= aiGapKnown and aiGapState == "OPEN"
@@ -473,6 +500,9 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
     ResearchReference nextHigh = ResearchReference.new()
     ResearchReference nextLow = ResearchReference.new()
     aiFib := "—"
+    aiFib50 := na
+    aiFib618 := na
+    aiFib705 := na
     if contiguous and array.size(aiOrigins) == 4
         int hiIndex = array.get(aiHighs, 3) ? 3 : 2
         int loIndex = 5 - hiIndex
@@ -499,11 +529,17 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
                 float distance = upperLevel - lowerLevel
                 float startFib = up ? upperLevel : lowerLevel
                 float direction = up ? -1.0 : 1.0
-                aiFib := str.tostring(startFib + direction * distance * 0.5, format.mintick) + " / " + str.tostring(startFib + direction * distance * 0.618, format.mintick) + " / " + str.tostring(startFib + direction * distance * 0.705, format.mintick)
+                aiFib50 := startFib + direction * distance * 0.5
+                aiFib618 := startFib + direction * distance * 0.618
+                aiFib705 := startFib + direction * distance * 0.705
+                aiFibUpperOrigin := upperOrigin
+                aiFibLowerOrigin := lowerOrigin
+                aiFibUp := up
+                aiFib := str.tostring(aiFib50, format.mintick) + " / " + str.tostring(aiFib618, format.mintick) + " / " + str.tostring(aiFib705, format.mintick)
     aiUpper := nextHigh
     aiLower := nextLow
 
-var table aiPanel = table.new(position.bottom_left, 2, 11, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+var table aiPanel = table.new(position.bottom_left, 2, 12)
 if barstate.islast and aiEnabled
     researchRow(aiPanel, 0, "Experimental research", BUILD_ID + " · " + aiPolicy)
     researchRow(aiPanel, 1, "Closed cutoff", researchChartOK ? utc(aiDecisionAt) : researchGate)
@@ -516,3 +552,230 @@ if barstate.islast and aiEnabled
     researchRow(aiPanel, 8, "Fib 50 / 61.8 / 70.5", aiFib)
     researchRow(aiPanel, 9, "Latest OB / supply-demand", na(aiBlockKnown) ? "—" : (aiBlockSide == 1 ? "Demand " : "Supply ") + aiBlockState + " · " + str.tostring(aiBlockLo, format.mintick) + "–" + str.tostring(aiBlockHi, format.mintick))
     researchRow(aiPanel, 10, "Market / evidence", ticker.standard(syminfo.tickerid) + (researchMarketOK ? " · " + researchProduct + " · tick " + str.tostring(syminfo.mintick, format.mintick) : "") + "\n1H " + utc(aiContextHourAt) + " · 4H " + utc(aiContextFourAt) + " UTC", researchChartOK ? "Chart-clock geometry. 1H / 4H use this exact product. The manual Lesson 08 setup remains scoped to PAXGUSDT Spot." : researchGate)
+
+// Chart structure overlay. Read only the accepted closed research state.
+const string VISUAL_GROUP = "Experimental chart structure"
+bool visualSwings = input.bool(true, "Swing role labels", group = VISUAL_GROUP)
+bool visualReferences = input.bool(true, "Armed support / resistance", group = VISUAL_GROUP)
+bool visualEvents = input.bool(true, "BOS / possible CHoCH candidates", group = VISUAL_GROUP)
+int visualLimit = input.int(8, "History per label type", minval = 2, maxval = 16, group = VISUAL_GROUP)
+
+var array<label> visualSwingLabels = array.new<label>()
+var array<label> visualEventLabels = array.new<label>()
+var int visualHighSeen = na
+var int visualLowSeen = na
+var line visualResistance = na
+var line visualSupport = na
+
+color visualUpperColor = color.rgb(216, 161, 104)
+color visualLowerColor = color.rgb(106, 192, 183)
+
+addStructureLabel(array<label> labels, int cutoff, float y, string caption, string detail, bool above, color tint) =>
+    if array.size(labels) >= visualLimit
+        label.delete(array.shift(labels))
+    label mark = label.new(cutoff, y, caption, xloc = xloc.bar_time,
+         style = above ? label.style_label_down : label.style_label_up,
+         color = color.new(tint, 78), textcolor = tint, size = size.small, tooltip = detail)
+    array.push(labels, mark)
+
+drawArmedReference(line previous, ResearchReference ref, color tint) =>
+    line drawing = previous
+    if ref.state != "ARMED" or na(ref.armedAt)
+        if not na(drawing)
+            line.delete(drawing)
+        drawing := na
+    else if na(drawing)
+        drawing := line.new(ref.armedAt, ref.level, ref.armedAt + STEP, ref.level,
+             xloc = xloc.bar_time, extend = extend.right, color = color.new(tint, 15), style = line.style_dashed)
+    else if line.get_x1(drawing) != ref.armedAt or line.get_y1(drawing) != ref.level
+        line.set_xy1(drawing, ref.armedAt, ref.level)
+        line.set_xy2(drawing, ref.armedAt + STEP, ref.level)
+    drawing
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    float markerPad = math.max((high - low) * 0.3, 5 * syminfo.mintick)
+    if visualSwings
+        if not na(aiUpper.origin) and (na(visualHighSeen) or aiUpper.origin > visualHighSeen)
+            visualHighSeen := aiUpper.origin
+            addStructureLabel(visualSwingLabels, time_close, high + markerPad, aiUpper.role,
+                 "Experimental swing role · " + utc(time_close) + " UTC\nPivot open " + utc(aiUpper.origin) +
+                 " UTC · " + str.tostring(aiUpper.level, format.mintick), true, visualUpperColor)
+        if not na(aiLower.origin) and (na(visualLowSeen) or aiLower.origin > visualLowSeen)
+            visualLowSeen := aiLower.origin
+            addStructureLabel(visualSwingLabels, time_close, low - markerPad, aiLower.role,
+                 "Experimental swing role · " + utc(time_close) + " UTC\nPivot open " + utc(aiLower.origin) +
+                 " UTC · " + str.tostring(aiLower.level, format.mintick), false, visualLowerColor)
+    if visualReferences
+        visualResistance := drawArmedReference(visualResistance, aiUpper, visualUpperColor)
+        visualSupport := drawArmedReference(visualSupport, aiLower, visualLowerColor)
+    if visualEvents and aiEventAt == time_close
+        bool upwards = str.endswith(aiEvent, "↑")
+        bool continuation = str.startswith(aiEvent, "BOS")
+        string caption = (continuation ? "BOS? " : "CHoCH? ") + (upwards ? "↑" : "↓")
+        addStructureLabel(visualEventLabels, aiEventAt, upwards ? high + 3 * markerPad : low - 3 * markerPad, caption,
+             aiEvent + " · " + utc(aiEventAt) + " UTC\nCrossed " + str.tostring(aiEventLevel, format.mintick) +
+             " · " + aiPolicy + " · experimental", upwards, upwards ? visualLowerColor : visualUpperColor)
+
+// Chart zone overlay. Draw the latest closed snapshot of each independent family.
+const string ZONE_VISUAL_GROUP = "Experimental chart zones"
+bool visualBlocks = input.bool(true, "Order-block / supply-demand", group = ZONE_VISUAL_GROUP)
+bool visualGaps = input.bool(true, "Three-bar FVG", group = ZONE_VISUAL_GROUP)
+
+type ZoneDrawing
+    box band = na
+    label badge = na
+    int knownAt = na
+    string state = ""
+
+drawResearchZone(ZoneDrawing drawing, bool visible, bool gap, int knownAt, int cutoff, float lo, float hi, int side, string state) =>
+    bool valid = visible and not na(knownAt) and knownAt <= cutoff and lo > 0 and hi >= lo and (side == 1 or side == -1) and
+         (state == "OPEN" or state == "GEOMETRIC TEST" or state == "INVALIDATED")
+    // A new source identity replaces the previous box and its state badge.
+    if not na(drawing.band) and (not valid or drawing.knownAt != knownAt)
+        box.delete(drawing.band)
+        label.delete(drawing.badge)
+        drawing.band := na
+        drawing.badge := na
+        drawing.knownAt := na
+        drawing.state := ""
+    if valid
+        bool invalidated = state == "INVALIDATED"
+        color tint = gap ? (side == 1 ? color.rgb(122, 165, 214) : color.rgb(171, 150, 204)) :
+             (side == 1 ? visualLowerColor : visualUpperColor)
+        if na(drawing.band)
+            drawing.band := box.new(knownAt, hi, knownAt + STEP, lo, xloc = xloc.bar_time, extend = extend.right,
+                 border_color = color.new(tint, 65), border_style = gap ? line.style_dotted : line.style_solid,
+                 bgcolor = color.new(tint, 92))
+            drawing.badge := label.new(cutoff, gap ? lo : hi, "", xloc = xloc.bar_time,
+                 style = gap ? label.style_label_upper_right : label.style_label_lower_right, size = size.small)
+            drawing.knownAt := knownAt
+        if drawing.state != state
+            string family = gap ? (side == 1 ? "Bull FVG?" : "Bear FVG?") : (side == 1 ? "Demand OB?" : "Supply OB?")
+            string detail = "Experimental " + family + " · known " + utc(knownAt) + " UTC\n" +
+                 str.tostring(lo, format.mintick) + "–" + str.tostring(hi, format.mintick) + "\n" +
+                 state + " since " + utc(cutoff) + " UTC · geometric evidence"
+            label.set_x(drawing.badge, cutoff)
+            label.set_text(drawing.badge, family + " · " + state)
+            label.set_tooltip(drawing.badge, detail)
+            label.set_color(drawing.badge, color.new(invalidated ? color.gray : tint, 80))
+            label.set_textcolor(drawing.badge, invalidated ? color.silver : tint)
+            color stateTint = invalidated ? color.gray : tint
+            box.set_border_color(drawing.band, color.new(stateTint, state == "GEOMETRIC TEST" ? 79 : 65))
+            box.set_bgcolor(drawing.band, color.new(stateTint, state == "GEOMETRIC TEST" ? 96 : 92))
+            if invalidated
+                box.set_right(drawing.band, cutoff)
+                box.set_extend(drawing.band, extend.none)
+            drawing.state := state
+    drawing
+
+var ZoneDrawing visualBlock = ZoneDrawing.new()
+var ZoneDrawing visualGap = ZoneDrawing.new()
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    visualBlock := drawResearchZone(visualBlock, visualBlocks, false, aiBlockKnown, aiDecisionAt, aiBlockLo, aiBlockHi, aiBlockSide, aiBlockState)
+    visualGap := drawResearchZone(visualGap, visualGaps, true, aiGapKnown, aiDecisionAt, aiGapLo, aiGapHi, aiGapSide, aiGapState)
+
+// Chart Fibonacci and EMA overlays. The dashboard and drawings share the observed values.
+const string GUIDE_GROUP = "Experimental chart guides"
+bool visualFib = input.bool(true, "Fibonacci 50 / 61.8 / 70.5", group = GUIDE_GROUP)
+bool visualEma20 = input.bool(false, "EMA 20", group = GUIDE_GROUP)
+bool visualEma50 = input.bool(false, "EMA 50", group = GUIDE_GROUP)
+bool visualEma200 = input.bool(false, "EMA 200", group = GUIDE_GROUP)
+
+var line visualFib50 = na
+var line visualFib618 = na
+var line visualFib705 = na
+var int visualFibUpperOrigin = na
+var int visualFibLowerOrigin = na
+var bool visualFibUp = false
+
+drawPriceGuide(line previous, int knownAt, float level, color tint, string style, bool project) =>
+    line drawing = previous
+    if na(level)
+        if not na(drawing)
+            line.delete(drawing)
+        drawing := na
+    else if na(drawing)
+        drawing := line.new(knownAt, level, knownAt + STEP, level, xloc = xloc.bar_time,
+             extend = project ? extend.right : extend.none, color = tint, style = style)
+    else
+        line.set_xy1(drawing, knownAt, level)
+        line.set_xy2(drawing, knownAt + STEP, level)
+    drawing
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    bool hasFib = visualFib and not na(aiFib50)
+    bool newFib = hasFib and (na(visualFib50) or aiFibUpperOrigin != visualFibUpperOrigin or
+         aiFibLowerOrigin != visualFibLowerOrigin or aiFibUp != visualFibUp)
+    if newFib or (not hasFib and not na(visualFib50))
+        color fibTint = color.new(color.rgb(163, 155, 218), 26)
+        visualFib50 := drawPriceGuide(visualFib50, aiDecisionAt, hasFib ? aiFib50 : na, fibTint, line.style_dotted, true)
+        visualFib618 := drawPriceGuide(visualFib618, aiDecisionAt, hasFib ? aiFib618 : na, fibTint, line.style_dashed, true)
+        visualFib705 := drawPriceGuide(visualFib705, aiDecisionAt, hasFib ? aiFib705 : na, fibTint, line.style_dotted, true)
+        if newFib
+            visualFibUpperOrigin := aiFibUpperOrigin
+            visualFibLowerOrigin := aiFibLowerOrigin
+            visualFibUp := aiFibUp
+
+bool emaOverlayReady = aiEnabled and researchChartOK and barstate.isconfirmed and aiRun >= 200 and not na(aiRsi)
+plot(visualEma20 and emaOverlayReady ? aiEma20 : na, "Confirmed EMA 20", color = color.rgb(108, 179, 215), style = plot.style_linebr)
+plot(visualEma50 and emaOverlayReady ? aiEma50 : na, "Confirmed EMA 50", color = color.rgb(216, 165, 104), style = plot.style_linebr)
+plot(visualEma200 and emaOverlayReady ? aiEma200 : na, "Confirmed EMA 200", color = color.rgb(169, 150, 207), style = plot.style_linebr)
+plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib50 : na, "Current Fib 50", display = display.data_window)
+plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib618 : na, "Current Fib 61.8", display = display.data_window)
+plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib705 : na, "Current Fib 70.5", display = display.data_window)
+
+// Chart contact, reaction and nominal geometry. No orders or simulated fills.
+const string REACTION_GROUP = "Experimental chart observations"
+bool visualContact = input.bool(true, "First geometric contact", group = REACTION_GROUP)
+bool visualReaction = input.bool(true, "Closed reaction", group = REACTION_GROUP)
+bool visualInvalidation = input.bool(true, "Support invalidation", group = REACTION_GROUP)
+bool visualGeometry = input.bool(false, "Nominal entry / stop / target", group = REACTION_GROUP)
+string panelLayout = input.string("Corners", "Dashboard layout", options = ["Corners", "Both left", "Research only", "Hidden"], group = "Chart display")
+
+var array<label> visualObservations = array.new<label>()
+var line visualEntryLine = na
+var line visualStopLine = na
+var line visualTargetLine = na
+var label visualRiskBadge = na
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    bool markContact = visualContact and aiVisualContact
+    bool markReaction = visualReaction and aiVisualReaction
+    bool markInvalid = visualInvalidation and aiVisualInvalid != ""
+    if markContact or markReaction or markInvalid
+        string caption = markInvalid ? "Support invalidated" : markReaction ? (markContact ? "Contact + reaction" : "Closed reaction") : "Geometric contact"
+        string detail = markInvalid ? aiVisualInvalid : "Experimental · OHLC geometry"
+        float pad = math.max((high - low) * 0.3, 5 * syminfo.mintick)
+        addStructureLabel(visualObservations, aiDecisionAt, low - pad, caption,
+             detail + " · " + utc(aiDecisionAt) + " UTC", false, markInvalid ? visualUpperColor : visualLowerColor)
+
+    bool showGeometry = visualGeometry and not na(aiGeometryR)
+    if showGeometry or not na(visualRiskBadge)
+        color entryTint = color.new(color.rgb(154, 181, 216), 18)
+        visualEntryLine := drawPriceGuide(visualEntryLine, aiDecisionAt, showGeometry ? aiGeometryEntry : na, entryTint, line.style_solid, false)
+        visualStopLine := drawPriceGuide(visualStopLine, aiDecisionAt, showGeometry ? aiGeometryStop : na, visualUpperColor, line.style_dashed, false)
+        visualTargetLine := drawPriceGuide(visualTargetLine, aiDecisionAt, showGeometry ? aiGeometryTarget : na, visualLowerColor, line.style_dashed, false)
+        if showGeometry
+            if na(visualRiskBadge)
+                visualRiskBadge := label.new(aiDecisionAt, aiGeometryEntry, "", xloc = xloc.bar_time,
+                     style = label.style_label_left, size = size.small, color = color.new(entryTint, 78), textcolor = entryTint)
+            label.set_xy(visualRiskBadge, aiDecisionAt, aiGeometryEntry)
+            label.set_text(visualRiskBadge, "Nominal · " + str.tostring(aiGeometryR, "#.00") + "R")
+            label.set_tooltip(visualRiskBadge, "Entry / stop / target · " + aiGeometry + "\n" + utc(aiDecisionAt) + " UTC · informational geometry")
+        else
+            label.delete(visualRiskBadge)
+            visualRiskBadge := na
+
+// Placement and visibility are display-only. All existing dashboard rows remain available.
+if barstate.islast
+    bool bothLeft = panelLayout == "Both left"
+    table.set_position(aiPanel, bothLeft ? position.bottom_left : position.middle_left)
+    table.set_position(panel, bothLeft ? position.middle_left : position.top_right)
+    if bothLeft and aiEnabled
+        // Clear the chart watermark in the legacy lower-left placement.
+        table.cell(aiPanel, 0, 11, " \n ", text_size = size.small, bgcolor = color.new(color.black, 100))
+    if panelLayout == "Research only" or panelLayout == "Hidden"
+        table.clear(panel, 0, 0, 1, 15)
+    if panelLayout == "Hidden"
+        table.clear(aiPanel, 0, 0, 1, 11)

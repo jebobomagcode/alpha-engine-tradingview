@@ -1,5 +1,33 @@
 # Current project state — canonical checkpoint
 
+## v1 dashboard stabilization — 2026-11-13 PHT
+
+- The display-only candidate `AE-0.1.11-0f4b3df98b90` passed exact native compilation and visual checks in ordinary and constrained chart panes. The research table is foregrounded and avoids the lower-left watermark. The release candidate reverses byte for byte to accepted v0.1.10 after removing its display changes. 148 standard and 21 separate local tests passed. [Stabilization and release gates](implementation/phase3-8-v1-stabilization.md).
+- Accepted private v0.1.10 remains version 7.0 with exact reopened source, version 6 and earlier rollback history, and a verified PAXGUSDT Spot 5m layout. On the saved build, the 13:40 UTC close produced a new bullish FVG in both dashboard and chart and the state survived same-cutoff reload. The positive Fib/reference/reaction/geometry reload sample remains insufficient. Continuous intrabar and cross-device coverage remain NOT RUN.
+- PR #2 was checked first against main with 127 standard and 21 structural tests. PR #3 remains stacked and draft. Preserve SHA-pinned fixture ancestry, integrate base first when the draft integration decision is authorized, and verify fresh CI and native acceptance on each resulting source.
+
+## Accepted private v0.1.10 release — 2026-11-13 PHT
+
+- **PASS.** The existing named private script restores version 7.0, build `AE-0.1.10-148c152b12d2`, on standard Binance PAXGUSDT Spot 5m. Exact source, separate layout save, all 39 displayed controls and two same-closed-cutoff reloads passed. Private version 6 was byte-verified before the update and remains in version history as the rollback. [Gate ledger](implementation/phase3-7-complete-chart-overlays.md#named-private-release-acceptance--2026-11-13-pht).
+- Source commit `a3f78d498b34b697257d00f030dacafafcdbfdce` and Pine blob `2632dc57ce6a53fe9e963dc830c15e567b6bbcd9` were verified against [146 passing standard CI checks](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43429895366) at the candidate checkpoint. Prior 21 structural research checks remain accepted.
+- **Open for v1.** Positive Fib, active reaction and nominal geometry were absent from the two persistence cutoffs. Historical native evidence is recorded separately. Continuous intrabar acceptance remains NOT RUN. The research panel's bottom rows are vulnerable to overlap in the sampled layout. Review the narrow readability issue and ancestry-preserving PR integration sequence before widening scope. PR #3 and its base PR #2 remain draft. Main stays at `319459863fc138e8d347a1b00bc1de56fabb114c`.
+
+## Fibonacci, EMA, reaction and nominal chart overlays — 2026-11-13 PHT
+
+- [Native visualization acceptance](implementation/phase3-7-complete-chart-overlays.md). Final candidate `AE-0.1.10-148c152b12d2` at `a3f78d498b34b697257d00f030dacafafcdbfdce` adds the remaining chart display layers and dashboard controls. 146 standard and 21 separate structural local checks passed. Exact Pine compilation and sampled native checks passed on Binance PAXGUSDT and BTCUSDT Spot 5m.
+- Private v0.1.6 remains named version 6. Exact saved source, 24 controls and restored original layout verified. Draft PR #3 stays based on draft PR #2. Successor private persistence, rollback and same-cutoff reload remain release gates.
+
+## Order-block and FVG chart overlay candidate — 2026-11-13 PHT
+
+- [Native zone overlay](implementation/phase3-7-zone-overlay.md) renders the latest experimental supply/demand block and three-bar FVG from their source known-at cutoffs. Build `AE-0.1.8-6927cc23e060`, source `14b57b6148a6c39d215ca309354544a59c6a5e74`. The structure drawings, dashboard and research calculations are preserved.
+- 137 standard checks and 21 separate structural checks passed locally. Native Binance PAXGUSDT and BTCUSDT Spot 5m rendered the final build. A read-only instrumented scan covered 10,632 closed bars with zero drawing-state violations. Visibility and 15m withholding passed.
+- [Draft PR #3](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/3) stays stacked on draft PR #2. The original chart was restored to the exact private v0.1.6 version 6. Next visualization work covers Fib, EMA, reaction markers and nominal risk geometry.
+
+## First chart visualization candidate — 2026-11-13 PHT
+
+- [Native structure overlay](implementation/phase3-7-structure-overlay.md) adds bounded experimental swing and crossing labels and up to two active levels. Source `5fcd4caf099f57340aa3fc4e6aa972428f358a3c`, build `AE-0.1.7-9e93706426d6`. Exact native compile, PAXGUSDT/BTCUSDT Spot 5m chart checks, 15m withholding and 05:25 UTC v0.1.6 dashboard parity passed. 131 local standard and 21 separate structural tests passed.
+- Development proceeds on `feat/causal-structure-overlay`. The accepted named private version remains v0.1.6. The next visualization increment covers the existing block and gap states.
+
 ## Accepted private v0.1.6 release — 2026-11-13 PHT
 
 - **PASS:** Named private version 6, build `AE-0.1.6-00d26a21011a`. Native compile, separate layout save, exact reopened source, all 24 controls and same 05:15 UTC research state after reload on standard Binance PAXGUSDT Spot 5m. Private version 5 exact rollback verified and retained in history. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht).
