@@ -2,7 +2,7 @@
 indicator("Alpha Engine | Integrated Research v0.1.8", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 37, max_lines_count = 2)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.8-5e35421758d2"
+const string BUILD_ID = "AE-0.1.8-6927cc23e060"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -611,7 +611,7 @@ drawResearchZone(ZoneDrawing drawing, bool visible, bool gap, int knownAt, int c
                  border_color = color.new(tint, 65), border_style = gap ? line.style_dotted : line.style_solid,
                  bgcolor = color.new(tint, 92))
             drawing.badge := label.new(cutoff, gap ? lo : hi, "", xloc = xloc.bar_time,
-                 style = gap ? label.style_label_upper_left : label.style_label_lower_left, size = size.small)
+                 style = gap ? label.style_label_upper_right : label.style_label_lower_right, size = size.small)
             drawing.knownAt := knownAt
         if drawing.state != state
             string family = gap ? (side == 1 ? "Bull FVG?" : "Bear FVG?") : (side == 1 ? "Demand OB?" : "Supply OB?")
