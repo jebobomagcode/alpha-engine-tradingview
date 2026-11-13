@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## First chart visualization candidate — 2026-11-13 PHT
+
+- [Native structure overlay](implementation/phase3-7-structure-overlay.md) adds bounded experimental swing and crossing labels and up to two active levels. Source `5fcd4caf099f57340aa3fc4e6aa972428f358a3c`, build `AE-0.1.7-9e93706426d6`. Exact native compile, PAXGUSDT/BTCUSDT Spot 5m chart checks, 15m withholding and 05:25 UTC v0.1.6 dashboard parity passed. 131 local standard and 21 separate structural tests passed.
+- Development proceeds on `feat/causal-structure-overlay`. The accepted named private version remains v0.1.6. The next visualization increment covers the existing block and gap states.
+
 ## Accepted private v0.1.6 release — 2026-11-13 PHT
 
 - **PASS:** Named private version 6, build `AE-0.1.6-00d26a21011a`. Native compile, separate layout save, exact reopened source, all 24 controls and same 05:15 UTC research state after reload on standard Binance PAXGUSDT Spot 5m. Private version 5 exact rollback verified and retained in history. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht).

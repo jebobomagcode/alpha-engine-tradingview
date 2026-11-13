@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current chart overlay development — 2026-11-13 PHT
+
+Read the [structure overlay acceptance record](implementation/phase3-7-structure-overlay.md) and verify `feat/causal-structure-overlay` separately from draft PR #2. Candidate source `5fcd4caf099f57340aa3fc4e6aa972428f358a3c` compiled and rendered on native Binance Spot PAXGUSDT and BTCUSDT standard 5m charts. The saved named private script and original layout still restore v0.1.6 version 6. Resume at the bounded zone/gap layer and preserve the structure checks.
+
 ## Current accepted private v0.1.6 release — 2026-11-13 PHT
 
 Verify main and draft PR #2 before resuming. The existing named TradingView script restores private version 6, build `AE-0.1.6-00d26a21011a` on standard Binance PAXGUSDT Spot 5m. Exact version 6 source, all 24 controls and the same 05:15 UTC cutoff passed normal reload. Version 5 is the exact verified rollback. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht). Keep the release source pinned while developing the structural chart overlay on a separate branch.
