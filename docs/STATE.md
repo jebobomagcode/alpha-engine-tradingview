@@ -1,11 +1,92 @@
 # Current project state — canonical checkpoint
 
-**Checkpoint date:** 2026-11-12 (Asia/Manila)
+## Accepted private v0.1.6 release — 2026-11-13 PHT
+
+- **PASS:** Named private version 6, build `AE-0.1.6-00d26a21011a`. Native compile, separate layout save, exact reopened source, all 24 controls and same 05:15 UTC research state after reload on standard Binance PAXGUSDT Spot 5m. Private version 5 exact rollback verified and retained in history. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht).
+- The accepted source remains at `0cd16934a203d894d2164f83a376d03eff2afd19`. Main stays at `319459863fc138e8d347a1b00bc1de56fabb114c`; PR #2 stays draft. Develop the initial chart structure overlay on a separate branch.
+
+## v0.1.6 five-market candidate and v0.1.5 native edge audit — 2026-11-13 UTC
+
+- [Market qualification and acceptance ledger](implementation/phase3-6-v016-market-qualification.md). Candidate source `0cd16934a203d894d2164f83a376d03eff2afd19`, build `AE-0.1.6-00d26a21011a`. Exact editor/native compile and standard 5m checks passed for Binance PAXGUSDT, XAUTUSDT, BTCUSDT, ETHUSDT Spot and XAUUSDT gold perpetual. The manual Lesson 08 setup remains specific to PAXGUSDT Spot.
+- **PASS:** 127 standard local and CI checks, 21 separate structural tests, 265 bounded Binance candles, all 25 HTF aggregates, default native parity, live 5m and PAXGUSDT hourly-boundary evidence, 20 native OHLC field matches, and retrospective revision-31 M01 ON/OFF parity. Native v0.1.5 observed the R1-B reset/re-cross and in-band consumption with 50-tick sensitivity. The watermark passed a native injected helper test.
+- **NOT RUN:** v0.1.6 private save and durable reload. The temporary instance restored in the browser at the same cutoff. The original layout was then explicitly restored to private v0.1.5 named version 5, build `AE-0.1.5-9e033123db0f`, with exact source, all 24 controls, and reload verified. Main stays at `319459863fc138e8d347a1b00bc1de56fabb114c`. [PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) remains open draft.
+
+## v0.1.5 lifecycle private release — 2026-11-13 PHT
+
+- [Audit and verification](implementation/phase3-6-v015-lifecycle-audit.md): 119 standard and 21 separate local tests passed. The older terminal-reference recurrence is excluded by fixed-width, monotone per-side origin selection and absent from 19,683 exhaustive short paths and 784 longer runs. The candidate adds a constant-memory retirement guard and terminates a support episode on the close that consumes its reference.
+- **PASS:** CI 119/119, native compile and exact source, same-cutoff default comparison with v0.1.4, named private version 5, layout save, exact restored source, all 24 inputs and live 02:30→02:35 UTC cutoff. v0.1.4 version 4 is the verified rollback. GitHub main stays at `319459863fc138e8d347a1b00bc1de56fabb114c`; PR #2 remains draft. Targeted native edge transitions remain NOT RUN.
+
+## Source-projected Pine lifecycle differential — 2026-11-13 PHT
+
+- **PASS:** [GitHub Actions 43343804439](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43343804439), **112/112** standard checks (prior 104 + two malformed/finality reset fixes + six source-projected differential cases). Existing 21 separate structural-research checks were not rerun in this workflow.
+- **Corrected model mismatch:** `advance_episode` previously retained an ended episode on malformed/finality-withheld modeled closed evidence. The Pine-relevant `contiguous=false` interval resets the episode; the oracle now resets to `INSUFFICIENT · closed data`, with two new fixtures. No Pine changes.
+- [Source-projected transition model](../research/phase3_6/pine_lifecycle_projection.py) and [independent differential tests](../tests/test_phase3_6_pine_lifecycle_projection.py) compare **288** generated block/gap test states and **1,536** generated support/reaction state combinations against the separate research lifecycle oracle; all matched. Also pinned R1-A/R1-B arming/reset, first-cross guards and source-fragment checks. The first draft test miscounted 1,536 generated cases as 3,072, corrected before the accepted run; no discovered oracle-vs-projection mismatch in these tested cases.
+- **Potential invariant weakness (constructed, NOT observed on charts):** accepted v0.1.4 Pine `updateRef` keeps only one `aiTerminalHigh` and `aiTerminalLow` origin. If an already consumed older exact origin were somehow reintroduced after a later terminal origin, `updateRef` alone could rearm it. The source-projection test demonstrates that helper behavior, **not** that the full four-swing engine can actually recreate such a sequence. Reachability and a full reference-identity ledger remain an explicit candidate for the next v0.1.5 hardening gate; do not declare a live defect or silently modify the accepted version.
+- **NOT RUN:** genuine execution of this generated sequence inside TradingView/Pine, complete Pine-vs-Python dynamic equivalence, owner-private cross-device save acceptance, additional venue/session acceptance. The saved v0.1.4 build is unchanged; PR #2 draft and accepted main v0.1.3 remain separate.
+
+## Integrated research replay — source-frozen zone/reaction checks (2026-11-13 PHT)
+
+- **PASS:** [GitHub Actions run 43341833165](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43341833165), **104/104** standard regression tests. Nine integrated replay tests were added to the prior 95, including a fix to distinguish an old gap's geometric test from a newly opened latest gap. The isolated 21 structural research checks were not rerun by this workflow.
+- [Integrated structure-to-lifecycle replay](../research/phase3_6/integrated_replay.py) and [nine checks](../tests/test_phase3_6_integrated_replay.py) connect the prior-open structure ledger to latest-only order-block/gap states and prior-HL support/reaction episodes; the frozen 288-bar PAXGUSDT Spot 5m receipt fixture was compared at sampled cutoffs for three strict widths (1/1, 2/2, 3/3), R1-A and R1-B, with prefix invariance PASS.
+- **Important behavior:** v0.1.4 only retains the **latest gap candidate**. If a candle geometrically tests an old gap and simultaneously creates a new one, the new gap is displayed as OPEN. This is bounded implementation behavior, not a complete multi-zone lifecycle. After a missing bar, gap and episode epochs are cleared. Higher-timeframe context is **NOT INFERRED** from 5m-only evidence; real-fixture runs therefore yield no HTF-qualified reaction status. Numeric truthiness is rejected as a context input.
+- **Native Pine equivalence NOT RUN:** The integration replay is a separate research model, not Pine execution. Chart-native comparison of actual reference retirement, block invalidation and reaction at matched bar cutoffs remains necessary for any v0.1.4 parity upgrade. The accepted private v0.1.4 version 4, original accepted v0.1.3 rollback and GitHub main were not modified.
+
+## v0.1.4 lifecycle controlled-model QA — 2026-11-13 PHT
+
+- **PASS:** [GitHub Actions run 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361), **95/95** (84 prior standard + 11 new controlled lifecycle tests); existing 21 separate structural research tests were not rerun by this job.
+- [Zone/reaction lifecycle oracle](../research/phase3_6/lifecycle_parity_oracle.py) and [adversarial fixtures](../tests/test_phase3_6_lifecycle_parity_oracle.py) now pin later-than-creation block/gap tests, bullish/bearish block invalidation, sticky invalidated status, same-bar support invalidation before reaction, engulf on contact, terminal departure, fresh anchor reset, context UNKNOWN, and missing-adjacent withholding. All constructed evidence is synthetic. [Bounded scope and remaining native parity gate](implementation/phase3-6-lifecycle-parity-checks.md).
+- **NOT RUN:** execution of these synthetic candles through actual Pine/TradingView or true Pine-vs-Python dynamic equality. v0.1.4 private saved build stays unchanged, PR #2 remains draft and main remains v0.1.3; model tests are not a native acceptance upgrade.
+- **Next unresolved policy:** R1-B rearming the *same* structural anchor after a reset does not necessarily identify a new zone/reaction episode. Specify/test epoch identity and avoid inadvertently reopening terminal zones. Compare actual native bar cutoffs where feasible before upgrading release claims.
+
+## D-032/D-033 integrated research v0.1.4 — private release checkpoint
+
+- [Pine v0.1.4 private acceptance](implementation/ai-only-integrated-candidate.md): experimental structure, locations, momentum, prior 1H/4H context, 5m support reaction, and nominal geometry on draft PR #2. GitHub `main` remains the v0.1.3 checkpoint, and the exact verified v0.1.3 rollback is preserved.
+- **PASS:** 84 local standard checks, 21 isolated research checks, exact normalized editor readback, native compilation/chart display, sampled live cutoff, R1 policy and enabled Lesson 08 ON/OFF comparisons, private named script version 4, separate layout save, same-cutoff normal reload and all 24 restored inputs. Scope is standard Binance Spot PAXGUSDT 5m. Wider native parity remains open.
+- **I1 lifecycle correction:** once four post-event swings release a possible shift, subsequent incomplete structure cannot reactivate that old shift. The 288-bar receipt regression requires a new CHoCH for a new transition from UP/DOWN into POSSIBLE_SHIFT.
+
+## D-032/D-033 I1 causal reference replay — branch checkpoint
+
+- **VALIDATED (research):** `research/phase3_6/ai_structure_candidate.py` now evaluates earlier-open references at final adjacent closes, records one-time consumption and retirement, and distinguishes R1-A prebreach from R1-B reset/re-cross. A CHoCH candidate retires the active references and requires four post-event ordered swings before releasing the shift gate. Gaps and invalid evidence clear the active segment. Modeled times are not venue receipts.
+- **PASS locally:** 80 standard regression checks and the preserved 21 isolated structural checks. On the pinned 288-bar Binance Spot PAXGUSDT receipt, sampled prefix parity held across 1/1, 2/2 and 3/3 and both arming policies. Event counts were 15, 8 and 3 by width for each policy on this tape. A constructed case distinguishes the policies. Counts characterize behavior and do not measure performance.
+- **Next:** integrate the bounded Pine candidate on this draft branch with chart-native acceptance tracked separately. Accepted v0.1.3 and original source remain pinned.
+
+**Checkpoint date:** 2026-11-13 (Asia/Manila)
 **Repository:** jebobomagcode/alpha-engine-tradingview
-**Phase:** 3.5 ACCEPTED and merged to GitHub `main` as Pine v0.1.3; named private TradingView script v0.1.3 (version 3.0) also accepted within bounded evidence. 55/55 post-merge CI PASS. Original 35/35-page, 26-unit Coach study complete.
+**Phase:** AI-only accelerated engineering (I1 research structure next); accepted Pine v0.1.3 from Phase 3.5 remains baseline. 55/55 merged CI PASS. Original 35-page/26-unit Coach study complete.
 **Project market scope:** crypto ecosystem, explicitly XAUUSDT, XAUTUSDT and PAXGUSDT (D-013, [market scope](MARKET_SCOPE.md)).
 **D-021 / D-022 / D-023 scope:** the bounded Lesson 08 chart diagnostic and persistence checks. The one-time D-023 cleanup was exercised. D-026 covers bounded Phase 3.4 review. D-027 authorizes the exact private v0.1.3 replacement and preserves the observed native v0.1.2 backup for rollback.
 **Outside this scope:** strategy, strategy backtests, automated trading signals, alerts, public TradingView publishing, deployment, broker access, trades and paid services.
+
+## ACTIVE OWNER CLARIFICATION D-033 — source foundation, evolving AI-designed system (2026-11-13 PHT)
+
+Coach Fredy's original PDF and completed PCSS are the starting methodological foundation, **not the ceiling or an assertion of perfect recoverability of unstated discretion**. The owner expects the independent AI research indicator to evolve through measurable improvements after its first usable private release. Prioritize a functional, testable v1 over indefinite requests for human consensus or exact Coach equivalence. Distinguish what Coach actually taught from PCSS interpretation and from AI_INDEPENDENT_EXPERIMENTAL choices. Preserve rigorous correctness, causal evidence, risk disclosures and accepted release/rollback gates. No trading-performance or financial guarantees follow. [Decision D-033](DECISIONS.md) · [roadmap](implementation/ai-only-accelerated-completion-plan.md).
+
+## I1 research implementation checkpoint — 2026-11-13 PHT
+
+- **Implemented first AI-INDEPENDENT EXPERIMENTAL structure candidate**, not a selected source-exact BOS/CHoCH algorithm: [research code](../research/phase3_6/ai_structure_candidate.py) and [9 additional regression cases](../tests/test_phase3_6_ai_structure_candidate.py) (relative paths apply from docs directory). A separate same-prefix test reproduces S1 2/2 UNKNOWN at minute 65 and UP at 70; S1 1/1 already UP at 65. Dual extremes remain unordered, missing/forming right bars cannot confirm, and a delayed left bar does not backdate confirmation.
+- **PASS** [final GitHub PR CI 43300428886](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43300428886): **76/76** (55 Phase 3.5 + 12 archived pilot-validator + 9 I1). Initial [CI failure](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43300317137) was a test-harness duplicate `as_of` keyword, corrected in commit `5e33a7038c049e5dd5f10ea5b2cd1b93d86d5532`; no unaddressed regression remains for these executed checks.
+- **NOT YET IMPLEMENTED:** a full persistent reference-arming/consumption event ledger, qualified structural BOS/CHoCH classification in Pine, M02/M03/M04/M05/M06 modules, native v0.1.4 or market-performance validation. The Research module returns provisional candidate references only; its chart-clock availability is NOT authenticated venue receipt.
+- **Immediate follow-up:** complete the I1 causal transition/event model, source/policy qualification, independent falsification and source isolation; then begin modular indicator development as documented in [AI-only roadmap](implementation/ai-only-accelerated-completion-plan.md). No human review gate.
+
+## ACTIVE DIRECTIVE D-032 — AI-only accelerated completion, 2026-11-13 PHT
+
+**Owner override:** No additional human reviewers or chart annotation tasks. Only the original Coach PDF and completed PCSS are Coach-authoritative; AI independently formalizes unquantified mechanics as explicitly labeled, testable experimental rules. **The 12-slot prospective human pilot is cancelled as a required gate before data collection:** 0 captures, 0 labels, 0 human agreement; the November 14–17 slots are cancelled, not missed. Preserve the historical preregistration for audit, but do not seek owner screenshots, recruit reviewers, schedule reminders or wait for those observations.
+
+**Next required execution:** [I1–I6 AI-only completion roadmap](implementation/ai-only-accelerated-completion-plan.md). Start causal M01 ordered structure and reference arming with synthetic and verified historical closed-bar tests; then M02 zone, M03 EMA/RSI, M04 candle, M05 top-down state, M06 risk and private Pine acceptance increments. The accepted GitHub main and sole private Pine v0.1.3 remain unchanged until a new candidate is genuinely verified. No public publication, auto trading, broker access, guarantees or unverified venue receipts.
+
+## HISTORICAL Phase 3.6 prospective annotation pilot — authorized, preparation complete (2026-11-13 Asia/Manila)
+
+- **Owner authorized** a bounded external S0 structural-reference annotation pilot; this does NOT authorize v0.1.4 Pine, automated BOS/CHoCH, trading, publication, or changing the accepted private save. The [preregistered 12-slot protocol](research/phase3-6-prospective-annotation-pilot.md) and research-only validator were committed to [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2). Fixed PAXGUSDT Spot standard 5m cutoff slots 09:00, 15:00 and 21:00 PHT Nov 14–17, 2026, all prospective collection **NOT RUN** until witnessed.
+- **PASS:** [GitHub Actions run 43290622458](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43290622458): **67/67** checks (55 accepted baseline + 12 validator regression tests). The checks verify schema/time/role consistency, not truth of screenshot time, independent reviewers or future-hidden source evidence. Existing isolated structural research suite 21/21 was previously reported by Work but not rerun by this CI.
+- **Preflight PASS:** qualified TradingView chart verified outside the sampling windows. All 12 scheduled cutoffs matched the validator and its 12 targeted tests passed. [Capture checklist and pending ledger](research/phase3-6-prospective-annotation-collection.md). As of Nov 13 PHT, 0 captures, 0 reviewer records and 12 future slots. No reminders or background capture are configured.
+- **Next evidence gate:** owner/Work must secure time-stamped chart snapshots and prospectively submitted S0 annotations (R1, R2 when independently available), recording MISSED/INVALID slots and keeping owner-private raw screenshots out of the public repository. No data capture, independent annotation or human agreement is claimed yet.
+- **Preserved:** `main` at `319459863fc138e8d347a1b00bc1de56fabb114c` and sole private TradingView Pine v0.1.3 build `L08-0.1.3-3e3d909ba9f5`; no Pine/source modifications or new saved scripts.
+
+## Previous draft research — Phase 3.6, 2026-11-13 (Asia/Manila)
+
+- Accepted main was verified at `319459863fc138e8d347a1b00bc1de56fabb114c`. [Draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) contains research only. This branch checkpoint does not change the accepted main or private v0.1.3 baseline recorded below.
+- **PASS:** original Coach figure and text review for PDF pp. 6, 9–10, 14–16 and 25, plus 21/21 isolated Python checks on F01–F20 and a constructed S0/S1 prefix. See [contract](research/phase3-6-structural-reference-contract.md) and [results and limitations](research/phase3-6-structural-reference-adjudication.md).
+- **Recommendation:** READY FOR BOUNDED IMPLEMENTATION PROPOSAL for one manual-reference research panel, subject to separate owner authorization. S0 and R1-A provide the initial comparison, with R1-B and complete-history veto retained. Automated swing significance and role selection are INSUFFICIENT. Prospective blind labels, new Pine and native acceptance are NOT RUN.
 
 ## Current checkpoint — Phase 3.5 integrated on main, 2026-11-12
 

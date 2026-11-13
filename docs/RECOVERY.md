@@ -1,8 +1,70 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current accepted private v0.1.6 release — 2026-11-13 PHT
+
+Verify main and draft PR #2 before resuming. The existing named TradingView script restores private version 6, build `AE-0.1.6-00d26a21011a` on standard Binance PAXGUSDT Spot 5m. Exact version 6 source, all 24 controls and the same 05:15 UTC cutoff passed normal reload. Version 5 is the exact verified rollback. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht). Keep the release source pinned while developing the structural chart overlay on a separate branch.
+
+## Current v0.1.6 native market candidate — 2026-11-13 UTC
+
+Verify actual [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) and main. Start with the [v0.1.6 qualification ledger](implementation/phase3-6-v016-market-qualification.md). Source commit `0cd16934a203d894d2164f83a376d03eff2afd19` and build `AE-0.1.6-00d26a21011a` passed exact-source native checks for five specified Binance 5m feeds, 127 local and CI regressions, and 21 separate research tests. Accepted private v0.1.5 remains named version 5 with exact bytes and all 24 controls verified. The temporary chart instance persisted across tabs during the same-session test. The original layout was explicitly restored to v0.1.5, saved, and reloaded successfully. The native lifecycle probe was temporary. Review the separate market-history and injected-helper outcomes. Resume at the bounded private durability/reload gate without restarting earlier studies or widening features. Keep the current script and earlier rollback versions until the release safeguards are satisfied.
+
+## Current v0.1.5 lifecycle private release — 2026-11-13 PHT
+
+Start with [the audit and release gates](implementation/phase3-6-v015-lifecycle-audit.md). The existing named private script version 5 restores build `AE-0.1.5-9e033123db0f` on standard Binance Spot PAXGUSDT 5m. Exact source, 24 input controls, sampled native comparison and ordinary reload passed. Preserve the verified v0.1.4 version 4 rollback and earlier v0.1.3 source. The new edge transitions are verified in modeled and source checks. Broader native parity remains open. Main is unchanged and PR #2 remains draft.
+
+## CURRENT CHECKPOINT — 112/112 source-projected lifecycle QA, 2026-11-13 PHT
+
+[GitHub Actions 43343804439](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43343804439) PASS **112/112** (104 prior + 2 malformed-episode resets + 6 new Pine-source-projected differential cases). 288 bounded zone-state combinations and 1,536 episode combinations matched independent Python oracle; the companion projection is **not a Pine executor**, so native parity remains NOT RUN. The oracle stale-episode-on-invalid-candle discrepancy was corrected. A constructed terminal-origin-reintroduction sequence shows v0.1.4's one-slot terminal-key helper could rearm a prior consumed origin if reintroduced; full structural-replay reachability has NOT been established. Preserve exact private Pine v0.1.4 version 4, rollback v0.1.3 and accepted main, keep PR #2 draft. [Lifecycle report](implementation/phase3-6-lifecycle-parity-checks.md). Next: test terminal-origin reachability and guarded reference ledger as an unsaved v0.1.5 candidate if justified; separately seek actual Pine native equivalence without owner screenshots.
+
+
+
+## CURRENT VALIDATION — Integrated structural/zone/reaction Python research replay (2026-11-13 PHT)
+
+[GitHub Actions 43341833165](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43341833165) **104/104 PASS** (prior 95 + nine new integration tests). [Integrated model](../research/phase3_6/integrated_replay.py) is a research-only, latest-zone structure/episode replay, with frozen 288-bar PAXGUSDT Spot 5m sampled-prefix invariance across width 1/2/3 and R1-A/R1-B, gap test/replacement order, missing-window epoch resets and explicit HTF evidence handling. **Do not claim Pine-native dynamic parity, live market receipt authentication, usable HTF analysis from only this dataset, or trading performance.** The accepted private v0.1.4 version 4 remains untouched; v0.1.3 rollback and GitHub main are preserved. [Gates](implementation/phase3-6-lifecycle-parity-checks.md). Next: compare the same closed cutoff's reference retirement / zone invalidation / reaction against native Pine only when supported.
+
+
+
+## Current QA update — 95/95 GitHub checks, private v0.1.4 preserved
+
+[GitHub CI 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361) passed **95/95** after adding 11 synthetic lifecycle cases and a separate Python specification projection for zone invalidation, geometric gap tests, support contact/reaction, and terminal episode behavior. [QA scope](implementation/phase3-6-lifecycle-parity-checks.md). These tests **do not execute Pine**, and true matched-cutoff Pine↔Python runtime parity remains NOT RUN. The accepted private v0.1.4 version 4 is untouched; rollback v0.1.3 and main unchanged. Next compare retirement/invalidation/reaction on native evidence without requiring human manual annotation.
+
+
+
+## CURRENT — AI-only integrated Pine v0.1.4 private release
+
+Verify [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) and the [integrated acceptance record](implementation/ai-only-integrated-candidate.md). Pine v0.1.4 build `AE-0.1.4-93081cd2faee` compiled and ran on standard Binance Spot PAXGUSDT 5m. Existing named private script version 4, separate layout save, exact source readback, same-cutoff normal reload and all 24 restored controls passed. Keep v0.1.3 source and saved version history as rollback. Main stays at `319459863fc138e8d347a1b00bc1de56fabb114c` and PR #2 remains draft. D-032 removes the human annotation dependency.
+
+## ACTIVE PRODUCT OBJECTIVE — D-033 foundation first, iterative AI improvement (2026-11-13 PHT)
+
+The owner clarified that the Coach PDF and PCSS are the **basis**, not a fixed exhaustive set of rules. Deliver a working, verifiably causal **AI-improved** private TradingView research indicator quickly, and continue improving it through versioned tests and evidence. The only Coach-origin source remains unchanged; independently invented methods must be clearly differentiated, not silently attributed to Coach. Human reviewer approval and exact discretionary equivalence are **not** required gates. This clarification does NOT waive software correctness, native acceptance, risk disclosures, or restrictions on orders, paid actions and public publication. [D-033](DECISIONS.md) · [AI-only roadmap](implementation/ai-only-accelerated-completion-plan.md).
+
+
+
+## CURRENT RESEARCH INCREMENT — I1 initial executable AI structure candidate (2026-11-13 PHT)
+
+The D-032 no-human plan remains authoritative. [I1 research implementation](../research/phase3_6/ai_structure_candidate.py) provides as-of strict-pivot ordered swings and provisional references; [9 new tests](../tests/test_phase3_6_ai_structure_candidate.py) passed together with 67 existing checks, [CI 76/76 PASS](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43300428886). Corrected a test-harness duplicate keyword, not the source algorithm. This research package does **not** implement a full BOS/CHoCH engine, Pine v0.1.4, trading signals or verified venue timing. Next execute I1 frozen reference-arming/consumption and competing policies, then continue the modular [AI-only roadmap](implementation/ai-only-accelerated-completion-plan.md).
+
+## CURRENT: D-032 AI-only development; no further human consultation (2026-11-13 PHT)
+
+Owner removed prospective human annotations and routine screenshot tasks as project requirements. The 12-slot Nov 14–17 pilot is **CANCELLED BEFORE COLLECTION**, preserving its research-only preflight (0 captures, 0 manual labels, 0 reviewer pairs). Do not count slots as missed, schedule reminders or wait for humans. Use [AI-only completion plan](implementation/ai-only-accelerated-completion-plan.md) immediately: build AI-selected, clearly labeled experimental M01 structural references and tests, then M02/M03/M04/M05/M06 integration and bounded private Pine acceptance. Preserve 26 completed PCSS lessons, original Coach PDF, Phase 3.5 main v0.1.3 / private save 3.0 / rollback. Keep source-unknown as UNKNOWN and distinguish real venue receipts from modeled closed-bar clocks. No public publication or live trades.
+
+
+
 This file is intended to prevent loss of decisions, source identity, and checked progress when a ChatGPT conversation ends or usage limits intervene.
 
-## Current recovery point — Phase 3.5 merged and privately accepted, 12 November 2026
+## Current draft recovery point — Phase 3.6 structural-reference research, 13 November 2026 (Asia/Manila)
+
+Verify actual main and [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2), branch `research/phase3-6-m01-structural-reference-readiness-20261113`. Main was `319459863fc138e8d347a1b00bc1de56fabb114c`. Start with the [as-of contract](research/phase3-6-structural-reference-contract.md) and [adjudicated findings](research/phase3-6-structural-reference-adjudication.md). F01–F20 and the constructed S0/S1 prefix passed 21 isolated Python checks. The accepted v0.1.3 source and private saved baseline remain as documented below. The next owner decision is whether to collect prospective S0 labels externally first or authorize a one-reference informational prototype. No approval to merge PR #2 or change Pine follows from this checkpoint.
+
+## Current recovery point — Phase 3.6 S0 prospective pilot PREPARED, collection NOT RUN (13 November 2026 PHT)
+
+Latest [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) contains the bounded [prospective manual structural-reference protocol](research/phase3-6-prospective-annotation-pilot.md), a read-only schema/chronology validator, and twelve validation checks. [CI run 43290622458](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43290622458) **67/67 PASS** (55 prior + 12 new). Predeclared live collection slots: `BINANCE:PAXGUSDT` Spot standard 5m, Nov 14–17, 2026 at 09:00/15:00/21:00 PHT. NO real snapshots or human annotations captured as of this checkpoint. Self-reported timestamps are not independently authenticated; later blinded masked-prefix review is not realtime prospective evidence. Raw account/screenshot data must remain owner-private. R1/R2 reviewer agreement requires actually independent human records. Do not manufacture future data or market events.
+
+The accepted GitHub `main` remains `319459863fc138e8d347a1b00bc1de56fabb114c`, private Pine v0.1.3 version 3.0 unchanged. Preserve exact prior v0.1.2 and v0.1.1 rollback versions. Draft PR #2 is research only: no Pine v0.1.4, BOS/CHoCH signals, alerts, trades, publication or unrelated project access. Resume from actual current GitHub refs and collect only genuinely observable predeclared data.
+
+Use the [collection checklist and preflight ledger](research/phase3-6-prospective-annotation-collection.md) for the private submission workflow and exact cutoffs. The first slot begins Nov 14 at 09:00 PHT and closes for submission at 09:05 PHT. No completed captures or reviewer receipts were available at the preflight.
+
+## Historical recovery point — Phase 3.5 merged and privately accepted, 12 November 2026
 
 Owner explicitly authorized merging PR #1. [Merge commit `b37af94f7a3f377c094f39f98f04f0ccc93233ba`](https://github.com/jebobomagcode/alpha-engine-tradingview/commit/b37af94f7a3f377c094f39f98f04f0ccc93233ba) is verified as the GitHub main integration checkpoint. Pine v0.1.3 exact blob `218e54cf573d6dfcc7b3306d22a0a34f966db160` and build `L08-0.1.3-3e3d909ba9f5` match the previously accepted sole private TradingView script version 3.0. [Post-merge main CI](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43251028044) ran **55/55 PASS**. Preserve detailed [private persistence evidence](implementation/phase3-5-private-persistence-acceptance.md), both v0.1.2 rollback representations and v0.1.1. PR #1 is CLOSED/MERGED, not draft or awaiting owner review. Do not repeat completed Phase 3.5 tests or private saves without evidence of a regression or new authorization. Receipt order, touch, unsampled invalid native feed windows and strategy-level features remain open or outside scope. No legacy project access.
 

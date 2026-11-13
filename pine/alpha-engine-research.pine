@@ -1,0 +1,518 @@
+//@version=6
+indicator("Alpha Engine | Integrated Research v0.1.6", overlay = true, max_bars_back = 250, max_boxes_count = 1, max_labels_count = 3)
+
+// Build SHA-256 input is this file with this literal replaced by __BUILD__.
+const string BUILD_ID = "AE-0.1.6-00d26a21011a"
+const string SYMBOL = "BINANCE:PAXGUSDT"
+const int STEP = 300000
+const int HOUR = 3600000
+
+bool configured = input.bool(false, "Enable declared setup", group = "Setup")
+int revision = input.int(1, "Setup version", minval = 1, group = "Setup")
+int anchor = input.time(0, "Bullish context reference · 1H close", group = "Setup")
+int contextKnown = input.time(0, "Context available at · declared", group = "Setup")
+int zoneKnown = input.time(0, "Zone available at · declared", group = "Setup")
+int expiry = input.time(0, "Exclusive expiry", group = "Setup")
+float floor = input.float(0, "Support floor (USDT/PAXG)", minval = 0, group = "Setup")
+float ceiling = input.float(0, "Support ceiling (USDT/PAXG)", minval = 0, group = "Setup")
+
+bool showRisk = input.bool(false, "Show nominal geometry", group = "Optional risk")
+float entry = input.float(0, "Entry reference", minval = 0, group = "Optional risk")
+float stop = input.float(0, "Stop reference", minval = 0, group = "Optional risk")
+float target = input.float(0, "Target reference", minval = 0, group = "Optional risk")
+
+// M01-P1 research comparator: strict local swings, not Coach-specified thresholds or BOS signals.
+bool pivotProbe = input.bool(false, "Show confirmed 5m pivots (research only)", group = "Optional M01 audit")
+int pivotLeft = input.int(2, "Strict pivot left bars", minval = 1, maxval = 8, group = "Optional M01 audit")
+int pivotRight = input.int(2, "Strict pivot right bars", minval = 1, maxval = 8, group = "Optional M01 audit")
+
+// Deterministic core. All times are epoch ms. The chart adapter supplies the evidence gates.
+barFacts(float o, float h, float l, float c, float lo, float hi, bool adjacent, float prevO, float prevC) =>
+    bool overlap = h >= lo and l <= hi
+    bool departure = l > hi
+    bool invalid = c < lo
+    bool engulf = adjacent and prevC < prevO and c > o and o < prevC and c > prevO
+    [overlap, departure, invalid, engulf]
+
+assess(string terminal, int contact, int firstB, int firstA, bool ready, bool historyGap, bool htfReady, bool complete, bool adjacent, bool overlap, bool departure, bool invalid, bool engulf, int opened, int closed, int available, int expires) =>
+    string reason = terminal
+    string nextTerminal = terminal
+    int nextContact = contact
+    int nextB = firstB
+    int nextA = firstA
+    if terminal == ""
+        if not ready
+            reason := "INSUFFICIENT · setup declaration"
+        else if closed >= expires
+            reason := "EXPIRED · exclusive cutoff"
+            nextTerminal := reason
+        else if opened < available
+            reason := "WAIT · declaration not yet available at open"
+        else if historyGap
+            reason := "INSUFFICIENT · setup history gap"
+        else if not htfReady
+            reason := "INSUFFICIENT · confirmed 1H reference"
+        else if not complete
+            reason := "INSUFFICIENT · closed 5m OHLC"
+        else if invalid
+            reason := "INVALIDATED · close below support"
+            nextTerminal := reason
+        else if departure and not na(contact) and not engulf
+            reason := "REASSESS · episode ended"
+            nextTerminal := reason
+        else if na(contact) and not overlap
+            reason := "WAIT · zone overlap"
+        else
+            if na(contact)
+                nextContact := opened
+            if not adjacent
+                reason := "INSUFFICIENT · adjacent 5m predecessor"
+            else
+                if engulf and na(firstB)
+                    nextB := closed
+                if engulf and opened > nextContact and na(firstA)
+                    nextA := closed
+                reason := "WAIT · closed 5m confirmation"
+                if not na(nextB)
+                    reason := "QUALIFIED · geometric reaction"
+                // The first departure can complete a later reaction, then ends the episode.
+                if departure
+                    nextTerminal := "REASSESS · episode ended"
+                    reason := nextTerminal
+    [reason, nextTerminal, nextContact, nextB, nextA]
+
+// Pivots are only declared at the CLOSE of the last required right-hand 5m bar.
+// Require strictly positive prices on every source bar for Binance Spot.
+// No origin-bar backplotting, implicit receipt timestamps, or trend inference.
+strictPivots(int leftCount, int rightCount) =>
+    bool enough = bar_index >= leftCount + rightCount
+    float candidateHigh = high[rightCount]
+    float candidateLow = low[rightCount]
+    bool validWindow = enough
+    bool strictHigh = enough and not na(candidateHigh)
+    bool strictLow = enough and not na(candidateLow)
+    if enough
+        for offset = 0 to leftCount + rightCount
+            bool valid = not na(time[offset]) and not na(time_close[offset]) and not na(open[offset]) and not na(high[offset]) and not na(low[offset]) and not na(close[offset]) and time_close[offset] == time[offset] + STEP and high[offset] >= math.max(open[offset], close[offset]) and low[offset] <= math.min(open[offset], close[offset]) and low[offset] > 0
+            if offset < leftCount + rightCount
+                valid := valid and time[offset] - time[offset + 1] == STEP
+            validWindow := validWindow and valid
+            strictHigh := strictHigh and valid
+            strictLow := strictLow and valid
+            if offset != rightCount
+                strictHigh := strictHigh and candidateHigh > high[offset]
+                strictLow := strictLow and candidateLow < low[offset]
+    [strictHigh, strictLow, validWindow, enough]
+
+nominalRisk(float e, float s, float t, float lo) =>
+    float loss = na
+    float reward = na
+    if e > 0 and s > 0 and t > e and s < e and s < lo
+        loss := e - s
+        reward := t - e
+    [loss, reward]
+
+// Keep each material declaration in the key, including the two independent clocks.
+setupIdentity(int version, int contextAnchor, int contextAt, int zoneAt, int expires, float lo, float hi) =>
+    string clocks = str.tostring(contextAnchor) + "/" + str.tostring(contextAt) + "/" + str.tostring(zoneAt) + "/" + str.tostring(expires)
+    string bounds = str.tostring(lo, "0.################") + "/" + str.tostring(hi, "0.################")
+    "L08/" + str.tostring(version) + "/" + clocks + "/zone=" + bounds
+
+reactionRecorded(int cutoff, int firstB, int firstA) =>
+    bool recordedB = not na(firstB) and firstB == cutoff
+    bool recordedA = not na(firstA) and firstA == cutoff
+    [recordedB, recordedA]
+
+// The previous-hour tuple is aligned to the opening of each chart bar. IDs expose stale gaps.
+bool chartOK = syminfo.tickerid == SYMBOL and syminfo.basecurrency == "PAXG" and syminfo.currency == "USDT" and timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard
+[hourOpen, hourClose, hourPrice] = request.security(SYMBOL, "60", [time[1], time_close[1], close[1]], gaps = barmerge.gaps_off, lookahead = barmerge.lookahead_on)
+int requiredHourClose = time - time % HOUR
+bool hourOK = chartOK and not na(hourPrice) and hourPrice > 0 and hourClose == requiredHourClose and hourOpen == requiredHourClose - HOUR
+
+int available = math.max(contextKnown, zoneKnown)
+bool ready = configured and anchor > 0 and anchor % HOUR == 0 and contextKnown >= anchor and zoneKnown > 0 and expiry > available and floor > 0 and ceiling >= floor
+string setupId = setupIdentity(revision, anchor, contextKnown, zoneKnown, expiry, floor, ceiling)
+var string status = "WAIT · first closed 5m candle"
+var string terminal = ""
+var bool anchorSeen = false
+var bool historyGap = false
+var int contact = na
+var int firstB = na
+var int firstA = na
+var int lastDecision = na
+
+bool complete = not na(open) and not na(high) and not na(low) and not na(close) and low > 0 and high >= math.max(open, close) and low <= math.min(open, close) and time_close == time + STEP
+bool adjacent = bar_index > 0 and complete[1] and time[1] == time - STEP
+// Evaluate on every chart bar for stable history. Only record on confirmed bar close.
+[pivotHighNow, pivotLowNow, pivotWindowValid, pivotWindowEnough] = strictPivots(pivotLeft, pivotRight)
+var float latestPivotHigh = na
+var int highOriginUTC = na
+var int highKnownUTC = na
+var float latestPivotLow = na
+var int lowOriginUTC = na
+var int lowKnownUTC = na
+// The evidence status describes the most recent CLOSED window, not the forming bar.
+// Previously confirmed pivot values remain historical records through invalid windows.
+var string pivotEvidence = "INSUFFICIENT · no closed 5m evaluation"
+if chartOK and pivotProbe and barstate.isconfirmed
+    pivotEvidence := not pivotWindowEnough ? "INSUFFICIENT · 5m history" : not pivotWindowValid ? "INVALID · 5m OHLC/clock window" : pivotHighNow or pivotLowNow ? "VALID · new pivot" : "VALID · no new pivot"
+    if pivotHighNow
+        latestPivotHigh := high[pivotRight]
+        highOriginUTC := time[pivotRight]
+        highKnownUTC := time_close
+    if pivotLowNow
+        latestPivotLow := low[pivotRight]
+        lowOriginUTC := time[pivotRight]
+        lowKnownUTC := time_close
+[overlap, departure, invalid, engulf] = barFacts(open, high, low, close, floor, ceiling, adjacent, open[1], close[1])
+
+if chartOK and barstate.isconfirmed
+    anchorSeen := anchorSeen or (hourOK and hourClose == anchor)
+    // A missing bar since activation can hide an earlier contact or terminal transition.
+    if ready and time - STEP >= available and (barstate.isfirst or not adjacent)
+        historyGap := true
+    [reason, disposition, nextContact, nextB, nextA] = assess(terminal, contact, firstB, firstA, ready, historyGap, hourOK and anchorSeen, complete, adjacent, overlap, departure, invalid, engulf, time, time_close, available, expiry)
+    if na(contact) and not na(nextContact)
+        label.new(time_close, floor, "Overlap", xloc = xloc.bar_time, style = label.style_label_up, color = color.teal, textcolor = color.white, size = size.tiny)
+    if na(firstB) and not na(nextB)
+        label.new(time_close, ceiling, "R2-B", xloc = xloc.bar_time, style = label.style_label_down, color = color.blue, textcolor = color.white, size = size.tiny)
+    if na(firstA) and not na(nextA)
+        label.new(time_close, ceiling, "R2-A", xloc = xloc.bar_time, style = label.style_label_lower_left, color = color.purple, textcolor = color.white, size = size.tiny)
+    terminal := disposition
+    contact := nextContact
+    firstB := nextB
+    firstA := nextA
+    status := reason
+    lastDecision := time_close
+    // An unresolved active bar can hide an earlier first event on subsequent bars.
+    if ready and time >= available and time_close < expiry and (not complete or not hourOK or not anchorSeen)
+        historyGap := true
+
+var box support = na
+if chartOK and ready and barstate.isconfirmed and time >= available and time_close < expiry and terminal == ""
+    if na(support)
+        support := box.new(time, ceiling, time_close, floor, xloc = xloc.bar_time, border_color = color.teal, bgcolor = color.new(color.teal, 90))
+    else
+        box.set_right(support, time_close)
+
+utc(int stamp) =>
+    na(stamp) ? "—" : str.format_time(stamp, "MM-dd HH:mm", "Etc/UTC")
+
+row(table panel, int n, string key, string value, string detail = "") =>
+    table.cell(panel, 0, n, key, text_color = color.silver, text_halign = text.align_left, text_size = size.small)
+    table.cell(panel, 1, n, value, text_color = color.white, text_halign = text.align_left, text_size = size.small, tooltip = detail)
+
+var table panel = table.new(position.top_right, 2, 16, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+if barstate.islast and syminfo.tickerid == SYMBOL
+    [loss, reward] = nominalRisk(entry, stop, target, floor)
+    string risk = "Disabled"
+    if showRisk
+        risk := "INSUFFICIENT · nominal inputs"
+        if ready and entry > 0 and stop > 0 and target > 0
+            risk := "INVALID · need stop < support floor, stop < entry < target"
+            if not na(loss)
+                risk := "Loss " + str.tostring(loss, "#.########") + " USDT/PAXG · " + str.tostring(reward / loss, "#.###") + "R"
+    string strict = na(firstA) ? "Waiting for later candidate" : "UNKNOWN · receipt order"
+    string contactId = na(contact) ? "—" : setupId + "/" + str.tostring(contact)
+    [recordedB, recordedA] = reactionRecorded(lastDecision, firstB, firstA)
+    string recorded = "—"
+    if recordedB or recordedA
+        recorded := recordedB and recordedA ? "R2-B + R2-A" : recordedB ? "R2-B" : "R2-A"
+    row(panel, 0, "Build", BUILD_ID + " · PAXGUSDT 5m")
+    row(panel, 1, "Current state", chartOK ? status : "INSUFFICIENT · chart identity")
+    row(panel, 2, "Chart clock", chartOK ? (barstate.isconfirmed ? "Closed 5m · " + utc(lastDecision) : "5m forming · last close " + utc(lastDecision)) : "Use standard BINANCE:PAXGUSDT 5m")
+    row(panel, 3, "1H / analyst context", hourOK ? utc(hourClose) + " · " + str.tostring(hourPrice, format.mintick) + (anchorSeen ? " · declared bullish" : " · anchor unverified") : "INSUFFICIENT · exact prior 1H")
+    row(panel, 4, "Setup ID", ready ? str.replace(setupId, "/zone=", "\nzone=") : "Enable and declare context / zone", ready ? setupId : "")
+    row(panel, 5, "Contact open UTC", utc(contact), contactId)
+    row(panel, 6, "Touch evidence", na(contact) ? "No accepted overlap" : "Geometric overlap · physical touch UNKNOWN")
+    row(panel, 7, "Recorded R2-B / R2-A", utc(firstB) + " / " + utc(firstA))
+    row(panel, 8, "At last cutoff", recorded, "First qualification recorded at the last closed 5m cutoff")
+    row(panel, 9, "Strict", strict)
+    row(panel, 10, "Evidence model", "Declared availability · history reconstructed")
+    row(panel, 11, "Nominal only", risk)
+    row(panel, 12, "Policy", "R2-B provisional · R2-A comparator")
+    row(panel, 13, "M01 high", pivotProbe ? (na(highKnownUTC) ? "No confirmed pivot" : str.tostring(latestPivotHigh, format.mintick) + " · known " + utc(highKnownUTC)) : "Off · research", pivotProbe and not na(highOriginUTC) ? "Origin " + utc(highOriginUTC) + " · known " + utc(highKnownUTC) : "")
+    row(panel, 14, "M01 low", pivotProbe ? (na(lowKnownUTC) ? "No confirmed pivot" : str.tostring(latestPivotLow, format.mintick) + " · known " + utc(lowKnownUTC)) : "Off · research", pivotProbe and not na(lowOriginUTC) ? "Origin " + utc(lowOriginUTC) + " · known " + utc(lowKnownUTC) : "")
+    row(panel, 15, "M01 evidence", not pivotProbe ? "Off · research" : not chartOK ? "INSUFFICIENT · chart identity" : pivotEvidence, "Status of latest closed 5m window. Pivot values in rows 13–14 are retained historical confirmations, not proof of current data validity.")
+
+plot(hourOK ? hourClose / 1000 : na, "Confirmed 1H close (Unix s)", display = display.data_window, precision = 0)
+plot(hourOK ? hourPrice : na, "Confirmed 1H close (USDT)", display = display.data_window, precision = 2)
+
+// Independent experimental extension. The original Lesson 08 state is read-only here.
+bool aiEnabled = input.bool(true, "Show integrated research", group = "Experimental research")
+int aiWindow = input.int(2, "Strict swing window", minval = 1, maxval = 4, group = "Experimental research")
+string aiPolicy = input.string("R1-A", "Reference policy", options = ["R1-A", "R1-B"], group = "Experimental research")
+int aiZoneTicks = input.int(1, "Support tolerance in ticks", minval = 0, maxval = 50, group = "Experimental research")
+bool aiWick = input.bool(false, "Allow bullish rejection alternative", group = "Experimental research")
+
+type ResearchReference
+    int origin = na
+    int armedAt = na
+    float level = na
+    string role = ""
+    string state = "WAIT"
+
+showRef(ResearchReference ref) =>
+    na(ref.origin) ? "—" : ref.role + " " + str.tostring(ref.level, format.mintick) + " · " + ref.state
+
+updateRef(ResearchReference previous, int origin, float level, string role, int terminalOrigin, string terminalStatus, bool above, bool resetAllowed) =>
+    ResearchReference next = ResearchReference.new()
+    if not na(origin)
+        bool broken = above ? close > level : close < level
+        if not na(terminalOrigin) and origin < terminalOrigin
+            next := ResearchReference.new(origin, na, level, role, "RETIRED")
+        else if origin == terminalOrigin
+            next := ResearchReference.new(origin, previous.origin == origin ? previous.armedAt : na, level, role, terminalStatus)
+        else if previous.origin == origin and previous.role == role and previous.state == "ARMED"
+            next := previous
+        else if broken
+            next := ResearchReference.new(origin, na, level, role, resetAllowed ? "RESET PENDING" : "PREBREACHED")
+        else
+            next := ResearchReference.new(origin, time_close, level, role, "ARMED")
+    next
+
+researchRow(table panel, int rowNumber, string name, string value, string detail = "") =>
+    table.cell(panel, 0, rowNumber, name, text_color = color.rgb(158, 179, 204), text_size = size.small, text_halign = text.align_left)
+    table.cell(panel, 1, rowNumber, value, text_color = color.rgb(230, 238, 249), text_size = size.small, text_halign = text.align_left, tooltip = detail)
+
+// Qualified feed identities. Exact TradingView IDs bind venue and product.
+string researchProduct = switch syminfo.tickerid
+    "BINANCE:PAXGUSDT" => syminfo.basecurrency == "PAXG" ? "Spot" : ""
+    "BINANCE:XAUTUSDT" => syminfo.basecurrency == "XAUT" ? "Spot" : ""
+    "BINANCE:BTCUSDT" => syminfo.basecurrency == "BTC" ? "Spot" : ""
+    "BINANCE:ETHUSDT" => syminfo.basecurrency == "ETH" ? "Spot" : ""
+    // TradingView can omit the base for this contract. Exact ID and Binance metadata bind XAU.
+    "BINANCE:XAUUSDT.P" => syminfo.basecurrency == "" or syminfo.basecurrency == "XAU" ? "USDT-margined gold perpetual" : ""
+    => ""
+bool researchMarketOK = researchProduct != "" and syminfo.currency == "USDT" and syminfo.mintick == 0.01
+bool researchChartOK = researchMarketOK and timeframe.isminutes and timeframe.multiplier == 5 and chart.is_standard
+string researchGate = not chart.is_standard or not timeframe.isminutes or timeframe.multiplier != 5 ? "INSUFFICIENT · use standard 5m candles" : researchProduct == "" ? "INSUFFICIENT · unqualified venue/product" : "INSUFFICIENT · quote/tick mismatch"
+
+[aiHighPivot, aiLowPivot, aiPivotValid, aiEnough] = strictPivots(aiWindow, aiWindow)
+// Every field comes from completed bars of this exact chart product.
+// Confirm the latest 50 HTF opens span exactly 49 intervals before using the EMA context.
+[aiHourOpen, aiHourClose, aiHourFirst, aiHourFast, aiHourSlow] = if researchChartOK
+    request.security(syminfo.tickerid, "60", [time[1], time_close[1], time[50], ta.ema(close, 20)[1], ta.ema(close, 50)[1]], lookahead = barmerge.lookahead_on)
+else
+    [int(na), int(na), int(na), float(na), float(na)]
+[aiFourOpen, aiFourClose, aiFourFirst, aiFourFast, aiFourSlow] = if researchChartOK
+    request.security(syminfo.tickerid, "240", [time[1], time_close[1], time[50], ta.ema(close, 20)[1], ta.ema(close, 50)[1]], lookahead = barmerge.lookahead_on)
+else
+    [int(na), int(na), int(na), float(na), float(na)]
+
+qualifiedContext(int opened, int closed, int first, int period, float fast, float slow) =>
+    int boundary = time - time % period
+    closed == boundary and opened == boundary - period and opened - first == 49 * period and fast > 0 and slow > 0
+
+float aiEma20 = ta.ema(close, 20)
+float aiEma50 = ta.ema(close, 50)
+float aiEma200 = ta.ema(close, 200)
+float aiRsi = ta.rsi(close, 14)
+var array<int> aiOrigins = array.new<int>()
+var array<float> aiLevels = array.new<float>()
+var array<bool> aiHighs = array.new<bool>()
+var int aiEpoch = na
+var int aiRun = 0
+var int aiShiftAt = na
+var int aiTerminalHigh = na
+var int aiTerminalLow = na
+var string aiTerminalHighStatus = ""
+var string aiTerminalLowStatus = ""
+var ResearchReference aiUpper = ResearchReference.new()
+var ResearchReference aiLower = ResearchReference.new()
+var string aiStructure = "INSUFFICIENT"
+var string aiEvent = "—"
+var int aiEventAt = na
+var float aiEventLevel = na
+var string aiWorkflow = "INSUFFICIENT"
+var string aiContext = "INSUFFICIENT"
+var string aiMomentum = "WARMUP"
+var string aiGeometry = "—"
+var string aiFib = "—"
+var float aiGapLo = na
+var float aiGapHi = na
+var int aiGapSide = 0
+var int aiGapKnown = na
+var string aiGapState = "—"
+var float aiBlockLo = na
+var float aiBlockHi = na
+var int aiBlockSide = 0
+var int aiBlockKnown = na
+var string aiBlockState = "—"
+var int aiContactOrigin = na
+var bool aiTouched = false
+var bool aiEpisodeEnded = false
+var int aiDecisionAt = na
+var int aiContextHourAt = na
+var int aiContextFourAt = na
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    aiDecisionAt := time_close
+    bool contiguous = complete and adjacent
+    if not contiguous
+        array.clear(aiOrigins)
+        array.clear(aiLevels)
+        array.clear(aiHighs)
+        aiEpoch := complete ? time : time_close
+        aiContactOrigin := na
+        aiTouched := false
+        aiEpisodeEnded := false
+        aiGapLo := na
+        aiGapHi := na
+        aiGapKnown := na
+        aiGapSide := 0
+        aiGapState := "—"
+        aiBlockLo := na
+        aiBlockHi := na
+        aiBlockKnown := na
+        aiBlockSide := 0
+        aiBlockState := "—"
+    aiRun := complete ? (contiguous ? aiRun + 1 : 1) : 0
+
+    // The reference from the preceding closed evaluation belongs to this bar's open.
+    bool crossHigh = contiguous and aiUpper.state == "ARMED" and aiUpper.armedAt <= time and close[1] <= aiUpper.level and close > aiUpper.level
+    bool crossLow = contiguous and aiLower.state == "ARMED" and aiLower.armedAt <= time and close[1] >= aiLower.level and close < aiLower.level
+    // Latest experimental block: opposite body immediately before a continuation cross.
+    if contiguous and not na(aiBlockKnown) and time >= aiBlockKnown and aiBlockState != "INVALIDATED"
+        if aiBlockSide == 1 and close < aiBlockLo or aiBlockSide == -1 and close > aiBlockHi
+            aiBlockState := "INVALIDATED"
+        else if high >= aiBlockLo and low <= aiBlockHi
+            aiBlockState := "GEOMETRIC TEST"
+    if crossHigh or crossLow
+        ResearchReference broken = crossHigh ? aiUpper : aiLower
+        bool continuation = broken.role == "HH" or broken.role == "LL"
+        aiEvent := (continuation ? "BOS candidate " : "CHoCH candidate ") + (crossHigh ? "↑" : "↓")
+        aiEventAt := time_close
+        aiEventLevel := broken.level
+        if crossHigh
+            aiTerminalHigh := broken.origin
+            aiTerminalHighStatus := "CONSUMED"
+        else
+            aiTerminalLow := broken.origin
+            aiTerminalLowStatus := "CONSUMED"
+        if not continuation
+            aiShiftAt := time_close
+        if continuation and (crossHigh and close[1] < open[1] or crossLow and close[1] > open[1])
+            aiBlockLo := low[1]
+            aiBlockHi := high[1]
+            aiBlockSide := crossHigh ? 1 : -1
+            aiBlockKnown := time_close
+            aiBlockState := "OPEN"
+
+    // Use only previous-snapshot UP support for the independent Lesson 08-style view.
+    bool contextOK = qualifiedContext(aiHourOpen, aiHourClose, aiHourFirst, HOUR, aiHourFast, aiHourSlow) and qualifiedContext(aiFourOpen, aiFourClose, aiFourFirst, 4 * HOUR, aiFourFast, aiFourSlow)
+    aiContextHourAt := contextOK ? aiHourClose : na
+    aiContextFourAt := contextOK ? aiFourClose : na
+    bool bullishContext = contextOK and aiHourFast > aiHourSlow and aiFourFast > aiFourSlow
+    bool bearishContext = contextOK and aiHourFast < aiHourSlow and aiFourFast < aiFourSlow
+    aiContext := not contextOK ? "INSUFFICIENT" : bullishContext ? "1H / 4H up" : bearishContext ? "1H / 4H down" : "1H / 4H mixed or flat"
+    aiMomentum := aiRun < 200 or na(aiRsi) ? "WARMUP · " + str.tostring(aiRun) + "/200" : "EMA20/50/200 " + (aiEma20 > aiEma50 and aiEma50 > aiEma200 ? "↑" : aiEma20 < aiEma50 and aiEma50 < aiEma200 ? "↓" : "mixed") + " · RSI " + str.tostring(aiRsi, "#.0")
+    int supportTicks = int(math.round(aiLower.level / syminfo.mintick))
+    int closeTicks = int(math.round(close / syminfo.mintick))
+    int lowTicks = int(math.round(low / syminfo.mintick))
+    int highTicks = int(math.round(high / syminfo.mintick))
+    int floorTicks = supportTicks - aiZoneTicks
+    int ceilingTicks = supportTicks + aiZoneTicks
+    bool supportKnown = contiguous and aiLower.role == "HL" and aiLower.state == "ARMED" and aiLower.armedAt <= time and floorTicks > 0
+    bool touch = supportKnown and highTicks >= floorTicks and lowTicks <= ceilingTicks
+    bool invalidSupport = supportKnown and closeTicks < floorTicks
+    bool rejects = aiWick and close > open and math.min(open, close) - low >= 2 * math.abs(close - open) and closeTicks > ceilingTicks
+    if supportKnown and (na(aiContactOrigin) or aiContactOrigin != aiLower.origin)
+        aiContactOrigin := aiLower.origin
+        aiTouched := false
+        aiEpisodeEnded := false
+    bool supportConsumed = supportKnown and crossLow
+    bool departure = supportKnown and aiTouched and lowTicks > ceilingTicks
+    if invalidSupport or departure or supportConsumed
+        aiEpisodeEnded := true
+    if touch and bullishContext and not aiEpisodeEnded
+        aiTouched := true
+    bool reaction = touch and bullishContext and not aiEpisodeEnded and (engulf or rejects)
+    aiWorkflow := not contiguous or not contextOK ? "INSUFFICIENT · closed data" : not bullishContext ? "WAIT · 1H / 4H bullish alignment" : not supportKnown ? "WAIT · prior UP support" : invalidSupport ? "REASSESS · support closed through" : supportConsumed ? "REASSESS · support reference consumed" : aiEpisodeEnded ? "REASSESS · episode ended" : not touch ? "WAIT · geometric overlap" : reaction ? "OBSERVED · closed reaction" : "WAIT · closed reaction"
+    aiGeometry := "—"
+    if reaction and bullishContext and aiUpper.role == "HH" and aiUpper.state == "ARMED"
+        float stopLevel = (floorTicks - 1) * syminfo.mintick
+        float targetLevel = aiUpper.level
+        if stopLevel > 0 and stopLevel < close and close < targetLevel
+            aiGeometry := str.tostring(close, format.mintick) + " / " + str.tostring(stopLevel, format.mintick) + " / " + str.tostring(targetLevel, format.mintick) + " · " + str.tostring((targetLevel - close) / (close - stopLevel), "#.00") + "R"
+
+    // One most recent three-bar gap, tested only after it was first observable.
+    if contiguous and not na(aiGapKnown) and time >= aiGapKnown and aiGapState == "OPEN"
+        if low <= aiGapHi and high >= aiGapLo
+            aiGapState := "GEOMETRIC TEST"
+    if contiguous and adjacent[1]
+        if low > high[2] or high < low[2]
+            aiGapSide := low > high[2] ? 1 : -1
+            aiGapLo := aiGapSide == 1 ? high[2] : high
+            aiGapHi := aiGapSide == 1 ? low : low[2]
+            aiGapKnown := time_close
+            aiGapState := "OPEN"
+
+    // Fixed-width origins advance monotonically. Keep a single terminal watermark per side.
+    // Admit current confirmed pivots only after evaluating the earlier-open references.
+    if aiEnough and aiPivotValid and time[2 * aiWindow] >= aiEpoch
+        if aiHighPivot and aiLowPivot
+            array.clear(aiOrigins)
+            array.clear(aiLevels)
+            array.clear(aiHighs)
+        else if aiHighPivot or aiLowPivot
+            int count = array.size(aiHighs)
+            if count > 0 and array.get(aiHighs, count - 1) == aiHighPivot
+                array.clear(aiOrigins)
+                array.clear(aiLevels)
+                array.clear(aiHighs)
+            array.push(aiOrigins, time[aiWindow])
+            array.push(aiLevels, aiHighPivot ? high[aiWindow] : low[aiWindow])
+            array.push(aiHighs, aiHighPivot)
+            if array.size(aiOrigins) > 4
+                array.shift(aiOrigins)
+                array.shift(aiLevels)
+                array.shift(aiHighs)
+
+    aiStructure := not contiguous ? "INSUFFICIENT" : not na(aiShiftAt) ? "POSSIBLE SHIFT" : "UNKNOWN"
+    ResearchReference nextHigh = ResearchReference.new()
+    ResearchReference nextLow = ResearchReference.new()
+    aiFib := "—"
+    if contiguous and array.size(aiOrigins) == 4
+        int hiIndex = array.get(aiHighs, 3) ? 3 : 2
+        int loIndex = 5 - hiIndex
+        float upperLevel = array.get(aiLevels, hiIndex)
+        float lowerLevel = array.get(aiLevels, loIndex)
+        int upperOrigin = array.get(aiOrigins, hiIndex)
+        int lowerOrigin = array.get(aiOrigins, loIndex)
+        bool up = upperLevel > array.get(aiLevels, hiIndex - 2) and lowerLevel > array.get(aiLevels, loIndex - 2)
+        bool down = upperLevel < array.get(aiLevels, hiIndex - 2) and lowerLevel < array.get(aiLevels, loIndex - 2)
+        if not na(aiShiftAt) and array.get(aiOrigins, 0) >= aiShiftAt
+            aiShiftAt := na
+            aiStructure := "UNKNOWN"
+        if na(aiShiftAt) and upperLevel > lowerLevel and (up or down)
+            aiStructure := up ? "UP" : "DOWN"
+            nextHigh := updateRef(aiUpper, upperOrigin, upperLevel, up ? "HH" : "LH", aiTerminalHigh, aiTerminalHighStatus, true, aiPolicy == "R1-B")
+            nextLow := updateRef(aiLower, lowerOrigin, lowerLevel, up ? "HL" : "LL", aiTerminalLow, aiTerminalLowStatus, false, aiPolicy == "R1-B")
+            if nextHigh.state == "PREBREACHED"
+                aiTerminalHigh := nextHigh.origin
+                aiTerminalHighStatus := "PREBREACHED"
+            if nextLow.state == "PREBREACHED"
+                aiTerminalLow := nextLow.origin
+                aiTerminalLowStatus := "PREBREACHED"
+            if up and lowerOrigin < upperOrigin or down and upperOrigin < lowerOrigin
+                float distance = upperLevel - lowerLevel
+                float startFib = up ? upperLevel : lowerLevel
+                float direction = up ? -1.0 : 1.0
+                aiFib := str.tostring(startFib + direction * distance * 0.5, format.mintick) + " / " + str.tostring(startFib + direction * distance * 0.618, format.mintick) + " / " + str.tostring(startFib + direction * distance * 0.705, format.mintick)
+    aiUpper := nextHigh
+    aiLower := nextLow
+
+var table aiPanel = table.new(position.bottom_left, 2, 11, bgcolor = color.rgb(20, 26, 36), frame_color = color.rgb(55, 70, 91), frame_width = 1)
+if barstate.islast and aiEnabled
+    researchRow(aiPanel, 0, "Experimental research", BUILD_ID + " · " + aiPolicy)
+    researchRow(aiPanel, 1, "Closed cutoff", researchChartOK ? utc(aiDecisionAt) : researchGate)
+    researchRow(aiPanel, 2, "Structure / last event", aiStructure + " · " + aiEvent + (na(aiEventAt) ? "" : " " + utc(aiEventAt) + " @ " + str.tostring(aiEventLevel, format.mintick)))
+    researchRow(aiPanel, 3, "High / low references", showRef(aiUpper) + " / " + showRef(aiLower))
+    researchRow(aiPanel, 4, "HTF / momentum", aiContext + " · " + aiMomentum, "Confirmed closes (UTC): 1H " + utc(aiContextHourAt) + " / 4H " + utc(aiContextFourAt))
+    researchRow(aiPanel, 5, "Prior support reaction", aiWorkflow)
+    researchRow(aiPanel, 6, "Nominal E / SL / TP", aiGeometry)
+    researchRow(aiPanel, 7, "Latest 3-bar gap", na(aiGapKnown) ? "—" : (aiGapSide == 1 ? "Bull " : "Bear ") + aiGapState + " · " + str.tostring(aiGapLo, format.mintick) + "–" + str.tostring(aiGapHi, format.mintick))
+    researchRow(aiPanel, 8, "Fib 50 / 61.8 / 70.5", aiFib)
+    researchRow(aiPanel, 9, "Latest OB / supply-demand", na(aiBlockKnown) ? "—" : (aiBlockSide == 1 ? "Demand " : "Supply ") + aiBlockState + " · " + str.tostring(aiBlockLo, format.mintick) + "–" + str.tostring(aiBlockHi, format.mintick))
+    researchRow(aiPanel, 10, "Market / evidence", ticker.standard(syminfo.tickerid) + (researchMarketOK ? " · " + researchProduct + " · tick " + str.tostring(syminfo.mintick, format.mintick) : "") + "\n1H " + utc(aiContextHourAt) + " · 4H " + utc(aiContextFourAt) + " UTC", researchChartOK ? "Chart-clock geometry. 1H / 4H use this exact product. The manual Lesson 08 setup remains scoped to PAXGUSDT Spot." : researchGate)
