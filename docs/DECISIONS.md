@@ -62,6 +62,12 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 | --- | --- | --- | --- |
 | D-036 | The owner authorized sequential PR #2 and PR #3 integration and a new version of the named private script after the applicable gates passed. | Use ancestry-preserving merges, keep version 7.0 as rollback and accept v0.1.11 for bounded private research. | [Integration and private version 8 acceptance](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht). |
 
+## v1.1 crypto-universe scope clarification — 2026-11-14 Asia/Manila
+
+| ID | Decision | Scope and guardrails | Evidence / next work |
+| --- | --- | --- | --- |
+| **D-037** | **Owner clarified “all markets” means all cryptocurrency markets: spot, futures, perpetual swaps and other crypto derivatives—not forex, equities or other traditional assets.** Do not treat the five v1 Binance instruments as a permanent symbol whitelist. | Extend D-013 beyond crypto spot or five named products to crypto instruments on multiple TradingView venues and quote currencies **when chart data and a product-specific adapter support correct interpretation**. Futures include linear and inverse/coin-margined contracts; expiry, settlements, missing data, tick precision and exchange/session semantics require qualification. Do not infer that every instrument is currently supported or empirically validated. Maintain original Coach/PCSS source study and distinct Coach vs AI experimental claims. | [v1.1 scope and falsifiable qualification plan](implementation/v1-1-crypto-universe-qualification.md); [market scope historical/context](MARKET_SCOPE.md). Preserve accepted v1 `8e60a982385e46aa818acb49103f1dedbe856b77`, private saved version 8.0 and version 7 rollback. Plan and documentation alone do not authorize claiming a new native runtime acceptance or trading edge. |
+
 ## Why indicator-first is a working default
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
