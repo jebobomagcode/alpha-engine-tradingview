@@ -77,3 +77,19 @@ The [15-bar event receipt](../research/evidence/binance-paxgusdt-v015-lifecycle-
 ## Integration and release decision
 
 The three candidate commits qualify the five feeds, handle the native gold-contract metadata and provide the lifecycle audit, and clarify nonstandard chart rejection. The PR is mechanically mergeable and source CI is green. Browser-session restoration propagated the temporary chart instance across two tabs on the same layout. The rollback restored the saved layout and the named private script remained at version 5 throughout. Private v0.1.6 persistence remains the release gate. Keep the existing named version 5 until the project can establish private candidate durability under the replacement safeguards. The bounded next acceptance should verify exact named source and build after script save, layout save and same-cutoff reload, and compare all 24 controls. No new indicator functionality is required for that gate. No private screenshot, account detail or chart identifier is stored in this repository.
+
+## Named private release acceptance — 2026-11-13 PHT
+
+**Accepted private version 6**, in the existing named Alpha Engine TradingView script. No second private script was created. The original standalone v0.1.3 and integrated v0.1.4/v0.1.5 releases remain rollback anchors.
+
+| Gate | Result |
+| --- | --- |
+| GitHub refs and source identity | **PASS.** Started with PR #2 at `a60385b55c5605a6eda42359c9572a83876cbbe0` and main at `319459863fc138e8d347a1b00bc1de56fabb114c`. Candidate bytes, SHA-256 and Git blob matched the pinned source in this ledger. The [checkpoint CI job](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43369603707) passed 127 checks. |
+| Rollback before replacement | **PASS.** Opened named version 5, copied back the complete source, matched GitHub bytes and hash, verified version history and all 24 displayed controls on the accepted layout. |
+| Exact native compilation and private save | **PASS.** Verified the exact editor buffer before using **Update on chart**. TradingView compiled the exact v0.1.6 build and saved private version 6 at 13:17 PHT as part of that operation. The menu's Save script command was disabled after the update. Version history displayed 6, 5 and 4. The later save of the chart layout was a separate action. |
+| Chart layout save and normal reload | **PASS.** Layout reported All changes saved at 13:18:08 PHT. Normal reload at 13:18:21 PHT restored the sole exact build on standard `BINANCE:PAXGUSDT` Spot 5m. The script panel finished loading before comparison. |
+| Same closed cutoff | **PASS.** Before and after reload at 05:15 UTC the panel showed DOWN, the retained 01:20 upward BOS candidate at 3892.41, armed LH 3915.53 and LL 3900.98, 1H/4H down, RSI 51.7, WAIT for bullish alignment, bull gap OPEN 3905.26–3905.38, Fib 3908.26 / 3909.97 / 3911.24, demand OPEN 3887.22–3891.60, and confirmed HTF closes 1H 05:00 and 4H 04:00 UTC. |
+| Reopened named source and all controls | **PASS.** Reopened version 6 after reload. Complete normalized source SHA-256 `9376df68e43cb76d260ab109ca69b1b2813366a75072856b506ae2397f76fcec`; all 24 control values matched the pre-save manifest, including R1-A, width 2, one tick, wick alternative OFF and manual setup/M01/nominal geometry OFF. |
+| Cross-device restoration | **NOT RUN.** Acceptance covers this browser session and the reopened named private version. |
+
+The earlier temporary candidate observations remain above as historical evidence. The accepted source is byte-identical to the five-market candidate. PR #2 remains draft. The first structural visualization increment proceeds separately from this release.

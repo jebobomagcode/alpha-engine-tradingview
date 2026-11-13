@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## Accepted private v0.1.6 release — 2026-11-13 PHT
+
+- **PASS:** Named private version 6, build `AE-0.1.6-00d26a21011a`. Native compile, separate layout save, exact reopened source, all 24 controls and same 05:15 UTC research state after reload on standard Binance PAXGUSDT Spot 5m. Private version 5 exact rollback verified and retained in history. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht).
+- The accepted source remains at `0cd16934a203d894d2164f83a376d03eff2afd19`. Main stays at `319459863fc138e8d347a1b00bc1de56fabb114c`; PR #2 stays draft. Develop the initial chart structure overlay on a separate branch.
+
 ## v0.1.6 five-market candidate and v0.1.5 native edge audit — 2026-11-13 UTC
 
 - [Market qualification and acceptance ledger](implementation/phase3-6-v016-market-qualification.md). Candidate source `0cd16934a203d894d2164f83a376d03eff2afd19`, build `AE-0.1.6-00d26a21011a`. Exact editor/native compile and standard 5m checks passed for Binance PAXGUSDT, XAUTUSDT, BTCUSDT, ETHUSDT Spot and XAUUSDT gold perpetual. The manual Lesson 08 setup remains specific to PAXGUSDT Spot.

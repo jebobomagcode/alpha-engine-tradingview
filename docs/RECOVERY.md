@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current accepted private v0.1.6 release — 2026-11-13 PHT
+
+Verify main and draft PR #2 before resuming. The existing named TradingView script restores private version 6, build `AE-0.1.6-00d26a21011a` on standard Binance PAXGUSDT Spot 5m. Exact version 6 source, all 24 controls and the same 05:15 UTC cutoff passed normal reload. Version 5 is the exact verified rollback. [Release acceptance](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht). Keep the release source pinned while developing the structural chart overlay on a separate branch.
+
 ## Current v0.1.6 native market candidate — 2026-11-13 UTC
 
 Verify actual [draft PR #2](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/2) and main. Start with the [v0.1.6 qualification ledger](implementation/phase3-6-v016-market-qualification.md). Source commit `0cd16934a203d894d2164f83a376d03eff2afd19` and build `AE-0.1.6-00d26a21011a` passed exact-source native checks for five specified Binance 5m feeds, 127 local and CI regressions, and 21 separate research tests. Accepted private v0.1.5 remains named version 5 with exact bytes and all 24 controls verified. The temporary chart instance persisted across tabs during the same-session test. The original layout was explicitly restored to v0.1.5, saved, and reloaded successfully. The native lifecycle probe was temporary. Review the separate market-history and injected-helper outcomes. Resume at the bounded private durability/reload gate without restarting earlier studies or widening features. Keep the current script and earlier rollback versions until the release safeguards are satisfied.

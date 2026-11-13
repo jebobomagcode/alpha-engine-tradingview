@@ -54,6 +54,8 @@ Owner directions beginning **2026-11-09 (Asia/Manila)**, with later dated decisi
 
 | D-034 | **Bounded v0.1.6 market qualification (2026-11-13 UTC).** | **INDEPENDENT_EXTENSION / EXPERIMENTAL.** Qualify four exact Binance Spot symbols and the distinct Binance gold perpetual on standard 5m, using venue/product identity, USDT, tick, and same-product confirmed HTF data. Retain the PAXGUSDT manual Lesson 08 scope. [Native and frozen evidence](implementation/phase3-6-v016-market-qualification.md). | Native compilation and five-feed chart samples passed. The candidate remains on draft PR #2. Private replacement and integration follow their separate release gates. |
 
+| D-035 | **Accept exact v0.1.6 privately and stage the visual layer separately (2026-11-13 PHT).** | The existing named private script saved version 6. Exact reopened source, same-cutoff chart reload and all 24 inputs passed; version 5 is retained as the exact rollback. [Native release evidence](implementation/phase3-6-v016-market-qualification.md#named-private-release-acceptance--2026-11-13-pht). | Keep PR #2 draft. Start with read-only causal swing labels, qualified reference lines and experimental BOS/possible CHoCH annotations on a separate branch. |
+
 ## Why indicator-first is a working default
 Coach's material emphasizes chart context, zones, waiting for confluence/confirmation, and discretion. The degree of objective specification is not yet established. Starting with a visualization/diagnostic indicator allows source-faithful investigation without immediately manufacturing executable order rules. A strategy remains a planned *evaluation adapter*, not proof of profitable trading.
 
