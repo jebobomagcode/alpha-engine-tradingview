@@ -21,7 +21,7 @@ Eleven explicitly constructed, hand-adjudicated Python tests are in `tests/test_
 | Gate | Status |
 | --- | --- |
 | v0.1.4 prior private acceptance | PASS within prior recorded scope |
-| New isolated lifecycle Python tests | CI PENDING |
+| New isolated lifecycle Python tests | **PASS:** 11/11 new cases; [GitHub Actions 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361) **95/95** standard checks overall |
 | Same synthetic close sequence through actual Pine native executor | NOT RUN |
 | Matched cutoff Pine/experimental Python lifecycle event parity | NOT RUN |
 | Wider venues/timeframes/cache-bypass persistence | OPEN_UNRESOLVED |

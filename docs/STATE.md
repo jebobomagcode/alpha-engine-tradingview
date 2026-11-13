@@ -1,5 +1,12 @@
 # Current project state — canonical checkpoint
 
+## v0.1.4 lifecycle controlled-model QA — 2026-11-13 PHT
+
+- **PASS:** [GitHub Actions run 43333980361](https://github.com/jebobomagcode/alpha-engine-tradingview/actions/runs/43333980361), **95/95** (84 prior standard + 11 new controlled lifecycle tests); existing 21 separate structural research tests were not rerun by this job.
+- [Zone/reaction lifecycle oracle](../research/phase3_6/lifecycle_parity_oracle.py) and [adversarial fixtures](../tests/test_phase3_6_lifecycle_parity_oracle.py) now pin later-than-creation block/gap tests, bullish/bearish block invalidation, sticky invalidated status, same-bar support invalidation before reaction, engulf on contact, terminal departure, fresh anchor reset, context UNKNOWN, and missing-adjacent withholding. All constructed evidence is synthetic. [Bounded scope and remaining native parity gate](implementation/phase3-6-lifecycle-parity-checks.md).
+- **NOT RUN:** execution of these synthetic candles through actual Pine/TradingView or true Pine-vs-Python dynamic equality. v0.1.4 private saved build stays unchanged, PR #2 remains draft and main remains v0.1.3; model tests are not a native acceptance upgrade.
+- **Next unresolved policy:** R1-B rearming the *same* structural anchor after a reset does not necessarily identify a new zone/reaction episode. Specify/test epoch identity and avoid inadvertently reopening terminal zones. Compare actual native bar cutoffs where feasible before upgrading release claims.
+
 ## D-032/D-033 integrated research v0.1.4 — private release checkpoint
 
 - [Pine v0.1.4 private acceptance](implementation/ai-only-integrated-candidate.md): experimental structure, locations, momentum, prior 1H/4H context, 5m support reaction, and nominal geometry on draft PR #2. GitHub `main` remains the v0.1.3 checkpoint, and the exact verified v0.1.3 rollback is preserved.
