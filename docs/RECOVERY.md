@@ -1,5 +1,9 @@
 # New ChatGPT conversation recovery — START HERE
 
+## Current order-block and FVG overlay — 2026-11-13 PHT
+
+Verify [draft PR #3](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/3) and its base draft PR #2. Start with the [zone visualization acceptance](implementation/phase3-7-zone-overlay.md). Exact source `14b57b6148a6c39d215ca309354544a59c6a5e74` compiled and passed native PAXGUSDT/BTCUSDT Spot 5m render checks. The original named script and restored chart remain private v0.1.6 version 6. Resume at the next visualization layer.
+
 ## Current chart overlay development — 2026-11-13 PHT
 
 Read the [structure overlay acceptance record](implementation/phase3-7-structure-overlay.md) and verify `feat/causal-structure-overlay` separately from draft PR #2. Candidate source `5fcd4caf099f57340aa3fc4e6aa972428f358a3c` compiled and rendered on native Binance Spot PAXGUSDT and BTCUSDT standard 5m charts. The saved named private script and original layout still restore v0.1.6 version 6. Resume at the bounded zone/gap layer and preserve the structure checks.

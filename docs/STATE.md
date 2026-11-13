@@ -1,5 +1,11 @@
 # Current project state — canonical checkpoint
 
+## Order-block and FVG chart overlay candidate — 2026-11-13 PHT
+
+- [Native zone overlay](implementation/phase3-7-zone-overlay.md) renders the latest experimental supply/demand block and three-bar FVG from their source known-at cutoffs. Build `AE-0.1.8-6927cc23e060`, source `14b57b6148a6c39d215ca309354544a59c6a5e74`. The structure drawings, dashboard and research calculations are preserved.
+- 137 standard checks and 21 separate structural checks passed locally. Native Binance PAXGUSDT and BTCUSDT Spot 5m rendered the final build. A read-only instrumented scan covered 10,632 closed bars with zero drawing-state violations. Visibility and 15m withholding passed.
+- [Draft PR #3](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/3) stays stacked on draft PR #2. The original chart was restored to the exact private v0.1.6 version 6. Next visualization work covers Fib, EMA, reaction markers and nominal risk geometry.
+
 ## First chart visualization candidate — 2026-11-13 PHT
 
 - [Native structure overlay](implementation/phase3-7-structure-overlay.md) adds bounded experimental swing and crossing labels and up to two active levels. Source `5fcd4caf099f57340aa3fc4e6aa972428f358a3c`, build `AE-0.1.7-9e93706426d6`. Exact native compile, PAXGUSDT/BTCUSDT Spot 5m chart checks, 15m withholding and 05:25 UTC v0.1.6 dashboard parity passed. 131 local standard and 21 separate structural tests passed.
