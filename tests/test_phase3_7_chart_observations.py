@@ -65,6 +65,6 @@ class ChartObservationsTests(unittest.TestCase):
         self.assertEqual(self.display.count("label.new("), 1)
         self.assertIn('visualGeometry = input.bool(false, "Nominal entry / stop / target"', self.display)
         self.assertIn('options = ["Corners", "Both left", "Research only", "Hidden"]', self.display)
-        self.assertIn("table.set_position(panel,", self.display)
+        self.assertIn('table.set_position(panel, panelLayout == "Both left" ? position.middle_left', self.display)
         self.assertIn("table.clear(aiPanel, 0, 0, 1, 10)", self.display)
         self.assertIn("table.clear(panel, 0, 0, 1, 15)", self.display)

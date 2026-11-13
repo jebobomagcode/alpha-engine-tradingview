@@ -2,7 +2,7 @@
 indicator("Alpha Engine | Integrated Research v0.1.10", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 54, max_lines_count = 8)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.10-f9c4f8af6c84"
+const string BUILD_ID = "AE-0.1.10-148c152b12d2"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -768,7 +768,7 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
 
 // Placement and visibility are display-only. All existing dashboard rows remain available.
 if barstate.islast
-    table.set_position(panel, panelLayout == "Both left" ? position.top_left : position.top_right)
+    table.set_position(panel, panelLayout == "Both left" ? position.middle_left : position.top_right)
     if panelLayout == "Research only" or panelLayout == "Hidden"
         table.clear(panel, 0, 0, 1, 15)
     if panelLayout == "Hidden"
