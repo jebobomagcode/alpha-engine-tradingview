@@ -6,6 +6,8 @@ import re
 import subprocess
 import unittest
 
+from overlay_source_fixture import without_new_visuals
+
 from research.phase3_6.ai_structure_candidate import replay_structure
 from test_phase3_6_integrated_replay import frozen_tape
 
@@ -19,7 +21,7 @@ SEPARATOR = "\n// Chart structure overlay. Read only the accepted closed researc
 class StructureOverlayTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        source = (ROOT / SOURCE_PATH).read_text()
+        source = without_new_visuals((ROOT / SOURCE_PATH).read_text())
         cls.core, overlay = source.split(SEPARATOR, 1)
         cls.overlay = overlay.split("\n// Chart zone overlay.", 1)[0]
 

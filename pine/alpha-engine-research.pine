@@ -1,8 +1,8 @@
 //@version=6
-indicator("Alpha Engine | Integrated Research v0.1.8", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 37, max_lines_count = 2)
+indicator("Alpha Engine | Integrated Research v0.1.9", overlay = true, max_bars_back = 250, max_boxes_count = 3, max_labels_count = 37, max_lines_count = 5)
 
 // Build SHA-256 input is this file with this literal replaced by __BUILD__.
-const string BUILD_ID = "AE-0.1.8-6927cc23e060"
+const string BUILD_ID = "AE-0.1.9-98ca36885208"
 const string SYMBOL = "BINANCE:PAXGUSDT"
 const int STEP = 300000
 const int HOUR = 3600000
@@ -329,6 +329,13 @@ var string aiContext = "INSUFFICIENT"
 var string aiMomentum = "WARMUP"
 var string aiGeometry = "—"
 var string aiFib = "—"
+// Numeric values and pivot identities for the same dashboard Fibonacci observation.
+var float aiFib50 = na
+var float aiFib618 = na
+var float aiFib705 = na
+var int aiFibUpperOrigin = na
+var int aiFibLowerOrigin = na
+var bool aiFibUp = false
 var float aiGapLo = na
 var float aiGapHi = na
 var int aiGapSide = 0
@@ -473,6 +480,9 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
     ResearchReference nextHigh = ResearchReference.new()
     ResearchReference nextLow = ResearchReference.new()
     aiFib := "—"
+    aiFib50 := na
+    aiFib618 := na
+    aiFib705 := na
     if contiguous and array.size(aiOrigins) == 4
         int hiIndex = array.get(aiHighs, 3) ? 3 : 2
         int loIndex = 5 - hiIndex
@@ -499,7 +509,13 @@ if aiEnabled and researchChartOK and barstate.isconfirmed
                 float distance = upperLevel - lowerLevel
                 float startFib = up ? upperLevel : lowerLevel
                 float direction = up ? -1.0 : 1.0
-                aiFib := str.tostring(startFib + direction * distance * 0.5, format.mintick) + " / " + str.tostring(startFib + direction * distance * 0.618, format.mintick) + " / " + str.tostring(startFib + direction * distance * 0.705, format.mintick)
+                aiFib50 := startFib + direction * distance * 0.5
+                aiFib618 := startFib + direction * distance * 0.618
+                aiFib705 := startFib + direction * distance * 0.705
+                aiFibUpperOrigin := upperOrigin
+                aiFibLowerOrigin := lowerOrigin
+                aiFibUp := up
+                aiFib := str.tostring(aiFib50, format.mintick) + " / " + str.tostring(aiFib618, format.mintick) + " / " + str.tostring(aiFib705, format.mintick)
     aiUpper := nextHigh
     aiLower := nextLow
 
@@ -638,3 +654,53 @@ var ZoneDrawing visualGap = ZoneDrawing.new()
 if aiEnabled and researchChartOK and barstate.isconfirmed
     visualBlock := drawResearchZone(visualBlock, visualBlocks, false, aiBlockKnown, aiDecisionAt, aiBlockLo, aiBlockHi, aiBlockSide, aiBlockState)
     visualGap := drawResearchZone(visualGap, visualGaps, true, aiGapKnown, aiDecisionAt, aiGapLo, aiGapHi, aiGapSide, aiGapState)
+
+// Chart Fibonacci and EMA overlays. The dashboard and drawings share the observed values.
+const string GUIDE_GROUP = "Experimental chart guides"
+bool visualFib = input.bool(true, "Fibonacci 50 / 61.8 / 70.5", group = GUIDE_GROUP)
+bool visualEma20 = input.bool(false, "EMA 20", group = GUIDE_GROUP)
+bool visualEma50 = input.bool(false, "EMA 50", group = GUIDE_GROUP)
+bool visualEma200 = input.bool(false, "EMA 200", group = GUIDE_GROUP)
+
+var line visualFib50 = na
+var line visualFib618 = na
+var line visualFib705 = na
+var int visualFibUpperOrigin = na
+var int visualFibLowerOrigin = na
+var bool visualFibUp = false
+
+drawPriceGuide(line previous, int knownAt, float level, color tint, string style, bool project) =>
+    line drawing = previous
+    if na(level)
+        if not na(drawing)
+            line.delete(drawing)
+        drawing := na
+    else if na(drawing)
+        drawing := line.new(knownAt, level, knownAt + STEP, level, xloc = xloc.bar_time,
+             extend = project ? extend.right : extend.none, color = tint, style = style)
+    else
+        line.set_xy1(drawing, knownAt, level)
+        line.set_xy2(drawing, knownAt + STEP, level)
+    drawing
+
+if aiEnabled and researchChartOK and barstate.isconfirmed
+    bool hasFib = visualFib and not na(aiFib50)
+    bool newFib = hasFib and (na(visualFib50) or aiFibUpperOrigin != visualFibUpperOrigin or
+         aiFibLowerOrigin != visualFibLowerOrigin or aiFibUp != visualFibUp)
+    if newFib or (not hasFib and not na(visualFib50))
+        color fibTint = color.new(color.rgb(163, 155, 218), 26)
+        visualFib50 := drawPriceGuide(visualFib50, aiDecisionAt, hasFib ? aiFib50 : na, fibTint, line.style_dotted, true)
+        visualFib618 := drawPriceGuide(visualFib618, aiDecisionAt, hasFib ? aiFib618 : na, fibTint, line.style_dashed, true)
+        visualFib705 := drawPriceGuide(visualFib705, aiDecisionAt, hasFib ? aiFib705 : na, fibTint, line.style_dotted, true)
+        if newFib
+            visualFibUpperOrigin := aiFibUpperOrigin
+            visualFibLowerOrigin := aiFibLowerOrigin
+            visualFibUp := aiFibUp
+
+bool emaOverlayReady = aiEnabled and researchChartOK and barstate.isconfirmed and aiRun >= 200 and not na(aiRsi)
+plot(visualEma20 and emaOverlayReady ? aiEma20 : na, "Confirmed EMA 20", color = color.rgb(108, 179, 215), style = plot.style_linebr)
+plot(visualEma50 and emaOverlayReady ? aiEma50 : na, "Confirmed EMA 50", color = color.rgb(216, 165, 104), style = plot.style_linebr)
+plot(visualEma200 and emaOverlayReady ? aiEma200 : na, "Confirmed EMA 200", color = color.rgb(169, 150, 207), style = plot.style_linebr)
+plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib50 : na, "Current Fib 50", display = display.data_window)
+plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib618 : na, "Current Fib 61.8", display = display.data_window)
+plot(visualFib and aiEnabled and researchChartOK and barstate.islast ? aiFib705 : na, "Current Fib 70.5", display = display.data_window)

@@ -24,10 +24,10 @@ class IntegratedResearchSourceTests(unittest.TestCase):
 
     def test_build_id_is_derived_from_candidate_bytes(self):
         source = CANDIDATE.read_bytes()
-        match = re.search(rb'const string BUILD_ID = "(AE-0\.1\.8-[a-f0-9]{12})"', source)
+        match = re.search(rb'const string BUILD_ID = "(AE-(0\.1\.\d+)-[a-f0-9]{12})"', source)
         self.assertIsNotNone(match)
         normalized = source.replace(match[1], b"__BUILD__", 1)
-        self.assertEqual(match[1], b"AE-0.1.8-" + hashlib.sha256(normalized).hexdigest()[:12].encode())
+        self.assertEqual(match[1], b"AE-" + match[2] + b"-" + hashlib.sha256(normalized).hexdigest()[:12].encode())
 
     def test_higher_timeframe_inputs_all_use_previous_bar(self):
         extension = CANDIDATE.read_text().split(EXTENSION, 1)[1]

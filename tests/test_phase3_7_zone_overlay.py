@@ -6,6 +6,8 @@ import re
 import subprocess
 import unittest
 
+from overlay_source_fixture import without_new_visuals
+
 from research.phase3_6.integrated_replay import replay_integrated
 from research.phase3_6.lifecycle_parity_oracle import Candle, Zone, advance_zone
 from research.phase3_6.reference_model import Bar
@@ -20,7 +22,7 @@ BASE = "71f48925063b65ca4043a8fe8ee2575480a0d324"
 class ZoneOverlayTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        source = (ROOT / SOURCE).read_text()
+        source = without_new_visuals((ROOT / SOURCE).read_text())
         cls.core, cls.overlay = source.split("\n// Chart zone overlay.", 1)
 
     def test_previous_engine_dashboard_and_structure_overlay_are_exact(self):
