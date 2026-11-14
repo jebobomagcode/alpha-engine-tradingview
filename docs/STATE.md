@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## Active D-039 four-timeframe MTF requirement — 2026-11-14 PHT
+
+- Owner specified **4H, 1H, 15m and 5m** as mandatory MTF analysis layers for the **D-038 Binance USDⓈ-M stablecoin perpetual-only** LONG/SHORT product. Recommended *interpretation*: 4H macro, 1H structure, 15m setup/AOI, 5m trigger/confirmation on standard 5m host chart. Not an all-chart-timeframes authorization or confirmed implementation; see [four-timeframe MTF causal specification](implementation/v1-1-four-timeframe-mtf-contract.md).
+- Current accepted private v1 version 8.0 uses 5m chart + prior 1H/4H context; **15m layer and complete LONG/SHORT four-way parity are NOT IMPLEMENTED / NOT RUN**. Preserve v1 source/rollback, existing test baselines and same-contract evidence, no lookahead.
+
 ## v1.1 Work parity-audit proposal reconciled to D-038 (2026-11-14 PHT)
 
 - Work recommended model-vs-Pine known-at / expiry parity and a positive-state same-cutoff native reload check on existing PAXGUSDT Spot 5m; **retain the audit technique** but under D-038 **do not make Spot a v1.1 runtime target**. Use frozen Spot only as regression, then prioritize verified Binance USDⓈ-M perpetual USDT/USDC data and long/short causal parity. Native positive-state reload is opportunistic and remains **INSUFFICIENT** until observed, not a release PASS or a reason to block independent frozen tests. [Work reconciliation](implementation/v1-1-work-parity-reconciliation.md).
