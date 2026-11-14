@@ -5,6 +5,8 @@
 **Status:** **DRAFT FOR WORK CRITICAL REVIEW — NOT FINAL PRODUCT DESIGN, NOT CODE AUTHORIZATION BY THIS BRIEF.**  
 **Source of truth:** [PR #4](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/4), [DECISIONS](../DECISIONS.md), [STATE](../STATE.md), [RECOVERY](../RECOVERY.md). Recheck current repository refs before work.
 
+**User-facing how-everything-works explanation:** [Provisional full v1.1 product blueprint](../product/v1-1-provisional-how-everything-works.md) consolidates the intended end-to-end chart experience, eligibility, MTF, modules, LONG/SHORT, state lifecycle, risk geometry, interface, notification boundaries, accepted v1 versus v1.1 and proposed stages. Work should critique this document rather than merely approving it. It is **not finalized or natively implemented**.
+
 ## 1. What the owner has actually selected (current preferences, still open to deliberate revision)
 
 These **explicit owner directions** supersede older proposals; their specific technical implementations are not final:
