@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## CURRENT COORDINATION STATUS — D-040 provisional v1.1 review with Work (2026-11-14 PHT)
+
+- The owner explicitly said **the v1.1 product direction is not yet final** and requested a complete Work handoff plus independent Ponder-style design review. Latest owner-preferred scope D-038 = only Binance USDⓈ-M USD-stablecoin perpetuals, LONG/SHORT; D-039 = 4H/1H/15m/5m analysis. Treat the detailed MTF responsibility split, 5m-host default, symbol qualification strategy, state labels, architecture and rollout as **provisional designs** to challenge, not settled implementation rules. Do not restart completed methodology or accepted v1 work.
+- [Work provisional design-review brief](implementation/v1-1-work-provisional-design-review-brief.md) consolidates all facts, design risks, alternatives and requested review deliverables. PR #4 remains draft and documentation-only; accepted private v8 and rollback v7 are unchanged. No full v1.1 code/native acceptance is claimed.
+
 ## Active D-039 four-timeframe MTF requirement — 2026-11-14 PHT
 
 - Owner specified **4H, 1H, 15m and 5m** as mandatory MTF analysis layers for the **D-038 Binance USDⓈ-M stablecoin perpetual-only** LONG/SHORT product. Recommended *interpretation*: 4H macro, 1H structure, 15m setup/AOI, 5m trigger/confirmation on standard 5m host chart. Not an all-chart-timeframes authorization or confirmed implementation; see [four-timeframe MTF causal specification](implementation/v1-1-four-timeframe-mtf-contract.md).
