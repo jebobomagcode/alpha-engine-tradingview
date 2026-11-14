@@ -1,3 +1,19 @@
+# Current owner mandate — Binance USDⓈ-M perpetuals ONLY (D-038; 2026-11-14)
+
+**Active scope:** Binance **USDT- and USDC-settled USDⓈ-M perpetual contracts**, plus any *other verified Binance USD-stablecoin-settled perpetual contract*, with both LONG and SHORT research support. This is a narrower v1.1 product target than historical D-037 and D-013. **Out:** Spot, COIN-M/inverse/coin-settled swaps, dated futures, other exchanges and unrelated traditional feeds. Underlying instruments are eligible only through the verified Binance USDⓈ-M perpetual product family; a qualified gold-referencing XAUUSDT perpetual is not excluded solely because the reference is gold. Do not treat all USD-suffixed symbols as valid or equate collateral with settlement.
+
+This is **not** a statement that the accepted private v1 already handles this entire family. Preserve private v1 version 8.0, version 7 rollback and original Coach study. See [D-038](DECISIONS.md) and the [current v1.1 Binance perpetual qualification plan](implementation/v1-1-binance-usds-m-perpetual-qualification.md).
+
+---
+
+# Current market mandate — crypto-wide coverage (D-037, 2026-11-14)
+
+**Owner clarification:** “all markets” means **all cryptocurrency markets** (spot, dated futures, perpetual swaps, inverse/coin-margined contracts, and other crypto derivatives with adequate TradingView chart evidence). It does **not** mean traditional forex, equities, indices, commodities or other non-crypto asset classes. Expand beyond Binance and beyond any finite symbol whitelist, subject to explicit instrument/feed/timeframe capabilities and test qualification. This is a **v1.1 product goal**, not a claim that the current accepted v1 indicator supports these markets today.
+
+This clarification **extends the scope of D-013 while preserving its crypto-only asset-class boundary**. The former five Binance instruments are a v1 research qualification sample, not the future allowed universe. Preserve the established private v1 release and version 7 rollback. See [D-037](DECISIONS.md) and the [v1.1 crypto universe qualification plan](implementation/v1-1-crypto-universe-qualification.md). The historical D-013 text follows unchanged for traceability.
+
+---
+
 # Authorized market scope — crypto-first, including gold-linked crypto products
 
 **Status:** OWNER DIRECTIVE — 2026-11-09 (Asia/Manila)  

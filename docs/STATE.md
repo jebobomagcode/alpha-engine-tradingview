@@ -1,5 +1,46 @@
 # Current project state — canonical checkpoint
 
+## ACTIVE OWNER DESIGN APPROVAL — D-041 (2026-11-14 PHT)
+
+- Owner explicitly **APPROVED** all three high-level v1.1 design choices: **(A)** first private qualification on positively verified one USDT and one USDC Binance USDⓈ-M perpetual with distinct ticks on standard **5m** host, then XAUUSDT qualification and later expansion toward all eligible verified stablecoin perps; **(B)** **LONG/SHORT continuation first** with all **4H/1H/15m/5m** analysis layers, 1H disagreement visible and alignment veto only as tested comparator, and Coach's other cases retained for later named profiles; **(C)** methodologically qualified setup may show **GEOMETRY UNAVAILABLE** if a valid stop/target cannot be derived, provided a defensible invalidation boundary exists; **no trade-readiness claim**.
+- [Owner D-041 decision](DECISIONS.md) and [approved-direction candidate specification](product/v1-1-candidate-specification.md) are canonical for the next milestone. **Not approved/frozen:** particular pivot windows, one-tick zone width, 60m/15m expiry, reaction rules, feed IDs, realtime packet clock, implementation and native acceptance. Preserve all accepted private v1 tests and v8/v7 rollback. **PR #4 stays draft/docs-only** pending normal engineering/release gates. Next engineering milestone **when authorized**: exact two-feed evidence contract + common four-timeframe cutoff fixture before broad overlays.
+
+## Current v1.1 design checkpoint — 2026-11-14 PHT
+
+- Draft PR #4 now contains the [consolidated candidate product specification](product/v1-1-candidate-specification.md), reconciling Work’s review and the main workspace’s response with the owner’s three provisional directions. It specifies staged USDT/USDC launch qualification with XAUUSDT next, 4H/1H/15m/5m timing, mirrored continuation and separate nominal geometry. The source-case register preserves conditional profiles outside the first release.
+- **Owner approval pending.** PR #4 is documentation only. Private v8.0 build `AE-0.1.11-0f4b3df98b90` and v7.0 rollback remain the accepted references. No new product, parity, native acceptance or implementation was performed. Use the candidate for the current proposal and the records below for review history.
+
+## Consolidated provisional product walkthrough — 2026-11-14 PHT
+
+- The owner asked whether GitHub included **“how everything will work.”** The initial scope/review docs were dispersed, so we added a single complete [provisional v1.1 product blueprint](product/v1-1-provisional-how-everything-works.md) explaining user steps, four timeframes, core modules, LONG/SHORT workflows, dashboard, decision-state taxonomy, causality, risk, alert/ChatGPT/scanner boundaries, current accepted v1 and proposed milestone gates. This is product **documentation only**; Work critical review and final owner selection under D-040 remain pending. No Pine/native changes are implied.
+
+## CURRENT COORDINATION STATUS — D-040 provisional v1.1 review with Work (2026-11-14 PHT)
+
+- The owner explicitly said **the v1.1 product direction is not yet final** and requested a complete Work handoff plus independent Ponder-style design review. Latest owner-preferred scope D-038 = only Binance USDⓈ-M USD-stablecoin perpetuals, LONG/SHORT; D-039 = 4H/1H/15m/5m analysis. Treat the detailed MTF responsibility split, 5m-host default, symbol qualification strategy, state labels, architecture and rollout as **provisional designs** to challenge, not settled implementation rules. Do not restart completed methodology or accepted v1 work.
+- [Work provisional design-review brief](implementation/v1-1-work-provisional-design-review-brief.md) consolidates all facts, design risks, alternatives and requested review deliverables. PR #4 remains draft and documentation-only; accepted private v8 and rollback v7 are unchanged. No full v1.1 code/native acceptance is claimed.
+
+## Active D-039 four-timeframe MTF requirement — 2026-11-14 PHT
+
+- Owner specified **4H, 1H, 15m and 5m** as mandatory MTF analysis layers for the **D-038 Binance USDⓈ-M stablecoin perpetual-only** LONG/SHORT product. Recommended *interpretation*: 4H macro, 1H structure, 15m setup/AOI, 5m trigger/confirmation on standard 5m host chart. Not an all-chart-timeframes authorization or confirmed implementation; see [four-timeframe MTF causal specification](implementation/v1-1-four-timeframe-mtf-contract.md).
+- Current accepted private v1 version 8.0 uses 5m chart + prior 1H/4H context; **15m layer and complete LONG/SHORT four-way parity are NOT IMPLEMENTED / NOT RUN**. Preserve v1 source/rollback, existing test baselines and same-contract evidence, no lookahead.
+
+## v1.1 Work parity-audit proposal reconciled to D-038 (2026-11-14 PHT)
+
+- Work recommended model-vs-Pine known-at / expiry parity and a positive-state same-cutoff native reload check on existing PAXGUSDT Spot 5m; **retain the audit technique** but under D-038 **do not make Spot a v1.1 runtime target**. Use frozen Spot only as regression, then prioritize verified Binance USDⓈ-M perpetual USDT/USDC data and long/short causal parity. Native positive-state reload is opportunistic and remains **INSUFFICIENT** until observed, not a release PASS or a reason to block independent frozen tests. [Work reconciliation](implementation/v1-1-work-parity-reconciliation.md).
+- Existing Python integrated replay models structural reference/zone/bullish reaction on 5m and takes a single supplied HTF context flag, **not** per-cutoff independently confirmed 1H/4H receipts; it does not project Fib and nominal geometry. Develop these evidence models before claiming complete Pine/Python parity. v1 accepted private saved version 8.0 is preserved and unchanged.
+
+## Active owner requirement D-038 — Binance USDⓈ-M perpetual-only focus (2026-11-14 PHT)
+
+- **OWNER SCOPE CHANGE:** v1.1 must focus **only** on Binance USDⓈ-M linear, USD-stablecoin-quoted/settled perpetual contracts. Initial stablecoins: **USDT and USDC**; any additional USD-stablecoin-settled Binance perpetual needs exact positive contract metadata confirmation. Include both LONG and SHORT research, subject to instrument identity and causal evidence gates. **Explicit exclusions:** Binance Spot, COIN-M / inverse/coin-margined perpetuals, dated futures, other exchanges and traditional standalone markets. Binance gold-referencing USDⓈ-M perpetual may qualify as a Binance contract; no spot gold substitution.
+- D-038 **supersedes D-037's broader all-crypto product target**, which remains below as a historical decision. Current plan: [Binance USDⓈ-M perpetual qualification](implementation/v1-1-binance-usds-m-perpetual-qualification.md). No new Pine implementation or native acceptance is claimed by this documentation change.
+- Preserve integrated accepted private v1 version 8.0, `AE-0.1.11-0f4b3df98b90`, v7 rollback, baseline source and 148 standard plus 21 structural tests. Development should occur separately from main pending evidence and integration gates.
+
+## Historical owner requirement D-037 — crypto-wide market compatibility (2026-11-14 PHT)
+
+- The owner clarified that “all markets” means **all cryptocurrency markets**, including crypto spot, futures, perpetual swaps and other crypto derivatives—not non-crypto traditional asset classes. Crypto implementation is no longer intended to be confined to five exact Binance chart symbols or USDT quotes. The bounded private v1 acceptance remains intact.
+- **Current state:** product requirement and [v1.1 qualification plan](implementation/v1-1-crypto-universe-qualification.md) documented on a development branch; **not yet implemented/qualified in native Pine**, with no new saved-script promotion. Implement using market/product/feed/timeframe capabilities, explicit unknown/insufficient states and controlled venue/product samples. Do not remove safety gates simply to display output on additional charts. Decision record: [D-037](DECISIONS.md).
+- The previously accepted v1 remains version 8.0, build `AE-0.1.11-0f4b3df98b90`; preserve version 7 rollback and 148 standard + 21 structural regression baselines.
+
 ## Accepted bounded private v1 — 2026-11-13 PHT
 
 - **PASS.** The existing private TradingView script saved v0.1.11 as version 8.0, build `AE-0.1.11-0f4b3df98b90`. Exact source, a fresh chart attachment, separate layout save, 39 restored controls and the same 14:25 UTC closed state on standard Binance PAXGUSDT Spot 5m all passed. Named v0.1.10 version 7.0 was byte-verified before promotion and remains the rollback. [Release evidence](implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht).
