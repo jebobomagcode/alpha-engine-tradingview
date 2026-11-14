@@ -1,5 +1,7 @@
 # Alpha Engine TradingView v1.1 — How everything is intended to work
 
+> **Earlier design walkthrough.** The [consolidated v1.1 candidate specification](v1-1-candidate-specification.md) now carries the proposed product rules and acceptance gates. This walkthrough preserves the pre-review design.
+
 > **PROVISIONAL PRODUCT BLUEPRINT — 2026-11-14 (Asia/Manila). NOT FINALIZED, NOT AN IMPLEMENTATION CLAIM.** This document is the consolidated, user-facing end-to-end product description requested by the owner. It must undergo Work's independent design critique under **D-040** before final product requirements are frozen. The owner explicitly selected **D-038 Binance USDⓈ-M stablecoin-settled perpetuals only**, **LONG and SHORT**, and **D-039 4H / 1H / 15m / 5m** analysis. Most decision thresholds, interaction details and timeframe roles below are **engineering proposals**, not separate owner approvals or rules claimed verbatim from Coach Fredy.
 
 Related source-of-truth: [Decision register](../DECISIONS.md), [current state](../STATE.md), [Work product-review brief](../implementation/v1-1-work-provisional-design-review-brief.md), [Binance contract qualification](../implementation/v1-1-binance-usds-m-perpetual-qualification.md), [four-timeframe timing contract](../implementation/v1-1-four-timeframe-mtf-contract.md), [Work parity reconciliation](../implementation/v1-1-work-parity-reconciliation.md), [accepted private v1 ledger](../implementation/phase3-8-v1-stabilization.md#integrated-private-v1-release--2026-11-13-pht).

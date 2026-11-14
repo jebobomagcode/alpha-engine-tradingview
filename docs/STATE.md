@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## Current v1.1 design checkpoint — 2026-11-14 PHT
+
+- Draft PR #4 now contains the [consolidated candidate product specification](product/v1-1-candidate-specification.md), reconciling Work’s review and the main workspace’s response with the owner’s three provisional directions. It specifies staged USDT/USDC launch qualification with XAUUSDT next, 4H/1H/15m/5m timing, mirrored continuation and separate nominal geometry. The source-case register preserves conditional profiles outside the first release.
+- **Owner approval pending.** PR #4 is documentation only. Private v8.0 build `AE-0.1.11-0f4b3df98b90` and v7.0 rollback remain the accepted references. No new product, parity, native acceptance or implementation was performed. Use the candidate for the current proposal and the records below for review history.
+
 ## Consolidated provisional product walkthrough — 2026-11-14 PHT
 
 - The owner asked whether GitHub included **“how everything will work.”** The initial scope/review docs were dispersed, so we added a single complete [provisional v1.1 product blueprint](product/v1-1-provisional-how-everything-works.md) explaining user steps, four timeframes, core modules, LONG/SHORT workflows, dashboard, decision-state taxonomy, causality, risk, alert/ChatGPT/scanner boundaries, current accepted v1 and proposed milestone gates. This is product **documentation only**; Work critical review and final owner selection under D-040 remain pending. No Pine/native changes are implied.

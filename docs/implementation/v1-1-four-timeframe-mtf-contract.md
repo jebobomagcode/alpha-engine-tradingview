@@ -1,5 +1,7 @@
 # v1.1 four-timeframe MTF specification — 4H / 1H / 15m / 5m
 
+> **Consolidated design candidate.** The [v1.1 product specification](../product/v1-1-candidate-specification.md#3-four-timeframes-and-decision-clocks) proposes the exact host-opening snapshot and closing-decision rule. Use that rule when evaluating the candidate; this earlier contract remains design history.
+
 **Status:** OWNER REQUIREMENT RECORDED / PROPOSED ENGINEERING CONTRACT — 2026-11-14 Asia/Manila.
 **Active decisions:** [D-038](../DECISIONS.md) (Binance USDⓈ-M USD-stablecoin perpetual-only, LONG/SHORT) and **D-039** (four-timeframe analysis).
 **Acceptance:** NOT IMPLEMENTED / NATIVE NOT RUN. The accepted private TradingView v1 version 8.0, build `AE-0.1.11-0f4b3df98b90`, is preserved, with version 7 rollback. Do not present this specification as implemented functionality.

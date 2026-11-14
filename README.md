@@ -1,6 +1,6 @@
 # Alpha Engine TradingView
 
-> **Provisional end-to-end product walkthrough:** [How Alpha Engine v1.1 is intended to work](docs/product/v1-1-provisional-how-everything-works.md). This covers full user journey, four timeframes, LONG/SHORT, dashboard/overlays, causal evidence, risk/alerts, current limitations and staged release; **D-040 Work review pending**, not a final or implemented spec.
+> **Current v1.1 design candidate:** [Product specification and approval checklist](docs/product/v1-1-candidate-specification.md). See the [earlier walkthrough](docs/product/v1-1-provisional-how-everything-works.md) for the pre-review design. Owner approval and implementation are pending.
 
 > **Active v1.1 owner scope (D-038, 2026-11-14):** Focus ONLY on Binance USDⓈ-M USD-stablecoin-settled **perpetual** contracts (USDT/USDC, with any additional stablecoin only after positive verification), supporting LONG and SHORT research. Exclude Spot, COIN-M, dated futures and non-Binance exchanges. See [current v1.1 qualification](docs/implementation/v1-1-binance-usds-m-perpetual-qualification.md), [scope](docs/MARKET_SCOPE.md) and [decisions](docs/DECISIONS.md). The accepted private v1 build remains unchanged. Earlier phase narratives below are historical.
 
