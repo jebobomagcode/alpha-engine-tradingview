@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "observation_date_pht": "2026-11-14",
+  "method": "TradingView native Data Window, crosshair on the dated historical candle; public chart URLs, no saved-script edits",
+  "chart_display_timezone": "UTC+08:00",
+  "chart_time_local": "2026-11-13T00:00:00+08:00",
+  "open_ms": 1794499200000,
+  "interval": "5m",
+  "chart_type": "Candles",
+  "samples": {
+    "BTCUSDT": {"ticker": "BINANCE:BTCUSDT.P", "ohlc": ["71677.4", "71785.9", "71508.8", "71773.0"]},
+    "ETHUSDC": {"ticker": "BINANCE:ETHUSDC.P", "ohlc": ["2005.90", "2010.95", "2001.83", "2009.90"]}
+  },
+  "native_mintick": null,
+  "native_htf_packets": null,
+  "realtime_receipt_time": null
+}
