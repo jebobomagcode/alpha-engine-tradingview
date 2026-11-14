@@ -7,6 +7,8 @@
 
 **User-facing how-everything-works explanation:** [Provisional full v1.1 product blueprint](../product/v1-1-provisional-how-everything-works.md) consolidates the intended end-to-end chart experience, eligibility, MTF, modules, LONG/SHORT, state lifecycle, risk geometry, interface, notification boundaries, accepted v1 versus v1.1 and proposed stages. Work should critique this document rather than merely approving it. It is **not finalized or natively implemented**.
 
+**Work review result:** [Proposed v1.1 product design amendments and acceptance gates](v1-1-product-design-review.md). The blueprint remains provisional under D-040.
+
 ## 1. What the owner has actually selected (current preferences, still open to deliberate revision)
 
 These **explicit owner directions** supersede older proposals; their specific technical implementations are not final:
