@@ -1,6 +1,6 @@
 # Alpha Engine TradingView v1.1 candidate product specification
 
-**Status:** Consolidated proposal under D-040. Owner approval is pending. All new v1.1 functionality below is proposed. No implementation, new market qualification, or TradingView acceptance was performed for this revision.
+**Status:** OWNER-APPROVED **PRODUCT-DIRECTION BASELINE** under [D-041](../DECISIONS.md), recorded 2026-11-14 PHT. The owner approved the three product choices in Section 9, **not** the numerical detector defaults, exact feed list, native parity, deployment or profitability. All unimplemented v1.1 functionality remains proposed; no new implementation, market qualification or TradingView acceptance has been performed for this approval.
 
 **Reading key:** Sections 1–3 and 5–8 specify the required product, state, causality and evidence behavior if this candidate is approved. Numerical windows and rules marked as proposed or experimental are versioned first-test defaults. They can change after a matched-evidence comparison.
 
@@ -140,10 +140,12 @@ Use `PASS`, `FAIL`, `INSUFFICIENT` or `NOT RUN` per gate with exact source, buil
 | Numerical settings were attributed too broadly to AI | Distinguish parameters named in the PDF from independent trigger, anchor, timeframe and gating rules. Preserve named exclusions and source branch alternatives. |
 | A native result or matching numbers could imply full parity | Separate matched-input parity, provider differences, native timing, rendering and persistence. Keep existing v1 evidence and versions intact. |
 
-**Approval requested only for the design choices.**
+**Owner product-direction approval recorded (D-041, 2026-11-14 PHT):** All three design choices below were explicitly **APPROVED** as the basis for v1.1. This is not a freeze of the experimental rule parameters or authorization to merge/deploy the unbuilt v1.1.
 
-1. Confirm the two-family USDT/USDC initial release on a standard 5m host, with XAUUSDT next.
-2. Confirm LONG/SHORT continuation first, with 1H disagreement visible and the hard veto tested as a comparator. Preserve the named conditional profiles.
-3. Confirm that a setup with a defined invalidation boundary can qualify with unavailable nominal geometry, and that the product never asserts execution readiness.
+1. **APPROVED:** Stage first private qualification on one exact verified Binance USDⓈ-M USDT and one USDC perpetual, standard 5m host; use distinct ticks; prioritize positively verified XAUUSDT next; preserve the full eligible stablecoin-perpetual universe as the destination, expanding by evidence.
+2. **APPROVED:** First profile covers LONG/SHORT continuation with all 4H/1H/15m/5m layers. Show opposing 1H structure and treat a hard 1H alignment veto as a separately tested comparator. Retain Coach's range, reversal, breakout/retest and countertrend cases for later explicitly named methodology profiles.
+3. **APPROVED:** If methodology gates and a defensible invalidation boundary pass, keep **SETUP QUALIFIED** visible even when nominal geometry is **UNAVAILABLE**; distinguish missing stop from missing target and never claim execution readiness. If the invalidation boundary itself is unknown, withhold qualification and retain the reaction observation.
+
+**Still experimental, not frozen:** swing-window/tie rules, tick-band versus volatility-scaled 15m AOI, opening-edge engulf criteria, R1/R2 comparator choice, zone lifetime 60m, contact/reaction validity window, qualification expiry 15m, stop/target reference construction, EMA/RSI filter role, exact feed/manifest roster and realtime evidence receipt semantics. Test these on pinned positive and withheld USDT/USDC windows, with separate source, model, native calculation, display and persistence evidence. Native positive LONG/SHORT and quote-family qualification are still release gates, not granted by D-041.
 
 **Engineering questions to resolve with evidence.** Select the exact two feeds and verify their interval/tick and realtime packet behavior. Compare swing ties, ranking, zone width and lifecycle windows on fixed cases. Pin seed rules, manifest freshness and output schema before parity testing. Measure native rendering and saved replay coverage. These questions remain open within the design. Revisit owner approval only if the results require a material change to the agreed product scope.
