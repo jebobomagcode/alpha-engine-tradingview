@@ -22,6 +22,10 @@ The target is **all eligible contracts within that Binance perpetual family**, r
 6. **LONG and SHORT parity:** design directional support/demand and resistance/supply state machines with symmetrical readiness, contact, reaction, invalidation, risk geometry and provenance. The current v1 experimental reaction branch is bullish-only; do not describe v1 as a complete SHORT engine.
 7. **Causal display:** retain reliable WAIT/INSUFFICIENT and qualification explanations; do not assume good trading outcomes. No live orders, automated trading, position sizing, guarantees or public TradingView publication are authorized.
 
+## Priority reconciliation with Work's v1.1 parity recommendation
+
+Work proposed a read-only v1.1 model-vs-Pine parity audit starting from PAXGUSDT Spot 5m and the currently unverified positive Fibonacci/reference/contact/geometry reload states. The **causal timing and lifecycle audit remains worthwhile**, but Spot is only a **historical regression fixture**, not an active v1.1 product target after D-038. Do a bounded Spot oracle preflight, then prioritize exact Binance USDⓈ-M perpetual identity and positive qualified USDT/USDC samples. Perform full cutoffs/known-at/retirement parity on *perpetual* evidence; opportunistic positive-state native reload, not a dependency that blocks adapter work. The existing Python integrated replay does **not** model Fib or geometry and accepts one supplied bullish HTF context value, not a verified per-cutoff HTF ledger; extend evidence before claiming comprehensive parity. Read the [dedicated Work reconciliation and evidence matrix](v1-1-work-parity-reconciliation.md).
+
 ## Focused validation sequence
 
 **P01 — evidence-bound adapter.** Inventory existing code: five exact Binance identities, `USDT` quote, `0.01` tick, 5m `STEP=300000`, and separate PAXGUSDT Spot manual Lesson 08 feature. Specify how to reject Spot, COIN-M, dated contracts, unknown venue, unsupported quote and nonstandard chart style. Preserve v1 baseline and SHA-pinned historical fixtures.
