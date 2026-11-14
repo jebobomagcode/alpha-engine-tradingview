@@ -32,6 +32,11 @@
 
 **Latest targeted pre-implementation check (2026-11-10):** [Ponder/Jarvis audit and prioritized corrections](docs/audits/2026-11-10-phase2-preimplementation-audit.md). Important refinements: illustrated source p14 OB candle and 1→3 gap, reference arming when BOS/CHoCH pivots are late-confirmed, and Lesson08 closed-candle entry vs Lesson10 break-of-confirmation entry. **No code or market backtests performed.**
 
+## Master methodology reference — 2026-11-14
+
+- [Coach Fredy Trading System — Master Reference](docs/reference/Coach_Fredy_Trading_System_Master_Reference_2026-11-14.md) is the dated consolidation of all 26 source units, PCSS interpretation, M00–M07 research, R1–R4 corrections, worked cases, experimental alternatives and unresolved gaps.
+- The original Coach PDF and individual audited source lessons retain precedence over this synthesis. Study completeness is **not** strategy validation, Coach approval or evidence of profitable trading.
+
 ## Start here — especially after losing a ChatGPT conversation
 
 1. Read [docs/RECOVERY.md](docs/RECOVERY.md).
