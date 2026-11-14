@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## v1.1 Work parity-audit proposal reconciled to D-038 (2026-11-14 PHT)
+
+- Work recommended model-vs-Pine known-at / expiry parity and a positive-state same-cutoff native reload check on existing PAXGUSDT Spot 5m; **retain the audit technique** but under D-038 **do not make Spot a v1.1 runtime target**. Use frozen Spot only as regression, then prioritize verified Binance USDⓈ-M perpetual USDT/USDC data and long/short causal parity. Native positive-state reload is opportunistic and remains **INSUFFICIENT** until observed, not a release PASS or a reason to block independent frozen tests. [Work reconciliation](implementation/v1-1-work-parity-reconciliation.md).
+- Existing Python integrated replay models structural reference/zone/bullish reaction on 5m and takes a single supplied HTF context flag, **not** per-cutoff independently confirmed 1H/4H receipts; it does not project Fib and nominal geometry. Develop these evidence models before claiming complete Pine/Python parity. v1 accepted private saved version 8.0 is preserved and unchanged.
+
 ## Active owner requirement D-038 — Binance USDⓈ-M perpetual-only focus (2026-11-14 PHT)
 
 - **OWNER SCOPE CHANGE:** v1.1 must focus **only** on Binance USDⓈ-M linear, USD-stablecoin-quoted/settled perpetual contracts. Initial stablecoins: **USDT and USDC**; any additional USD-stablecoin-settled Binance perpetual needs exact positive contract metadata confirmation. Include both LONG and SHORT research, subject to instrument identity and causal evidence gates. **Explicit exclusions:** Binance Spot, COIN-M / inverse/coin-margined perpetuals, dated futures, other exchanges and traditional standalone markets. Binance gold-referencing USDⓈ-M perpetual may qualify as a Binance contract; no spot gold substitution.
