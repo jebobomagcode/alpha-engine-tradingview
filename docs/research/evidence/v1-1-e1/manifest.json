@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "venue": "BINANCE",
+  "segment": "USDⓈ-M",
+  "price_basis": "TRADE",
+  "candidate_host": {"interval": "5m", "chart_type": "standard time-based OHLC"},
+  "availability_clock": "historical close model, no authenticated observed receipt",
+  "exchange_info_excerpt_sha256": "64970b71fa034d3a8e80e6262e230dcd7e332a37ccab051794360f0f075e4a08",
+  "trade_klines_receipt_sha256": "ec90e14302fa7b30b4ef79399070808e79ef51f06e86c4b867b21ead930bba7a",
+  "tradingview_chart_sample_sha256": "e2c9bb4aa98786c10deded7fa4d82af0645ccc3ba25f763adc5504eee38e88f5",
+  "markets": {
+    "BTCUSDT": {
+      "settlement": "USDT",
+      "settlement_reference": "https://www.binance.com/en-BH/support/faq/detail/360033161972",
+      "tradingview_ticker": "BINANCE:BTCUSDT.P",
+      "tradingview_reference": "https://www.tradingview.com/symbols/BINANCE-BTCUSDT.P/",
+      "public_listing": "PASS",
+      "native_status": "NOT RUN"
+    },
+    "ETHUSDC": {
+      "settlement": "USDC",
+      "settlement_reference": "https://www.binance.com/en/support/announcement/detail/4ff3534898ab4ea09afb450a94f20afe",
+      "tradingview_ticker": "BINANCE:ETHUSDC.P",
+      "tradingview_reference": "https://www.tradingview.com/symbols/ETHUSDC.P/?exchange=BINANCE",
+      "public_listing": "PASS",
+      "native_status": "NOT RUN"
+    }
+  }
+}

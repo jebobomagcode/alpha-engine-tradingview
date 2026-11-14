@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "synthetic_schedule_with_manually_specified_expectations",
+  "epoch_ms": 1794528000000,
+  "warmup": {"5m": 1, "15m": 1, "1h": 1, "4h": 1},
+  "candle_template_ticks": {"open_tick": 100, "high_tick": 102, "low_tick": 99, "close_tick": 101},
+  "close_offsets_ms": {
+    "5m": [-600000, -300000, 0, 300000, 600000, 900000],
+    "15m": [-1800000, -900000, 0, 900000],
+    "1h": [-7200000, -3600000, 0],
+    "4h": [-28800000, -14400000, 0]
+  },
+  "schedule_expectations": [
+    {"host_open_offset_ms": -300000, "cutoff_offset_ms": 0, "status": "PASS", "closes_ms": {"5m": 0, "15m": -900000, "1h": -3600000, "4h": -14400000}},
+    {"host_open_offset_ms": 0, "cutoff_offset_ms": 300000, "status": "PASS", "closes_ms": {"5m": 300000, "15m": 0, "1h": 0, "4h": 0}},
+    {"host_open_offset_ms": 300000, "cutoff_offset_ms": 600000, "status": "PASS", "closes_ms": {"5m": 600000, "15m": 0, "1h": 0, "4h": 0}}
+  ],
+  "evidence_cases": [
+    {"id": "stale-15m", "interval": "15m", "close_offset_ms": 0, "op": "drop", "host_open_offset_ms": 0, "status": "INSUFFICIENT", "reason": "STALE_PREVIOUS_CANDLE", "latest_visible_offset_ms": -900000},
+    {"id": "missing-all-4h", "interval": "4h", "op": "drop_interval", "host_open_offset_ms": 0, "status": "INSUFFICIENT", "reason": "MISSING_EXPECTED_CANDLE", "latest_visible_offset_ms": null},
+    {"id": "delayed-1h-same-host", "interval": "1h", "close_offset_ms": 0, "op": "delay", "value": 120000, "host_open_offset_ms": 0, "status": "INSUFFICIENT", "reason": "STALE_PREVIOUS_CANDLE", "latest_visible_offset_ms": -3600000},
+    {"id": "delayed-1h-next-open", "interval": "1h", "close_offset_ms": 0, "op": "delay", "value": 120000, "host_open_offset_ms": 300000, "status": "PASS", "reason": "CONFIRMED_CANDLE", "latest_visible_offset_ms": 0},
+    {"id": "conflicting-version", "interval": "15m", "close_offset_ms": 0, "op": "conflict", "host_open_offset_ms": 0, "status": "FAIL", "reason": "CONTRADICTORY_REVISION", "latest_visible_offset_ms": 0},
+    {"id": "mixed-provider", "interval": "4h", "close_offset_ms": 0, "op": "wrong_source", "host_open_offset_ms": 0, "status": "FAIL", "reason": "FEED_MISMATCH", "latest_visible_offset_ms": 0},
+    {"id": "developing-host", "interval": "5m", "close_offset_ms": 300000, "op": "unfinalized", "host_open_offset_ms": 0, "status": "INSUFFICIENT", "reason": "UNFINALIZED_CANDLE", "latest_visible_offset_ms": 300000},
+    {"id": "no-warmup-through-gap", "interval": "15m", "close_offset_ms": -900000, "op": "drop", "warmup": 2, "host_open_offset_ms": 0, "status": "INSUFFICIENT", "reason": "WARMUP_GAP", "latest_visible_offset_ms": 0}
+  ],
+  "revision_case": {"interval": "15m", "close_offset_ms": 0, "revised_modeled_offset_ms": 240000, "prior_open_offset_ms": 0, "next_open_offset_ms": 300000, "expected_revisions": [1, 2]},
+  "admission_cases": [
+    {"id": "usdt", "market": "BTCUSDT", "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "NATIVE_GATE_NOT_RUN"]},
+    {"id": "usdc", "market": "ETHUSDC", "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "NATIVE_GATE_NOT_RUN"]},
+    {"id": "spot", "market": "BTCUSDT", "market_changes": {"segment": "SPOT"}, "product": ["FAIL", "OUT_OF_E1_PRODUCT_SCOPE"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "coin-m", "market": "BTCUSDT", "market_changes": {"segment": "COIN-M"}, "product": ["FAIL", "OUT_OF_E1_PRODUCT_SCOPE"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "dated", "market": "BTCUSDT", "market_changes": {"raw_contract_type": "CURRENT_QUARTER"}, "product": ["FAIL", "OUT_OF_E1_PRODUCT_SCOPE"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "missing-settlement", "market": "ETHUSDC", "market_changes": {"settlement": ""}, "product": ["INSUFFICIENT", "PRODUCT_FIELDS_UNVERIFIED"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "wrong-settlement", "market": "ETHUSDC", "market_changes": {"settlement": "USDT"}, "product": ["FAIL", "OUT_OF_E1_UNIT_SCOPE"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "stale-metadata", "market": "BTCUSDT", "audit_offset_ms": 172800001, "product": ["INSUFFICIENT", "METADATA_OUTSIDE_AUDIT_WINDOW"], "mapping": ["PASS", "EXACT_MAPPING_FIELDS"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "wrong-exchange", "market": "BTCUSDT", "chart_changes": {"ticker": "BYBIT:BTCUSDT.P"}, "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["FAIL", "TICKER_MISMATCH"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "mark", "market": "BTCUSDT", "chart_changes": {"price_basis": "MARK"}, "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["FAIL", "UNSUPPORTED_CHART"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "synthetic-chart", "market": "ETHUSDC", "chart_changes": {"standard_ohlc": false}, "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["FAIL", "UNSUPPORTED_CHART"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "wrong-host", "market": "ETHUSDC", "chart_changes": {"interval": "15m"}, "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["FAIL", "UNSUPPORTED_CHART"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "unknown-chart-tick", "market": "ETHUSDC", "chart_changes": {"tick": null}, "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["INSUFFICIENT", "TICK_UNVERIFIED"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]},
+    {"id": "wrong-tick", "market": "ETHUSDC", "chart_changes": {"tick": "0.10"}, "product": ["PASS", "VERIFIED_PRODUCT_FIELDS"], "mapping": ["FAIL", "TICK_MISMATCH"], "native": ["NOT RUN", "ADMISSION_PREREQUISITES_UNMET"]}
+  ]
+}

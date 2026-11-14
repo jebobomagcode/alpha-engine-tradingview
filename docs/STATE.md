@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## v1.1 E1 engineering checkpoint — 2026-11-14 PHT
+
+- The owner authorized E1 after D-041 approval. The [E1 evidence foundation](implementation/v1-1-e1-evidence-foundation.md) is on the separate engineering branch stacked on documentation PR #4. The two initial contract candidates are Binance USDⓈ-M BTCUSDT and ETHUSDC, with dated exchange metadata, 414 trade candles, native 5m chart identity and one matched native 5m OHLC sample per contract.
+- The four-timeframe Python evidence model and shared cutoff fixture pass 159 standard checks and 21 separate structural checks locally. Native Pine timing, tick and matched OHLC parity, and private persistence remain open. Preserve private v8.0/v7.0 and the existing v1 source. Next checkpoint is a disposable native four-clock diagnostic.
+
 ## ACTIVE OWNER DESIGN APPROVAL — D-041 (2026-11-14 PHT)
 
 - Owner explicitly **APPROVED** all three high-level v1.1 design choices: **(A)** first private qualification on positively verified one USDT and one USDC Binance USDⓈ-M perpetual with distinct ticks on standard **5m** host, then XAUUSDT qualification and later expansion toward all eligible verified stablecoin perps; **(B)** **LONG/SHORT continuation first** with all **4H/1H/15m/5m** analysis layers, 1H disagreement visible and alignment veto only as tested comparator, and Coach's other cases retained for later named profiles; **(C)** methodologically qualified setup may show **GEOMETRY UNAVAILABLE** if a valid stop/target cannot be derived, provided a defensible invalidation boundary exists; **no trade-readiness claim**.
