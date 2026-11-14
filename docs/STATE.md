@@ -1,5 +1,10 @@
 # Current project state — canonical checkpoint
 
+## ACTIVE OWNER DESIGN APPROVAL — D-041 (2026-11-14 PHT)
+
+- Owner explicitly **APPROVED** all three high-level v1.1 design choices: **(A)** first private qualification on positively verified one USDT and one USDC Binance USDⓈ-M perpetual with distinct ticks on standard **5m** host, then XAUUSDT qualification and later expansion toward all eligible verified stablecoin perps; **(B)** **LONG/SHORT continuation first** with all **4H/1H/15m/5m** analysis layers, 1H disagreement visible and alignment veto only as tested comparator, and Coach's other cases retained for later named profiles; **(C)** methodologically qualified setup may show **GEOMETRY UNAVAILABLE** if a valid stop/target cannot be derived, provided a defensible invalidation boundary exists; **no trade-readiness claim**.
+- [Owner D-041 decision](DECISIONS.md) and [approved-direction candidate specification](product/v1-1-candidate-specification.md) are canonical for the next milestone. **Not approved/frozen:** particular pivot windows, one-tick zone width, 60m/15m expiry, reaction rules, feed IDs, realtime packet clock, implementation and native acceptance. Preserve all accepted private v1 tests and v8/v7 rollback. **PR #4 stays draft/docs-only** pending normal engineering/release gates. Next engineering milestone **when authorized**: exact two-feed evidence contract + common four-timeframe cutoff fixture before broad overlays.
+
 ## Current v1.1 design checkpoint — 2026-11-14 PHT
 
 - Draft PR #4 now contains the [consolidated candidate product specification](product/v1-1-candidate-specification.md), reconciling Work’s review and the main workspace’s response with the owner’s three provisional directions. It specifies staged USDT/USDC launch qualification with XAUUSDT next, 4H/1H/15m/5m timing, mirrored continuation and separate nominal geometry. The source-case register preserves conditional profiles outside the first release.
