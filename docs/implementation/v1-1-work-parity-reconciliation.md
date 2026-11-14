@@ -6,6 +6,10 @@
 **Current draft:** [PR #4](https://github.com/jebobomagcode/alpha-engine-tradingview/pull/4), documents only.  
 **Coordination:** Treat GitHub as the cross-conversation handoff. Do not restart completed v1 studies, prior audits or merges; don't overwrite work performed on another branch without checking current refs.
 
+## New owner addition — D-039 four-timeframe MTF
+
+The owner requires all **4H, 1H, 15m and 5m** layers for the D-038 Binance stablecoin perpetual LONG/SHORT product. Work should add 15m per-cutoff confirmed context and setup/AOI evidence to the causal parity research; v1 only had 1H/4H context on a 5m host chart. The initial 5m-host + confirmed 15m/1H/4H plan, possible conflict states and lower-timeframe data hazards are defined in the [four-timeframe MTF contract](v1-1-four-timeframe-mtf-contract.md). D-039 is a new owner requirement, not yet a Pine implementation; do not manufacture a pass or revive Spot as new scope.
+
 ## Current verified immutable baseline
 
 - `main` HEAD at handoff: `8e60a982385e46aa818acb49103f1dedbe856b77`; bounded v1 owner-private TradingView version **8.0**, build `AE-0.1.11-0f4b3df98b90`, Pine Git blob `6fe1f8718ba8b742be500262a1df84fbd933c871`; saved version 7.0 remains rollback.
