@@ -1,5 +1,9 @@
 # Current project state — canonical checkpoint
 
+## Consolidated provisional product walkthrough — 2026-11-14 PHT
+
+- The owner asked whether GitHub included **“how everything will work.”** The initial scope/review docs were dispersed, so we added a single complete [provisional v1.1 product blueprint](product/v1-1-provisional-how-everything-works.md) explaining user steps, four timeframes, core modules, LONG/SHORT workflows, dashboard, decision-state taxonomy, causality, risk, alert/ChatGPT/scanner boundaries, current accepted v1 and proposed milestone gates. This is product **documentation only**; Work critical review and final owner selection under D-040 remain pending. No Pine/native changes are implied.
+
 ## CURRENT COORDINATION STATUS — D-040 provisional v1.1 review with Work (2026-11-14 PHT)
 
 - The owner explicitly said **the v1.1 product direction is not yet final** and requested a complete Work handoff plus independent Ponder-style design review. Latest owner-preferred scope D-038 = only Binance USDⓈ-M USD-stablecoin perpetuals, LONG/SHORT; D-039 = 4H/1H/15m/5m analysis. Treat the detailed MTF responsibility split, 5m-host default, symbol qualification strategy, state labels, architecture and rollout as **provisional designs** to challenge, not settled implementation rules. Do not restart completed methodology or accepted v1 work.
